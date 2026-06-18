@@ -1,0 +1,29 @@
+/* 
+ * ZenixUI Core Styles 
+ * Imports this file once at the root of the app.
+ */
+
+/* Reduced Motion Pipeline */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.zx-experience {
+  /* Provide baseline system fallbacks if no preset is loaded */
+  --zx-background: #ffffff;
+  --zx-surface: #f3f4f6;
+  --zx-elevated: #ffffff;
+  --zx-glass: rgba(255,255,255,0.7);
+  --zx-overlay: rgba(0,0,0,0.8);
+  --zx-accent: #3b82f6;
+  --zx-primary: #111827;
+  
+  font-family: system-ui, -apple-system, sans-serif;
+}

@@ -1,0 +1,13 @@
+.zx-theme-ocean {
+  --zx-background: #020617; /* Slate 950 */
+  --zx-surface: #0f172a;    /* Slate 900 */
+  --zx-elevated: #1e293b;   /* Slate 800 */
+  --zx-glass: rgba(15, 23, 42, 0.7);
+  --zx-overlay: rgba(2, 6, 23, 0.8);
+  --zx-accent: #38bdf8;     /* Sky 400 */
+  --zx-primary: #f8fafc;    /* Slate 50 */
+  
+  /* Apply defaults */
+  background-color: var(--zx-background);
+  color: var(--zx-primary);
+}

@@ -1,0 +1,13 @@
+.zx-theme-autumn {
+  --zx-background: #fef3c7; /* Amber 50 */
+  --zx-surface: #fde68a;    /* Amber 200 */
+  --zx-elevated: #fcd34d;   /* Amber 300 */
+  --zx-glass: rgba(253, 230, 138, 0.7);
+  --zx-overlay: rgba(254, 243, 199, 0.8);
+  --zx-accent: #d97706;     /* Amber 600 */
+  --zx-primary: #451a03;    /* Amber 950 */
+  
+  /* Apply defaults */
+  background-color: var(--zx-background);
+  color: var(--zx-primary);
+}

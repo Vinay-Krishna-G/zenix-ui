@@ -1,0 +1,13 @@
+.zx-theme-night-city {
+  --zx-background: #09090b; /* Zinc 950 */
+  --zx-surface: #18181b;    /* Zinc 900 */
+  --zx-elevated: #27272a;   /* Zinc 800 */
+  --zx-glass: rgba(24, 24, 27, 0.7);
+  --zx-overlay: rgba(9, 9, 11, 0.8);
+  --zx-accent: #ec4899;     /* Pink 500 */
+  --zx-primary: #f4f4f5;    /* Zinc 50 */
+  
+  /* Apply defaults */
+  background-color: var(--zx-background);
+  color: var(--zx-primary);
+}

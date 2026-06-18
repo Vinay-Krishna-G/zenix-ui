@@ -1,0 +1,51 @@
+[data-zx-theme="zenix"] {
+  /* Colors - Light Mode Default */
+  --zx-background: #ffffff;
+  --zx-surface: #fafafa;
+  --zx-elevated: #f4f4f5;
+  --zx-primary: #111111;
+  --zx-accent: #000000;
+  
+  /* The Zenix Look - Curvature & Geometry */
+  --zx-radius: 20px;
+  --zx-radius-sm: 12px;
+  --zx-radius-lg: 24px;
+  --zx-radius-round: 9999px;
+  
+  /* The Zenix Look - Shadows */
+  --zx-shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --zx-shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+  --zx-shadow-lg: 0 16px 48px rgba(0,0,0,0.08);
+  
+  /* The Zenix Look - Glassmorphism */
+  --zx-glass-bg: rgba(255, 255, 255, 0.6);
+  --zx-glass-border: rgba(0, 0, 0, 0.05);
+  --zx-glass-blur: blur(20px);
+  --zx-glass-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  
+  /* Typography */
+  --zx-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --zx-font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+  
+  /* Base Variables Mapping */
+  color: var(--zx-primary);
+  background-color: var(--zx-background);
+  font-family: var(--zx-font-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-zx-theme="zenix"] {
+    --zx-background: #000000;
+    --zx-surface: #0a0a0a;
+    --zx-elevated: #111111;
+    --zx-primary: #ffffff;
+    --zx-accent: #ffffff;
+    
+    --zx-shadow-sm: 0 2px 8px rgba(0,0,0,1);
+    --zx-shadow-md: 0 8px 24px rgba(0,0,0,1);
+    --zx-shadow-lg: 0 16px 48px rgba(0,0,0,1);
+    
+    --zx-glass-bg: rgba(20, 20, 20, 0.6);
+    --zx-glass-border: rgba(255, 255, 255, 0.05);
+  }
+}

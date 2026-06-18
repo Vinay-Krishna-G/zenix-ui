@@ -1,0 +1,13 @@
+{
+  "name": "@zenixui/blueprints",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@zenixui/components": "workspace:*",
+    "@zenixui/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
