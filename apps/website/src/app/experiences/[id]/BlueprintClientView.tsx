@@ -74,13 +74,33 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <Button size="lg" onClick={() => setCopyMode(copyMode === 'blueprint' ? null : 'blueprint')} style={{ justifyContent: 'center' }}>
-              {copyMode === 'blueprint' ? 'Hide Code' : 'Copy Blueprint'}
-            </Button>
-            <Button size="lg" variant="glass" onClick={() => setCopyMode(copyMode === 'source' ? null : 'source')} style={{ justifyContent: 'center' }}>
-              {copyMode === 'source' ? 'Hide Source' : 'Copy Source'}
-            </Button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <Button size="lg" onClick={() => setCopyMode(copyMode === 'blueprint' ? null : 'blueprint')} style={{ justifyContent: 'center' }}>
+                {copyMode === 'blueprint' ? 'Hide Code' : 'Copy Blueprint'}
+              </Button>
+              <Button size="lg" variant="glass" onClick={() => setCopyMode(copyMode === 'source' ? null : 'source')} style={{ justifyContent: 'center' }}>
+                {copyMode === 'source' ? 'Hide Source' : 'Copy Source'}
+              </Button>
+            </div>
+
+            <Surface variant="glass" style={{ padding: '1.25rem', border: '1px solid var(--zx-elevated)', fontSize: '0.875rem' }}>
+              <div style={{ fontWeight: 600, marginBottom: '1rem', fontSize: '0.75rem', textTransform: 'uppercase', opacity: 0.7, letterSpacing: '0.05em' }}>How to adopt</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>1</span>
+                  <span style={{ opacity: 0.9 }}>Copy Blueprint</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>2</span>
+                  <span style={{ opacity: 0.9 }}>Paste into your app</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-primary)', color: 'var(--zx-background)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>3</span>
+                  <span style={{ opacity: 0.9, fontWeight: 600 }}>Customize & Ship</span>
+                </div>
+              </div>
+            </Surface>
           </div>
         </div>
 

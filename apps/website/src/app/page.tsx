@@ -1,9 +1,13 @@
+'use client';
+
 import { Surface } from '@zenixui/components';
+import { Experience } from '@zenixui/react';
 import Link from 'next/link';
 import { blueprints } from '@zenixui/blueprints';
 
 export default function Home() {
   const featuredExperience = blueprints.find(bp => bp.id === 'night-city-portfolio');
+  const FeaturedComponent = featuredExperience?.component;
   const featuredThemes = [
     { id: 'zenix', name: 'Zenix', tagline: 'Premium SaaS', color: '#6366f1' },
     { id: 'ocean', name: 'Ocean', tagline: 'Creative & Fluid', color: '#0ea5e9' },
@@ -45,16 +49,30 @@ export default function Home() {
           </Link>
         </div>
         <div style={{ 
+          position: 'relative',
           width: '100%', 
           height: '600px', 
           background: 'var(--zx-elevated)', 
           borderRadius: 'var(--zx-radius-lg)', 
           overflow: 'hidden',
-          border: '1px solid var(--zx-elevated)',
-          backgroundImage: `url(${featuredExperience?.previewImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'top center'
-        }} />
+          border: '1px solid var(--zx-elevated)'
+        }}>
+          <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 10 }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.75rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-round)', boxShadow: 'var(--zx-shadow-sm)' }}>
+              Live Preview
+            </span>
+            <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.75rem', background: 'var(--zx-surface)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-round)', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-sm)' }}>
+              Interactive
+            </span>
+          </div>
+          <div style={{ width: '100%', height: '100%', overflowY: 'auto' }}>
+            {FeaturedComponent && featuredExperience ? (
+              <Experience preset={featuredExperience.theme}>
+                <FeaturedComponent />
+              </Experience>
+            ) : null}
+          </div>
+        </div>
       </section>
 
       {/* EXPLORE EXPERIENCES */}
