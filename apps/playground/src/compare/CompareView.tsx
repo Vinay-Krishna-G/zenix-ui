@@ -104,7 +104,7 @@ export function CompareView() {
 
 function ThemeCell({ preset, children }: { preset: string, children: React.ReactNode }) {
   return (
-    <Experience preset={preset} background="none" motion="none">
+    <Experience preset={preset} background="none">
       <div style={{ 
         padding: '2rem', 
         height: '100%', 

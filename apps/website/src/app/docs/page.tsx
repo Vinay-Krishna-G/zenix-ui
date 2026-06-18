@@ -28,9 +28,9 @@ export default function App() {
 }`}
       </pre>
 
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '3rem 0 1rem' }}>Blueprints</h2>
+      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '3rem 0 1rem' }}>Experiences</h2>
       <p style={{ fontSize: '1rem', opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-        ZenixUI's real power comes from Blueprints. Instead of building a complex Hero section from scratch using our atomic components, simply navigate to the Blueprints tab, select a category like 'Landing', choose your theme, and copy the full page code directly into your app.
+        ZenixUI's real power comes from the <Link href="/experiences" style={{ color: 'var(--zx-primary)' }}>Experience Gallery</Link>. Instead of building a complex Hero section from scratch using our atomic components, simply navigate to the Experiences tab, select a category like 'Landing Pages', choose your theme, and copy the full Blueprint code directly into your app.
       </p>
     </div>
   );

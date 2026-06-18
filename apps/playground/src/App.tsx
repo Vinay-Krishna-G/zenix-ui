@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Experience } from '@zenixui/react';
-import type { MotionProfile } from '@zenixui/core';
-
 import '@zenixui/react/styles.css';
 import '@zenixui/pack-zenix';
 import '@zenixui/pack-ocean';
@@ -30,8 +28,7 @@ function CustomBackground() {
 function App() {
   const [theme, setTheme] = useState('zenix');
   const [pageType, setPageType] = useState<'landing' | 'portfolio' | 'compare'>('compare');
-  const [motion, setMotion] = useState<MotionProfile>('normal');
-  const [bgType, setBgType] = useState<'default' | 'none' | 'custom'>('default');
+  const [bgType] = useState<'default' | 'none' | 'custom'>('default');
   
   // Theme Playground Options
   const [accent, setAccent] = useState<string>('');
@@ -51,7 +48,7 @@ function App() {
   }
 
   return (
-    <Experience preset={theme} motion={motion} background={resolvedBg} accent={accent || undefined} radius={radius || undefined}>
+    <Experience preset={theme} background={resolvedBg}>
       
       {/* THEME DEBUG PANEL */}
       <div style={{ 
@@ -116,14 +113,7 @@ function App() {
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem' }}>
-          <strong>Motion:</strong>
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-            {['none', 'subtle', 'normal', 'immersive'].map(m => (
-              <button key={m} onClick={() => setMotion(m as MotionProfile)} style={debugBtn(motion === m)}>{m}</button>
-            ))}
-          </div>
-        </div>
+
       </div>
 
       <div style={{ position: 'relative', zIndex: 10, width: '100%', height: '100%', overflowY: 'auto' }}>

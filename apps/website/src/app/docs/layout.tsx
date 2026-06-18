@@ -18,8 +18,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </h3>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '1rem', fontWeight: 500 }}>
           <Link href="/themes" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Themes</Link>
-          <Link href="/blueprints" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Blueprints</Link>
-          <Link href="/components" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Components</Link>
+          <Link href="/experiences" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Experiences</Link>
+          <Link href="/docs/components" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Components</Link>
         </nav>
       </aside>
 

@@ -23,11 +23,10 @@ export default function RootLayout({
                 ZenixUI
               </div>
               <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
                 <a href="/themes" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Themes</a>
-                <a href="/blueprints" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Blueprints</a>
-                <a href="/components" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Components</a>
+                <a href="/experiences" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Experiences</a>
                 <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Studio</a>
+                <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
                 <a href="/roadmap" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Roadmap</a>
                 <a href="/compare" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 700 }}>Compare</a>
               </div>
