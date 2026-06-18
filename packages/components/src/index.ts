@@ -9,3 +9,7 @@ export * from './patterns/Hero';
 export * from './patterns/Features';
 export * from './patterns/CTA';
 export * from './patterns/Footer';
+
+export * from './atoms/Button';
+export * from './atoms/Input';
+export * from './atoms/Badge';

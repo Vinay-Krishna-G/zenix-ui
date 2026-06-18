@@ -25,3 +25,13 @@ export * from './auth/ZenixAuth';
 export * from './auth/OceanAuth';
 export * from './auth/NightCityAuth';
 export * from './auth/AutumnAuth';
+
+export * from './blog/ZenixBlog';
+export * from './blog/OceanBlog';
+export * from './blog/NightCityBlog';
+export * from './blog/AutumnBlog';
+
+export * from './dashboard/ZenixDashboard';
+export * from './dashboard/OceanDashboard';
+export * from './dashboard/NightCityDashboard';
+export * from './dashboard/AutumnDashboard';
