@@ -26,6 +26,7 @@ export default function RootLayout({
                 <a href="/themes" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Themes</a>
                 <a href="/blueprints" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Blueprints</a>
                 <a href="/components" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Components</a>
+                <a href="/compare" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 700 }}>Compare</a>
               </div>
             </nav>
             <main style={{ flex: 1, position: 'relative' }}>

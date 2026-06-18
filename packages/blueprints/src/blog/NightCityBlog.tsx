@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Button, Badge } from '@zenixui/components';
 
 export function NightCityBlog() {
   const [view, setView] = useState<'list' | 'detail'>('list');
@@ -10,12 +10,13 @@ export function NightCityBlog() {
     return (
       <Features.Root padded>
         <Features.Content style={{ maxWidth: '800px', margin: '2rem auto', fontFamily: 'var(--zx-font-mono)' }}>
-          <button 
+          <Button 
+            variant="cyber"
             onClick={() => setView('list')} 
-            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, cursor: 'pointer', marginBottom: '2rem', fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase' }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, padding: 0, height: 'auto', marginBottom: '2rem' }}
           >
-            {'<'} RETURN_TO_FEED
-          </button>
+            {'< RETURN'}
+          </Button>
           
           <div style={{ marginBottom: '3rem', borderBottom: '1px solid var(--zx-primary)', paddingBottom: '2rem' }}>
             <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#00ff00', textTransform: 'uppercase' }}>
@@ -58,6 +59,9 @@ export function NightCityBlog() {
       <Features.Content style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'var(--zx-font-mono)' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: 600, margin: '0 0 3rem', textTransform: 'uppercase', borderBottom: '2px solid var(--zx-primary)', paddingBottom: '1rem' }}>
           SYS.DATALOGS
+          <Badge variant="terminal" tone="neutral">
+            SYS.LOG
+          </Badge>
         </h1>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -73,6 +77,9 @@ export function NightCityBlog() {
               <div>
                 <h2 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem', textTransform: 'uppercase' }}>
                   BREACHING THE MAINFRAME {id}
+                  <Badge variant="terminal" tone="neutral">
+                    REPORT
+                  </Badge>
                 </h2>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                   <span style={{ fontSize: '0.75rem', color: '#00ff00' }}>[REPORT]</span>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Textarea, Button } from '@zenixui/components';
 
 export function AutumnContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -30,39 +30,25 @@ export function AutumnContact() {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', position: 'relative' }}>
-                <input required style={inputStyle} type="text" placeholder=" " className="autumn-input" id="name" />
+                <Input required variant="organic" type="text" placeholder=" " className="autumn-input" id="name" />
                 <label htmlFor="name" style={labelStyle}>Your Name</label>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', position: 'relative' }}>
-                <input required style={inputStyle} type="email" placeholder=" " className="autumn-input" id="email" />
+                <Input required variant="organic" type="email" placeholder=" " className="autumn-input" id="email" />
                 <label htmlFor="email" style={labelStyle}>Your Email</label>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', position: 'relative' }}>
-                <textarea required style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }} placeholder=" " className="autumn-input" id="message" />
+                <Textarea required variant="organic" placeholder=" " className="autumn-input" id="message" rows={4} />
                 <label htmlFor="message" style={{...labelStyle, top: '0'}}>Your Message</label>
               </div>
 
-              <button 
-                type="submit" 
-                disabled={status === 'loading'}
-                style={{
-                  padding: '1rem',
-                  background: 'transparent',
-                  color: 'var(--zx-primary)',
-                  border: '1px solid var(--zx-primary)',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.5 : 1,
-                  marginTop: '1rem',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
+              <div style={{ alignSelf: 'flex-start' }}>
+                <Button type="submit" variant="organic" isLoading={status === 'loading'} style={{ fontSize: '1.25rem' }}>
+                  Send Letter
+                </Button>
+              </div>
             </form>
           )}
         </Surface>
@@ -78,21 +64,6 @@ export function AutumnContact() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  padding: '0.5rem 0',
-  borderRadius: 0,
-  border: 'none',
-  borderBottom: '2px solid var(--zx-elevated)',
-  background: 'transparent',
-  color: 'var(--zx-primary)',
-  fontSize: '1.1rem',
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'border-color 0.3s ease',
-  zIndex: 2,
-  position: 'relative'
-};
 
 const labelStyle: React.CSSProperties = {
   position: 'absolute',

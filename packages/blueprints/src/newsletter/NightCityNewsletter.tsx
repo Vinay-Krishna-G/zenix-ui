@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function NightCityNewsletter() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -39,41 +39,20 @@ export function NightCityNewsletter() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} ROUTING_ADDR</label>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <input 
+                  <Input 
                     type="email" 
+                    variant="terminal"
                     placeholder="USER@NODE.NET" 
                     required
-                    style={{
-                      padding: '0.75rem 1rem',
-                      borderRadius: 0,
-                      border: '1px solid var(--zx-elevated)',
-                      background: 'rgba(0,0,0,0.2)',
-                      color: 'var(--zx-primary)',
-                      fontSize: '0.875rem',
-                      fontFamily: 'inherit',
-                      flex: 1,
-                      outline: 'none',
-                      textTransform: 'uppercase'
-                    }} 
+                    style={{ flex: 1 }} 
                   />
-                  <button 
+                  <Button 
                     type="submit"
-                    disabled={status === 'loading'}
-                    style={{
-                      padding: '0.75rem 1.5rem',
-                      borderRadius: 0,
-                      background: status === 'loading' ? 'transparent' : 'var(--zx-primary)',
-                      color: status === 'loading' ? 'var(--zx-primary)' : 'var(--zx-background)',
-                      border: '1px solid var(--zx-primary)',
-                      fontWeight: 600,
-                      fontSize: '0.875rem',
-                      fontFamily: 'inherit',
-                      cursor: status === 'loading' ? 'wait' : 'pointer',
-                      textTransform: 'uppercase'
-                    }}
+                    variant="cyber"
+                    isLoading={status === 'loading'}
                   >
-                    {status === 'loading' ? '[SYNCING...]' : '[LINK]'}
-                  </button>
+                    LINK
+                  </Button>
                 </div>
               </div>
             </form>

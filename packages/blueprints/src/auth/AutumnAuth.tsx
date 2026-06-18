@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function AutumnAuth() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -34,25 +34,25 @@ export function AutumnAuth() {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
               <div style={{ position: 'relative' }}>
-                <input 
+                <Input 
                   type="email" 
+                  variant="organic"
                   placeholder=" " 
                   required
                   className="autumn-auth-input"
                   id="autumn-auth-email"
-                  style={inputStyle} 
                 />
                 <label htmlFor="autumn-auth-email" style={labelStyle}>Email address</label>
               </div>
 
               <div style={{ position: 'relative' }}>
-                <input 
+                <Input 
                   type="password" 
+                  variant="organic"
                   placeholder=" " 
                   required
                   className="autumn-auth-input"
                   id="autumn-auth-password"
-                  style={inputStyle} 
                 />
                 <label htmlFor="autumn-auth-password" style={labelStyle}>Password</label>
               </div>
@@ -65,42 +65,34 @@ export function AutumnAuth() {
                 <a href="#" style={{ fontSize: '0.9rem', color: 'var(--zx-primary)', textDecoration: 'none', borderBottom: '1px solid var(--zx-elevated)' }}>Forgot?</a>
               </div>
 
-              <button 
+              <Button 
                 type="submit"
-                disabled={status === 'loading'}
+                variant="organic"
+                fullWidth
+                isLoading={status === 'loading'}
                 style={{
+                  marginTop: '1rem',
                   padding: '1rem',
                   background: 'var(--zx-primary)',
                   color: 'var(--zx-background)',
-                  border: 'none',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.7 : 1,
-                  transition: 'opacity 0.2s',
-                  marginTop: '1rem'
+                  border: 'none'
                 }}
               >
-                {status === 'loading' ? 'Signing in...' : 'Sign in'}
-              </button>
+                Sign in
+              </Button>
 
-              <button 
+              <Button 
                 type="button"
+                variant="organic"
+                fullWidth
                 style={{
                   padding: '1rem',
                   background: 'transparent',
-                  color: 'var(--zx-primary)',
-                  border: '1px solid var(--zx-elevated)',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  cursor: 'pointer',
-                  transition: 'border-color 0.2s'
+                  border: '1px solid var(--zx-elevated)'
                 }}
               >
                 Sign in with Google
-              </button>
+              </Button>
             </form>
           )}
 
@@ -121,23 +113,6 @@ export function AutumnAuth() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '0.5rem 0',
-  borderRadius: 0,
-  border: 'none',
-  borderBottom: '2px solid var(--zx-elevated)',
-  background: 'transparent',
-  color: 'var(--zx-primary)',
-  fontSize: '1.1rem',
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'border-color 0.3s ease',
-  zIndex: 2,
-  position: 'relative'
-};
-
 const labelStyle: React.CSSProperties = {
   position: 'absolute',
   top: '0.5rem',

@@ -19,6 +19,8 @@ import {
   AutumnPortfolio
 } from '@zenixui/blueprints';
 
+import { CompareView } from './compare/CompareView';
+
 function CustomBackground() {
   return (
     <div style={{ width: '100%', height: '100%', background: 'repeating-linear-gradient(45deg, #000 0, #000 10px, #111 10px, #111 20px)', opacity: 0.5 }} />
@@ -27,7 +29,7 @@ function CustomBackground() {
 
 function App() {
   const [theme, setTheme] = useState('zenix');
-  const [pageType, setPageType] = useState<'landing' | 'portfolio'>('landing');
+  const [pageType, setPageType] = useState<'landing' | 'portfolio' | 'compare'>('compare');
   const [motion, setMotion] = useState<MotionProfile>('normal');
   const [bgType, setBgType] = useState<'default' | 'none' | 'custom'>('default');
   
@@ -36,6 +38,17 @@ function App() {
   const [radius, setRadius] = useState<string>('');
 
   const resolvedBg = bgType === 'custom' ? <CustomBackground /> : bgType;
+
+  if (pageType === 'compare') {
+    return (
+      <>
+        <div style={{ position: 'fixed', bottom: '1rem', right: '1rem', zIndex: 100 }}>
+          <button onClick={() => setPageType('landing')} style={debugBtn(false)}>Back to Blueprints</button>
+        </div>
+        <CompareView />
+      </>
+    );
+  }
 
   return (
     <Experience preset={theme} motion={motion} background={resolvedBg} accent={accent || undefined} radius={radius || undefined}>
@@ -63,7 +76,7 @@ function App() {
         <div>
           <strong>Page Type:</strong>
           <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-            {['landing', 'portfolio'].map(p => (
+            {['landing', 'portfolio', 'compare'].map(p => (
               <button key={p} onClick={() => setPageType(p as any)} style={debugBtn(pageType === p)}>{p}</button>
             ))}
           </div>

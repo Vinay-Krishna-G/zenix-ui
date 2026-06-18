@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button, Textarea } from '@zenixui/components';
 
 export function ZenixContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -35,48 +35,37 @@ export function ZenixContact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>First Name</label>
-                  <input required style={inputStyle} type="text" placeholder="Jane" />
+                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>First Name</label>
+                  <Input required variant="default" placeholder="Jane" />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>Last Name</label>
-                  <input required style={inputStyle} type="text" placeholder="Doe" />
+                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Last Name</label>
+                  <Input required variant="default" placeholder="Doe" />
                 </div>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>Email Address</label>
-                <input required style={inputStyle} type="email" placeholder="jane@company.com" />
+                <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Email Address</label>
+                <Input required variant="default" type="email" placeholder="jane@company.com" />
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>Message</label>
-                <textarea required style={{ ...inputStyle, minHeight: '120px', resize: 'vertical' }} placeholder="How can we help you?" />
+                <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Message</label>
+                <Textarea required variant="default" placeholder="How can we help you?" rows={4} />
               </div>
 
               {error && <div style={{ color: 'red', fontSize: '0.875rem', fontWeight: 500 }}>{error}</div>}
 
-              <button 
+              <Button 
                 type="submit" 
-                disabled={status === 'loading'}
-                style={{
-                  padding: '1rem',
-                  background: 'var(--zx-primary)',
-                  color: 'var(--zx-background)',
-                  border: 'none',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.7 : 1,
-                  marginTop: '1rem',
-                  transition: 'opacity 0.2s'
-                }}
+                variant="default"
+                isLoading={status === 'loading'}
+                style={{ marginTop: '1rem' }}
               >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
+                Send Message
+              </Button>
             </form>
           )}
         </Surface>

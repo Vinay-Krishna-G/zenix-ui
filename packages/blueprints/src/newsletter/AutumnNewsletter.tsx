@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function AutumnNewsletter() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -32,28 +32,14 @@ export function AutumnNewsletter() {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               <div style={{ position: 'relative' }}>
-                <input 
+                <Input 
                   type="email" 
+                  variant="organic"
                   placeholder=" " 
                   required
                   className="autumn-newsletter-input"
                   id="autumn-email"
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem 0',
-                    borderRadius: 0,
-                    border: 'none',
-                    borderBottom: '2px solid var(--zx-elevated)',
-                    background: 'transparent',
-                    color: 'var(--zx-primary)',
-                    fontSize: '1.1rem',
-                    fontFamily: 'inherit',
-                    outline: 'none',
-                    transition: 'border-color 0.3s ease',
-                    zIndex: 2,
-                    position: 'relative',
-                    textAlign: 'center'
-                  }} 
+                  style={{ textAlign: 'center' }} 
                 />
                 <label 
                   htmlFor="autumn-email"
@@ -74,29 +60,15 @@ export function AutumnNewsletter() {
                 </label>
               </div>
 
-              <button 
-                type="submit"
-                disabled={status === 'loading'}
-                style={{
-                  background: 'transparent',
-                  color: 'var(--zx-primary)',
-                  border: 'none',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  fontFamily: 'Georgia, serif',
-                  fontStyle: 'italic',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.5 : 1,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                  margin: '0 auto',
-                  transition: 'opacity 0.2s'
-                }}
-              >
-                {status === 'loading' ? 'Subscribing...' : 'Subscribe to letters'} <span>→</span>
-              </button>
+              <div style={{ margin: '0 auto' }}>
+                <Button 
+                  type="submit"
+                  variant="organic"
+                  isLoading={status === 'loading'}
+                >
+                  Subscribe to letters
+                </Button>
+              </div>
             </form>
           )}
         </Surface>

@@ -2,12 +2,12 @@ import React from 'react';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'solid' | 'glass' | 'terminal' | 'organic';
-  color?: 'primary' | 'success' | 'error' | 'neutral';
+  tone?: 'primary' | 'success' | 'error' | 'neutral';
   size?: 'sm' | 'md';
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant = 'solid', color = 'neutral', size = 'sm', children, style, ...props }, ref) => {
+  ({ className, variant = 'solid', tone = 'neutral', size = 'sm', children, style, ...props }, ref) => {
     
     const baseStyle: React.CSSProperties = {
       display: 'inline-flex',
@@ -38,12 +38,12 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       neutral: 'var(--zx-elevated)'
     };
 
-    const activeColor = variant === 'terminal' ? terminalColors[color] : colors[color];
+    const activeColor = variant === 'terminal' ? terminalColors[tone] : colors[tone];
 
     const variantStyles = {
       solid: {
-        background: color === 'neutral' ? activeColor : `${activeColor}20`,
-        color: color === 'neutral' ? 'var(--zx-primary)' : activeColor,
+        background: tone === 'neutral' ? activeColor : `${activeColor}20`,
+        color: tone === 'neutral' ? 'var(--zx-primary)' : activeColor,
         borderRadius: 'var(--zx-radius-sm)',
         textTransform: 'uppercase' as any,
         letterSpacing: '0.05em',

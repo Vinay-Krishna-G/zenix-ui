@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function ZenixNewsletter() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -31,42 +31,22 @@ export function ZenixNewsletter() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
-              <input 
+              <Input 
                 type="email" 
+                variant="default"
                 placeholder="jane@example.com" 
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                style={{
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  border: '1px solid var(--zx-elevated)',
-                  background: 'var(--zx-background)',
-                  color: 'var(--zx-primary)',
-                  fontSize: '0.875rem',
-                  flex: 1,
-                  maxWidth: '300px',
-                  outline: 'none'
-                }} 
+                style={{ flex: 1, maxWidth: '300px' }} 
               />
-              <button 
+              <Button 
                 type="submit"
-                disabled={status === 'loading'}
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  background: 'var(--zx-primary)',
-                  color: 'var(--zx-background)',
-                  border: 'none',
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.8 : 1,
-                  transition: 'opacity 0.2s'
-                }}
+                variant="default"
+                isLoading={status === 'loading'}
               >
-                {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-              </button>
+                Subscribe
+              </Button>
             </form>
           )}
         </Surface>

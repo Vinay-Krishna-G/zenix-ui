@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Button, Badge } from '@zenixui/components';
 
 const POSTS = [
   { id: 1, title: "The Art of Slow Living", desc: "A reflection on finding peace in the details.", date: "October 12" },
@@ -15,17 +15,18 @@ export function AutumnBlog() {
     return (
       <Features.Root padded>
         <Features.Content style={{ maxWidth: '650px', margin: '2rem auto' }}>
-          <button 
+          <Button 
+            variant="organic"
             onClick={() => setView('list')} 
-            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.5, cursor: 'pointer', marginBottom: '4rem', fontSize: '1rem', fontStyle: 'italic', fontFamily: 'Georgia, serif' }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, padding: 0, height: 'auto', marginBottom: '3rem' }}
           >
-            Back to the journal
-          </button>
+            ← Return to journal
+          </Button>
           
           <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
-            <span style={{ fontSize: '1rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', opacity: 0.6 }}>
-              Reflections
-            </span>
+            <Badge variant="organic" tone="neutral">
+              Thoughts
+            </Badge>
             <h1 style={{ fontSize: '3.5rem', fontFamily: 'Georgia, serif', margin: '1rem 0', lineHeight: 1.1, color: 'var(--zx-primary)' }}>
               The Art of Slow Living
             </h1>

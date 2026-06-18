@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function NightCityAuth() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -38,21 +38,21 @@ export function NightCityAuth() {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} HANDLE</label>
-                <input 
+                <Input 
                   type="text" 
+                  variant="terminal"
                   placeholder="OPERATIVE_ID" 
                   required
-                  style={inputStyle} 
                 />
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} PASSPHRASE</label>
-                <input 
+                <Input 
                   type="password" 
+                  variant="terminal"
                   placeholder="********" 
                   required
-                  style={inputStyle} 
                 />
               </div>
 
@@ -64,25 +64,15 @@ export function NightCityAuth() {
                 <a href="#" style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--zx-primary)', textDecoration: 'underline', textTransform: 'uppercase' }}>RESET_KEY</a>
               </div>
 
-              <button 
+              <Button 
                 type="submit"
-                disabled={status === 'loading'}
-                style={{
-                  padding: '1rem',
-                  borderRadius: 0,
-                  background: status === 'loading' ? 'transparent' : 'var(--zx-primary)',
-                  color: status === 'loading' ? 'var(--zx-primary)' : 'var(--zx-background)',
-                  border: '1px solid var(--zx-primary)',
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  fontFamily: 'inherit',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  textTransform: 'uppercase',
-                  marginTop: '1rem'
-                }}
+                variant="cyber"
+                fullWidth
+                isLoading={status === 'loading'}
+                style={{ marginTop: '1rem', padding: '1rem' }}
               >
-                {status === 'loading' ? '[DECRYPTING...]' : '[AUTHENTICATE]'}
-              </button>
+                AUTHENTICATE
+              </Button>
             </form>
           )}
 
@@ -94,15 +84,3 @@ export function NightCityAuth() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  padding: '0.75rem 1rem',
-  borderRadius: 0,
-  border: '1px solid var(--zx-elevated)',
-  background: 'rgba(0,0,0,0.2)',
-  color: 'var(--zx-primary)',
-  fontSize: '0.875rem',
-  fontFamily: 'inherit',
-  outline: 'none',
-  textTransform: 'uppercase'
-};

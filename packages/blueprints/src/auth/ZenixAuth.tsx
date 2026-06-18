@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function ZenixAuth() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -37,22 +37,13 @@ export function ZenixAuth() {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Email</label>
-                <input 
+                <Input 
                   type="email" 
+                  variant="default"
                   placeholder="name@company.com" 
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  style={{
-                    padding: '0.75rem 1rem',
-                    borderRadius: 'var(--zx-radius-sm)',
-                    border: '1px solid var(--zx-elevated)',
-                    background: 'var(--zx-background)',
-                    color: 'var(--zx-primary)',
-                    fontSize: '0.875rem',
-                    outline: 'none',
-                    transition: 'border-color 0.2s'
-                  }} 
                 />
               </div>
 
@@ -61,22 +52,13 @@ export function ZenixAuth() {
                   <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Password</label>
                   <a href="#" style={{ fontSize: '0.75rem', fontWeight: 500, opacity: 0.6, textDecoration: 'none' }}>Forgot password?</a>
                 </div>
-                <input 
+                <Input 
                   type="password" 
+                  variant="default"
                   placeholder="••••••••" 
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  style={{
-                    padding: '0.75rem 1rem',
-                    borderRadius: 'var(--zx-radius-sm)',
-                    border: '1px solid var(--zx-elevated)',
-                    background: 'var(--zx-background)',
-                    color: 'var(--zx-primary)',
-                    fontSize: '0.875rem',
-                    outline: 'none',
-                    transition: 'border-color 0.2s'
-                  }} 
                 />
               </div>
 
@@ -91,25 +73,15 @@ export function ZenixAuth() {
                 <label htmlFor="remember-zenix" style={{ fontSize: '0.875rem', cursor: 'pointer', opacity: 0.8 }}>Remember for 30 days</label>
               </div>
 
-              <button 
+              <Button 
                 type="submit"
-                disabled={status === 'loading'}
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: 'var(--zx-radius-sm)',
-                  background: 'var(--zx-primary)',
-                  color: 'var(--zx-background)',
-                  border: 'none',
-                  fontWeight: 500,
-                  fontSize: '0.875rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.8 : 1,
-                  marginTop: '0.5rem',
-                  transition: 'opacity 0.2s'
-                }}
+                variant="default"
+                fullWidth
+                isLoading={status === 'loading'}
+                style={{ marginTop: '0.5rem' }}
               >
-                {status === 'loading' ? 'Signing in...' : 'Sign in'}
-              </button>
+                Sign in
+              </Button>
             </form>
           )}
 
@@ -119,26 +91,18 @@ export function ZenixAuth() {
             <div style={{ flex: 1, height: '1px', background: 'var(--zx-primary)' }} />
           </div>
 
-          <button 
+          <Button 
             type="button"
+            variant="default"
+            fullWidth
             style={{
-              width: '100%',
-              padding: '0.75rem 1.5rem',
-              borderRadius: 'var(--zx-radius-sm)',
               background: 'transparent',
               color: 'var(--zx-primary)',
-              border: '1px solid var(--zx-elevated)',
-              fontWeight: 500,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.5rem'
+              border: '1px solid var(--zx-elevated)'
             }}
           >
             Sign in with Google
-          </button>
+          </Button>
 
           <p style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.875rem', opacity: 0.6 }}>
             Don't have an account? <a href="#" style={{ fontWeight: 600, color: 'var(--zx-primary)', textDecoration: 'none', opacity: 1 }}>Sign up</a>

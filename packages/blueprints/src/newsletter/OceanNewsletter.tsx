@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function OceanNewsletter() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -30,47 +30,27 @@ export function OceanNewsletter() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ position: 'relative', display: 'flex', width: '100%' }}>
-                <input 
+                <Input 
                   type="email" 
+                  variant="glass"
                   placeholder="Your email address" 
                   required
-                  style={{
-                    width: '100%',
-                    padding: '1rem 1.5rem',
-                    paddingRight: '140px',
-                    borderRadius: 'var(--zx-radius-round)',
-                    border: '1px solid var(--zx-glass-border)',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    color: 'var(--zx-primary)',
-                    fontSize: '1rem',
-                    fontWeight: 300,
-                    outline: 'none',
-                    backdropFilter: 'var(--zx-glass-blur)',
-                    boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
-                  }} 
+                  style={{ paddingRight: '140px' }} 
                 />
-                <button 
+                <Button 
                   type="submit"
-                  disabled={status === 'loading'}
+                  variant="glass"
+                  isLoading={status === 'loading'}
                   style={{
                     position: 'absolute',
                     right: '4px',
                     top: '4px',
                     bottom: '4px',
                     padding: '0 1.5rem',
-                    borderRadius: 'var(--zx-radius-round)',
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    color: 'var(--zx-primary)',
-                    border: 'none',
-                    fontWeight: 400,
-                    fontSize: '0.875rem',
-                    cursor: status === 'loading' ? 'wait' : 'pointer',
-                    opacity: status === 'loading' ? 0.7 : 1,
-                    transition: 'all 0.3s ease',
                   }}
                 >
-                  {status === 'loading' ? 'Submerging...' : 'Subscribe'}
-                </button>
+                  Subscribe
+                </Button>
               </form>
             )}
           </div>

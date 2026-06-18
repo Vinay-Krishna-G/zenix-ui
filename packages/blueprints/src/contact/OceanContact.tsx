@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button, Textarea } from '@zenixui/components';
 
 export function OceanContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -30,42 +30,16 @@ export function OceanContact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-                <div style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500, opacity: 0.8, paddingLeft: '1rem' }}>Name</label>
-                  <input required style={inputStyle} type="text" placeholder="Your name" />
-                </div>
-                <div style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500, opacity: 0.8, paddingLeft: '1rem' }}>Email</label>
-                  <input required style={inputStyle} type="email" placeholder="your@email.com" />
-                </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <Input variant="glass" placeholder="First Name" />
+                <Input variant="glass" placeholder="Last Name" />
               </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <label style={{ fontSize: '0.875rem', fontWeight: 500, opacity: 0.8, paddingLeft: '1rem' }}>Message</label>
-                <textarea required style={{ ...inputStyle, minHeight: '150px', resize: 'vertical' }} placeholder="What's on your mind?" />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={status === 'loading'}
-                style={{
-                  padding: '1.25rem',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: 'var(--zx-primary)',
-                  border: '1px solid var(--zx-glass-border)',
-                  borderRadius: 'var(--zx-radius-round)',
-                  fontWeight: 400,
-                  fontSize: '1.1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.5 : 1,
-                  marginTop: '1rem',
-                  transition: 'all 0.3s ease',
-                  backdropFilter: 'var(--zx-glass-blur)'
-                }}
-              >
+              <Input variant="glass" type="email" placeholder="Work Email" />
+              <Input variant="glass" placeholder="Company Name" />
+              <Textarea variant="glass" placeholder="How can we help you?" rows={4} />
+              <Button variant="glass" fullWidth size="lg" style={{ marginTop: '1rem', fontWeight: 500, letterSpacing: '0.05em', color: '#fff' }}>
                 {status === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
+              </Button>
             </form>
           )}
         </Surface>
@@ -73,17 +47,3 @@ export function OceanContact() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  padding: '1rem 1.5rem',
-  borderRadius: 'var(--zx-radius-round)',
-  border: '1px solid var(--zx-glass-border)',
-  background: 'rgba(255, 255, 255, 0.05)',
-  color: 'var(--zx-primary)',
-  fontSize: '1rem',
-  fontWeight: 300,
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'all 0.3s ease',
-  boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
-};

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button } from '@zenixui/components';
 
 export function OceanAuth() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -32,23 +32,19 @@ export function OceanAuth() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <input 
-                  type="email" 
-                  placeholder="Email address" 
-                  required
-                  style={inputStyle} 
-                />
-              </div>
+              <Input 
+                type="email" 
+                variant="glass"
+                placeholder="Email address" 
+                required
+              />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <input 
-                  type="password" 
-                  placeholder="Password" 
-                  required
-                  style={inputStyle} 
-                />
-              </div>
+              <Input 
+                type="password" 
+                variant="glass"
+                placeholder="Password" 
+                required
+              />
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -58,26 +54,18 @@ export function OceanAuth() {
                 <a href="#" style={{ fontSize: '0.875rem', fontWeight: 400, color: 'var(--zx-primary)', textDecoration: 'none' }}>Recovery</a>
               </div>
 
-              <button 
+              <Button 
                 type="submit"
-                disabled={status === 'loading'}
+                variant="glass"
+                fullWidth
+                isLoading={status === 'loading'}
                 style={{
-                  padding: '1.25rem',
-                  borderRadius: 'var(--zx-radius-round)',
-                  background: 'rgba(255, 255, 255, 0.15)',
-                  color: 'var(--zx-primary)',
-                  border: '1px solid var(--zx-glass-border)',
-                  fontWeight: 400,
-                  fontSize: '1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  opacity: status === 'loading' ? 0.7 : 1,
                   marginTop: '1rem',
-                  transition: 'all 0.3s ease',
-                  backdropFilter: 'var(--zx-glass-blur)'
+                  padding: '1.25rem',
                 }}
               >
-                {status === 'loading' ? 'Logging in...' : 'Log in'}
-              </button>
+                Log in
+              </Button>
             </form>
           )}
 
@@ -89,17 +77,3 @@ export function OceanAuth() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  padding: '1rem 1.25rem',
-  borderRadius: 'var(--zx-radius-round)',
-  border: '1px solid var(--zx-glass-border)',
-  background: 'rgba(255, 255, 255, 0.05)',
-  color: 'var(--zx-primary)',
-  fontSize: '1rem',
-  fontWeight: 300,
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'all 0.3s ease',
-  boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
-};

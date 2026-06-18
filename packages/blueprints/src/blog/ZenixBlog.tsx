@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Button, Badge } from '@zenixui/components';
 
 const POSTS = [
   { id: 1, title: "Building the Engine", category: "Engineering", date: "Oct 12", readTime: "5 min" },
@@ -21,17 +21,18 @@ export function ZenixBlog() {
         </div>
 
         <Features.Content style={{ maxWidth: '700px', margin: '4rem auto 0' }}>
-          <button 
+          <Button 
+            variant="default"
             onClick={() => setView('list')} 
-            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, cursor: 'pointer', marginBottom: '2rem', fontSize: '0.875rem', fontWeight: 600 }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, padding: 0, height: 'auto', marginBottom: '2rem' }}
           >
             ← Back to all posts
-          </button>
+          </Button>
           
           <div style={{ marginBottom: '3rem' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <Badge variant="solid" tone="neutral">
               Engineering
-            </span>
+            </Badge>
             <h1 style={{ fontSize: '3rem', fontWeight: 700, margin: '1rem 0', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
               Building the Engine
             </h1>
@@ -88,10 +89,9 @@ export function ZenixBlog() {
             >
               <div>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '0.5rem' }}>
-                  {/* Badge Discovery */}
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <Badge variant="solid" tone="neutral">
                     {post.category}
-                  </span>
+                  </Badge>
                   <span style={{ fontSize: '0.875rem', opacity: 0.5 }}>{post.date}</span>
                 </div>
                 <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0 }}>{post.title}</h2>

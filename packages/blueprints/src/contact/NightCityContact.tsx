@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Input, Button, Textarea } from '@zenixui/components';
 
 export function NightCityContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -42,14 +42,15 @@ export function NightCityContact() {
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} IDENTIFIER</label>
-                <input required style={inputStyle} type="text" placeholder="HANDLE" />
+                <Input required variant="terminal" type="text" placeholder="HANDLE" />
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} ROUTING_ADDR</label>
-                <input 
+                <Input 
                   required 
-                  style={{...inputStyle, borderColor: error ? '#ff003c' : 'var(--zx-elevated)'}} 
+                  variant="terminal"
+                  status={error ? 'error' : 'idle'}
                   type="email" 
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -60,28 +61,18 @@ export function NightCityContact() {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.7 }}>{'>'} PAYLOAD</label>
-                <textarea required style={{ ...inputStyle, minHeight: '120px', resize: 'vertical' }} placeholder="ENTER SECURE TRANSMISSION..." />
+                <Textarea required variant="terminal" placeholder="ENTER SECURE TRANSMISSION..." rows={4} />
               </div>
 
-              <button 
+              <Button 
                 type="submit" 
-                disabled={status === 'loading'}
-                style={{
-                  padding: '1rem',
-                  background: status === 'loading' ? 'transparent' : 'var(--zx-primary)',
-                  color: status === 'loading' ? 'var(--zx-primary)' : 'var(--zx-background)',
-                  border: '1px solid var(--zx-primary)',
-                  borderRadius: 0,
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  cursor: status === 'loading' ? 'wait' : 'pointer',
-                  textTransform: 'uppercase',
-                  marginTop: '1rem',
-                  fontFamily: 'inherit'
-                }}
+                variant="cyber"
+                fullWidth
+                isLoading={status === 'loading'}
+                style={{ marginTop: '1rem' }}
               >
-                {status === 'loading' ? '[ENCRYPTING...]' : '[EXECUTE_SEND]'}
-              </button>
+                EXECUTE_SEND
+              </Button>
             </form>
           )}
         </Surface>
@@ -89,16 +80,3 @@ export function NightCityContact() {
     </Features.Root>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  padding: '0.75rem 1rem',
-  borderRadius: 0,
-  border: '1px solid var(--zx-elevated)',
-  background: 'rgba(0,0,0,0.2)',
-  color: 'var(--zx-primary)',
-  fontSize: '1rem',
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'border-color 0.2s',
-  textTransform: 'uppercase'
-};

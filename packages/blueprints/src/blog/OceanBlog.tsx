@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Surface, Features, Button, Badge } from '@zenixui/components';
 
 export function OceanBlog() {
   const [view, setView] = useState<'list' | 'detail'>('list');
@@ -12,12 +12,13 @@ export function OceanBlog() {
         <Features.Content style={{ maxWidth: '1000px', margin: '2rem auto', display: 'flex', gap: '4rem' }}>
           
           <div style={{ flex: 1 }}>
-            <button 
+            <Button 
+              variant="glass"
               onClick={() => setView('list')} 
-              style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, cursor: 'pointer', marginBottom: '2rem', fontSize: '1rem', fontWeight: 300 }}
+              style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', opacity: 0.6, padding: 0, height: 'auto', marginBottom: '2rem' }}
             >
-              ← Back to surface
-            </button>
+              ← Back
+            </Button>
             
             <div style={{ marginBottom: '4rem' }}>
               <span style={{ fontSize: '0.875rem', fontWeight: 400, padding: '0.25rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--zx-glass-border)', borderRadius: 'var(--zx-radius-round)', backdropFilter: 'var(--zx-glass-blur)' }}>
@@ -83,9 +84,9 @@ export function OceanBlog() {
               style={{ padding: '2.5rem', borderRadius: 'var(--zx-radius-lg)', cursor: 'pointer', transition: 'transform 0.3s ease, background 0.3s ease', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}
             >
               <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 400, padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.1)', borderRadius: 'var(--zx-radius-round)', border: '1px solid var(--zx-glass-border)' }}>
+                <Badge variant="glass" tone="neutral">
                   Design
-                </span>
+                </Badge>
               </div>
               <h2 style={{ fontSize: '1.75rem', fontWeight: 300, margin: '0 0 1rem', lineHeight: 1.2 }}>Riding the glass waves in modern UI.</h2>
               <p style={{ opacity: 0.6, fontSize: '1rem', fontWeight: 300, margin: 0 }}>Oct 12 • 5 min read</p>
