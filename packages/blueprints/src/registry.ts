@@ -8,10 +8,25 @@ import { OceanPortfolio } from './portfolios/OceanPortfolio';
 import { NightCityPortfolio } from './portfolios/NightCityPortfolio';
 import { AutumnPortfolio } from './portfolios/AutumnPortfolio';
 
+import { ZenixContact } from './contact/ZenixContact';
+import { OceanContact } from './contact/OceanContact';
+import { NightCityContact } from './contact/NightCityContact';
+import { AutumnContact } from './contact/AutumnContact';
+
+import { ZenixNewsletter } from './newsletter/ZenixNewsletter';
+import { OceanNewsletter } from './newsletter/OceanNewsletter';
+import { NightCityNewsletter } from './newsletter/NightCityNewsletter';
+import { AutumnNewsletter } from './newsletter/AutumnNewsletter';
+
+import { ZenixAuth } from './auth/ZenixAuth';
+import { OceanAuth } from './auth/OceanAuth';
+import { NightCityAuth } from './auth/NightCityAuth';
+import { AutumnAuth } from './auth/AutumnAuth';
+
 export interface BlueprintMetadata {
   id: string;
   title: string;
-  category: 'landing' | 'portfolio' | 'blog' | 'saas';
+  category: 'landing' | 'portfolio' | 'blog' | 'saas' | 'contact' | 'newsletter' | 'auth';
   theme: string;
   tags: string[];
   component: React.ComponentType;
@@ -99,6 +114,126 @@ export const blueprints: BlueprintMetadata[] = [
     component: AutumnPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/AutumnPortfolio.tsx",
     previewImage: "/previews/autumn-portfolio.png"
+  },
+  {
+    id: "zenix-contact",
+    title: "Zenix Contact",
+    category: "contact",
+    theme: "zenix",
+    tags: ["form", "minimal", "saas"],
+    component: ZenixContact,
+    sourcePath: "packages/blueprints/src/contact/ZenixContact.tsx",
+    previewImage: "/previews/zenix-contact.png"
+  },
+  {
+    id: "ocean-contact",
+    title: "Ocean Contact",
+    category: "contact",
+    theme: "ocean",
+    tags: ["form", "glass", "fluid"],
+    component: OceanContact,
+    sourcePath: "packages/blueprints/src/contact/OceanContact.tsx",
+    previewImage: "/previews/ocean-contact.png"
+  },
+  {
+    id: "night-city-contact",
+    title: "Night City Contact",
+    category: "contact",
+    theme: "night-city",
+    tags: ["form", "terminal", "cyberpunk"],
+    component: NightCityContact,
+    sourcePath: "packages/blueprints/src/contact/NightCityContact.tsx",
+    previewImage: "/previews/night-city-contact.png"
+  },
+  {
+    id: "autumn-contact",
+    title: "Autumn Contact",
+    category: "contact",
+    theme: "autumn",
+    tags: ["form", "organic", "journal"],
+    component: AutumnContact,
+    sourcePath: "packages/blueprints/src/contact/AutumnContact.tsx",
+    previewImage: "/previews/autumn-contact.png"
+  },
+  {
+    id: "zenix-newsletter",
+    title: "Zenix Newsletter",
+    category: "newsletter",
+    theme: "zenix",
+    tags: ["form", "inline", "saas"],
+    component: ZenixNewsletter,
+    sourcePath: "packages/blueprints/src/newsletter/ZenixNewsletter.tsx",
+    previewImage: "/previews/zenix-newsletter.png"
+  },
+  {
+    id: "ocean-newsletter",
+    title: "Ocean Newsletter",
+    category: "newsletter",
+    theme: "ocean",
+    tags: ["form", "glass", "inline"],
+    component: OceanNewsletter,
+    sourcePath: "packages/blueprints/src/newsletter/OceanNewsletter.tsx",
+    previewImage: "/previews/ocean-newsletter.png"
+  },
+  {
+    id: "night-city-newsletter",
+    title: "Night City Newsletter",
+    category: "newsletter",
+    theme: "night-city",
+    tags: ["form", "terminal", "cyberpunk"],
+    component: NightCityNewsletter,
+    sourcePath: "packages/blueprints/src/newsletter/NightCityNewsletter.tsx",
+    previewImage: "/previews/night-city-newsletter.png"
+  },
+  {
+    id: "autumn-newsletter",
+    title: "Autumn Newsletter",
+    category: "newsletter",
+    theme: "autumn",
+    tags: ["form", "organic", "journal"],
+    component: AutumnNewsletter,
+    sourcePath: "packages/blueprints/src/newsletter/AutumnNewsletter.tsx",
+    previewImage: "/previews/autumn-newsletter.png"
+  },
+  {
+    id: "zenix-auth",
+    title: "Zenix Auth",
+    category: "auth",
+    theme: "zenix",
+    tags: ["login", "register", "minimal"],
+    component: ZenixAuth,
+    sourcePath: "packages/blueprints/src/auth/ZenixAuth.tsx",
+    previewImage: "/previews/zenix-auth.png"
+  },
+  {
+    id: "ocean-auth",
+    title: "Ocean Auth",
+    category: "auth",
+    theme: "ocean",
+    tags: ["login", "glass", "fluid"],
+    component: OceanAuth,
+    sourcePath: "packages/blueprints/src/auth/OceanAuth.tsx",
+    previewImage: "/previews/ocean-auth.png"
+  },
+  {
+    id: "night-city-auth",
+    title: "Night City Auth",
+    category: "auth",
+    theme: "night-city",
+    tags: ["login", "terminal", "cyberpunk"],
+    component: NightCityAuth,
+    sourcePath: "packages/blueprints/src/auth/NightCityAuth.tsx",
+    previewImage: "/previews/night-city-auth.png"
+  },
+  {
+    id: "autumn-auth",
+    title: "Autumn Auth",
+    category: "auth",
+    theme: "autumn",
+    tags: ["login", "organic", "story"],
+    component: AutumnAuth,
+    sourcePath: "packages/blueprints/src/auth/AutumnAuth.tsx",
+    previewImage: "/previews/autumn-auth.png"
   }
 ];
 
