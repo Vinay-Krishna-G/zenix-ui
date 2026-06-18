@@ -17,3 +17,16 @@ export interface ExperiencePreset {
   SceneComponent?: React.ComponentType<any>;
   EffectComponent?: React.ComponentType<any>;
 }
+
+export interface ThemeOverrides {
+  accent?: string;
+  radius?: string;
+  motion?: MotionProfile;
+  density?: 'compact' | 'comfortable' | 'spacious';
+  typography?: string;
+}
+
+export interface ThemeConfig extends ThemeOverrides {
+  name: string;
+  base: string;
+}

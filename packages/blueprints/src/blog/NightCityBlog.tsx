@@ -40,7 +40,7 @@ export function NightCityBlog() {
             </p>
             
             <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '3rem 0 1.5rem', textTransform: 'uppercase', color: '#ff003c' }}>
-              {'>>'} SYSTEM_ARCHITECTURE
+              {'>'}{'>'} SYSTEM_ARCHITECTURE
             </h2>
             
             <div style={{ background: 'transparent', border: '1px solid var(--zx-elevated)', borderLeft: '2px solid #00ff00', padding: '1.5rem', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { getPreset } from './registry';
-import type { MotionProfile, ExperiencePreset } from './types';
+import type { MotionProfile, ExperiencePreset, ThemeConfig, ThemeOverrides } from './types';
 
 interface ExperienceContextValue {
   preset: ExperiencePreset;
   motion: MotionProfile;
+  overrides?: ThemeOverrides;
 }
 
 const ExperienceContext = createContext<ExperienceContextValue | null>(null);
@@ -18,39 +19,50 @@ export function useExperience() {
 }
 
 export interface ExperienceProps {
-  preset: string | ExperiencePreset;
-  motion?: MotionProfile;
+  preset?: string | ExperiencePreset;
+  config?: ThemeConfig;
+  overrides?: ThemeOverrides;
   background?: 'default' | 'none' | React.ReactNode;
-  accent?: string;
-  radius?: string;
   children: React.ReactNode;
 }
 
 export function Experience({
   preset,
-  motion,
+  config,
+  overrides = {},
   background = 'default',
-  accent,
-  radius,
   children,
 }: ExperienceProps) {
+  // If config is provided, it overrides the preset and base overrides
+  const resolvedPresetId = config?.base || preset || 'zenix';
+  const resolvedOverrides: ThemeOverrides = {
+    ...overrides,
+    ...(config || {})
+  };
+
   const resolvedPreset = useMemo(() => {
-    if (typeof preset === 'string') {
-      const found = getPreset(preset);
+    if (typeof resolvedPresetId === 'string') {
+      const found = getPreset(resolvedPresetId);
       if (!found) {
-        throw new Error(`ZenixUI: Preset "${preset}" not found in registry. Did you forget to register it?`);
+        throw new Error(`ZenixUI: Preset "${resolvedPresetId}" not found in registry. Did you forget to register it?`);
       }
       return found;
     }
-    return preset;
-  }, [preset]);
+    return resolvedPresetId;
+  }, [resolvedPresetId]);
 
-  const activeMotion = motion || resolvedPreset.metadata.defaultMotion || 'normal';
+  const activeMotion = resolvedOverrides.motion || resolvedPreset.metadata.defaultMotion || 'normal';
 
   const { themeClass, SceneComponent, EffectComponent } = resolvedPreset;
 
+  const styleOverrides: Record<string, string> = {};
+  if (resolvedOverrides.accent) styleOverrides['--zx-accent'] = resolvedOverrides.accent;
+  if (resolvedOverrides.radius) styleOverrides['--zx-radius'] = resolvedOverrides.radius;
+  if (resolvedOverrides.density) styleOverrides['--zx-density-scale'] = resolvedOverrides.density === 'compact' ? '0.8' : resolvedOverrides.density === 'spacious' ? '1.2' : '1';
+  if (resolvedOverrides.typography) styleOverrides['--zx-font-primary'] = resolvedOverrides.typography;
+
   return (
-    <ExperienceContext.Provider value={{ preset: resolvedPreset, motion: activeMotion }}>
+    <ExperienceContext.Provider value={{ preset: resolvedPreset, motion: activeMotion, overrides: resolvedOverrides }}>
       <div 
         className={`zx-experience ${themeClass || ''}`} 
         data-zx-motion={activeMotion}
@@ -59,10 +71,7 @@ export function Experience({
           width: '100%', 
           minHeight: '100vh', 
           overflow: 'hidden',
-          ...((accent || radius) ? { 
-            ...(accent ? { '--zx-accent': accent } : {}),
-            ...(radius ? { '--zx-radius': radius } : {}) 
-          } : {}) as any
+          ...styleOverrides
         }}
       >
         {/* Render Background Scene logic */}

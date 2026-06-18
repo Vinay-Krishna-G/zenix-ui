@@ -6,27 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:previews": "playwright test"
   },
   "dependencies": {
-    "@zenixui/react": "workspace:*",
-    "@zenixui/components": "workspace:*",
     "@zenixui/blueprints": "workspace:*",
-    "@zenixui/pack-zenix": "workspace:*",
-    "@zenixui/pack-ocean": "workspace:*",
-    "@zenixui/pack-night-city": "workspace:*",
+    "@zenixui/components": "workspace:*",
     "@zenixui/pack-autumn": "workspace:*",
+    "@zenixui/pack-night-city": "workspace:*",
+    "@zenixui/pack-ocean": "workspace:*",
+    "@zenixui/pack-zenix": "workspace:*",
+    "@zenixui/react": "workspace:*",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "playwright": "^1.61.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
