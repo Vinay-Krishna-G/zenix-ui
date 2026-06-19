@@ -6,6 +6,7 @@ import { getBlueprint, blueprints } from '@zenixui/blueprints';
 import { Experience } from '@zenixui/react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { track } from '@vercel/analytics/react';
 
 export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode: string }) {
   const blueprint = getBlueprint(id);
@@ -76,10 +77,16 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Button size="lg" onClick={() => setCopyMode(copyMode === 'blueprint' ? null : 'blueprint')} style={{ justifyContent: 'center' }}>
+              <Button size="lg" onClick={() => {
+                setCopyMode(copyMode === 'blueprint' ? null : 'blueprint');
+                if (copyMode !== 'blueprint') track('View Blueprint Code', { blueprintId: blueprint.id });
+              }} style={{ justifyContent: 'center' }}>
                 {copyMode === 'blueprint' ? 'Hide Code' : 'Copy Blueprint'}
               </Button>
-              <Button size="lg" variant="glass" onClick={() => setCopyMode(copyMode === 'source' ? null : 'source')} style={{ justifyContent: 'center' }}>
+              <Button size="lg" variant="glass" onClick={() => {
+                setCopyMode(copyMode === 'source' ? null : 'source');
+                if (copyMode !== 'source') track('View Source Code', { blueprintId: blueprint.id });
+              }} style={{ justifyContent: 'center' }}>
                 {copyMode === 'source' ? 'Hide Source' : 'Copy Source'}
               </Button>
             </div>
@@ -111,6 +118,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
               <div style={{ fontWeight: 600 }}>{copyMode === 'blueprint' ? 'Usage' : 'Full Source Code'}</div>
               <button onClick={() => {
                 navigator.clipboard.writeText(copyMode === 'blueprint' ? blueprintCode : sourceCode);
+                track('Copied to Clipboard', { type: copyMode, blueprintId: blueprint.id });
                 alert('Copied to clipboard!');
               }} style={{ background: 'transparent', border: 'none', color: 'var(--zx-primary)', fontWeight: 600, cursor: 'pointer' }}>
                 Copy to Clipboard

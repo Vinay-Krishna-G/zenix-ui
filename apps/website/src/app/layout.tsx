@@ -1,10 +1,27 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import { Providers } from '../components/Providers';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ZenixUI',
   description: 'Build Entire Experiences, Not Just Components.',
+  metadataBase: new URL('https://zenixui.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://zenixui.com',
+    title: 'ZenixUI | The Experience Ecosystem',
+    description: 'Instantly adopt complete, beautiful React design systems. Distribute full experiences, not atomic components.',
+    siteName: 'ZenixUI',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@zenixui',
+    creator: '@zenixui',
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +53,7 @@ export default function RootLayout({
             </main>
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );

@@ -10,6 +10,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </h3>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '1rem', fontWeight: 500, marginBottom: '3rem' }}>
           <Link href="/docs" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Getting Started</Link>
+          <Link href="/docs/cli" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>CLI (npx zenix-ui)</Link>
           <Link href="/docs/customization" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Customization</Link>
         </nav>
 

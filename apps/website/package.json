@@ -10,6 +10,7 @@
     "generate:previews": "playwright test"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.3.1",
     "@zenixui/blueprints": "workspace:*",
     "@zenixui/components": "workspace:*",
     "@zenixui/pack-autumn": "workspace:*",
