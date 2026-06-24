@@ -1,4 +1,4 @@
-import { Surface, Hero, Features, CTA, Footer } from '@zenixui/components';
+import { Surface, Hero, Features, Footer } from '@zenixui/components';
 
 export function ZenixPortfolio() {
   return (

@@ -6,17 +6,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date() },
-    { url: \`\${baseUrl}/themes\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/experiences\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/studio\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/docs\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/docs/cli\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/compare\`, lastModified: new Date() },
-    { url: \`\${baseUrl}/roadmap\`, lastModified: new Date() },
+    { url: `${baseUrl}/themes`, lastModified: new Date() },
+    { url: `${baseUrl}/experiences`, lastModified: new Date() },
+    { url: `${baseUrl}/studio`, lastModified: new Date() },
+    { url: `${baseUrl}/docs`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/cli`, lastModified: new Date() },
+    { url: `${baseUrl}/compare`, lastModified: new Date() },
+    { url: `${baseUrl}/roadmap`, lastModified: new Date() },
   ];
 
   const experienceRoutes: MetadataRoute.Sitemap = blueprints.map((bp) => ({
-    url: \`\${baseUrl}/experiences/\${bp.id}\`,
+    url: `${baseUrl}/experiences/${bp.id}`,
     lastModified: new Date(bp.createdAt),
   }));
 

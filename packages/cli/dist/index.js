@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -69,7 +70,9 @@ async function init() {
   }
   const spinner = (0, import_ora.default)("Installing core dependencies...").start();
   try {
-    (0, import_child_process.execSync)("npm install @zenixui/react @zenixui/core @zenixui/components", { stdio: "ignore" });
+    const pm = process.env.npm_execpath?.includes("pnpm") ? "pnpm" : process.env.npm_execpath?.includes("yarn") ? "yarn" : "npm";
+    const installCmd = pm === "npm" ? "npm install" : `${pm} add`;
+    (0, import_child_process.execSync)(`${installCmd} @zenixui/react @zenixui/core @zenixui/components`, { stdio: "ignore" });
     spinner.succeed("Installed core dependencies.");
   } catch (err) {
     spinner.warn("Failed to auto-install dependencies. You may need to run `npm install @zenixui/react @zenixui/core @zenixui/components` manually.");
@@ -98,7 +101,7 @@ var import_chalk2 = __toESM(require("chalk"));
 var import_ora2 = __toESM(require("ora"));
 var import_fs2 = __toESM(require("fs"));
 var import_path2 = __toESM(require("path"));
-var REGISTRY_PATH = import_path2.default.join(__dirname, "../../../blueprints/dist/registry.json");
+var REGISTRY_PATH = import_path2.default.join(__dirname, "../../blueprints/dist/registry.json");
 async function add(experienceId) {
   const configPath = import_path2.default.join(process.cwd(), "zenix.json");
   if (!import_fs2.default.existsSync(configPath)) {

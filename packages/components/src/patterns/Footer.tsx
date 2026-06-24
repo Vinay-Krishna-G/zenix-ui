@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pattern } from './Pattern';
-import { Stack, StackProps } from '../primitives/Stack';
+import { Stack } from '../primitives/Stack';
+import type { StackProps } from '../primitives/Stack';
 
 export const FooterBrand = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ children, ...props }, ref) => (

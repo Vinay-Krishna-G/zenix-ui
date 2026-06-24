@@ -1,7 +1,11 @@
-import React, { HTMLAttributes } from 'react';
-import { Section, SectionProps } from '../primitives/Section';
-import { Container, ContainerProps } from '../primitives/Container';
-import { Stack, StackProps } from '../primitives/Stack';
+import React from 'react';
+import type { HTMLAttributes } from 'react';
+import { Section } from '../primitives/Section';
+import type { SectionProps } from '../primitives/Section';
+import { Container } from '../primitives/Container';
+import type { ContainerProps } from '../primitives/Container';
+import { Stack } from '../primitives/Stack';
+import type { StackProps } from '../primitives/Stack';
 
 export interface PatternRootProps extends SectionProps {
   containerSize?: ContainerProps['size'];

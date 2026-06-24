@@ -1,4 +1,5 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
+import type { HTMLAttributes } from 'react';
 
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
   columns?: 1 | 2 | 3 | 4 | 5 | 6 | 12;

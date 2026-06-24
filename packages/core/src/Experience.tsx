@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useMemo } from 'react';
 import { getPreset } from './registry';
 import type { MotionProfile, ExperiencePreset, ThemeConfig, ThemeOverrides } from './types';

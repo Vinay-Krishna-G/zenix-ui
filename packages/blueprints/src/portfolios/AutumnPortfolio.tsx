@@ -1,4 +1,4 @@
-import { Surface, Section, Container, Stack, Grid, Pattern } from '@zenixui/components';
+import { Surface, Container, Stack, Grid, Pattern } from '@zenixui/components';
 
 export function AutumnPortfolio() {
   return (

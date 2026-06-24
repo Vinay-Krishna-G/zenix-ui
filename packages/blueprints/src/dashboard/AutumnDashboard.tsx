@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features } from '@zenixui/components';
+import { Features } from '@zenixui/components';
 
 export function AutumnDashboard() {
   const [view, setView] = useState<'home' | 'settings' | 'profile'>('home');

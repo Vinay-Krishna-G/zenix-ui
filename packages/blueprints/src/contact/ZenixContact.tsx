@@ -74,14 +74,3 @@ export function ZenixContact() {
   );
 }
 
-const inputStyle: React.CSSProperties = {
-  padding: '0.75rem 1rem',
-  borderRadius: 'var(--zx-radius-sm)',
-  border: '1px solid var(--zx-elevated)',
-  background: 'var(--zx-background)',
-  color: 'var(--zx-primary)',
-  fontSize: '1rem',
-  fontFamily: 'inherit',
-  outline: 'none',
-  transition: 'border-color 0.2s'
-};

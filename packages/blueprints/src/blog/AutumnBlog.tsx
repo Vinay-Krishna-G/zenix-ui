@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features, Button, Badge } from '@zenixui/components';
+import { Features, Button, Badge } from '@zenixui/components';
 
 const POSTS = [
   { id: 1, title: "The Art of Slow Living", desc: "A reflection on finding peace in the details.", date: "October 12" },

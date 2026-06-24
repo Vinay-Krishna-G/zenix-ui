@@ -5,7 +5,7 @@ import { Surface, Features, Input, Button, Textarea } from '@zenixui/components'
 
 export function OceanContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
-  const [error, setError] = useState('');
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

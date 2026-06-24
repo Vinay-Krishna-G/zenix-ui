@@ -1,4 +1,5 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
+import type { HTMLAttributes } from 'react';
 
 export type SurfaceVariant = 'card' | 'hero' | 'navbar' | 'footer' | 'glass' | 'overlay' | 'transparent';
 

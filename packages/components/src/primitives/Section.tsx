@@ -1,4 +1,5 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
+import type { HTMLAttributes } from 'react';
 
 export interface SectionProps extends HTMLAttributes<HTMLElement> {
   /** Enables vertical padding appropriate for major page sections */

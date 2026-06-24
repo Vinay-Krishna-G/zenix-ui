@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Surface, Features, Button, Badge } from '@zenixui/components';
+import { Features, Button, Badge } from '@zenixui/components';
 
 export function NightCityBlog() {
   const [view, setView] = useState<'list' | 'detail'>('list');

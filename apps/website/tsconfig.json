@@ -19,7 +19,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@zenixui/core": ["../../packages/core/src"],
+      "@zenixui/components": ["../../packages/components/src"],
+      "@zenixui/react": ["../../packages/react/src"],
+      "@zenixui/blueprints": ["../../packages/blueprints/src"]
     }
   },
   "include": [
