@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blueprints } from '@zenixui/blueprints';
+import { articles } from '../data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://zenixui.com';
@@ -7,8 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date() },
     { url: `${baseUrl}/themes`, lastModified: new Date() },
-    { url: `${baseUrl}/experiences`, lastModified: new Date() },
+    { url: `${baseUrl}/blueprints`, lastModified: new Date() },
     { url: `${baseUrl}/studio`, lastModified: new Date() },
+    { url: `${baseUrl}/learn`, lastModified: new Date() },
     { url: `${baseUrl}/docs`, lastModified: new Date() },
     { url: `${baseUrl}/docs/cli`, lastModified: new Date() },
     { url: `${baseUrl}/compare`, lastModified: new Date() },
@@ -18,6 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blueprintRoutes: MetadataRoute.Sitemap = blueprints.map((bp) => ({
     url: `${baseUrl}/blueprints/${bp.id}`,
     lastModified: new Date(bp.createdAt),
+  }));
+
+  const learnRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${baseUrl}/learn/${article.slug}`,
+    lastModified: new Date(article.publishedAt),
   }));
 
   const categories = Array.from(new Set(blueprints.map(bp => bp.category)));
@@ -32,5 +39,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticRoutes, ...blueprintRoutes, ...templateRoutes];
+  return [...staticRoutes, ...blueprintRoutes, ...learnRoutes, ...templateRoutes];
 }

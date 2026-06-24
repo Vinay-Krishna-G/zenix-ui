@@ -41,8 +41,9 @@ export default function RootLayout({
               </div>
               <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
                 <a href="/themes" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Themes</a>
-                <a href="/experiences" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Experiences</a>
+                <a href="/blueprints" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Blueprints</a>
                 <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Studio</a>
+                <a href="/learn" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Learn</a>
                 <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
                 <a href="/roadmap" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Roadmap</a>
               </div>
