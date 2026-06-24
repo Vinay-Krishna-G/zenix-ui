@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Surface, Button } from '@zenixui/components';
 import { getBlueprint, blueprints } from '@zenixui/blueprints';
 import { Experience } from '@zenixui/react';
@@ -11,6 +11,7 @@ import { track } from '@vercel/analytics/react';
 export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode: string }) {
   const blueprint = getBlueprint(id);
   const [copyMode, setCopyMode] = useState<'blueprint' | 'source' | null>(null);
+  const [cliCopied, setCliCopied] = useState(false);
   
   if (!blueprint) {
     notFound();
@@ -18,9 +19,19 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
 
   const { component: Component } = blueprint;
   const blueprintCode = `<${blueprint.title.replace(/\s+/g, '')} />`;
+  const installCmd = `pnpm dlx zenix-ui add ${blueprint.id} --config ./zenix-theme.json`;
 
-  // Find similar experiences by category (excluding current)
-  const similarExperiences = blueprints
+  const copyCliCmd = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(installCmd);
+      setCliCopied(true);
+      track('Copied CLI Command', { blueprintId: blueprint.id });
+      setTimeout(() => setCliCopied(false), 2000);
+    } catch {}
+  }, [installCmd, blueprint.id]);
+
+  // Find more blueprints in same category (excluding current)
+  const moreBlueprints = blueprints
     .filter(bp => bp.category === blueprint.category && bp.id !== blueprint.id)
     .slice(0, 3);
 
@@ -30,8 +41,8 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
       {/* FULL WIDTH LIVE PREVIEW */}
       <div style={{ width: '100%', height: '80vh', borderBottom: '1px solid var(--zx-elevated)', position: 'relative', background: 'var(--zx-elevated)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 100 }}>
-          <Link href="/experiences" style={{ fontSize: '0.875rem', fontWeight: 600, padding: '0.5rem 1rem', background: 'var(--zx-background)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-round)', textDecoration: 'none', boxShadow: 'var(--zx-shadow-sm)' }}>
-            ← Back to Gallery
+          <Link href="/blueprints" style={{ fontSize: '0.875rem', fontWeight: 600, padding: '0.5rem 1rem', background: 'var(--zx-background)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-round)', textDecoration: 'none', boxShadow: 'var(--zx-shadow-sm)' }}>
+            ← Back to Blueprints
           </Link>
         </div>
         <div style={{ height: '100%', overflowY: 'auto', padding: '2rem' }}>
@@ -76,6 +87,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Primary actions */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <Button size="lg" onClick={() => {
                 setCopyMode(copyMode === 'blueprint' ? null : 'blueprint');
@@ -87,24 +99,55 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
                 setCopyMode(copyMode === 'source' ? null : 'source');
                 if (copyMode !== 'source') track('View Source Code', { blueprintId: blueprint.id });
               }} style={{ justifyContent: 'center' }}>
-                {copyMode === 'source' ? 'Hide Source' : 'Copy Source'}
+                {copyMode === 'source' ? 'Hide Source' : 'View Full Source'}
               </Button>
             </div>
 
+            {/* Install via CLI */}
             <Surface variant="glass" style={{ padding: '1.25rem', border: '1px solid var(--zx-elevated)', fontSize: '0.875rem' }}>
-              <div style={{ fontWeight: 600, marginBottom: '1rem', fontSize: '0.75rem', textTransform: 'uppercase', opacity: 0.7, letterSpacing: '0.05em' }}>How to adopt</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ fontWeight: 700, marginBottom: '0.75rem', fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.5, letterSpacing: '0.07em' }}>Install via CLI</div>
+              <div style={{ position: 'relative', marginBottom: '1rem' }}>
+                <code style={{
+                  display: 'block', padding: '0.75rem 3rem 0.75rem 0.75rem',
+                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)',
+                  fontSize: '0.75rem', fontFamily: 'monospace', lineHeight: 1.5,
+                  border: '1px solid var(--zx-border)', color: 'var(--zx-primary)',
+                  wordBreak: 'break-all',
+                }}>
+                  {installCmd}
+                </code>
+                <button
+                  onClick={copyCliCmd}
+                  style={{
+                    position: 'absolute', top: '50%', right: '0.5rem', transform: 'translateY(-50%)',
+                    padding: '0.25rem 0.5rem', fontSize: '0.65rem', fontWeight: 700,
+                    borderRadius: '4px', border: '1px solid var(--zx-elevated)',
+                    background: 'var(--zx-surface)', cursor: 'pointer',
+                    color: cliCopied ? '#22c55e' : 'inherit',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  {cliCopied ? '✓' : 'Copy'}
+                </button>
+              </div>
+
+              {/* 3-step guide with links */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>1</span>
-                  <span style={{ opacity: 0.9 }}>Copy Blueprint</span>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-primary)', color: 'var(--zx-background)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>1</span>
+                  <span style={{ opacity: 0.85, fontSize: '0.85rem' }}>Copy the command above</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>2</span>
-                  <span style={{ opacity: 0.9 }}>Paste into your app</span>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>2</span>
+                  <span style={{ opacity: 0.85, fontSize: '0.85rem' }}>
+                    <Link href="/studio" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 600 }}>Customize in Studio</Link> → download config
+                  </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-primary)', color: 'var(--zx-background)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>3</span>
-                  <span style={{ opacity: 0.9, fontWeight: 600 }}>Customize & Ship</span>
+                  <span style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'var(--zx-elevated)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>3</span>
+                  <span style={{ opacity: 0.85, fontSize: '0.85rem' }}>
+                    Follow <Link href="/docs/nextjs" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 600 }}>framework setup docs</Link>
+                  </span>
                 </div>
               </div>
             </Surface>
@@ -130,16 +173,17 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
           </Surface>
         )}
 
-        {/* SIMILAR EXPERIENCES */}
-        {similarExperiences.length > 0 && (
+        {/* MORE BLUEPRINTS */}
+        {moreBlueprints.length > 0 && (
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2rem' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0 }}>Similar Experiences</h2>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0 }}>More {blueprint.category} Blueprints</h2>
+              <Link href={`/blueprints?category=${blueprint.category}`} style={{ fontWeight: 600, color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>View all →</Link>
             </div>
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-              {similarExperiences.map(bp => (
-                <Link key={bp.id} href={`/experiences/${bp.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              {moreBlueprints.map(bp => (
+                <Link key={bp.id} href={`/blueprints/${bp.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s' }}>
                     <div style={{ height: '200px', background: 'var(--zx-elevated)', backgroundImage: `url(${bp.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
                     <div style={{ padding: '1.5rem' }}>

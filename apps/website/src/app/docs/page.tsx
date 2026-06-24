@@ -33,8 +33,8 @@ export default function DocsPage() {
                 <p style={{ opacity: 0.7, margin: 0, lineHeight: 1.5 }}>{step.desc}</p>
                 {i === 0 && (
                   <div style={{ marginTop: '1.5rem' }}>
-                    <Link href="/experiences" style={{ textDecoration: 'none' }}>
-                      <Button variant="default">Open Experience Gallery →</Button>
+                    <Link href="/blueprints" style={{ textDecoration: 'none' }}>
+                      <Button variant="default">Open Blueprint Gallery →</Button>
                     </Link>
                   </div>
                 )}

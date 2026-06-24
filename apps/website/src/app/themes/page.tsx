@@ -56,8 +56,8 @@ export default function ThemesPage() {
                   </div>
                 </div>
 
-                <Link href={`/experiences?theme=${theme.id}`} style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none' }}>
-                  View {theme.name} Experiences →
+                <Link href={`/blueprints?theme=${theme.id}`} style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none' }}>
+                  View {theme.name} Blueprints →
                 </Link>
               </div>
 

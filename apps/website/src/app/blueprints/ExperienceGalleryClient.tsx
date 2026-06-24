@@ -71,10 +71,10 @@ export function ExperienceGalleryClient() {
     <div style={{ padding: '4rem 2rem 10rem', maxWidth: '1400px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <h1 style={{ fontSize: '3.5rem', fontWeight: 800, margin: '0 0 1rem', letterSpacing: '-0.04em' }}>
-          Experience Gallery
+          Blueprint Gallery
         </h1>
         <p style={{ fontSize: '1.25rem', opacity: 0.6, margin: '0 auto', maxWidth: '600px', lineHeight: 1.6 }}>
-          Browse complete, production-ready website templates. Find an experience you love, copy the blueprint, and make it your own.
+          30+ complete, production-ready page experiences. Choose a blueprint, customize it in the Studio, and install it with one CLI command.
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export function ExperienceGalleryClient() {
                       ))}
                     </div>
                     <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem' }}>
-                      <Link href={`/experiences/${blueprint.id}`} style={{ flex: 1, textDecoration: 'none' }} onClick={() => track('Experience View', { id: blueprint.id })}>
+                      <Link href={`/blueprints/${blueprint.id}`} style={{ flex: 1, textDecoration: 'none' }} onClick={() => track('Blueprint View', { id: blueprint.id })}>
                         <Button fullWidth>View Details</Button>
                       </Link>
                     </div>

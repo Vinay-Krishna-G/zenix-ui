@@ -33,6 +33,8 @@ import { OceanDashboard } from './dashboard/OceanDashboard';
 import { NightCityDashboard } from './dashboard/NightCityDashboard';
 import { AutumnDashboard } from './dashboard/AutumnDashboard';
 
+export type Framework = 'react' | 'nextjs' | 'vite' | 'remix' | 'astro';
+
 export interface BlueprintMetadata {
   id: string;
   title: string;
@@ -48,7 +50,7 @@ export interface BlueprintMetadata {
   dependencies?: string[];
   devDependencies?: string[];
   files?: string[];
-  supportedFrameworks: string[];
+  supportedFrameworks: readonly Framework[];
 }
 
 export const blueprints: BlueprintMetadata[] = [

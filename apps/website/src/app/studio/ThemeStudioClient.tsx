@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Surface, Button, Input, Badge } from '@zenixui/components';
+import { useState, useCallback } from 'react';
+import { Surface, Button, Input } from '@zenixui/components';
 import { Experience } from '@zenixui/react';
 import type { ThemeConfig } from '@zenixui/core';
 import { blueprints } from '@zenixui/blueprints';
@@ -33,49 +33,174 @@ const FRAMEWORKS = [
   { id: 'astro', name: 'Astro' },
 ];
 
+const PACKAGE_MANAGERS = [
+  { id: 'npm', exec: 'npx' },
+  { id: 'pnpm', exec: 'pnpm dlx' },
+  { id: 'yarn', exec: 'yarn dlx' },
+  { id: 'bun', exec: 'bunx' },
+];
+
+type OutputTab = 'install' | 'setup' | 'config';
+
 export default function ThemeStudioClient() {
   const [config, setConfig] = useState<ThemeConfig>(PRESETS['Linear']);
-  const [showCommand, setShowCommand] = useState(false);
+  const [generated, setGenerated] = useState(false);
+  const [activeTab, setActiveTab] = useState<OutputTab>('install');
   const [selectedFramework, setSelectedFramework] = useState(FRAMEWORKS[0].id);
   const [selectedBlueprintId, setSelectedBlueprintId] = useState(blueprints[0].id);
+  const [selectedPM, setSelectedPM] = useState('pnpm');
+  const [copied, setCopied] = useState<string | null>(null);
 
   const selectedBlueprint = blueprints.find(bp => bp.id === selectedBlueprintId)!;
   const ActiveComponent = selectedBlueprint.component;
 
-  const handleDownloadTS = () => {
-    track('Download Theme TS', { themeName: config.name });
-    const content = `import type { ThemeConfig } from '@zenixui/core';\n\nexport const themeConfig = ${JSON.stringify(config, null, 2)} satisfies ThemeConfig;\n`;
-    const dataStr = "data:text/typescript;charset=utf-8," + encodeURIComponent(content);
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", `zenix.ts`);
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-  };
+  // Derived values
+  const pmExec = PACKAGE_MANAGERS.find(pm => pm.id === selectedPM)?.exec ?? 'npx';
+  const installCmd = `${pmExec} zenix-ui add ${selectedBlueprintId} --config ./zenix-theme.json`;
+  const themeJson = JSON.stringify(config, null, 2);
+  const themeTs = `import type { ThemeConfig } from '@zenixui/core';\n\nexport const themeConfig = ${JSON.stringify(config, null, 2)} satisfies ThemeConfig;\n`;
 
-  const getFrameworkInstructions = () => {
-    switch(selectedFramework) {
+  const getSetupCode = () => {
+    switch (selectedFramework) {
       case 'nextjs':
-        return `// app/layout.tsx\nimport { Experience } from '@zenixui/react';\nimport { themeConfig } from '@/theme/zenix';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        <Experience theme={themeConfig}>\n          {children}\n        </Experience>\n      </body>\n    </html>\n  );\n}`;
+        return `// app/layout.tsx
+import { Experience } from '@zenixui/react';
+import { themeConfig } from '@/theme/zenix';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <Experience theme={themeConfig}>
+          {children}
+        </Experience>
+      </body>
+    </html>
+  );
+}`;
       case 'vite':
-        return `// src/main.tsx\nimport { Experience } from '@zenixui/react';\nimport { themeConfig } from './theme/zenix';\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <React.StrictMode>\n    <Experience theme={themeConfig}>\n      <App />\n    </Experience>\n  </React.StrictMode>\n);`;
-      case 'astro':
-        return `// src/layouts/Layout.astro\n---\nimport { Experience } from '@zenixui/react';\nimport { themeConfig } from '../theme/zenix';\n---\n\n<html>\n  <body>\n    <slot />\n  </body>\n</html>`;
+        return `// src/main.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Experience } from '@zenixui/react';
+import { themeConfig } from './theme/zenix';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Experience theme={themeConfig}>
+      <App />
+    </Experience>
+  </React.StrictMode>
+);`;
       case 'remix':
-        return `// app/root.tsx\nimport { Experience } from '@zenixui/react';\nimport { themeConfig } from './theme/zenix';\n\nexport default function App() {\n  return (\n    <html>\n      <body>\n        <Experience theme={themeConfig}>\n          <Outlet />\n        </Experience>\n      </body>\n    </html>\n  );\n}`;
+        return `// app/root.tsx
+import { Experience } from '@zenixui/react';
+import { themeConfig } from './theme/zenix';
+import { Outlet } from '@remix-run/react';
+
+export default function App() {
+  return (
+    <html lang="en">
+      <body>
+        <Experience theme={themeConfig}>
+          <Outlet />
+        </Experience>
+      </body>
+    </html>
+  );
+}`;
+      case 'astro':
+        return `// src/layouts/Layout.astro
+---
+import { Experience } from '@zenixui/react';
+import { themeConfig } from '../theme/zenix';
+---
+
+<html lang="en">
+  <body>
+    <Experience client:load theme={themeConfig}>
+      <slot />
+    </Experience>
+  </body>
+</html>`;
       default:
         return '';
     }
   };
 
+  const copyToClipboard = useCallback(async (text: string, key: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(key);
+      track('Studio Copy', { key, blueprint: selectedBlueprintId, pm: selectedPM });
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      // fallback for non-https
+    }
+  }, [selectedBlueprintId, selectedPM]);
+
+  const handleCopyAll = () => {
+    const setupCode = getSetupCode();
+    const all = `# 1. Install Blueprint\n${installCmd}\n\n# 2. Theme Config (zenix-theme.json)\n${themeJson}\n\n# 3. ${FRAMEWORKS.find(f => f.id === selectedFramework)?.name} Setup\n${setupCode}`;
+    copyToClipboard(all, 'all');
+  };
+
+  const handleDownloadJSON = () => {
+    track('Download Theme JSON', { themeName: config.name });
+    const dataStr = 'data:application/json;charset=utf-8,' + encodeURIComponent(themeJson);
+    const a = document.createElement('a');
+    a.setAttribute('href', dataStr);
+    a.setAttribute('download', 'zenix-theme.json');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  const handleDownloadTS = () => {
+    track('Download Theme TS', { themeName: config.name });
+    const dataStr = 'data:text/typescript;charset=utf-8,' + encodeURIComponent(themeTs);
+    const a = document.createElement('a');
+    a.setAttribute('href', dataStr);
+    a.setAttribute('download', 'zenix.ts');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  const TAB_CONTENT: Record<OutputTab, { label: string; code: string; copyKey: string }> = {
+    install: { label: 'Install', code: installCmd, copyKey: 'install' },
+    setup: { label: `${FRAMEWORKS.find(f => f.id === selectedFramework)?.name} Setup`, code: getSetupCode(), copyKey: 'setup' },
+    config: { label: 'Theme Config', code: themeJson, copyKey: 'config' },
+  };
+
+  const btnBase: React.CSSProperties = {
+    padding: '0.3rem 0.75rem',
+    fontSize: '0.75rem',
+    fontWeight: 600,
+    borderRadius: 'var(--zx-radius-sm)',
+    border: '1px solid var(--zx-elevated)',
+    background: 'transparent',
+    color: 'inherit',
+    cursor: 'pointer',
+    transition: 'all 0.15s ease',
+  };
+
+  const tabBtn = (id: OutputTab): React.CSSProperties => ({
+    ...btnBase,
+    background: activeTab === id ? 'var(--zx-elevated)' : 'transparent',
+    color: activeTab === id ? 'var(--zx-primary)' : 'inherit',
+    borderColor: activeTab === id ? 'var(--zx-primary)' : 'var(--zx-elevated)',
+    opacity: activeTab === id ? 1 : 0.6,
+  });
+
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       
-      {/* LEFT PANE: VISUAL BUILDER */}
+      {/* LEFT PANE: THEME STUDIO */}
       <div style={{ width: '400px', borderRight: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', background: 'var(--zx-background)', position: 'relative', zIndex: 100 }}>
         <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--zx-elevated)' }}>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 0.5rem' }}>Visual Builder</h1>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 0.5rem' }}>Theme Studio</h1>
           <p style={{ opacity: 0.6, fontSize: '0.875rem', margin: 0 }}>Configure your experience pipeline.</p>
         </div>
 
@@ -93,7 +218,7 @@ export default function ThemeStudioClient() {
                     padding: '0.5rem 0.75rem', fontSize: '0.875rem', fontWeight: 500, borderRadius: 'var(--zx-radius-sm)',
                     border: '1px solid', borderColor: selectedFramework === fw.id ? 'var(--zx-primary)' : 'var(--zx-elevated)',
                     background: selectedFramework === fw.id ? 'var(--zx-elevated)' : 'transparent',
-                    color: 'var(--zx-text-primary)', cursor: 'pointer'
+                    color: 'var(--zx-text-primary)', cursor: 'pointer', transition: 'all 0.15s ease',
                   }}
                 >
                   {fw.name}
@@ -145,8 +270,8 @@ export default function ThemeStudioClient() {
                     border: config.palette?.primary === p.colors.primary ? '2px solid var(--zx-text-primary)' : '1px solid var(--zx-border)',
                     cursor: 'pointer', padding: 0,
                     boxShadow: config.palette?.primary === p.colors.primary ? '0 0 0 2px var(--zx-background)' : 'none',
-                    transform: config.palette?.primary === p.colors.primary ? 'scale(1.1)' : 'scale(1)',
-                    transition: 'all 0.2s ease'
+                    transform: config.palette?.primary === p.colors.primary ? 'scale(1.15)' : 'scale(1)',
+                    transition: 'all 0.15s ease',
                   }}
                 />
               ))}
@@ -185,7 +310,7 @@ export default function ThemeStudioClient() {
             </select>
           </div>
 
-          {/* Presets (Shortcut) */}
+          {/* Quick Presets */}
           <div style={{ paddingTop: '1rem', borderTop: '1px dashed var(--zx-elevated)' }}>
             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.75rem' }}>Quick Presets</label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -193,10 +318,7 @@ export default function ThemeStudioClient() {
                 <button 
                   key={key}
                   onClick={() => setConfig(PRESETS[key])}
-                  style={{
-                    padding: '0.3rem 0.6rem', fontSize: '0.75rem', borderRadius: 'var(--zx-radius-sm)',
-                    border: '1px solid var(--zx-elevated)', background: 'transparent', color: 'inherit', cursor: 'pointer'
-                  }}
+                  style={{ ...btnBase }}
                 >
                   {key}
                 </button>
@@ -206,32 +328,117 @@ export default function ThemeStudioClient() {
 
         </div>
 
-        {/* 7. Generated Command */}
-        <div style={{ padding: '1.5rem', borderTop: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', gap: '1rem', background: 'var(--zx-surface)' }}>
-          {showCommand ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.5rem' }}>Install Command</div>
-                <code style={{ display: 'block', padding: '0.75rem', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', fontSize: '0.8rem', color: 'var(--zx-primary)', border: '1px solid var(--zx-border)' }}>
-                  npx zenix-ui add {selectedBlueprintId} --config ./zenix.ts
-                </code>
-              </div>
-              
-              <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.5rem' }}>Setup ({FRAMEWORKS.find(f => f.id === selectedFramework)?.name})</div>
-                <pre style={{ margin: 0, padding: '0.75rem', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.75rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
-                  {getFrameworkInstructions()}
-                </pre>
-              </div>
-
-              <Button fullWidth onClick={handleDownloadTS}>
-                Download Theme File
+        {/* BOTTOM: COMMAND GENERATOR */}
+        <div style={{ borderTop: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)' }}>
+          {!generated ? (
+            <div style={{ padding: '1.5rem' }}>
+              <Button fullWidth onClick={() => { setGenerated(true); track('Studio Generate', { blueprint: selectedBlueprintId }); }} size="lg">
+                Generate Install Command
               </Button>
             </div>
           ) : (
-            <Button fullWidth onClick={() => setShowCommand(true)} size="lg">
-              Generate Install Command
-            </Button>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+
+              {/* Package Manager selector */}
+              <div style={{ padding: '1rem 1.5rem', borderBottom: '1px solid var(--zx-elevated)', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.4, marginRight: '0.5rem' }}>via</span>
+                {PACKAGE_MANAGERS.map(pm => (
+                  <button
+                    key={pm.id}
+                    onClick={() => setSelectedPM(pm.id)}
+                    style={{
+                      ...btnBase,
+                      background: selectedPM === pm.id ? 'var(--zx-elevated)' : 'transparent',
+                      color: selectedPM === pm.id ? 'var(--zx-primary)' : 'inherit',
+                      borderColor: selectedPM === pm.id ? 'var(--zx-primary)' : 'var(--zx-elevated)',
+                      opacity: selectedPM === pm.id ? 1 : 0.5,
+                    }}
+                  >
+                    {pm.id}
+                  </button>
+                ))}
+              </div>
+
+              {/* Output tabs */}
+              <div style={{ padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--zx-elevated)', display: 'flex', gap: '0.5rem' }}>
+                {(['install', 'setup', 'config'] as OutputTab[]).map(tab => (
+                  <button key={tab} onClick={() => setActiveTab(tab)} style={tabBtn(tab)}>
+                    {TAB_CONTENT[tab].label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Code output */}
+              <div style={{ position: 'relative', margin: '0.75rem 1rem' }}>
+                <pre style={{
+                  margin: 0, padding: '1rem', paddingRight: '4rem',
+                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)',
+                  overflowX: 'auto', overflowY: 'auto', maxHeight: '160px',
+                  fontSize: '0.75rem', fontFamily: 'monospace', lineHeight: 1.6,
+                  border: '1px solid var(--zx-border)', color: 'var(--zx-primary)',
+                  whiteSpace: 'pre-wrap', wordBreak: 'break-all',
+                }}>
+                  {TAB_CONTENT[activeTab].code}
+                </pre>
+                <button
+                  onClick={() => copyToClipboard(TAB_CONTENT[activeTab].code, activeTab)}
+                  style={{
+                    position: 'absolute', top: '0.5rem', right: '0.5rem',
+                    padding: '0.25rem 0.5rem', fontSize: '0.65rem', fontWeight: 700,
+                    borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)',
+                    background: 'var(--zx-surface)', color: copied === activeTab ? '#22c55e' : 'inherit',
+                    cursor: 'pointer', transition: 'all 0.15s ease',
+                  }}
+                >
+                  {copied === activeTab ? '✓ Copied' : 'Copy'}
+                </button>
+              </div>
+
+              {/* Action row */}
+              <div style={{ padding: '0.75rem 1rem 0', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <button
+                  onClick={handleCopyAll}
+                  style={{
+                    flex: 1, padding: '0.6rem', fontSize: '0.8rem', fontWeight: 700,
+                    borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-primary)',
+                    background: copied === 'all' ? 'var(--zx-primary)' : 'transparent',
+                    color: copied === 'all' ? 'var(--zx-background)' : 'var(--zx-primary)',
+                    cursor: 'pointer', transition: 'all 0.15s ease',
+                  }}
+                >
+                  {copied === 'all' ? '✓ Copied All' : 'Copy All'}
+                </button>
+                <button
+                  onClick={handleDownloadJSON}
+                  style={{ ...btnBase, padding: '0.6rem 0.75rem', fontSize: '0.75rem' }}
+                  title="Download zenix-theme.json"
+                >
+                  .json
+                </button>
+                <button
+                  onClick={handleDownloadTS}
+                  style={{ ...btnBase, padding: '0.6rem 0.75rem', fontSize: '0.75rem' }}
+                  title="Download zenix.ts"
+                >
+                  .ts
+                </button>
+              </div>
+
+              {/* Next step: framework docs */}
+              <div style={{ padding: '0.75rem 1rem 1rem', borderTop: '1px dashed var(--zx-elevated)', marginTop: '0.75rem' }}>
+                <a
+                  href={`/docs/${selectedFramework}`}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: '0.5rem',
+                    fontSize: '0.75rem', fontWeight: 600, color: 'var(--zx-primary)',
+                    textDecoration: 'none', opacity: 0.8,
+                  }}
+                >
+                  <span>Next: {FRAMEWORKS.find(f => f.id === selectedFramework)?.name} setup guide →</span>
+                </a>
+              </div>
+
+            </div>
           )}
         </div>
       </div>

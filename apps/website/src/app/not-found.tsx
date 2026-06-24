@@ -16,7 +16,7 @@ export default function NotFound() {
         <Link href="/" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
           Return Home
         </Link>
-        <Link href="/experiences" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'inherit', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
+        <Link href="/blueprints" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'inherit', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
           Browse Experiences
         </Link>
       </div>

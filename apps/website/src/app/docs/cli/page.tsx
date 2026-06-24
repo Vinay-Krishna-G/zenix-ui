@@ -16,7 +16,7 @@ export default function CliDocsPage() {
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>Add an Experience</h2>
       <p style={{ fontSize: '1.125rem', opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-        Use the `add` command to download a complete blueprint from the Experience Gallery directly into your application.
+        Use the `add` command to download a complete blueprint from the Blueprint Gallery directly into your application.
       </p>
       <pre style={{ margin: '0 0 2rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
         {`npx zenix-ui add night-city-portfolio`}

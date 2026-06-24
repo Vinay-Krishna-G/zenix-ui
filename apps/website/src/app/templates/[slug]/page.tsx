@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import { blueprints } from '@zenixui/blueprints';
+import { blueprints, type Framework } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
 
-const FRAMEWORKS = [
+const FRAMEWORKS: { id: Framework; name: string }[] = [
   { id: 'react', name: 'React' },
   { id: 'nextjs', name: 'Next.js' },
   { id: 'vite', name: 'Vite' },

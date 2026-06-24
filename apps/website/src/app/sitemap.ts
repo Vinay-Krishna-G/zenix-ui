@@ -13,6 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/learn`, lastModified: new Date() },
     { url: `${baseUrl}/docs`, lastModified: new Date() },
     { url: `${baseUrl}/docs/cli`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/nextjs`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/vite`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/remix`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/astro`, lastModified: new Date() },
     { url: `${baseUrl}/compare`, lastModified: new Date() },
     { url: `${baseUrl}/roadmap`, lastModified: new Date() },
   ];

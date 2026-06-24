@@ -4,7 +4,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', maxWidth: '1400px', margin: '0 auto' }}>
       {/* Sidebar */}
-      <aside style={{ width: '250px', borderRight: '1px solid var(--zx-elevated)', padding: '3rem 2rem' }}>
+      <aside style={{ width: '250px', borderRight: '1px solid var(--zx-elevated)', padding: '3rem 2rem', flexShrink: 0 }}>
         <h3 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.5, marginBottom: '1.5rem' }}>
           Overview
         </h3>
@@ -15,11 +15,23 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </nav>
 
         <h3 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.5, marginBottom: '1.5rem' }}>
+          Frameworks
+        </h3>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '1rem', fontWeight: 500, marginBottom: '3rem' }}>
+          <Link href="/docs/nextjs" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Next.js</Link>
+          <Link href="/docs/vite" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Vite React</Link>
+          <Link href="/docs/remix" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Remix</Link>
+          <Link href="/docs/astro" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>
+            Astro <span style={{ fontSize: '0.65rem', fontWeight: 700, padding: '0.1rem 0.4rem', background: 'var(--zx-warning, #f59e0b)', color: '#000', borderRadius: '4px', marginLeft: '0.25rem' }}>Beta</span>
+          </Link>
+        </nav>
+
+        <h3 style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.5, marginBottom: '1.5rem' }}>
           Reference
         </h3>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '1rem', fontWeight: 500 }}>
           <Link href="/themes" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Themes</Link>
-          <Link href="/experiences" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Experiences</Link>
+          <Link href="/blueprints" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Blueprints</Link>
           <Link href="/docs/components" style={{ color: 'var(--zx-primary)', textDecoration: 'none', opacity: 0.8 }}>Components</Link>
         </nav>
       </aside>
@@ -31,3 +43,4 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     </div>
   );
 }
+
