@@ -5,7 +5,7 @@ import path from 'path';
 
 // For local development, we point directly to the blueprints registry file built earlier
 // In a real published version, we would fetch this from an HTTP registry endpoint!
-const REGISTRY_PATH = path.join(__dirname, '../../../blueprints/dist/registry.json');
+const REGISTRY_PATH = path.join(__dirname, '../../blueprints/dist/registry.json');
 
 export async function add(experienceId: string) {
   const configPath = path.join(process.cwd(), 'zenix.json');

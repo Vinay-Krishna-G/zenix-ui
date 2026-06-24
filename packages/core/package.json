@@ -6,5 +6,8 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "scripts": {}
+  "scripts": {},
+  "devDependencies": {
+    "tsup": "^8.5.1"
+  }
 }

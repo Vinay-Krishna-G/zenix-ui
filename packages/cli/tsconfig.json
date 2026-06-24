@@ -1,10 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
     "target": "es2022",
     "module": "commonjs",
-    "outDir": "dist"
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"]
 }

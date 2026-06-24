@@ -46,7 +46,9 @@ export async function init() {
   const spinner = ora('Installing core dependencies...').start();
   
   try {
-    execSync('npm install @zenixui/react @zenixui/core @zenixui/components', { stdio: 'ignore' });
+    const pm = process.env.npm_execpath?.includes('pnpm') ? 'pnpm' : process.env.npm_execpath?.includes('yarn') ? 'yarn' : 'npm';
+    const installCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
+    execSync(`${installCmd} @zenixui/react @zenixui/core @zenixui/components`, { stdio: 'ignore' });
     spinner.succeed('Installed core dependencies.');
   } catch (err) {
     spinner.warn('Failed to auto-install dependencies. You may need to run `npm install @zenixui/react @zenixui/core @zenixui/components` manually.');

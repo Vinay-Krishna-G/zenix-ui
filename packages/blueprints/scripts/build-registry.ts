@@ -44,9 +44,9 @@ async function buildRegistry() {
       sourceCode = fs.readFileSync(fullPath, 'utf-8');
       
       // 4. Verify the export exists in the source code
-      const exportRegex = new RegExp(`export function ${bp.title.replace(/\s+/g, '')}`);
+      const exportRegex = new RegExp(`export (?:default )?(?:function|const|let|var) ${bp.title.replace(/\s+/g, '')}`);
       if (!exportRegex.test(sourceCode)) {
-         console.warn(`[Validation Warning] Export function ${bp.title.replace(/\s+/g, '')} might be missing in ${fullPath}`);
+         console.warn(`[Validation Warning] Export ${bp.title.replace(/\s+/g, '')} might be missing in ${fullPath}`);
       }
     } catch (err) {
       console.error(`[Validation Error] Failed to read source code for blueprint: ${bp.id} at ${fullPath}`);
