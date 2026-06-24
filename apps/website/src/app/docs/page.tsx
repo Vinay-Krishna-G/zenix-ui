@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
+import { FrameworkTabs } from './FrameworkTabs';
 
 export default function DocsPage() {
   const workflowSteps = [
@@ -51,22 +52,7 @@ export default function DocsPage() {
         {`npm install @zenixui/react @zenixui/core @zenixui/components`}
       </pre>
 
-      <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>The Engine</h2>
-      <p style={{ fontSize: '1.125rem', opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-        Wrap your application with the <code style={{ background: 'var(--zx-elevated)', padding: '0.2rem 0.4rem', borderRadius: '4px' }}>Experience</code> provider. Pass a preset name to inject all the CSS custom properties, scenes, and effect layers.
-      </p>
-      <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
-        {`import { Experience } from '@zenixui/react';
-import { NightCityPortfolio } from './blueprints/night-city-portfolio';
-
-export default function App() {
-  return (
-    <Experience preset="night-city">
-      <NightCityPortfolio />
-    </Experience>
-  );
-}`}
-      </pre>
+      <FrameworkTabs />
     </div>
   );
 }

@@ -36,7 +36,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
         </div>
         <div style={{ height: '100%', overflowY: 'auto', padding: '2rem' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-lg)', overflow: 'hidden', boxShadow: 'var(--zx-shadow-lg)', border: '1px solid var(--zx-elevated)' }}>
-            <Experience preset={blueprint.theme}>
+            <Experience preset={blueprint.theme as any}>
               <Component />
             </Experience>
           </div>

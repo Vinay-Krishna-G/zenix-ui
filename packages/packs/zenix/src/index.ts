@@ -7,7 +7,7 @@ export const zenixPreset: ExperiencePreset = {
     id: 'zenix',
     name: 'Zenix',
     description: 'The flagship minimal SaaS experience.',
-    defaultMotion: 'subtle',
+    defaultMotion: 'minimal',
     capabilities: ['minimal'],
     assets: {}
   },

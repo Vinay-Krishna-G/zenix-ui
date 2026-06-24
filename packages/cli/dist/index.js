@@ -135,7 +135,24 @@ var import_ora2 = __toESM(require("ora"));
 var import_fs3 = __toESM(require("fs"));
 var import_path3 = __toESM(require("path"));
 var import_child_process2 = require("child_process");
-async function add(experienceId) {
+var import_prompts2 = __toESM(require("prompts"));
+function levenshtein(a, b) {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+  const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+  for (let i = 1; i <= a.length; i++) matrix[0][i] = i;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+async function add(experienceId, options) {
   const configPath = import_path3.default.join(process.cwd(), "zenix.json");
   if (!import_fs3.default.existsSync(configPath)) {
     console.log(import_chalk2.default.red("Error: zenix.json not found. Run `npx zenix-ui init` first."));
@@ -147,10 +164,34 @@ async function add(experienceId) {
   let metadata;
   try {
     const res = await fetch(`${apiUrl}/api/v1/blueprints/${experienceId}`);
-    if (!res.ok) throw new Error("Not found");
+    if (!res.ok) {
+      if (res.status === 404) throw new Error("404");
+      throw new Error("Network error");
+    }
     metadata = await res.json();
   } catch (err) {
-    spinner.fail(`Experience '${experienceId}' not found in registry.`);
+    spinner.stop();
+    if (err.message === "404") {
+      try {
+        const regRes = await fetch(`${apiUrl}/api/v1/registry`);
+        const allIds = (await regRes.json()).map((b) => b.id);
+        const matches = allIds.filter(
+          (id) => id.includes(experienceId) || experienceId.includes(id) || levenshtein(id, experienceId) <= 4
+        );
+        console.log(import_chalk2.default.red(`
+Experience '${experienceId}' not found.`));
+        if (matches.length > 0) {
+          console.log(import_chalk2.default.yellow(`Did you mean:`));
+          matches.slice(0, 3).forEach((m) => console.log(`  \u2022 ${m}`));
+        }
+      } catch (e) {
+        console.log(import_chalk2.default.red(`
+Experience '${experienceId}' not found.`));
+      }
+    } else {
+      console.log(import_chalk2.default.red(`
+Unable to reach registry. Check your internet connection or verify ZENIX_API_URL.`));
+    }
     process.exit(1);
   }
   spinner.text = `Fetching blueprint source...`;
@@ -183,7 +224,7 @@ async function add(experienceId) {
       }
     }
   }
-  spinner.text = `Installing ${metadata.title}...`;
+  spinner.succeed(`Fetched ${metadata.title}. Writing files...`);
   const destDir = import_path3.default.join(process.cwd(), config.experiencesDir);
   if (!import_fs3.default.existsSync(destDir)) {
     import_fs3.default.mkdirSync(destDir, { recursive: true });
@@ -191,18 +232,38 @@ async function add(experienceId) {
   let mainFilename = "";
   for (const file of files) {
     const destFile = import_path3.default.join(destDir, file.name);
+    if (import_fs3.default.existsSync(destFile)) {
+      if (options.skipExisting) {
+        console.log(import_chalk2.default.yellow(`Skipped ${file.name} (already exists).`));
+        if (!mainFilename) mainFilename = file.name;
+        continue;
+      } else if (!options.overwrite) {
+        const { overwrite } = await (0, import_prompts2.default)({
+          type: "confirm",
+          name: "overwrite",
+          message: `File ${file.name} already exists. Overwrite?`,
+          initial: false
+        });
+        if (!overwrite) {
+          console.log(import_chalk2.default.yellow(`Skipped ${file.name}.`));
+          if (!mainFilename) mainFilename = file.name;
+          continue;
+        }
+      }
+    }
     import_fs3.default.writeFileSync(destFile, file.content);
     if (!mainFilename) mainFilename = file.name;
   }
-  spinner.succeed(import_chalk2.default.green(`Successfully installed ${metadata.title} into ${config.experiencesDir}`));
-  console.log(`
-To use it, import it in your app:`);
-  console.log(import_chalk2.default.cyan(`import { ${metadata.title.replace(/\s+/g, "")} } from '@/${config.experiencesDir}/${mainFilename.replace(".tsx", "")}';`));
+  console.log(import_chalk2.default.green(`
+\u2714 Successfully installed ${metadata.title} into ${config.experiencesDir}`));
+  console.log(`To use it, import it in your app:`);
+  console.log(import_chalk2.default.cyan(`import { ${metadata.title.replace(/\s+/g, "")} } from '@/${config.experiencesDir}/${mainFilename.replace(".tsx", "")}';
+`));
 }
 
 // src/index.ts
 var program = new import_commander.Command();
 program.name("zenix-ui").description("Distribute and install entire ZenixUI experiences.").version("0.0.1");
 program.command("init").description("Initialize your project and install ZenixUI dependencies.").option("-f, --framework <name>", "Framework to use (next, vite, remix)").option("-t, --theme <name>", "Default theme (zenix, ocean, night-city, autumn)").option("-d, --dir <path>", "Experiences directory (default: src/experiences)").option("-y, --yes", "Skip prompts and use defaults/flags").action(init);
-program.command("add <experience-id>").description("Add a complete experience to your project.").action(add);
+program.command("add <experience-id>").description("Add a complete experience to your project.").option("-o, --overwrite", "Overwrite existing files").option("-s, --skip-existing", "Skip existing files instead of overwriting").action(add);
 program.parse();

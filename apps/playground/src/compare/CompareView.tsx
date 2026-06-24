@@ -102,7 +102,9 @@ export function CompareView() {
   );
 }
 
-function ThemeCell({ preset, children }: { preset: string, children: React.ReactNode }) {
+import type { ThemePreset } from '@zenixui/core';
+
+function ThemeCell({ preset, children }: { preset: ThemePreset, children: React.ReactNode }) {
   return (
     <Experience preset={preset} background="none">
       <div style={{ 

@@ -9,7 +9,7 @@ export const nightCityPreset: ExperiencePreset = {
     id: 'night-city',
     name: 'Night City',
     description: 'A neon-drenched urban atmosphere.',
-    defaultMotion: 'normal',
+    defaultMotion: 'standard',
     capabilities: ['glow', 'neon', 'particles', 'cityscape', 'fast-motion'],
     assets: {
       skyline: '/assets/city-skyline.svg',

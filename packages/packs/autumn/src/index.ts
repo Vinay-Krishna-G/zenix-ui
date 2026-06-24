@@ -9,7 +9,7 @@ export const autumnPreset: ExperiencePreset = {
     id: 'autumn',
     name: 'Autumn',
     description: 'A warm, falling leaves atmosphere.',
-    defaultMotion: 'subtle',
+    defaultMotion: 'minimal',
     capabilities: ['leaves', 'warm-light', 'ambient-motion', 'organic'],
     assets: {
       leaf: '/assets/autumn-leaf.svg',

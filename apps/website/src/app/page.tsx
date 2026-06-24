@@ -71,7 +71,7 @@ export default function Home() {
           </div>
           <div style={{ width: '100%', height: '100%', overflowY: 'auto' }}>
             {FeaturedComponent && featuredExperience ? (
-              <Experience preset={featuredExperience.theme}>
+              <Experience preset={featuredExperience.theme as any}>
                 <FeaturedComponent />
               </Experience>
             ) : null}

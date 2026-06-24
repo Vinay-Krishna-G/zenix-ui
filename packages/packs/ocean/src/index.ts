@@ -9,7 +9,7 @@ export const oceanPreset: ExperiencePreset = {
     id: 'ocean',
     name: 'Ocean',
     description: 'A deep, tranquil oceanic experience.',
-    defaultMotion: 'normal',
+    defaultMotion: 'standard',
     capabilities: ['glass', 'waves', 'particles', 'gradient', 'ambient-motion'],
     assets: {
       wave: '/assets/ocean-wave.svg',

@@ -2,12 +2,13 @@
 
 import React, { createContext, useContext, useMemo } from 'react';
 import { getPreset } from './registry';
-import type { MotionProfile, ExperiencePreset, ThemeConfig, ThemeOverrides } from './types';
+import { transformThemeToCSSVariables } from './transformer';
+import type { MotionProfile, ExperiencePreset, ThemeConfig, ThemePreset } from './types';
 
 interface ExperienceContextValue {
   preset: ExperiencePreset;
   motion: MotionProfile;
-  overrides?: ThemeOverrides;
+  overrides?: Partial<ThemeConfig>;
 }
 
 const ExperienceContext = createContext<ExperienceContextValue | null>(null);
@@ -21,25 +22,28 @@ export function useExperience() {
 }
 
 export interface ExperienceProps {
-  preset?: string | ExperiencePreset;
-  config?: ThemeConfig;
-  overrides?: ThemeOverrides;
+  preset?: ThemePreset | ExperiencePreset;
+  theme?: ThemeConfig;
+  overrides?: Partial<ThemeConfig>;
   background?: 'default' | 'none' | React.ReactNode;
   children: React.ReactNode;
 }
 
 export function Experience({
   preset,
-  config,
+  theme,
   overrides = {},
   background = 'default',
   children,
 }: ExperienceProps) {
-  // If config is provided, it overrides the preset and base overrides
-  const resolvedPresetId = config?.base || preset || 'zenix';
-  const resolvedOverrides: ThemeOverrides = {
+  if (preset && theme?.base) {
+    throw new Error('ZenixUI: Use either preset or theme.base, not both. They are mutually exclusive.');
+  }
+
+  const resolvedPresetId = theme?.base || preset || 'zenix';
+  const resolvedOverrides: Partial<ThemeConfig> = {
     ...overrides,
-    ...(config || {})
+    ...(theme || {})
   };
 
   const resolvedPreset = useMemo(() => {
@@ -57,14 +61,10 @@ export function Experience({
 
   const { themeClass, SceneComponent, EffectComponent } = resolvedPreset;
 
-  const styleOverrides: Record<string, string> = {};
-  if (resolvedOverrides.accent) styleOverrides['--zx-accent'] = resolvedOverrides.accent;
-  if (resolvedOverrides.radius) styleOverrides['--zx-radius'] = resolvedOverrides.radius;
-  if (resolvedOverrides.density) styleOverrides['--zx-density-scale'] = resolvedOverrides.density === 'compact' ? '0.8' : resolvedOverrides.density === 'spacious' ? '1.2' : '1';
-  if (resolvedOverrides.typography) styleOverrides['--zx-font-primary'] = resolvedOverrides.typography;
+  const styleOverrides = transformThemeToCSSVariables(resolvedOverrides);
 
   return (
-    <ExperienceContext.Provider value={{ preset: resolvedPreset, motion: activeMotion, overrides: resolvedOverrides }}>
+    <ExperienceContext.Provider value={{ preset: resolvedPreset, motion: activeMotion as MotionProfile, overrides: resolvedOverrides }}>
       <div 
         className={`zx-experience ${themeClass || ''}`} 
         data-zx-motion={activeMotion}
