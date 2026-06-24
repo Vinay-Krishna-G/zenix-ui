@@ -13,7 +13,8 @@ export const nightCityPreset: ExperiencePreset = {
     capabilities: ['glow', 'neon', 'particles', 'cityscape', 'fast-motion'],
     assets: {
       skyline: '/assets/city-skyline.svg',
-    }
+    },
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   themeClass: 'zx-theme-night-city',
   SceneComponent: NightCityScene,

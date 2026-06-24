@@ -13,7 +13,8 @@ export const oceanPreset: ExperiencePreset = {
     capabilities: ['glass', 'waves', 'particles', 'gradient', 'ambient-motion'],
     assets: {
       wave: '/assets/ocean-wave.svg',
-    }
+    },
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   themeClass: 'zx-theme-ocean',
   SceneComponent: OceanScene,

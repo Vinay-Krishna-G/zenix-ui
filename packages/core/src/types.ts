@@ -13,6 +13,7 @@ export interface ExperienceMetadata {
   defaultMotion: MotionProfile;
   capabilities: string[];
   assets: Record<string, string>;
+  supportedFrameworks: string[];
 }
 
 export interface ExperiencePreset {
@@ -54,9 +55,13 @@ export interface ThemeConfig {
     primary?: string;
     primaryHover?: string;
     primaryActive?: string;
+    secondary?: string;
+    secondaryHover?: string;
+    accent?: string;
     
     // Backgrounds
     background?: string;
+    backgroundSecondary?: string;
     surface?: string;
     surfaceElevated?: string;
     
@@ -74,5 +79,6 @@ export interface ThemeConfig {
     // UI Elements
     border?: string;
     borderHover?: string;
+    focus?: string;
   };
 }

@@ -13,7 +13,8 @@ export const autumnPreset: ExperiencePreset = {
     capabilities: ['leaves', 'warm-light', 'ambient-motion', 'organic'],
     assets: {
       leaf: '/assets/autumn-leaf.svg',
-    }
+    },
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   themeClass: 'zx-theme-autumn',
   SceneComponent: AutumnScene,

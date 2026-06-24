@@ -48,6 +48,7 @@ export interface BlueprintMetadata {
   dependencies?: string[];
   devDependencies?: string[];
   files?: string[];
+  supportedFrameworks: string[];
 }
 
 export const blueprints: BlueprintMetadata[] = [
@@ -62,7 +63,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/landings/ZenixLanding.tsx",
     previewImage: "/previews/zenix-landing.png",
     createdAt: "2026-06-10",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-landing",
@@ -75,7 +77,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/landings/OceanLanding.tsx",
     previewImage: "/previews/ocean-landing.png",
     createdAt: "2026-06-11",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-landing",
@@ -88,7 +91,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/landings/NightCityLanding.tsx",
     previewImage: "/previews/night-city-landing.png",
     createdAt: "2026-06-12",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-landing",
@@ -101,7 +105,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/landings/AutumnLanding.tsx",
     previewImage: "/previews/autumn-landing.png",
     createdAt: "2026-06-13",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-portfolio",
@@ -114,7 +119,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/portfolios/ZenixPortfolio.tsx",
     previewImage: "/previews/zenix-portfolio.png",
     createdAt: "2026-06-10",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-portfolio",
@@ -127,7 +133,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/portfolios/OceanPortfolio.tsx",
     previewImage: "/previews/ocean-portfolio.png",
     createdAt: "2026-06-11",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-portfolio",
@@ -140,7 +147,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/portfolios/NightCityPortfolio.tsx",
     previewImage: "/previews/night-city-portfolio.png",
     createdAt: "2026-06-12",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-portfolio",
@@ -153,7 +161,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/portfolios/AutumnPortfolio.tsx",
     previewImage: "/previews/autumn-portfolio.png",
     createdAt: "2026-06-13",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-contact",
@@ -166,7 +175,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/contact/ZenixContact.tsx",
     previewImage: "/previews/zenix-contact.png",
     createdAt: "2026-06-14",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-contact",
@@ -179,7 +189,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/contact/OceanContact.tsx",
     previewImage: "/previews/ocean-contact.png",
     createdAt: "2026-06-14",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-contact",
@@ -192,7 +203,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/contact/NightCityContact.tsx",
     previewImage: "/previews/night-city-contact.png",
     createdAt: "2026-06-14",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-contact",
@@ -205,7 +217,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/contact/AutumnContact.tsx",
     previewImage: "/previews/autumn-contact.png",
     createdAt: "2026-06-14",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-newsletter",
@@ -218,7 +231,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/newsletter/ZenixNewsletter.tsx",
     previewImage: "/previews/zenix-newsletter.png",
     createdAt: "2026-06-15",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-newsletter",
@@ -231,7 +245,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/newsletter/OceanNewsletter.tsx",
     previewImage: "/previews/ocean-newsletter.png",
     createdAt: "2026-06-15",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-newsletter",
@@ -244,7 +259,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/newsletter/NightCityNewsletter.tsx",
     previewImage: "/previews/night-city-newsletter.png",
     createdAt: "2026-06-15",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-newsletter",
@@ -257,7 +273,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/newsletter/AutumnNewsletter.tsx",
     previewImage: "/previews/autumn-newsletter.png",
     createdAt: "2026-06-15",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-auth",
@@ -270,7 +287,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/auth/ZenixAuth.tsx",
     previewImage: "/previews/zenix-auth.png",
     createdAt: "2026-06-16",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-auth",
@@ -283,7 +301,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/auth/OceanAuth.tsx",
     previewImage: "/previews/ocean-auth.png",
     createdAt: "2026-06-16",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-auth",
@@ -296,7 +315,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/auth/NightCityAuth.tsx",
     previewImage: "/previews/night-city-auth.png",
     createdAt: "2026-06-16",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-auth",
@@ -309,7 +329,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/auth/AutumnAuth.tsx",
     previewImage: "/previews/autumn-auth.png",
     createdAt: "2026-06-16",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-blog",
@@ -322,7 +343,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/blog/ZenixBlog.tsx",
     previewImage: "/previews/zenix-blog.png",
     createdAt: "2026-06-17",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-blog",
@@ -335,7 +357,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/blog/OceanBlog.tsx",
     previewImage: "/previews/ocean-blog.png",
     createdAt: "2026-06-17",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-blog",
@@ -348,7 +371,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/blog/NightCityBlog.tsx",
     previewImage: "/previews/night-city-blog.png",
     createdAt: "2026-06-17",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-blog",
@@ -361,7 +385,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/blog/AutumnBlog.tsx",
     previewImage: "/previews/autumn-blog.png",
     createdAt: "2026-06-17",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "zenix-dashboard",
@@ -374,7 +399,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/dashboard/ZenixDashboard.tsx",
     previewImage: "/previews/zenix-dashboard.png",
     createdAt: "2026-06-18",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "ocean-dashboard",
@@ -387,7 +413,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/dashboard/OceanDashboard.tsx",
     previewImage: "/previews/ocean-dashboard.png",
     createdAt: "2026-06-18",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "night-city-dashboard",
@@ -400,7 +427,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/dashboard/NightCityDashboard.tsx",
     previewImage: "/previews/night-city-dashboard.png",
     createdAt: "2026-06-18",
-    featured: true
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
     id: "autumn-dashboard",
@@ -413,7 +441,8 @@ export const blueprints: BlueprintMetadata[] = [
     sourcePath: "packages/blueprints/src/dashboard/AutumnDashboard.tsx",
     previewImage: "/previews/autumn-dashboard.png",
     createdAt: "2026-06-18",
-    featured: false
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   }
 ];
 

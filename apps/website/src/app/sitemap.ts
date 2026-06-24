@@ -15,10 +15,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/roadmap`, lastModified: new Date() },
   ];
 
-  const experienceRoutes: MetadataRoute.Sitemap = blueprints.map((bp) => ({
-    url: `${baseUrl}/experiences/${bp.id}`,
+  const blueprintRoutes: MetadataRoute.Sitemap = blueprints.map((bp) => ({
+    url: `${baseUrl}/blueprints/${bp.id}`,
     lastModified: new Date(bp.createdAt),
   }));
 
-  return [...staticRoutes, ...experienceRoutes];
+  const categories = Array.from(new Set(blueprints.map(bp => bp.category)));
+  const frameworks = ['react', 'nextjs', 'vite'];
+  
+  const templateRoutes: MetadataRoute.Sitemap = [];
+  
+  for (const fw of frameworks) {
+    templateRoutes.push({ url: `${baseUrl}/${fw}-templates`, lastModified: new Date() });
+    for (const category of categories) {
+      templateRoutes.push({ url: `${baseUrl}/templates/${fw}-${category}-template`, lastModified: new Date() });
+    }
+  }
+
+  return [...staticRoutes, ...blueprintRoutes, ...templateRoutes];
 }

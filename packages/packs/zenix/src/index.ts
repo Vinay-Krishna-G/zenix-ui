@@ -9,7 +9,8 @@ export const zenixPreset: ExperiencePreset = {
     description: 'The flagship minimal SaaS experience.',
     defaultMotion: 'minimal',
     capabilities: ['minimal'],
-    assets: {}
+    assets: {},
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   themeClass: 'zx-theme-zenix'
 };
