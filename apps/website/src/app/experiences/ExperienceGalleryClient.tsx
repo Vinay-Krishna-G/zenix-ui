@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Surface, Button, Input } from '@zenixui/components';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
+import { track } from '@vercel/analytics/react';
 
 export function ExperienceGalleryClient() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -57,6 +58,14 @@ export function ExperienceGalleryClient() {
 
     return result;
   }, [searchQuery, activeCategory]);
+
+  useEffect(() => {
+    if (!searchQuery.trim()) return;
+    const timeout = setTimeout(() => {
+      track('Search Query', { query: searchQuery.toLowerCase() });
+    }, 1500);
+    return () => clearTimeout(timeout);
+  }, [searchQuery]);
 
   return (
     <div style={{ padding: '4rem 2rem 10rem', maxWidth: '1400px', margin: '0 auto' }}>
@@ -148,7 +157,7 @@ export function ExperienceGalleryClient() {
                       ))}
                     </div>
                     <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem' }}>
-                      <Link href={`/experiences/${blueprint.id}`} style={{ flex: 1, textDecoration: 'none' }}>
+                      <Link href={`/experiences/${blueprint.id}`} style={{ flex: 1, textDecoration: 'none' }} onClick={() => track('Experience View', { id: blueprint.id })}>
                         <Button fullWidth>View Details</Button>
                       </Link>
                     </div>

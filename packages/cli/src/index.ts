@@ -14,11 +14,17 @@ program
 program
   .command('init')
   .description('Initialize your project and install ZenixUI dependencies.')
+  .option('-f, --framework <name>', 'Framework to use (next, vite, remix)')
+  .option('-t, --theme <name>', 'Default theme (zenix, ocean, night-city, autumn)')
+  .option('-d, --dir <path>', 'Experiences directory (default: src/experiences)')
+  .option('-y, --yes', 'Skip prompts and use defaults/flags')
   .action(init);
 
 program
   .command('add <experience-id>')
   .description('Add a complete experience to your project.')
+  .option('-o, --overwrite', 'Overwrite existing files')
+  .option('-s, --skip-existing', 'Skip existing files instead of overwriting')
   .action(add);
 
 program.parse();

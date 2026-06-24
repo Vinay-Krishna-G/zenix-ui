@@ -30,68 +30,101 @@ var import_commander = require("commander");
 var import_prompts = __toESM(require("prompts"));
 var import_chalk = __toESM(require("chalk"));
 var import_ora = __toESM(require("ora"));
+var import_fs2 = __toESM(require("fs"));
+var import_path2 = __toESM(require("path"));
+var import_child_process = require("child_process");
+
+// src/utils/pm.ts
 var import_fs = __toESM(require("fs"));
 var import_path = __toESM(require("path"));
-var import_child_process = require("child_process");
-async function init() {
+function detectPackageManager() {
+  const execPath = process.env.npm_execpath || "";
+  if (execPath.includes("pnpm")) return "pnpm";
+  if (execPath.includes("yarn")) return "yarn";
+  if (execPath.includes("bun")) return "bun";
+  const cwd = process.cwd();
+  if (import_fs.default.existsSync(import_path.default.join(cwd, "pnpm-lock.yaml"))) return "pnpm";
+  if (import_fs.default.existsSync(import_path.default.join(cwd, "yarn.lock"))) return "yarn";
+  if (import_fs.default.existsSync(import_path.default.join(cwd, "bun.lockb"))) return "bun";
+  if (import_fs.default.existsSync(import_path.default.join(cwd, "package-lock.json"))) return "npm";
+  return "npm";
+}
+function getInstallCommand(pm) {
+  if (pm === "npm") return "npm install";
+  return `${pm} add`;
+}
+
+// src/commands/init.ts
+async function init(options) {
   console.log(import_chalk.default.bold.blue("\nWelcome to ZenixUI Experience distribution.\n"));
-  const response = await (0, import_prompts.default)([
-    {
-      type: "select",
-      name: "framework",
-      message: "Which framework are you using?",
-      choices: [
-        { title: "Next.js", value: "next" },
-        { title: "Vite", value: "vite" },
-        { title: "Remix", value: "remix" }
-      ]
-    },
-    {
-      type: "text",
-      name: "experiencesDir",
-      message: "Where should we place downloaded experiences?",
-      initial: "src/experiences"
-    },
-    {
-      type: "select",
-      name: "defaultTheme",
-      message: "Which theme would you like to use by default?",
-      choices: [
-        { title: "Zenix", value: "zenix" },
-        { title: "Ocean", value: "ocean" },
-        { title: "Night City", value: "night-city" },
-        { title: "Autumn", value: "autumn" }
-      ]
-    }
-  ]);
-  if (!response.framework) {
+  let config = {
+    framework: options.framework,
+    experiencesDir: options.dir || "src/experiences",
+    defaultTheme: options.theme
+  };
+  if (!options.yes || !config.framework || !config.defaultTheme) {
+    const response = await (0, import_prompts.default)([
+      {
+        type: config.framework ? null : "select",
+        name: "framework",
+        message: "Which framework are you using?",
+        choices: [
+          { title: "Next.js", value: "next" },
+          { title: "Vite", value: "vite" },
+          { title: "Remix", value: "remix" }
+        ]
+      },
+      {
+        type: options.dir ? null : "text",
+        name: "experiencesDir",
+        message: "Where should we place downloaded experiences?",
+        initial: "src/experiences"
+      },
+      {
+        type: config.defaultTheme ? null : "select",
+        name: "defaultTheme",
+        message: "Which theme would you like to use by default?",
+        choices: [
+          { title: "Zenix", value: "zenix" },
+          { title: "Ocean", value: "ocean" },
+          { title: "Night City", value: "night-city" },
+          { title: "Autumn", value: "autumn" }
+        ]
+      }
+    ]);
+    config = {
+      ...config,
+      ...response,
+      framework: config.framework || response.framework,
+      experiencesDir: config.experiencesDir || response.experiencesDir,
+      defaultTheme: config.defaultTheme || response.defaultTheme
+    };
+  }
+  if (!config.framework) {
     console.log(import_chalk.default.yellow("Installation cancelled."));
     process.exit(0);
   }
   const spinner = (0, import_ora.default)("Installing core dependencies...").start();
   try {
-    const pm = process.env.npm_execpath?.includes("pnpm") ? "pnpm" : process.env.npm_execpath?.includes("yarn") ? "yarn" : "npm";
-    const installCmd = pm === "npm" ? "npm install" : `${pm} add`;
-    (0, import_child_process.execSync)(`${installCmd} @zenixui/react @zenixui/core @zenixui/components`, { stdio: "ignore" });
-    spinner.succeed("Installed core dependencies.");
+    const pm = detectPackageManager();
+    const installCmd = getInstallCommand(pm);
+    const packages = process.env.ZENIX_LOCAL_TARBALLS ? "~/tarballs/zenixui-react-0.1.0.tgz ~/tarballs/zenixui-core-0.1.0.tgz ~/tarballs/zenixui-components-0.1.0.tgz" : "@zenixui/react @zenixui/core @zenixui/components";
+    (0, import_child_process.execSync)(`${installCmd} ${packages}`, { stdio: "ignore" });
+    spinner.succeed(`Installed core dependencies using ${pm}.`);
   } catch (err) {
-    spinner.warn("Failed to auto-install dependencies. You may need to run `npm install @zenixui/react @zenixui/core @zenixui/components` manually.");
+    spinner.warn("Failed to auto-install dependencies. You may need to install them manually.");
   }
-  const configPath = import_path.default.join(process.cwd(), "zenix.json");
-  import_fs.default.writeFileSync(configPath, JSON.stringify({
-    framework: response.framework,
-    experiencesDir: response.experiencesDir,
-    defaultTheme: response.defaultTheme
-  }, null, 2));
-  const expPath = import_path.default.join(process.cwd(), response.experiencesDir);
-  if (!import_fs.default.existsSync(expPath)) {
-    import_fs.default.mkdirSync(expPath, { recursive: true });
+  const configPath = import_path2.default.join(process.cwd(), "zenix.json");
+  import_fs2.default.writeFileSync(configPath, JSON.stringify(config, null, 2));
+  const expPath = import_path2.default.join(process.cwd(), config.experiencesDir);
+  if (!import_fs2.default.existsSync(expPath)) {
+    import_fs2.default.mkdirSync(expPath, { recursive: true });
   }
   console.log(import_chalk.default.green(`
 Success! ZenixUI is configured.`));
   console.log(`
 Next steps:`);
-  console.log(`1. Wrap your root layout with ${import_chalk.default.cyan('<Experience preset="' + response.defaultTheme + '">')}`);
+  console.log(`1. Wrap your root layout with ${import_chalk.default.cyan('<Experience preset="' + config.defaultTheme + '">')}`);
   console.log(`2. Run ${import_chalk.default.cyan("npx zenix-ui add night-city-portfolio")} to add your first experience.
 `);
 }
@@ -99,50 +132,77 @@ Next steps:`);
 // src/commands/add.ts
 var import_chalk2 = __toESM(require("chalk"));
 var import_ora2 = __toESM(require("ora"));
-var import_fs2 = __toESM(require("fs"));
-var import_path2 = __toESM(require("path"));
-var REGISTRY_PATH = import_path2.default.join(__dirname, "../../blueprints/dist/registry.json");
+var import_fs3 = __toESM(require("fs"));
+var import_path3 = __toESM(require("path"));
+var import_child_process2 = require("child_process");
 async function add(experienceId) {
-  const configPath = import_path2.default.join(process.cwd(), "zenix.json");
-  if (!import_fs2.default.existsSync(configPath)) {
+  const configPath = import_path3.default.join(process.cwd(), "zenix.json");
+  if (!import_fs3.default.existsSync(configPath)) {
     console.log(import_chalk2.default.red("Error: zenix.json not found. Run `npx zenix-ui init` first."));
     process.exit(1);
   }
-  const config = JSON.parse(import_fs2.default.readFileSync(configPath, "utf-8"));
+  const config = JSON.parse(import_fs3.default.readFileSync(configPath, "utf-8"));
+  const apiUrl = process.env.ZENIX_API_URL || "https://zenixui.com";
   const spinner = (0, import_ora2.default)(`Locating experience: ${experienceId}...`).start();
-  let registry = [];
+  let metadata;
   try {
-    if (import_fs2.default.existsSync(REGISTRY_PATH)) {
-      registry = JSON.parse(import_fs2.default.readFileSync(REGISTRY_PATH, "utf-8"));
-    } else {
-      throw new Error("Registry file not found locally.");
-    }
+    const res = await fetch(`${apiUrl}/api/v1/blueprints/${experienceId}`);
+    if (!res.ok) throw new Error("Not found");
+    metadata = await res.json();
   } catch (err) {
-    spinner.fail("Failed to connect to experience registry.");
-    process.exit(1);
-  }
-  const blueprint = registry.find((bp) => bp.id === experienceId);
-  if (!blueprint) {
     spinner.fail(`Experience '${experienceId}' not found in registry.`);
     process.exit(1);
   }
-  spinner.text = `Installing ${blueprint.title}...`;
-  const destDir = import_path2.default.join(process.cwd(), config.experiencesDir);
-  if (!import_fs2.default.existsSync(destDir)) {
-    import_fs2.default.mkdirSync(destDir, { recursive: true });
+  spinner.text = `Fetching blueprint source...`;
+  let files = [];
+  try {
+    const res = await fetch(`${apiUrl}${metadata.downloadUrl}`);
+    if (!res.ok) throw new Error("Source not found");
+    files = await res.json();
+  } catch (err) {
+    spinner.fail(`Failed to download source code for '${experienceId}'.`);
+    process.exit(1);
   }
-  const filename = `${blueprint.title.replace(/\s+/g, "")}.tsx`;
-  const destFile = import_path2.default.join(destDir, filename);
-  import_fs2.default.writeFileSync(destFile, blueprint.sourceCode);
-  spinner.succeed(import_chalk2.default.green(`Successfully installed ${blueprint.title} into ${config.experiencesDir}/${filename}`));
+  if (metadata.dependencies?.length > 0 || metadata.devDependencies?.length > 0) {
+    spinner.text = `Installing dependencies...`;
+    const pm = detectPackageManager();
+    const installCmd = getInstallCommand(pm);
+    if (metadata.dependencies?.length > 0) {
+      try {
+        (0, import_child_process2.execSync)(`${installCmd} ${metadata.dependencies.join(" ")}`, { stdio: "ignore" });
+      } catch (e) {
+        spinner.warn("Some dependencies failed to install. You may need to install them manually.");
+      }
+    }
+    if (metadata.devDependencies?.length > 0) {
+      try {
+        const devFlag = pm === "npm" ? "--save-dev" : "-D";
+        (0, import_child_process2.execSync)(`${installCmd} ${devFlag} ${metadata.devDependencies.join(" ")}`, { stdio: "ignore" });
+      } catch (e) {
+        spinner.warn("Some devDependencies failed to install.");
+      }
+    }
+  }
+  spinner.text = `Installing ${metadata.title}...`;
+  const destDir = import_path3.default.join(process.cwd(), config.experiencesDir);
+  if (!import_fs3.default.existsSync(destDir)) {
+    import_fs3.default.mkdirSync(destDir, { recursive: true });
+  }
+  let mainFilename = "";
+  for (const file of files) {
+    const destFile = import_path3.default.join(destDir, file.name);
+    import_fs3.default.writeFileSync(destFile, file.content);
+    if (!mainFilename) mainFilename = file.name;
+  }
+  spinner.succeed(import_chalk2.default.green(`Successfully installed ${metadata.title} into ${config.experiencesDir}`));
   console.log(`
 To use it, import it in your app:`);
-  console.log(import_chalk2.default.cyan(`import { ${blueprint.title.replace(/\s+/g, "")} } from '@/${config.experiencesDir}/${filename.replace(".tsx", "")}';`));
+  console.log(import_chalk2.default.cyan(`import { ${metadata.title.replace(/\s+/g, "")} } from '@/${config.experiencesDir}/${mainFilename.replace(".tsx", "")}';`));
 }
 
 // src/index.ts
 var program = new import_commander.Command();
 program.name("zenix-ui").description("Distribute and install entire ZenixUI experiences.").version("0.0.1");
-program.command("init").description("Initialize your project and install ZenixUI dependencies.").action(init);
+program.command("init").description("Initialize your project and install ZenixUI dependencies.").option("-f, --framework <name>", "Framework to use (next, vite, remix)").option("-t, --theme <name>", "Default theme (zenix, ocean, night-city, autumn)").option("-d, --dir <path>", "Experiences directory (default: src/experiences)").option("-y, --yes", "Skip prompts and use defaults/flags").action(init);
 program.command("add <experience-id>").description("Add a complete experience to your project.").action(add);
 program.parse();

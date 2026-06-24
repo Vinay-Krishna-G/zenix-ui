@@ -61,6 +61,15 @@ async function buildRegistry() {
       theme: bp.theme,
       tags: bp.tags,
       previewImage: bp.previewImage,
+      dependencies: bp.dependencies || [],
+      devDependencies: bp.devDependencies || [],
+      files: [
+        {
+          name: path.basename(fullPath),
+          content: sourceCode
+        }
+      ],
+      // Retain sourceCode for any legacy reference
       sourceCode
     };
   });

@@ -45,7 +45,6 @@ export default function RootLayout({
                 <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Studio</a>
                 <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
                 <a href="/roadmap" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Roadmap</a>
-                <a href="/compare" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 700 }}>Compare</a>
               </div>
             </nav>
             <main style={{ flex: 1, position: 'relative' }}>

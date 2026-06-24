@@ -1,9 +1,13 @@
-'use client';
-
+import { Metadata } from 'next';
 import { Surface } from '@zenixui/components';
 import { Experience } from '@zenixui/react';
 import Link from 'next/link';
 import { blueprints } from '@zenixui/blueprints';
+
+export const metadata: Metadata = {
+  title: 'ZenixUI | Build Entire Experiences',
+  description: 'ZenixUI provides complete website templates powered by 4 distinct design systems that you can copy directly into your React apps.',
+};
 
 export default function Home() {
   const featuredExperience = blueprints.find(bp => bp.id === 'night-city-portfolio');

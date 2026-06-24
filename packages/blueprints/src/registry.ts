@@ -45,6 +45,9 @@ export interface BlueprintMetadata {
   previewImage: string;
   createdAt: string;
   featured: boolean;
+  dependencies?: string[];
+  devDependencies?: string[];
+  files?: string[];
 }
 
 export const blueprints: BlueprintMetadata[] = [

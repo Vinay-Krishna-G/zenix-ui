@@ -1,6 +1,12 @@
+import { Metadata } from 'next';
 import { Surface } from '@zenixui/components';
 import Link from 'next/link';
 import { getBlueprintsByCategory } from '@zenixui/blueprints';
+
+export const metadata: Metadata = {
+  title: 'Themes & Design Systems | ZenixUI',
+  description: 'ZenixUI is a collection of completely distinct design languages. Write your logic once, and switch themes instantly.',
+};
 
 const THEMES = [
   { id: 'zenix', name: 'Zenix', tagline: 'The Foundation', description: 'Clean, professional, and accessible. Designed for scalable B2B applications and dashboards.', accent: '#6366f1', radius: '8px', typography: 'Inter' },
