@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# apps/website
 
-## Getting Started
+The public product website for ZenixUI. Built with Next.js App Router.
 
-First, run the development server:
+**URL (production):** https://zenixui.com  
+**URL (local):** http://localhost:3000
+
+---
+
+## What This App Is
+
+This is the customer-facing surface of ZenixUI. It is NOT an internal tool.
+
+Everything in `src/app/` is a public route that gets indexed by Google and seen by customers.
+
+---
+
+## Running Locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# From the monorepo root
+pnpm --filter website dev
+
+# Or from this directory
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Route Map
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Purpose |
+|---|---|
+| `/` | Homepage — product positioning, how it works, featured blueprint |
+| `/blueprints` | Blueprint Gallery — filterable grid of all 30+ blueprints |
+| `/blueprints/[id]` | Blueprint Detail — live preview, CLI command, install guide |
+| `/studio` | Theme Studio — customize palette/radius/motion, generate CLI command |
+| `/themes` | Theme overview — Zenix, Ocean, Night City, Autumn |
+| `/docs` | Docs index — The Zenix Workflow |
+| `/docs/cli` | CLI documentation |
+| `/docs/nextjs` | Next.js framework setup guide |
+| `/docs/vite` | Vite React framework setup guide |
+| `/docs/remix` | Remix framework setup guide |
+| `/docs/astro` | Astro framework setup guide (Beta) |
+| `/learn` | Learn Hub — SEO articles |
+| `/learn/[slug]` | Individual article |
+| `/nextjs-templates` | SEO page — Next.js template keywords |
+| `/react-templates` | SEO page — React template keywords |
+| `/vite-templates` | SEO page — Vite template keywords |
+| `/templates/[slug]` | SEO template pages (react-dashboard-template, etc.) |
+| `/roadmap` | Public roadmap |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Key Files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── layout.tsx              ← Root layout: nav, metadata, Providers wrapper
+│   ├── page.tsx                ← Homepage
+│   ├── globals.css             ← Global CSS resets
+│   ├── blueprints/
+│   │   ├── page.tsx            ← Gallery (server component, passes data)
+│   │   ├── ExperienceGalleryClient.tsx  ← Gallery UI (client component)
+│   │   └── [id]/
+│   │       ├── page.tsx        ← Blueprint detail (server component)
+│   │       └── BlueprintClientView.tsx  ← Detail UI (client component)
+│   ├── studio/
+│   │   ├── page.tsx            ← Studio wrapper
+│   │   └── ThemeStudioClient.tsx  ← Full studio UI (client component)
+│   └── docs/
+│       ├── layout.tsx          ← Docs sidebar layout
+│       ├── page.tsx            ← Docs index
+│       ├── FrameworkTabs.tsx   ← Interactive framework setup tabs
+│       ├── nextjs/page.tsx     ← Next.js guide
+│       ├── vite/page.tsx       ← Vite guide
+│       ├── remix/page.tsx      ← Remix guide
+│       └── astro/page.tsx      ← Astro guide
+├── components/
+│   ├── Providers.tsx           ← Experience provider wrapper
+│   ├── FrameworkTemplatesView.tsx
+│   └── articles/               ← Learn Hub article components
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm --filter website build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Must produce:
+- Zero TypeScript errors
+- Zero build errors
+- All 46 static pages generated
+
+---
+
+## Vocabulary Rules
+
+All customer-visible copy in this app must use the ZenixUI vocabulary system:
+
+- **Blueprint** — the product noun (what gets installed)
+- **Theme Studio** — the visual customizer at /studio
+- **Experience Library** — company tagline only, not a product noun
+- Never: "template", "component", "experience" as a product noun
+
+See `.agents/AGENTS.md` in the monorepo root for the complete ruleset.

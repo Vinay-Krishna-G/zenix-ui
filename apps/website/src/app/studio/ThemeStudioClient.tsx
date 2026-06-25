@@ -201,7 +201,7 @@ import { themeConfig } from '../theme/zenix';
       <div style={{ width: '400px', borderRight: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', background: 'var(--zx-background)', position: 'relative', zIndex: 100 }}>
         <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--zx-elevated)' }}>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 0.5rem' }}>Theme Studio</h1>
-          <p style={{ opacity: 0.6, fontSize: '0.875rem', margin: 0 }}>Configure your experience pipeline.</p>
+          <p style={{ opacity: 0.6, fontSize: '0.875rem', margin: 0 }}>Customize → Generate → Install.</p>
         </div>
 
         <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>

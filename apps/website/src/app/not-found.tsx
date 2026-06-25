@@ -7,7 +7,7 @@ export default function NotFound() {
         404
       </h1>
       <h2 style={{ fontSize: '2rem', fontWeight: 600, margin: '0 0 1.5rem', letterSpacing: '-0.02em' }}>
-        Experience Not Found
+        Blueprint Not Found
       </h2>
       <p style={{ fontSize: '1.125rem', opacity: 0.7, maxWidth: '500px', margin: '0 auto 3rem', lineHeight: 1.6 }}>
         We couldn't find the page or blueprint you were looking for. It might have been moved or removed from the registry.
@@ -17,7 +17,7 @@ export default function NotFound() {
           Return Home
         </Link>
         <Link href="/blueprints" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'inherit', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
-          Browse Experiences
+          Browse Blueprints
         </Link>
       </div>
     </div>

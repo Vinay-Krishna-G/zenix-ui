@@ -18,11 +18,12 @@ Purpose:
 Why this file changed. One paragraph.
 
 Updated Code:
-Show ONLY the final code as it exists now.
+Show ONLY the modified section as it exists in the final file.
 Do NOT show git diffs.
 Do NOT show before/after.
 Do NOT show removed code.
-Show only the final state.
+Show the final state of the changed code block.
+If the file is large, show only the relevant modified section — never omit it entirely.
 
 Architecture Review:
 - Why this implementation was chosen
@@ -31,18 +32,27 @@ Architecture Review:
 - Future implications
 ```
 
+For files containing customer-visible copy (homepage, OG metadata, studio headers, gallery headings):
+
+```
+Conversion Hypothesis:
+- What behavior change this copy is expected to produce
+- Why this framing was chosen over alternatives
+- What metric would confirm or refute the hypothesis
+```
+
 ---
 
 ## Verification: Mandatory After Every Session
 
-Always run the build and show the actual output.
+Always run the build and show the COMPLETE output — never truncated.
 
 ```
 Command Run:
 pnpm --filter website build
 
 Terminal Output:
-<exact text — never summarized>
+<exact text — never summarized, never truncated>
 ```
 
 Always label terminal output:
@@ -213,13 +223,106 @@ Do NOT chase "ZenixUI" branded searches.
 ## Priority Order (current)
 
 1. Funnel integrity (every page connects to next)
-2. Framework Docs
-3. Studio Command Generator completeness
-4. Palette Library
-5. Framework SEO Pages (700+ words each)
-6. Blueprint Category Hubs
-7. Learn Hub expansion (articles to 1500+ words)
-8. Community Themes
-9. Marketplace
+2. Theme Wheel + Color Theory Engine
+3. Framework Docs completeness
+4. Studio Command Generator completeness
+5. Section Library architecture
+6. Framework SEO Pages (700+ words each)
+7. Blueprint Category Hubs
+8. Learn Hub expansion (articles to 1500+ words)
+9. Community Themes
+10. Marketplace
 
 Marketplace is NOT current priority.
+New themes are NOT the priority — the engine is the priority.
+
+---
+
+## Execution Rule: Never Stop After a Plan
+
+Unless the user explicitly says "just give me a plan," implement immediately after writing the plan.
+
+Do not write:
+> "Ready to implement when you approve."
+
+Do write:
+> "Here is the plan. Implementing now."
+
+Then implement.
+
+---
+
+## End-of-Session Summary (Mandatory)
+
+End every session with this exact block:
+
+```
+## Session Summary
+
+### Files Modified
+- path/to/file — what changed
+
+### Files Created
+- path/to/file — what it does
+
+### Files Deleted
+- (none) or list
+
+### Verification
+Command: <exact command>
+Result: 🟢 SUCCESS / 🔴 ERROR
+Pages generated: N
+TypeScript errors: 0
+
+### Remaining Technical Debt
+- List of known issues not fixed this session
+
+### Recommended Next Step
+One sentence. The single most important next action.
+```
+
+Never omit this block. Never summarize it as "session complete."
+
+---
+
+## UI Change Justification (Mandatory)
+
+For every UI change, explain:
+
+1. **UX improvement** — How does this make the interface easier or more intuitive for a user?
+2. **Developer Experience improvement** — How does this reduce friction for a developer adopting ZenixUI?
+3. **Conversion impact** — What user behavior change is this expected to produce? What metric confirms or refutes it?
+4. **Future scalability** — Does this architecture scale to 10x content (30 → 300 blueprints, 4 → 40 themes)?
+
+If you cannot answer all four, the change is incomplete.
+
+---
+
+## Architecture Direction: Design Platform (Not Component Library)
+
+ZenixUI long-term architecture:
+
+```
+ZenixUI
+├── Experience Library      ← company identity
+├── Blueprint Library       ← complete pages
+├── Section Library         ← installable sections (header, footer, hero)
+├── Pattern Library         ← reusable layout patterns
+├── Theme Studio            ← visual customizer
+├── Theme Wheel             ← emotion-first design language selector
+├── Color Theory Engine     ← HSL palette generation from primary color
+├── Typography Engine       ← preset type systems (Apple, Linear, Stripe)
+├── Theme Recipes           ← composable (Colors: Ocean + Typography: Apple)
+├── CLI                     ← npx zenix-ui add dashboard/header
+└── Marketplace             ← future
+```
+
+Key architectural shifts approved by product owner:
+
+1. **Blueprint = Collection of Sections** (not a monolithic file)
+2. **CLI path syntax**: `npx zenix-ui add dashboard/header`
+3. **Per-section theming**: each section receives its own `theme=` prop
+4. **AI-friendly comments** inside all generated code
+5. **Component metadata**: every section exports `metadata: SectionMetadata`
+
+These are NOT yet implemented. See `architecture.md` for the approved design.

@@ -5,7 +5,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ZenixUI',
-  description: 'Build Entire Experiences, Not Just Components.',
+  description: '30+ complete, production-ready page experiences for React. Customize visually in the Theme Studio. Install with one CLI command. Not a component library.',
   metadataBase: new URL('https://zenixui.com'),
   alternates: {
     canonical: '/',
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://zenixui.com',
-    title: 'ZenixUI | The Experience Ecosystem',
-    description: 'Instantly adopt complete, beautiful React design systems. Distribute full experiences, not atomic components.',
+    title: 'ZenixUI — Build Entire Experiences, Not Components',
+    description: '30+ production-ready React blueprints. Customize theme visually. Install via CLI. Like Tailwind UI meets Vercel templates — but with full theme generation.',
     siteName: 'ZenixUI',
   },
   twitter: {

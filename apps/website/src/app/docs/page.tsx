@@ -4,7 +4,7 @@ import { FrameworkTabs } from './FrameworkTabs';
 
 export default function DocsPage() {
   const workflowSteps = [
-    { title: 'Browse Experiences', desc: 'Find the perfect Landing Page, Dashboard, or Portfolio.' },
+    { title: 'Browse Blueprints', desc: 'Find the perfect Landing Page, Dashboard, or Portfolio from 30+ production-ready options.' },
     { title: 'Copy Blueprint', desc: 'Grab the entire page code, not just individual components.' },
     { title: 'Paste Into Project', desc: 'Drop it into your Next.js, Vite, or Remix app instantly.' },
     { title: 'Customize Theme', desc: 'Swap between Zenix, Ocean, Night City, or Autumn with one prop.' },
@@ -15,7 +15,7 @@ export default function DocsPage() {
     <div style={{ maxWidth: '800px' }}>
       <h1 style={{ fontSize: '3rem', fontWeight: 700, margin: '0 0 2rem', letterSpacing: '-0.03em' }}>The Zenix Workflow</h1>
       <p style={{ fontSize: '1.25rem', opacity: 0.8, lineHeight: 1.6, marginBottom: '4rem' }}>
-        ZenixUI fundamentally changes how you build web applications. Instead of assembling atomic components like Lego blocks, you adopt complete, beautifully designed <strong>Experiences</strong> and customize them to fit your brand.
+        ZenixUI fundamentally changes how you build web applications. Instead of assembling atomic components like Lego blocks, you install complete, production-ready <strong>Blueprints</strong> — entire pages with layouts, themes, and interactions — and customize them to fit your brand.
       </p>
 
       {/* VISUAL PIPELINE */}

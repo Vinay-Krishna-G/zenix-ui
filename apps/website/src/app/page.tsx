@@ -66,7 +66,7 @@ export default function Home() {
           <span style={{ opacity: 0.4 }}>Not Components.</span>
         </h1>
         <p style={{ fontSize: '1.375rem', opacity: 0.65, margin: '0 auto 1.5rem', maxWidth: '580px', lineHeight: 1.6 }}>
-          ZenixUI is not a component library. It's a complete ecosystem — production-ready blueprints, a visual theme engine, and a CLI that installs entire page experiences directly into your React project.
+          30+ production-ready page experiences for React — dashboards, portfolios, landing pages, auth flows. Customize visually. Install via CLI. You own the source.
         </p>
 
         {/* Positioning differentiator */}
