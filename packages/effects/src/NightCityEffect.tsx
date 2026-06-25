@@ -1,7 +1,7 @@
 export function NightCityEffect() {
   return (
     <div 
-      className="zx-effect-night-city"
+      className="zx-effect-midnight"
       style={{
         position: 'absolute',
         inset: 0,
@@ -35,9 +35,9 @@ export function NightCityEffect() {
         }
 
         /* Motion Profile Map */
-        [data-zx-motion="none"] .zx-effect-night-city,
+        [data-zx-motion="none"] .zx-effect-midnight,
         @media (prefers-reduced-motion: reduce) {
-          .zx-effect-night-city { display: none !important; }
+          .zx-effect-midnight { display: none !important; }
         }
         
         [data-zx-motion="subtle"] .zx-light-streak { animation-duration: 8s !important; opacity: 0.3; }

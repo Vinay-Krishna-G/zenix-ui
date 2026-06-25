@@ -58,7 +58,7 @@ export const sectionMeta: SectionMetadata = {
   description: 'Full-featured SaaS application header with primary nav, notification bell, and user avatar/menu. Built for logged-in app shells.',
   editable: ['logo', 'mainNav', 'productNav', 'userAvatarSrc', 'userDisplayName', 'notificationCount'],
   compatibleStyles: ['saas', 'dashboard', 'minimal'],
-  recommendedThemes: ['zenix', 'night-city'],
+  recommendedThemes: ['zenix', 'midnight'],
   difficulty: 'medium',
   responsive: true,
   tags: ['SaaS', 'Dashboard', 'Sticky', 'User Avatar', 'Notifications', 'Enterprise'],

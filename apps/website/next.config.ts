@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     '@zenixui/blueprints',
     '@zenixui/pack-zenix',
     '@zenixui/pack-ocean',
-    '@zenixui/pack-night-city',
+    '@zenixui/pack-midnight',
     '@zenixui/pack-autumn',
   ]
 };

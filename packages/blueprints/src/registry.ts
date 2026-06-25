@@ -83,15 +83,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-landing",
-    title: "Night City Landing",
+    id: "midnight-landing",
+    title: "Midnight Landing",
     description: "A neon-drenched, high-contrast landing page for developer tools.",
     category: "landing",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["cyberpunk", "neon", "developer"],
     component: NightCityLanding,
     sourcePath: "packages/blueprints/src/landings/NightCityLanding.tsx",
-    previewImage: "/previews/night-city-landing.png",
+    previewImage: "/previews/midnight-landing.png",
     createdAt: "2026-06-12",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -139,15 +139,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-portfolio",
-    title: "Night City Portfolio",
+    id: "midnight-portfolio",
+    title: "Midnight Portfolio",
     description: "Terminal-inspired portfolio for hackers and systems engineers.",
     category: "portfolio",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["terminal", "hacker", "developer"],
     component: NightCityPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/NightCityPortfolio.tsx",
-    previewImage: "/previews/night-city-portfolio.png",
+    previewImage: "/previews/midnight-portfolio.png",
     createdAt: "2026-06-12",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -195,15 +195,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-contact",
-    title: "Night City Contact",
+    id: "midnight-contact",
+    title: "Midnight Contact",
     description: "A secure transmission terminal for contacting operatives.",
     category: "contact",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["form", "terminal", "cyberpunk"],
     component: NightCityContact,
     sourcePath: "packages/blueprints/src/contact/NightCityContact.tsx",
-    previewImage: "/previews/night-city-contact.png",
+    previewImage: "/previews/midnight-contact.png",
     createdAt: "2026-06-14",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -251,15 +251,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-newsletter",
-    title: "Night City Newsletter",
+    id: "midnight-newsletter",
+    title: "Midnight Newsletter",
     description: "A dead-drop subscription terminal for secure feeds.",
     category: "newsletter",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["form", "terminal", "cyberpunk"],
     component: NightCityNewsletter,
     sourcePath: "packages/blueprints/src/newsletter/NightCityNewsletter.tsx",
-    previewImage: "/previews/night-city-newsletter.png",
+    previewImage: "/previews/midnight-newsletter.png",
     createdAt: "2026-06-15",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -307,15 +307,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-auth",
-    title: "Night City Auth",
+    id: "midnight-auth",
+    title: "Midnight Auth",
     description: "A high-security, hacker-style authentication prompt.",
     category: "auth",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["login", "terminal", "cyberpunk"],
     component: NightCityAuth,
     sourcePath: "packages/blueprints/src/auth/NightCityAuth.tsx",
-    previewImage: "/previews/night-city-auth.png",
+    previewImage: "/previews/midnight-auth.png",
     createdAt: "2026-06-16",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -363,15 +363,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-blog",
-    title: "Night City Blog",
+    id: "midnight-blog",
+    title: "Midnight Blog",
     description: "A dense, high-contrast layout for technical changelogs.",
     category: "blog",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["content", "terminal", "cyberpunk"],
     component: NightCityBlog,
     sourcePath: "packages/blueprints/src/blog/NightCityBlog.tsx",
-    previewImage: "/previews/night-city-blog.png",
+    previewImage: "/previews/midnight-blog.png",
     createdAt: "2026-06-17",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -419,15 +419,15 @@ export const blueprints: BlueprintMetadata[] = [
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
   {
-    id: "night-city-dashboard",
-    title: "Night City Dashboard",
+    id: "midnight-dashboard",
+    title: "Midnight Dashboard",
     description: "A tactical command center for system monitoring.",
     category: "dashboard",
-    theme: "night-city",
+    theme: "midnight",
     tags: ["data", "terminal", "cyberpunk"],
     component: NightCityDashboard,
     sourcePath: "packages/blueprints/src/dashboard/NightCityDashboard.tsx",
-    previewImage: "/previews/night-city-dashboard.png",
+    previewImage: "/previews/midnight-dashboard.png",
     createdAt: "2026-06-18",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']

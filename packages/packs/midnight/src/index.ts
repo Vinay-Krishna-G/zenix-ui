@@ -6,7 +6,7 @@ import './theme.css';
 
 export const nightCityPreset: ExperiencePreset = {
   metadata: {
-    id: 'night-city',
+    id: 'midnight',
     name: 'Night City',
     description: 'A neon-drenched urban atmosphere.',
     defaultMotion: 'standard',
@@ -16,7 +16,7 @@ export const nightCityPreset: ExperiencePreset = {
     },
     supportedFrameworks: ['react', 'nextjs', 'vite']
   },
-  themeClass: 'zx-theme-night-city',
+  themeClass: 'zx-theme-midnight',
   SceneComponent: NightCityScene,
   EffectComponent: NightCityEffect,
 };

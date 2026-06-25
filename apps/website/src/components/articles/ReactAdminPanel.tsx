@@ -105,10 +105,10 @@ export function RequirePermission({ permission, children, fallback = null }) {
           Stop wasting weeks building data tables, sidebars, and authentication boundaries. Deploy a production-ready React Admin Panel blueprint that incorporates all these best practices out of the box.
         </p>
         <code style={{ display: 'inline-block', padding: '1rem 2rem', background: 'var(--zx-background)', borderRadius: '8px', marginBottom: '2rem', color: 'var(--zx-primary)', fontSize: '1.125rem', fontWeight: 600, border: '1px solid var(--zx-elevated)' }}>
-          npx zenix-ui add night-city-dashboard
+          npx zenix-ui add midnight-dashboard
         </code>
         <div>
-          <Link href="/blueprints/night-city-dashboard" style={{ textDecoration: 'none' }}>
+          <Link href="/blueprints/midnight-dashboard" style={{ textDecoration: 'none' }}>
             <Button size="lg">Preview Admin Blueprint</Button>
           </Link>
         </div>

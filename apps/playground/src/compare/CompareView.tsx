@@ -19,7 +19,7 @@ export function CompareView() {
             <ThemeCell preset="ocean">
               <Input variant="glass" placeholder="Ocean Glass" />
             </ThemeCell>
-            <ThemeCell preset="night-city">
+            <ThemeCell preset="midnight">
               <Input variant="terminal" placeholder="Night City Terminal" />
             </ThemeCell>
             <ThemeCell preset="autumn">
@@ -38,7 +38,7 @@ export function CompareView() {
             <ThemeCell preset="ocean">
               <Button variant="glass">Dive In</Button>
             </ThemeCell>
-            <ThemeCell preset="night-city">
+            <ThemeCell preset="midnight">
               <Button variant="cyber">Execute</Button>
             </ThemeCell>
             <ThemeCell preset="autumn">
@@ -57,7 +57,7 @@ export function CompareView() {
             <ThemeCell preset="ocean">
               <Textarea variant="glass" placeholder="Share your thoughts..." rows={3} />
             </ThemeCell>
-            <ThemeCell preset="night-city">
+            <ThemeCell preset="midnight">
               <Textarea variant="terminal" placeholder="ENTER LOG..." rows={3} />
             </ThemeCell>
             <ThemeCell preset="autumn">
@@ -82,7 +82,7 @@ export function CompareView() {
                 <Badge variant="glass" tone="success">Success</Badge>
               </div>
             </ThemeCell>
-            <ThemeCell preset="night-city">
+            <ThemeCell preset="midnight">
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <Badge variant="terminal" tone="neutral">Neutral</Badge>
                 <Badge variant="terminal" tone="error">Error</Badge>

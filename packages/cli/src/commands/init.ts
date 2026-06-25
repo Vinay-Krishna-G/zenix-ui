@@ -40,7 +40,7 @@ export async function init(options: any) {
         choices: [
           { title: 'Zenix', value: 'zenix' },
           { title: 'Ocean', value: 'ocean' },
-          { title: 'Night City', value: 'night-city' },
+          { title: 'Night City', value: 'midnight' },
           { title: 'Autumn', value: 'autumn' }
         ]
       }
@@ -89,5 +89,5 @@ export async function init(options: any) {
   console.log(chalk.green(`\nSuccess! ZenixUI is configured.`));
   console.log(`\nNext steps:`);
   console.log(`1. Wrap your root layout with ${chalk.cyan('<Experience preset="' + config.defaultTheme + '">')}`);
-  console.log(`2. Run ${chalk.cyan('npx zenix-ui add night-city-portfolio')} to add your first experience.\n`);
+  console.log(`2. Run ${chalk.cyan('npx zenix-ui add midnight-portfolio')} to add your first experience.\n`);
 }

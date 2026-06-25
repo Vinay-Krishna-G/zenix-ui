@@ -47,7 +47,7 @@ export const sectionMeta: SectionMetadata = {
   description: 'Clean, no-decoration header with maximum whitespace. Works with any design system and any content below it.',
   editable: ['logo', 'navigationLinks', 'primaryCta', 'secondaryCta', 'showDivider'],
   compatibleStyles: ['minimal', 'glass', 'blog', 'docs'],
-  recommendedThemes: ['zenix', 'autumn', 'ocean', 'night-city'],
+  recommendedThemes: ['zenix', 'autumn', 'ocean', 'midnight'],
   difficulty: 'easy',
   responsive: true,
   tags: ['Minimal', 'Sticky', 'Two CTAs', 'Responsive', 'Universal'],

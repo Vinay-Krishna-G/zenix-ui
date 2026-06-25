@@ -15,7 +15,7 @@ program
   .command('init')
   .description('Initialize your project and install ZenixUI dependencies.')
   .option('-f, --framework <name>', 'Framework to use (next, vite, remix)')
-  .option('-t, --theme <name>', 'Default theme (zenix, ocean, night-city, autumn)')
+  .option('-t, --theme <name>', 'Default theme (zenix, ocean, midnight, autumn)')
   .option('-d, --dir <path>', 'Experiences directory (default: src/experiences)')
   .option('-y, --yes', 'Skip prompts and use defaults/flags')
   .action(init);

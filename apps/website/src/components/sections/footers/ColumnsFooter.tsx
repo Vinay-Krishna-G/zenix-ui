@@ -85,7 +85,7 @@ export const sectionMeta: SectionMetadata = {
   description: 'Multi-column footer with brand identity, link columns, social icons, and copyright bar. The standard choice for product websites and SaaS apps.',
   editable: ['brandName', 'brandTagline', 'columns', 'socialLinks', 'companyName', 'copyrightYear'],
   compatibleStyles: ['minimal', 'saas', 'startup', 'agency', 'blog'],
-  recommendedThemes: ['zenix', 'ocean', 'autumn', 'night-city'],
+  recommendedThemes: ['zenix', 'ocean', 'autumn', 'midnight'],
   difficulty: 'easy',
   responsive: true,
   tags: ['Multi-Column', 'Links', 'Social', 'Standard', 'SaaS', 'Product'],

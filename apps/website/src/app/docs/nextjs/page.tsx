@@ -103,7 +103,7 @@ import type { ThemeConfig } from '@zenixui/core';
 
 export const themeConfig = {
   name: 'My Theme',
-  base: 'zenix',         // 'zenix' | 'ocean' | 'night-city' | 'autumn'
+  base: 'zenix',         // 'zenix' | 'ocean' | 'midnight' | 'autumn'
   radius: 'md',          // 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
   motion: 'standard',    // 'none' | 'minimal' | 'standard' | 'expressive'
   density: 'comfortable',// 'compact' | 'comfortable' | 'spacious'
@@ -135,7 +135,7 @@ export const themeConfig = {
 pnpm dlx zenix-ui add zenix-dashboard --config ./zenix-theme.json
 
 # Or target a different blueprint
-pnpm dlx zenix-ui add night-city-portfolio --config ./zenix-theme.json`}
+pnpm dlx zenix-ui add midnight-portfolio --config ./zenix-theme.json`}
       </pre>
       <p style={{ opacity: 0.7, lineHeight: 1.7, marginBottom: '1rem', fontSize: '0.9rem' }}>
         The CLI will scaffold the blueprint into <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>src/blueprints/</code> and print the import path. Then import and render it anywhere in your Next.js app:

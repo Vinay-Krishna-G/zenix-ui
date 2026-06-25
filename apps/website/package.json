@@ -14,7 +14,7 @@
     "@zenixui/blueprints": "workspace:*",
     "@zenixui/components": "workspace:*",
     "@zenixui/pack-autumn": "workspace:*",
-    "@zenixui/pack-night-city": "workspace:*",
+    "@zenixui/pack-midnight": "workspace:*",
     "@zenixui/pack-ocean": "workspace:*",
     "@zenixui/pack-zenix": "workspace:*",
     "@zenixui/react": "workspace:*",

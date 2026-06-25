@@ -40,7 +40,7 @@ export const sectionMeta: SectionMetadata = {
   description: 'Single-row footer with logo, copyright, and essential links. Works with every design system and page type.',
   editable: ['brandName', 'companyName', 'copyrightYear', 'links'],
   compatibleStyles: ['minimal', 'glass', 'blog', 'saas', 'docs'],
-  recommendedThemes: ['zenix', 'autumn', 'ocean', 'night-city'],
+  recommendedThemes: ['zenix', 'autumn', 'ocean', 'midnight'],
   difficulty: 'easy',
   responsive: true,
   tags: ['Minimal', 'Single Row', 'Universal', 'Simple'],

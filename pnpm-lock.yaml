@@ -237,9 +237,9 @@ importers:
       '@zenixui/pack-autumn':
         specifier: workspace:*
         version: link:../../packages/packs/autumn
-      '@zenixui/pack-night-city':
+      '@zenixui/pack-midnight':
         specifier: workspace:*
-        version: link:../../packages/packs/night-city
+        version: link:../../packages/packs/midnight
       '@zenixui/pack-ocean':
         specifier: workspace:*
         version: link:../../packages/packs/ocean
@@ -307,9 +307,9 @@ importers:
       '@zenixui/pack-autumn':
         specifier: workspace:*
         version: link:../../packages/packs/autumn
-      '@zenixui/pack-night-city':
+      '@zenixui/pack-midnight':
         specifier: workspace:*
-        version: link:../../packages/packs/night-city
+        version: link:../../packages/packs/midnight
       '@zenixui/pack-ocean':
         specifier: workspace:*
         version: link:../../packages/packs/ocean
@@ -438,7 +438,7 @@ importers:
         specifier: workspace:*
         version: link:../../scenes
 
-  packages/packs/night-city:
+  packages/packs/midnight:
     dependencies:
       '@zenixui/core':
         specifier: workspace:*

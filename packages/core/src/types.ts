@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type MotionProfile = 'none' | 'minimal' | 'standard' | 'expressive';
-export type ThemePreset = 'zenix' | 'ocean' | 'night-city' | 'autumn';
+export type ThemePreset = 'zenix' | 'ocean' | 'midnight' | 'autumn';
 export type HeadingFont = 'inter' | 'geist' | 'manrope';
 export type BodyFont = 'system' | 'inter' | 'geist';
 export type MonoFont = 'fira-code' | 'jetbrains-mono';

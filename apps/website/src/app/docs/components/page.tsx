@@ -17,7 +17,7 @@ export default function ComponentsPage() {
           {content}
         </div>
       </Experience>
-      <Experience preset="night-city">
+      <Experience preset="midnight">
         <div style={{ background: 'var(--zx-background)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '160px' }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 600, opacity: 0.5, marginBottom: '1rem', textTransform: 'uppercase' }}>Night City</div>
           {content}

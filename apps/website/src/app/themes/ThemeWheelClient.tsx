@@ -92,7 +92,7 @@ const DESIGN_SYSTEMS: DesignSystemSegment[] = [
     endAngle: 268,
   },
   {
-    id: 'night-city',
+    id: 'midnight',
     name: 'Night City',
     tagline: 'Terminal Hacker',
     primary: '#22c55e',

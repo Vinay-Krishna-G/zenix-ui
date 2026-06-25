@@ -4,7 +4,7 @@ import { ThemeWheelClient } from './ThemeWheelClient';
 import { ColorTheoryClient } from './ColorTheoryClient';
 
 export const metadata: Metadata = {
-  title: 'Design Language Wheel | ZenixUI',
+  title: 'Design Languages | ZenixUI',
   description:
     'ZenixUI provides 4 distinct design languages — not just color themes. Each one is engineered for a specific emotional identity: professional, calm, warm, or technical.',
 };
@@ -78,7 +78,7 @@ const DESIGN_SYSTEMS = [
     motion: 'Minimal',
   },
   {
-    id: 'night-city',
+    id: 'midnight',
     name: 'Night City',
     tagline: 'Terminal Hacker',
     description:
@@ -113,8 +113,8 @@ export default function ThemesPage() {
           Theme Engine
         </div>
         <h1 style={{ fontSize: '3.5rem', fontWeight: 800, margin: '0 0 1.25rem', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
-          Design Language<br />
-          <span style={{ opacity: 0.35 }}>Wheel</span>
+          Design<br />
+          <span style={{ opacity: 0.35 }}>Languages</span>
         </h1>
         <p style={{ fontSize: '1.2rem', opacity: 0.6, lineHeight: 1.6, maxWidth: '560px', margin: '0 auto 3rem' }}>
           Not colors. <strong>Design languages.</strong> Each one is engineered for a specific emotional identity.

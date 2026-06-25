@@ -251,7 +251,7 @@ import { themeConfig } from '../theme/zenix';
             >
               <option value="zenix">Zenix (Solid)</option>
               <option value="ocean">Ocean (Glass)</option>
-              <option value="night-city">Night City (Cyber)</option>
+              <option value="midnight">Night City (Cyber)</option>
               <option value="autumn">Autumn (Organic)</option>
             </select>
           </div>

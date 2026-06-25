@@ -1,7 +1,7 @@
 export function NightCityScene() {
   return (
     <div 
-      className="zx-scene-night-city"
+      className="zx-scene-midnight"
       style={{
         position: 'absolute',
         inset: 0,

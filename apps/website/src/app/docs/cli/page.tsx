@@ -19,7 +19,7 @@ export default function CliDocsPage() {
         Use the `add` command to download a complete blueprint from the Blueprint Gallery directly into your application.
       </p>
       <pre style={{ margin: '0 0 2rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
-        {`npx zenix-ui add night-city-portfolio`}
+        {`npx zenix-ui add midnight-portfolio`}
       </pre>
 
       <div style={{ padding: '1.5rem', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', marginBottom: '4rem' }}>

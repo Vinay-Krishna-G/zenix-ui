@@ -400,3 +400,514 @@ Key architectural shifts approved by product owner:
 5. **Component metadata**: every section exports `metadata: SectionMetadata`
 
 These are NOT yet implemented. See `architecture.md` for the approved design.
+
+---
+
+## Core Design Principle (Non-negotiable)
+
+> **If the user has to read documentation before understanding the product, the interface has failed.**
+
+This changes everything about how pages are designed.
+
+### The product must flow like this:
+```
+Open website
+↓
+Understand in 15 seconds
+↓
+Play
+↓
+Generate
+↓
+Install
+```
+
+NOT like this:
+```
+Docs
+↓
+Understand
+↓
+Use
+```
+
+### Homepage funnel (approved direction):
+```
+Hero (interactive)
+↓
+Interactive Demo
+↓
+Theme Wheel (live preview)
+↓
+Section Library
+↓
+Blueprint Gallery
+↓
+Studio
+↓
+Install (CLI)
+↓
+Docs
+```
+
+Every step is interactive. Users learn by playing.
+
+---
+
+## Mandatory Response Format (Before AND After Code Changes)
+
+### Before modifying ANY file:
+1. Audit the affected files (show paths inspected)
+2. Explain why the change improves: UX, DX, SEO, conversion, accessibility, or scalability
+3. Explain alternatives and why they were rejected
+
+### After modifying ANY file, ALWAYS include:
+
+**Modified Files:**
+- Full relative path
+- One paragraph: why this file changed
+
+**Updated Code:**
+- Show the actual modified code or the relevant changed section
+- Never omit code with "edited" or "updated" summaries
+- Never show diffs — show final state only
+
+**Terminal Output — label with exactly one of:**
+
+🟢 SUCCESS
+```
+<exact terminal output>
+```
+
+🔴 ERROR
+```
+<exact terminal output>
+```
+
+🟡 WARNING
+```
+<exact terminal output>
+```
+
+**If a build fails:**
+- Explain the exact root cause
+- Show the fix applied
+- Re-run the build
+- Include the successful terminal output in full
+
+**Never:**
+- Stop after presenting only an implementation plan when implementation was requested
+- Fabricate build results or terminal logs
+- Truncate terminal output
+- Use "build passed" or "compiled successfully" without showing the actual output
+
+---
+
+## Night City Aesthetic Direction (Approved)
+
+The "Night City" theme must NOT look like:
+- Cyberpunk / RGB / Neon / Gaming / Hacker
+
+It MUST feel like:
+- Apple · Linear · Raycast · Notion · Vercel · Arc
+- Calm · Professional · Timeless
+- "Premium workspace" NOT "RGB gaming keyboard"
+
+Dark themes = calm, not loud.
+Shadows should feel like depth, not drama.
+Animations should feel like precision, not performance.
+
+Consider renaming to: Midnight | Slate | Eclipse | Nocturne | Obsidian
+
+---
+
+## UI Premium Standard (Mandatory for All Components)
+
+Inputs must feel like Apple:
+- Visible background distinction from page background
+- Focused border with color (not just outline)
+- Smooth transition on focus (0.15s ease)
+- Appropriate padding (at minimum 0.625rem 1rem)
+- Shadow on focus or elevated state
+
+Hierarchy must be readable in 1 second:
+- Form fields must NOT blend into the background
+- Cards must be visually distinct from the page background
+- Buttons must have clear affordance (not match opacity of surrounding text)
+
+If a form occupies less than 40% of its container horizontally, the layout is wrong.
+If negative space exceeds 60% of the viewport on a form page, the layout is wrong.
+
+---
+
+## ZenixUI Is NOT:
+- A component library
+- A Tailwind UI clone
+- A shadcn/ui clone
+- A page builder
+- A visual builder
+
+## ZenixUI IS:
+- Theme Engine
+- Experience Library
+- Blueprint Registry
+- CLI Distribution Platform
+
+Core philosophy: Build Entire Experiences. Not Components.
+
+---
+
+## Taxonomy (use consistently, never deviate)
+
+- **Blueprint** — a complete page experience (not "template", not "experience" in nav)
+- **Theme Studio** or **Experience Studio** — never "Visual Builder"
+- **Theme Engine** — the CSS variable system
+- **CLI** — `npx zenix-ui` / `pnpm dlx zenix-ui`
+- **Framework** — Next.js | Vite | Remix | Astro (typed union, never raw strings)
+- **Section** — an independently installable UI block (header, footer, hero, etc.)
+
+---
+
+## SEO Philosophy
+
+Target high-intent keywords:
+- react dashboard template
+- nextjs dashboard template
+- portfolio template react
+- admin dashboard ui
+- vite portfolio template
+- dracula palette
+- tokyo night theme
+- catppuccin colors
+- react footer component
+- glassmorphism navbar react
+- nextjs hero section
+
+Do NOT chase "ZenixUI" branded searches.
+
+---
+
+## Priority Order (current)
+
+1. Funnel integrity (every page connects to next)
+2. Section Library (headers, footers, heroes — each independently installable)
+3. Night City / theme aesthetic polish
+4. Theme Wheel + Color Theory Engine
+5. Framework Docs completeness
+6. Studio Command Generator completeness
+7. Framework SEO Pages (700+ words each)
+8. Blueprint Category Hubs
+
+Marketplace is NOT current priority.
+New themes are NOT the priority — the engine and the sections are the priority.
+
+---
+
+## Execution Rule: Never Stop After a Plan
+
+Unless the user explicitly says "just give me a plan," implement immediately after writing the plan.
+
+Do not write:
+> "Ready to implement when you approve."
+
+Do write:
+> "Here is the plan. Implementing now."
+
+Then implement.
+
+---
+
+## End-of-Session Summary (Mandatory)
+
+End every session with this exact block:
+
+```
+## Session Summary
+
+### Files Modified
+- path/to/file — what changed
+
+### Files Created
+- path/to/file — what it does
+
+### Files Deleted
+- (none) or list
+
+### Verification
+Command: <exact command>
+Result: 🟢 SUCCESS / 🔴 ERROR
+Pages generated: N
+TypeScript errors: 0
+
+### Remaining Technical Debt
+- List of known issues not fixed this session
+
+### Recommended Next Step
+One sentence. The single most important next action.
+```
+
+Never omit this block. Never summarize it as "session complete."
+
+---
+
+## UI Change Justification (Mandatory)
+
+For every UI change, explain:
+
+1. **UX improvement** — How does this make the interface easier or more intuitive for a user?
+2. **Developer Experience improvement** — How does this reduce friction for a developer adopting ZenixUI?
+3. **Conversion impact** — What user behavior change is this expected to produce? What metric confirms or refutes it?
+4. **Future scalability** — Does this architecture scale to 10x content (30 → 300 blueprints, 4 → 40 themes)?
+
+If you cannot answer all four, the change is incomplete.
+
+---
+
+## Architecture Freeze (Mandatory)
+
+**Architecture is frozen.** If a proposed implementation requires changing the architecture, stop implementation and explain exactly why the current architecture cannot support the feature. Do not redesign by default.
+
+---
+
+# Mandatory Implementation & Reporting Rules (Non-Negotiable)
+
+From this point onward, architecture is frozen. Do not propose new architectures, naming systems, abstractions, engines, or implementation plans unless I explicitly request them.
+
+Your responsibility is implementation.
+
+## 1. Complete Code Output (Required)
+
+For EVERY modified or newly created file:
+
+* Show the COMPLETE file contents.
+* Never show only snippets or diffs.
+* Never omit files that were modified.
+* Never summarize code changes.
+
+If a file is too large to fit in one response:
+
+* Create a file named `updated.md` in the artifacts directory.
+* Include the complete contents of every modified or newly created file inside `updated.md`.
+* Organize it like:
+
+```
+# File
+apps/website/src/app/page.tsx
+
+```tsx
+<complete file>
+```
+
+# File
+packages/core/src/foundations/layout.ts
+
+```ts
+<complete file>
+```
+```
+
+Do NOT omit any file.
+
+---
+
+## 2. Every Modified File Must Be Listed
+
+After implementation include exactly:
+
+```
+Modified Files
+
+1.
+path/to/file.tsx
+Reason:
+...
+
+2.
+path/to/file.ts
+Reason:
+...
+
+Created Files
+
+Deleted Files
+```
+
+No file may be skipped.
+
+---
+
+## 3. Terminal Output
+
+Always include ALL terminal commands executed.
+
+Separate them into:
+
+🟢 Successful Commands
+```
+pnpm install
+pnpm build
+...
+```
+
+🟡 Warnings
+```
+...
+```
+
+🔴 Failed Commands
+```
+...
+```
+
+If a command failed:
+- explain why
+- show the fix
+- rerun it
+
+---
+
+## 4. Build Verification
+
+Always include:
+
+```
+Framework:
+Next.js version
+
+Pages generated:
+
+TypeScript errors:
+
+ESLint errors:
+
+Warnings:
+
+Build duration:
+
+Bundle size (if available):
+
+JS changes:
+
+CSS changes:
+```
+
+Never simply say
+"Build succeeded."
+
+---
+
+## 5. Evidence Rule
+
+Never say
+"Implemented"
+unless all of the following exist:
+✓ Code
+✓ Build
+✓ Verification
+✓ Reachable UI
+✓ No TypeScript errors
+
+---
+
+## 6. UI Verification
+
+For every UI change verify:
+
+□ Desktop
+□ Tablet
+□ Mobile
+□ Dark mode
+□ Light mode
+□ Keyboard navigation
+□ Hover states
+□ Focus states
+□ Empty states
+□ Error states
+□ Loading states
+□ Visual hierarchy
+□ Typography
+□ Spacing
+□ Accessibility
+
+---
+
+## 7. Premium UI Standard
+
+Every UI should target the quality of:
+
+- Apple
+- Linear
+- Vercel
+- Raycast
+- Stripe
+
+Never settle for average layouts.
+
+Always improve:
+- spacing
+- hierarchy
+- typography
+- alignment
+- animations
+- responsiveness
+- accessibility
+
+---
+
+## 8. No Placeholder Implementations
+
+Never generate placeholder code.
+Never fake an implementation.
+Never create TODO implementations merely to satisfy a checklist.
+
+If something cannot be completed:
+Stop.
+Explain why.
+Provide the exact blocking issue.
+
+---
+
+## 9. Architecture Freeze
+
+Architecture is frozen.
+
+If implementation requires changing the architecture:
+STOP.
+Explain exactly:
+- why the current architecture is insufficient
+- what breaks
+- what alternatives were considered
+
+Do not redesign automatically.
+
+---
+
+## 10. Focus
+
+Do not spend responses rewriting implementation plans.
+Spend responses writing production-quality code.
+
+The priority is:
+1. Implementation
+2. Bug fixes
+3. UI polish
+4. Documentation
+
+Not architecture.
+
+---
+
+## 11. Response Format
+
+Every implementation response must follow this order:
+
+1. What is being implemented
+2. Dependency impact analysis
+3. Complete code for EVERY modified file (or `updated.md` if too large)
+4. Complete code for EVERY newly created file
+5. Terminal commands
+6. Terminal output
+7. Build verification
+8. Manual verification
+9. Remaining technical debt
+10. Next recommended task

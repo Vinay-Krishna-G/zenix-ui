@@ -88,7 +88,7 @@ import type { ThemeConfig } from '@zenixui/core';
 
 export const themeConfig = {
   name: 'Portfolio',
-  base: 'night-city',   // Great for developer portfolios
+  base: 'midnight',   // Great for developer portfolios
   radius: 'none',        // Sharp edges = terminal aesthetic
   motion: 'standard',
   density: 'comfortable',
@@ -109,11 +109,11 @@ export const themeConfig = {
       {/* Install a Blueprint */}
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>4. Install a Blueprint</h2>
       <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
-{`pnpm dlx zenix-ui add night-city-portfolio --config ./zenix-theme.json`}
+{`pnpm dlx zenix-ui add midnight-portfolio --config ./zenix-theme.json`}
       </pre>
       <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// src/App.tsx
-import { NightCityPortfolio } from './blueprints/night-city-portfolio';
+import { NightCityPortfolio } from './blueprints/midnight-portfolio';
 
 export default function App() {
   return <NightCityPortfolio />;
