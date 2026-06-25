@@ -3,6 +3,80 @@
 
 ---
 
+## Product Quality Rules (Mandatory Before Any Implementation)
+
+Every implementation must improve at least one of:
+- User onboarding
+- Discoverability
+- Developer experience
+- Accessibility
+- Documentation
+- Performance
+- Conversion
+- Reusability
+
+Do not add features simply because they are interesting.
+
+Before implementing any feature, answer:
+1. Why do users need it? (Problem solved)
+2. Why does it fit the long-term architecture? (Platform fit)
+3. How does it affect SEO? (Discoverability impact)
+4. How does it affect conversion? (Funnel impact)
+5. How does it scale to 1000+ blueprints and sections? (Scalability)
+
+When implementing UI:
+- Prefer reducing user decisions over adding more options.
+- Keep navigation shallow and predictable.
+- Ensure every page has a clear next action (CTA).
+
+---
+
+## Recommended vs Advanced Mode Rule
+
+ZenixUI must support two interaction modes:
+
+**Recommended Mode (default):** The system suggests visually and structurally compatible section combinations. New users get excellent results immediately without knowing what looks good together.
+
+**Advanced Mode:** Developers can mix any sections, themes, typography, and recipes freely with no restrictions.
+
+This principle applies to: Section Library, Theme Recipes, Studio, CLI.
+
+Implementation rule: always ship Recommended Mode first. Advanced Mode is additive — never gate it, never remove Recommended.
+
+---
+
+## Platform Roadmap (Phases — never skip ahead)
+
+```
+Phase 1 — Foundation (current)
+  Blueprint Engine
+  Section Library (headers, footers, heroes)
+  CLI (section install path syntax)
+  Theme Studio
+
+Phase 2 — Design Theory Engine
+  Theme Wheel (interactive, live preview)
+  Theme Recipes (Colors + Typography + Spacing + Motion + Effects)
+  Color Theory Engine
+  Typography Studio (Apple, Linear, Stripe presets)
+
+Phase 3 — AI Layer
+  Mood-based palette generation
+  Industry Presets (Healthcare, Finance, Gaming, Education)
+  Section Marketplace
+  Community Recipes
+
+Phase 4 — Experience Builder
+  Visual Editor (no-code section mixing)
+  Live inline editing (click Logo → upload logo)
+  Cloud Sync
+  Marketplace
+```
+
+Do NOT skip phases. Do NOT build Phase 3 features while Phase 1 is incomplete.
+
+---
+
 ## Reporting: Mandatory Format for Every Modified File
 
 You are not allowed to say "Edited file", "Implemented feature", "Added support", "Integrated analytics",

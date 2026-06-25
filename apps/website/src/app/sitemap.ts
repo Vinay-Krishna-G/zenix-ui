@@ -9,6 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl, lastModified: new Date() },
     { url: `${baseUrl}/themes`, lastModified: new Date() },
     { url: `${baseUrl}/blueprints`, lastModified: new Date() },
+    { url: `${baseUrl}/sections`, lastModified: new Date() },
+    { url: `${baseUrl}/sections/headers`, lastModified: new Date() },
+    { url: `${baseUrl}/sections/footers`, lastModified: new Date() },
     { url: `${baseUrl}/studio`, lastModified: new Date() },
     { url: `${baseUrl}/learn`, lastModified: new Date() },
     { url: `${baseUrl}/docs`, lastModified: new Date() },
@@ -17,7 +20,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/docs/vite`, lastModified: new Date() },
     { url: `${baseUrl}/docs/remix`, lastModified: new Date() },
     { url: `${baseUrl}/docs/astro`, lastModified: new Date() },
-    { url: `${baseUrl}/compare`, lastModified: new Date() },
+    { url: `${baseUrl}/docs/components`, lastModified: new Date() },
+    { url: `${baseUrl}/nextjs-templates`, lastModified: new Date() },
+    { url: `${baseUrl}/react-templates`, lastModified: new Date() },
+    { url: `${baseUrl}/vite-templates`, lastModified: new Date() },
     { url: `${baseUrl}/roadmap`, lastModified: new Date() },
   ];
 
