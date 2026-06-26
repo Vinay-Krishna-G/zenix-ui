@@ -52,7 +52,7 @@ export function InteractiveCliDemo() {
   return (
     <Surface variant="card" style={{ 
       display: 'grid', 
-      gridTemplateColumns: '300px 1fr', 
+      gridTemplateColumns: '320px 1fr', 
       gap: '0', 
       border: '1px solid var(--zx-elevated)', 
       borderRadius: 'var(--zx-radius-lg)', 
@@ -61,7 +61,7 @@ export function InteractiveCliDemo() {
     }}>
       
       {/* LEFT: Controls & CLI */}
-      <div style={{ padding: '2rem', borderRight: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{ padding: '2.5rem 2rem', borderRight: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
         
         <div>
           <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '0.75rem' }}>

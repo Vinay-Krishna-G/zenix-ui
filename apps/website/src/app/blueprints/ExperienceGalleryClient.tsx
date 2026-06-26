@@ -78,10 +78,10 @@ export function ExperienceGalleryClient() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '4rem', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '256px 1fr', gap: '4rem', alignItems: 'start' }}>
         
         {/* SIDEBAR */}
-        <aside style={{ position: 'sticky', top: '2rem' }}>
+        <aside style={{ position: 'sticky', top: '2.5rem' }}>
           <div style={{ marginBottom: '2rem' }}>
             <Input 
               placeholder="Search experiences..." 

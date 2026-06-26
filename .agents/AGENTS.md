@@ -911,3 +911,71 @@ Every implementation response must follow this order:
 8. Manual verification
 9. Remaining technical debt
 10. Next recommended task
+
+---
+
+## 12. Complete File Accountability (Mandatory)
+
+For every implementation response:
+
+### Modified Files
+List **every** modified file.
+For **every file**, include one of the following:
+1. The complete file contents inline.
+OR
+2. The complete file inside `updated.md`.
+
+There must never be a modified file whose contents are omitted.
+
+### Created Files
+Apply the same rule.
+Every created file must appear in full.
+
+### Deleted Files
+List every deleted file and explain why it was removed.
+
+### Large Responses
+If the response exceeds the model's output limit:
+* Create `updated.md`.
+* Include **all modified files**.
+* Include **all created files**.
+* Include **all deleted file names**.
+* Continue writing into `updated.md` until every file has been included.
+
+Never omit a file because of response length.
+
+### No Partial Code
+Never output:
+* "..."
+* "remaining code unchanged"
+* "rest of file omitted"
+* partial snippets
+
+Every file must be complete.
+If the response limit prevents this:
+Use `updated.md`.
+
+---
+
+## 13. High-Volume Modification Rule
+
+If more than 5 files are modified in a session:
+Automatically create `updated.md` in the artifacts directory instead of trying to inline code.
+Do not ask for permission.
+Do it automatically.
+
+## 14. API Change Justification (Mandatory)
+
+Before changing any public component API:
+
+1. List every existing usage.
+2. State whether the API is:
+   - Backward compatible
+   - Soft deprecated
+   - Breaking
+3. If breaking:
+   a. Explain why.
+   b. Provide migration strategy.
+   c. Update every usage.
+   d. Verify zero regressions.
+

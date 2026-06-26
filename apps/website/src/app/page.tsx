@@ -27,15 +27,15 @@ export default function Home() {
           Theme Engine · Experience Library · Blueprint Registry · CLI
         </div>
 
-        <h1 style={{ fontSize: '5rem', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: '2rem', marginInline: 'auto', maxWidth: '896px' }}>
+        <h1 style={{ fontSize: '5rem', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '2rem', margin: '0 auto', maxWidth: '896px' }}>
           Build Entire Experiences.<br/>
-          <span style={{ opacity: 0.4 }}>Not Components.</span>
+          <span style={{ opacity: 0.3 }}>Not Components.</span>
         </h1>
-        <p style={{ fontSize: '1.5rem', opacity: 0.7, margin: '0 auto 2rem', maxWidth: '640px', lineHeight: 1.6 }}>
+        <p style={{ fontSize: '1.5rem', opacity: 0.8, margin: '2rem auto 2.5rem', maxWidth: '640px', lineHeight: 1.5, letterSpacing: '-0.01em' }}>
           An experience ecosystem for React. Install independent sections or complete pages via CLI. You own the source code.
         </p>
 
-        <p style={{ fontSize: '1.125rem', opacity: 0.5, margin: '0 auto 3rem', maxWidth: '576px', fontStyle: 'italic' }}>
+        <p style={{ fontSize: '1.125rem', opacity: 0.5, margin: '0 auto 3rem', maxWidth: '576px', fontStyle: 'italic', lineHeight: 1.6 }}>
           Like Tailwind UI meets Vercel templates — but with full theme generation and a CLI installer.
         </p>
 

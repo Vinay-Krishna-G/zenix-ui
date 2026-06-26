@@ -20,7 +20,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       width: fullWidth ? '100%' : 'auto',
       border: 'none',
       fontFamily: 'inherit',
-      transition: 'all 0.2s ease',
+      transition: 'all 0.15s ease',
       boxSizing: 'border-box',
       ...style,
     };

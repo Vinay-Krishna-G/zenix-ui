@@ -40,17 +40,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const variantStyles = {
       // ── Default: solid surface, clearly distinct from page background ──
       default: {
-        padding: '0.65rem 1rem',
+        padding: '0.625rem 1rem', // 10px 16px (Apple standard)
         borderRadius: 'calc(var(--zx-radius-sm, 6px) + 2px)',
         border: `1px solid ${borderColor}`,
         // Uses --zx-surface (slightly elevated from background) for contrast
         background: 'var(--zx-surface)',
-        fontSize: '0.9rem',
+        fontSize: '0.875rem',
         lineHeight: '1.5',
         boxShadow: isFocused
           ? `${focusShadow}, inset 0 1px 2px rgba(0,0,0,0.04)`
           : 'inset 0 1px 2px rgba(0,0,0,0.04)',
-        transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
+        transition: 'border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease',
       },
 
       // ── Glass: frosted translucent surface ──────────────────────────────
