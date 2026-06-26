@@ -44,7 +44,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       solid: {
         background: tone === 'neutral' ? activeColor : `${activeColor}20`,
         color: tone === 'neutral' ? 'var(--zx-primary)' : activeColor,
-        borderRadius: 'var(--zx-radius-sm)',
+        borderRadius: 'var(--zx-radius-sm, 6px)',
         textTransform: 'uppercase' as any,
         letterSpacing: '0.05em',
         fontWeight: 600,
@@ -53,7 +53,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         background: 'rgba(255,255,255,0.1)',
         color: 'var(--zx-primary)',
         border: '1px solid var(--zx-glass-border)',
-        borderRadius: 'var(--zx-radius-round)',
+        borderRadius: 'var(--zx-radius-pill, 9999px)',
         backdropFilter: 'var(--zx-glass-blur)',
         fontWeight: 400,
       },

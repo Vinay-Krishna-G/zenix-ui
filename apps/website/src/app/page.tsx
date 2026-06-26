@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Surface } from '@zenixui/components';
+import { Surface, Button } from '@zenixui/components';
 import Link from 'next/link';
 import { blueprints } from '@zenixui/blueprints';
 import { InteractiveCliDemo } from '@/components/home/InteractiveCliDemo';
@@ -40,11 +40,11 @@ export default function Home() {
         </p>
 
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/blueprints" style={{ padding: '1rem 2rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none', fontSize: '1.125rem', transition: 'opacity 0.2s ease' }}>
-            Browse Gallery
+          <Link href="/blueprints" style={{ textDecoration: 'none' }}>
+            <Button size="lg" style={{ fontWeight: 600 }}>Browse Gallery</Button>
           </Link>
-          <Link href="/studio" style={{ padding: '1rem 2rem', background: 'var(--zx-surface)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none', fontSize: '1.125rem', border: '1px solid var(--zx-border)', transition: 'background 0.2s ease' }}>
-            Open Theme Studio
+          <Link href="/studio" style={{ textDecoration: 'none' }}>
+            <Button variant="glass" size="lg" style={{ fontWeight: 600 }}>Open Theme Studio</Button>
           </Link>
         </div>
       </section>
@@ -170,11 +170,11 @@ export default function Home() {
             Pick a section, customize it in the studio, get the CLI command. Ship in minutes.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3rem' }}>
-            <Link href="/blueprints" style={{ padding: '1rem 2.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none', fontSize: '1.125rem' }}>
-              Browse Gallery
+            <Link href="/blueprints" style={{ textDecoration: 'none' }}>
+              <Button size="lg" style={{ fontWeight: 600 }}>Browse Gallery</Button>
             </Link>
-            <Link href="/docs" style={{ padding: '1rem 2.5rem', background: 'var(--zx-background)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600, textDecoration: 'none', fontSize: '1.125rem', border: '1px solid var(--zx-border)' }}>
-              Read the Docs
+            <Link href="/docs" style={{ textDecoration: 'none' }}>
+              <Button variant="glass" size="lg" style={{ fontWeight: 600, border: '1px solid var(--zx-border)', color: 'var(--zx-primary)' }}>Read the Docs</Button>
             </Link>
           </div>
           <code style={{ fontSize: '1rem', opacity: 0.6, fontFamily: 'monospace', background: 'var(--zx-elevated)', padding: '0.5rem 1rem', borderRadius: '4px' }}>
