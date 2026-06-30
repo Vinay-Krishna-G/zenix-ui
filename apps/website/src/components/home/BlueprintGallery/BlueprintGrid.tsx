@@ -1,15 +1,21 @@
 import React from 'react';
 import { blueprints } from '@zenixui/blueprints/registry';
 import { BlueprintCard } from './BlueprintCard';
-import styles from './BlueprintGallery.module.css';
 
 export function BlueprintGrid() {
   const featured = blueprints.filter(b => b.featured).slice(0, 3);
   
   return (
-    <div className={styles.grid}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '3rem', paddingTop: '2rem' }}>
       {featured.map(blueprint => (
-        <BlueprintCard key={blueprint.id} blueprint={blueprint} />
+        <BlueprintCard 
+          key={blueprint.id} 
+          id={blueprint.id}
+          title={blueprint.title}
+          description={blueprint.description}
+          category={blueprint.category}
+          previewImage={blueprint.previewImage}
+        />
       ))}
     </div>
   );
