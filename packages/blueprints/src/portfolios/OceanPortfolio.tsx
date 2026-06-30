@@ -5,7 +5,7 @@ export function OceanPortfolio() {
     <div style={{ paddingBottom: '4rem' }}>
       {/* HERO SECTION */}
       <Pattern.Root padded style={{ paddingTop: '8rem', paddingBottom: '4rem' }}>
-        <Pattern.Content align="center" spacing="xl" style={{ textAlign: 'center' }}>
+        <Pattern.Content align="center" gap="xl" style={{ textAlign: 'center' }}>
           <Surface variant="glass" style={{ padding: '0.5rem 1rem', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
             Fluid Interaction Designer
           </Surface>
@@ -35,16 +35,16 @@ export function OceanPortfolio() {
 
       {/* PROJECT GRID */}
       <Pattern.Root padded>
-        <Pattern.Content spacing="xl">
+        <Pattern.Content gap="xl">
           <h2 style={{ fontSize: '2.5rem', margin: 0 }}>Selected Works</h2>
-          <Grid columns={2} spacing="xl">
+          <Grid columns={2} gap="xl">
             {[1, 2, 3, 4].map((i) => (
               <Surface key={i} variant="card" style={{ overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ height: '250px', background: 'var(--zx-elevated)', opacity: 0.5 }} />
                 <div style={{ padding: '2rem' }}>
                   <h3 style={{ fontSize: '1.5rem', margin: '0 0 0.5rem' }}>Project Submersion {i}</h3>
                   <p style={{ margin: 0, opacity: 0.7, lineHeight: 1.5 }}>An exploration into fluid dynamics and continuous state transitions in React.</p>
-                  <Stack direction="row" spacing="sm" style={{ marginTop: '1.5rem' }}>
+                  <Stack direction="row" gap="sm" style={{ marginTop: '1.5rem' }}>
                     <Surface variant="glass" style={{ padding: '0.25rem 0.75rem', borderRadius: '1rem', fontSize: '0.75rem' }}>React</Surface>
                     <Surface variant="glass" style={{ padding: '0.25rem 0.75rem', borderRadius: '1rem', fontSize: '0.75rem' }}>WebGL</Surface>
                   </Stack>
@@ -74,7 +74,7 @@ export function OceanPortfolio() {
       {/* CONTACT */}
       <Pattern.Root padded>
         <Container size="md">
-          <Stack align="center" spacing="lg" style={{ textAlign: 'center' }}>
+          <Stack align="center" gap="lg" style={{ textAlign: 'center' }}>
             <h2 style={{ fontSize: '3rem', margin: 0 }}>Let's build something deep.</h2>
             <p style={{ opacity: 0.8, fontSize: '1.25rem', marginBottom: '1rem' }}>Available for freelance opportunities in Q4.</p>
             <Surface variant="card" style={{ padding: '1.5rem 4rem', borderRadius: '2rem', fontWeight: 'bold', cursor: 'pointer', background: '#fff', color: 'var(--zx-background)' }}>

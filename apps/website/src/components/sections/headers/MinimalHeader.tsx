@@ -21,23 +21,25 @@
 import { useState } from 'react';
 import type { SectionMetadata, SectionProps } from '../types';
 
-// ── START CUSTOMIZATION ───────────────────────────────────────
+// ======================================
+// SAFE TO EDIT
+// ======================================
 
-const LOGO = 'YourBrand';
+const content = {
+  logo: 'YourBrand',
+  links: [
+    { label: 'Product',  href: '#product' },
+    { label: 'Pricing',  href: '#pricing' },
+    { label: 'About',    href: '/about' },
+  ],
+  secondaryCta: { label: 'Sign in', href: '/login' },
+  primaryCta: { label: 'Start free', href: '/signup' },
+  settings: {
+    showDivider: true
+  }
+};
 
-const NAV_LINKS = [
-  { label: 'Product',  href: '#product' },
-  { label: 'Pricing',  href: '#pricing' },
-  { label: 'About',    href: '/about' },
-];
-
-const CTA = { label: 'Sign in', href: '/login', secondary: true };
-const CTA_PRIMARY = { label: 'Start free', href: '/signup' };
-
-/** Show a subtle bottom border to separate from content */
-const SHOW_DIVIDER = true;
-
-// ── END CUSTOMIZATION ─────────────────────────────────────────
+// ======================================
 
 export const sectionMeta: SectionMetadata = {
   name: 'Minimal Header',
@@ -64,7 +66,7 @@ export function MinimalHeader({ className }: SectionProps) {
         top: 0,
         zIndex: 100,
         background: 'var(--zx-background)',
-        borderBottom: SHOW_DIVIDER ? '1px solid var(--zx-elevated)' : 'none',
+        borderBottom: content.settings.showDivider ? '1px solid var(--zx-elevated)' : 'none',
         width: '100%',
       }}
     >
@@ -91,7 +93,7 @@ export function MinimalHeader({ className }: SectionProps) {
             fontFamily: 'Inter, system-ui, sans-serif',
           }}
         >
-          {LOGO}
+          {content.logo}
         </a>
 
         {/* ── Desktop Navigation (centered) ── */}
@@ -105,7 +107,7 @@ export function MinimalHeader({ className }: SectionProps) {
             justifyContent: 'center',
           }}
         >
-          {NAV_LINKS.map(link => (
+          {content.links.map(link => (
             <a
               key={link.label}
               href={link.href}
@@ -130,7 +132,7 @@ export function MinimalHeader({ className }: SectionProps) {
         {/* ── CTAs ── */}
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexShrink: 0 }}>
           <a
-            href={CTA.href}
+            href={content.secondaryCta.href}
             style={{
               padding: '0.4rem 0.875rem',
               fontSize: '0.875rem',
@@ -144,10 +146,10 @@ export function MinimalHeader({ className }: SectionProps) {
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
           >
-            {CTA.label}
+            {content.secondaryCta.label}
           </a>
           <a
-            href={CTA_PRIMARY.href}
+            href={content.primaryCta.href}
             style={{
               padding: '0.4rem 1rem',
               borderRadius: '6px',
@@ -170,7 +172,7 @@ export function MinimalHeader({ className }: SectionProps) {
               el.style.background = 'transparent';
             }}
           >
-            {CTA_PRIMARY.label}
+            {content.primaryCta.label}
           </a>
         </div>
       </div>

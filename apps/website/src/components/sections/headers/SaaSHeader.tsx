@@ -22,33 +22,33 @@
 import { useState } from 'react';
 import type { SectionMetadata, SectionProps } from '../types';
 
-// ── START CUSTOMIZATION ───────────────────────────────────────
+// ======================================
+// SAFE TO EDIT
+// ======================================
 
-const LOGO = 'YourApp';
+const content = {
+  logo: 'YourApp',
+  mainNav: [
+    { label: 'Dashboard',  href: '/dashboard' },
+    { label: 'Analytics',  href: '/analytics' },
+    { label: 'Projects',   href: '/projects' },
+    { label: 'Team',       href: '/team' },
+  ],
+  productNav: [
+    { label: 'Upgrade',    href: '/upgrade' },
+    { label: 'Docs',       href: '/docs' },
+  ],
+  user: {
+    avatarSrc: null as string | null,
+    displayName: 'Alex Johnson',
+    initials: 'AJ'
+  },
+  settings: {
+    notificationCount: 3
+  }
+};
 
-/** Primary navigation — product sections */
-const MAIN_NAV = [
-  { label: 'Dashboard',  href: '/dashboard' },
-  { label: 'Analytics',  href: '/analytics' },
-  { label: 'Projects',   href: '/projects' },
-  { label: 'Team',       href: '/team' },
-];
-
-/** Secondary navigation — account sections */
-const PRODUCT_NAV = [
-  { label: 'Upgrade',    href: '/upgrade' },
-  { label: 'Docs',       href: '/docs' },
-];
-
-/** Set to null if the user is not logged in (shows "Sign in" instead) */
-const USER_AVATAR_SRC: string | null = null;
-const USER_DISPLAY_NAME = 'Alex Johnson';
-const USER_INITIALS = 'AJ';
-
-/** Number of unread notifications. Set to 0 to hide the badge. */
-const NOTIFICATION_COUNT = 3;
-
-// ── END CUSTOMIZATION ─────────────────────────────────────────
+// ======================================
 
 export const sectionMeta: SectionMetadata = {
   name: 'SaaS Header',
@@ -66,7 +66,7 @@ export const sectionMeta: SectionMetadata = {
 
 export function SaaSHeader({ className }: SectionProps) {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState(MAIN_NAV[0]?.href ?? '');
+  const [activeLink, setActiveLink] = useState(content.mainNav[0]?.href ?? '');
 
   return (
     <header
@@ -103,7 +103,7 @@ export function SaaSHeader({ className }: SectionProps) {
             fontFamily: 'Inter, system-ui, sans-serif',
           }}
         >
-          {LOGO}
+          {content.logo}
         </a>
 
         {/* ── Divider ── */}
@@ -114,7 +114,7 @@ export function SaaSHeader({ className }: SectionProps) {
           aria-label="App navigation"
           style={{ display: 'flex', gap: '0.125rem', flex: 1, alignItems: 'center' }}
         >
-          {MAIN_NAV.map(link => {
+          {content.mainNav.map(link => {
             const isActive = activeLink === link.href;
             return (
               <a
@@ -152,7 +152,7 @@ export function SaaSHeader({ className }: SectionProps) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0 }}>
 
           {/* Secondary nav links */}
-          {PRODUCT_NAV.map(link => (
+          {content.productNav.map(link => (
             <a
               key={link.label}
               href={link.href}
@@ -176,7 +176,7 @@ export function SaaSHeader({ className }: SectionProps) {
 
           {/* Notification bell */}
           <button
-            aria-label={`${NOTIFICATION_COUNT} unread notifications`}
+            aria-label={`${content.settings.notificationCount} unread notifications`}
             style={{
               position: 'relative',
               width: '34px',
@@ -207,7 +207,7 @@ export function SaaSHeader({ className }: SectionProps) {
               <path d="M8 1a5 5 0 0 1 5 5v3l1 2H2l1-2V6a5 5 0 0 1 5-5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
               <path d="M6 13a2 2 0 0 0 4 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
-            {NOTIFICATION_COUNT > 0 && (
+            {content.settings.notificationCount > 0 && (
               <span style={{
                 position: 'absolute',
                 top: '5px',
@@ -232,7 +232,7 @@ export function SaaSHeader({ className }: SectionProps) {
                 height: '32px',
                 borderRadius: '50%',
                 border: '2px solid var(--zx-elevated)',
-                background: USER_AVATAR_SRC ? 'transparent' : 'var(--zx-primary)',
+                background: content.user.avatarSrc ? 'transparent' : 'var(--zx-primary)',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -248,11 +248,11 @@ export function SaaSHeader({ className }: SectionProps) {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--zx-primary)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--zx-elevated)'; }}
             >
-              {USER_AVATAR_SRC ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={USER_AVATAR_SRC} alt={USER_DISPLAY_NAME} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              {content.user.avatarSrc ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img src={content.user.avatarSrc} alt={content.user.displayName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                USER_INITIALS
+                content.user.initials
               )}
             </button>
 
@@ -271,7 +271,7 @@ export function SaaSHeader({ className }: SectionProps) {
                 zIndex: 200,
               }}>
                 <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--zx-elevated)' }}>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 700 }}>{USER_DISPLAY_NAME}</div>
+                  <div style={{ fontSize: '0.82rem', fontWeight: 700 }}>{content.user.displayName}</div>
                   <div style={{ fontSize: '0.72rem', opacity: 0.5, marginTop: '0.1rem' }}>Free Plan</div>
                 </div>
                 {['Profile', 'Settings', 'Billing', 'Sign out'].map(item => (

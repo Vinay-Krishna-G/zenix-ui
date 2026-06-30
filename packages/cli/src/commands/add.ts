@@ -4,6 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { detectPackageManager, getInstallCommand } from '../utils/pm';
+import { scanProject } from '../utils/scanner';
+import { adaptComponent, AdaptationMode } from '../utils/adapt';
 import prompts from 'prompts';
 
 function levenshtein(a: string, b: string): number {
@@ -100,7 +102,17 @@ export async function add(experienceId: string, options: any) {
     }
   }
 
-  spinner.succeed(`Fetched ${metadata.title}. Writing files...`);
+  spinner.succeed(`Fetched ${metadata.title}.`);
+
+  const mode: AdaptationMode = options.mode || 'isolated';
+  let dna = null;
+  if (mode === 'native') {
+    spinner.start('Scanning project for Native adaptation...');
+    dna = scanProject(process.cwd());
+    spinner.succeed(`Project scanned. Framework: ${dna.framework}, Tailwind: ${dna.tailwind ? 'Yes' : 'No'}`);
+  }
+
+  spinner.start('Writing files...');
 
   const destDir = path.join(process.cwd(), config.experiencesDir);
   if (!fs.existsSync(destDir)) {
@@ -131,7 +143,11 @@ export async function add(experienceId: string, options: any) {
       }
     }
     
-    fs.writeFileSync(destFile, file.content);
+    let finalContent = file.content;
+    if (mode === 'native' && dna && file.name.endsWith('.tsx')) {
+      finalContent = adaptComponent(file.content, dna, mode);
+    }
+    fs.writeFileSync(destFile, finalContent);
     if (!mainFilename) mainFilename = file.name;
   }
 

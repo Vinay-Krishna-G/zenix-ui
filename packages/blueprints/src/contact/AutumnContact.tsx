@@ -22,7 +22,7 @@ export function AutumnContact() {
 
   return (
     <Features.Root padded>
-      <Features.Content spacing="xl">
+      <Features.Content gap="xl">
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1.5fr',

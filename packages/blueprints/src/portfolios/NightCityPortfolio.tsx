@@ -27,9 +27,9 @@ export function NightCityPortfolio() {
 
       {/* TECH STACK (StatsGrid) */}
       <Pattern.Root padded>
-        <Pattern.Content spacing="xl">
+        <Pattern.Content gap="xl">
           <h2 style={{ fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', borderBottom: '2px solid var(--zx-accent)', paddingBottom: '0.5rem', display: 'inline-block' }}>Tech Stack</h2>
-          <Grid columns={4} spacing="md">
+          <Grid columns={4} gap="md">
             {['React/Next.js', 'WebGL/Three', 'Rust/WASM', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'GraphQL'].map(tech => (
               <Surface key={tech} variant="card" style={{ padding: '1.5rem', textAlign: 'center', border: '1px solid var(--zx-elevated)' }}>
                 <span style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>{tech}</span>
@@ -41,9 +41,9 @@ export function NightCityPortfolio() {
 
       {/* TIMELINE */}
       <Pattern.Root padded>
-        <Pattern.Content spacing="xl">
+        <Pattern.Content gap="xl">
           <h2 style={{ fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', borderBottom: '2px solid #3b82f6', paddingBottom: '0.5rem', display: 'inline-block' }}>System Logs // Timeline</h2>
-          <Stack spacing="xl" style={{ borderLeft: '2px solid var(--zx-elevated)', marginLeft: '1rem', paddingLeft: '2rem' }}>
+          <Stack gap="xl" style={{ borderLeft: '2px solid var(--zx-elevated)', marginLeft: '1rem', paddingLeft: '2rem' }}>
             {[
               { year: '2026', title: 'Lead Architect @ NeonCorp', desc: 'Designed the global neural-net UI infrastructure.' },
               { year: '2024', title: 'Senior Dev @ DataGrid', desc: 'Optimized real-time trading terminals in WebGL.' },

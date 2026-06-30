@@ -23,8 +23,8 @@ export const PatternRoot = React.forwardRef<HTMLElement, PatternRootProps>(
 PatternRoot.displayName = 'Pattern.Root';
 
 export const PatternContent = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ children, spacing = 'xl', ...props }, ref) => (
-    <Stack ref={ref} spacing={spacing} {...props}>
+  ({ children, gap = 'xl', ...props }, ref) => (
+    <Stack ref={ref} gap={gap} {...props}>
       {children}
     </Stack>
   )
@@ -41,8 +41,8 @@ export const PatternVisual = React.forwardRef<HTMLDivElement, HTMLAttributes<HTM
 PatternVisual.displayName = 'Pattern.Visual';
 
 export const PatternActions = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ children, direction = 'row', spacing = 'md', justify = 'flex-start', ...props }, ref) => (
-    <Stack ref={ref} direction={direction} spacing={spacing} justify={justify} wrap {...props}>
+  ({ children, direction = 'row', gap = 'md', justify = 'flex-start', ...props }, ref) => (
+    <Stack ref={ref} direction={direction} gap={gap} justify={justify} wrap {...props}>
       {children}
     </Stack>
   )

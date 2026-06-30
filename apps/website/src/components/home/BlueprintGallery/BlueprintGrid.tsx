@@ -1,5 +1,5 @@
 import React from 'react';
-import { blueprints } from '@zenixui/blueprints/src/registry';
+import { blueprints } from '@zenixui/blueprints/registry';
 import { BlueprintCard } from './BlueprintCard';
 import styles from './BlueprintGallery.module.css';
 

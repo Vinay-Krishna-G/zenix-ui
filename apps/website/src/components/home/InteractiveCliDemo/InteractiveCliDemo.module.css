@@ -157,3 +157,111 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+@keyframes zx-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cliWrapper {
+  margin-top: auto;
+}
+
+.cliPromptSymbol {
+  opacity: 0.5;
+}
+
+.spinIcon {
+  animation: zx-spin 1s linear infinite;
+}
+
+.previewInner {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.previewDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.previewDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--zx-elevated);
+}
+
+.previewScaleWrapper {
+  transform: scale(0.8);
+  transform-origin: top left;
+  width: 125%;
+  height: 125%;
+}
+
+.previewBackground {
+  min-height: 100%;
+  background: var(--zx-background);
+}
+
+.previewPlaceholder {
+  padding: 4rem 2rem;
+  opacity: 0.3;
+}
+
+.placeholderLine {
+  height: 24px;
+  background: var(--zx-elevated);
+  border-radius: var(--zx-radius-surface);
+}
+
+.configGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+
+.configLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.configSelect {
+  padding: 0.5rem;
+  border-radius: var(--zx-radius-sm);
+  border: 1px solid var(--zx-elevated);
+  background: var(--zx-surface);
+  color: inherit;
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.configSelect:focus {
+  border-color: var(--zx-primary);
+}
+
+.configRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.configToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.configToggle input {
+  accent-color: var(--zx-primary);
+  width: 1rem;
+  height: 1rem;
+}

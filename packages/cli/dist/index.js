@@ -87,7 +87,7 @@ async function init(options) {
         choices: [
           { title: "Zenix", value: "zenix" },
           { title: "Ocean", value: "ocean" },
-          { title: "Night City", value: "night-city" },
+          { title: "Night City", value: "midnight" },
           { title: "Autumn", value: "autumn" }
         ]
       }
@@ -125,16 +125,126 @@ Success! ZenixUI is configured.`));
   console.log(`
 Next steps:`);
   console.log(`1. Wrap your root layout with ${import_chalk.default.cyan('<Experience preset="' + config.defaultTheme + '">')}`);
-  console.log(`2. Run ${import_chalk.default.cyan("npx zenix-ui add night-city-portfolio")} to add your first experience.
+  console.log(`2. Run ${import_chalk.default.cyan("npx zenix-ui add midnight-portfolio")} to add your first experience.
 `);
 }
 
 // src/commands/add.ts
 var import_chalk2 = __toESM(require("chalk"));
 var import_ora2 = __toESM(require("ora"));
+var import_fs4 = __toESM(require("fs"));
+var import_path4 = __toESM(require("path"));
+var import_child_process2 = require("child_process");
+
+// src/utils/scanner.ts
 var import_fs3 = __toESM(require("fs"));
 var import_path3 = __toESM(require("path"));
-var import_child_process2 = require("child_process");
+function detectFramework(pkgJson) {
+  const deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
+  if (deps["next"]) return "next";
+  if (deps["vite"]) return "vite";
+  if (deps["@remix-run/react"]) return "remix";
+  if (deps["astro"]) return "astro";
+  return "unknown";
+}
+function detectTailwindVersion(pkgJson) {
+  const deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
+  const tw = deps["tailwindcss"];
+  if (!tw) return false;
+  if (tw.includes("4.")) return 4;
+  if (tw.includes("3.")) return 3;
+  return true;
+}
+function parseCssVariables(cssContent) {
+  const vars = {};
+  const regex = /--([a-zA-Z0-9-]+):\s*([^;]+);/g;
+  let match;
+  while ((match = regex.exec(cssContent)) !== null) {
+    vars[`--${match[1]}`] = match[2].trim();
+  }
+  return vars;
+}
+function scanProject(cwd) {
+  const dna = {
+    framework: "unknown",
+    tailwind: false,
+    colors: { primary: null, surface: null },
+    radius: null,
+    spacing: null,
+    font: null,
+    darkMode: false
+  };
+  const pkgPath = import_path3.default.join(cwd, "package.json");
+  if (import_fs3.default.existsSync(pkgPath)) {
+    try {
+      const pkgJson = JSON.parse(import_fs3.default.readFileSync(pkgPath, "utf-8"));
+      dna.framework = detectFramework(pkgJson);
+      dna.tailwind = detectTailwindVersion(pkgJson);
+    } catch (e) {
+    }
+  }
+  const possibleCssPaths = [
+    "src/app/globals.css",
+    "app/globals.css",
+    "src/index.css",
+    "src/styles/globals.css",
+    "styles/globals.css"
+  ];
+  let cssContent = "";
+  for (const p of possibleCssPaths) {
+    const fullPath = import_path3.default.join(cwd, p);
+    if (import_fs3.default.existsSync(fullPath)) {
+      cssContent += import_fs3.default.readFileSync(fullPath, "utf-8") + "\n";
+    }
+  }
+  if (cssContent) {
+    const cssVars = parseCssVariables(cssContent);
+    dna.colors.primary = cssVars["--primary"] || cssVars["--color-primary"] || null;
+    dna.colors.surface = cssVars["--background"] || cssVars["--color-background"] || cssVars["--surface"] || null;
+    dna.radius = cssVars["--radius"] || cssVars["--border-radius"] || null;
+    if (cssContent.includes(".dark") || cssContent.includes("@media (prefers-color-scheme: dark)")) {
+      dna.darkMode = true;
+    }
+  }
+  const twConfigPath = import_path3.default.join(cwd, "tailwind.config.ts") || import_path3.default.join(cwd, "tailwind.config.js");
+  if (import_fs3.default.existsSync(twConfigPath)) {
+    const twContent = import_fs3.default.readFileSync(twConfigPath, "utf-8");
+    if (!dna.font && twContent.includes("fontFamily:")) {
+      dna.font = "custom";
+    }
+  }
+  if (!dna.colors.primary) dna.colors.primary = "#000000";
+  if (!dna.radius) dna.radius = "0.5rem";
+  return dna;
+}
+
+// src/utils/adapt.ts
+function adaptComponent(content, dna, mode) {
+  if (mode === "isolated") {
+    return content;
+  }
+  let adapted = content;
+  if (mode === "native") {
+    if (dna.radius) {
+      adapted = adapted.replace(/var\(--zx-radius-[a-z]+\)/g, "var(--radius)");
+    } else if (dna.tailwind) {
+      adapted = adapted.replace(/var\(--zx-radius-[a-z]+\)/g, "var(--radius, 0.5rem)");
+    }
+    if (dna.colors.primary) {
+      adapted = adapted.replace(/var\(--zx-primary\)/g, "var(--primary)");
+    }
+    if (dna.colors.surface) {
+      adapted = adapted.replace(/var\(--zx-surface\)/g, "var(--background, #fff)");
+    }
+    adapted = adapted.replace(/fontFamily:\s*['"]Inter,\s*system-ui,\s*sans-serif['"],?/g, "");
+  }
+  if (mode === "recipe") {
+    return content;
+  }
+  return adapted;
+}
+
+// src/commands/add.ts
 var import_prompts2 = __toESM(require("prompts"));
 function levenshtein(a, b) {
   if (a.length === 0) return b.length;
@@ -153,12 +263,12 @@ function levenshtein(a, b) {
   return matrix[b.length][a.length];
 }
 async function add(experienceId, options) {
-  const configPath = import_path3.default.join(process.cwd(), "zenix.json");
-  if (!import_fs3.default.existsSync(configPath)) {
+  const configPath = import_path4.default.join(process.cwd(), "zenix.json");
+  if (!import_fs4.default.existsSync(configPath)) {
     console.log(import_chalk2.default.red("Error: zenix.json not found. Run `npx zenix-ui init` first."));
     process.exit(1);
   }
-  const config = JSON.parse(import_fs3.default.readFileSync(configPath, "utf-8"));
+  const config = JSON.parse(import_fs4.default.readFileSync(configPath, "utf-8"));
   const apiUrl = process.env.ZENIX_API_URL || "https://zenixui.com";
   const spinner = (0, import_ora2.default)(`Locating experience: ${experienceId}...`).start();
   let metadata;
@@ -224,15 +334,23 @@ Unable to reach registry. Check your internet connection or verify ZENIX_API_URL
       }
     }
   }
-  spinner.succeed(`Fetched ${metadata.title}. Writing files...`);
-  const destDir = import_path3.default.join(process.cwd(), config.experiencesDir);
-  if (!import_fs3.default.existsSync(destDir)) {
-    import_fs3.default.mkdirSync(destDir, { recursive: true });
+  spinner.succeed(`Fetched ${metadata.title}.`);
+  const mode = options.mode || "isolated";
+  let dna = null;
+  if (mode === "native") {
+    spinner.start("Scanning project for Native adaptation...");
+    dna = scanProject(process.cwd());
+    spinner.succeed(`Project scanned. Framework: ${dna.framework}, Tailwind: ${dna.tailwind ? "Yes" : "No"}`);
+  }
+  spinner.start("Writing files...");
+  const destDir = import_path4.default.join(process.cwd(), config.experiencesDir);
+  if (!import_fs4.default.existsSync(destDir)) {
+    import_fs4.default.mkdirSync(destDir, { recursive: true });
   }
   let mainFilename = "";
   for (const file of files) {
-    const destFile = import_path3.default.join(destDir, file.name);
-    if (import_fs3.default.existsSync(destFile)) {
+    const destFile = import_path4.default.join(destDir, file.name);
+    if (import_fs4.default.existsSync(destFile)) {
       if (options.skipExisting) {
         console.log(import_chalk2.default.yellow(`Skipped ${file.name} (already exists).`));
         if (!mainFilename) mainFilename = file.name;
@@ -251,7 +369,11 @@ Unable to reach registry. Check your internet connection or verify ZENIX_API_URL
         }
       }
     }
-    import_fs3.default.writeFileSync(destFile, file.content);
+    let finalContent = file.content;
+    if (mode === "native" && dna && file.name.endsWith(".tsx")) {
+      finalContent = adaptComponent(file.content, dna, mode);
+    }
+    import_fs4.default.writeFileSync(destFile, finalContent);
     if (!mainFilename) mainFilename = file.name;
   }
   console.log(import_chalk2.default.green(`
@@ -261,9 +383,50 @@ Unable to reach registry. Check your internet connection or verify ZENIX_API_URL
 `));
 }
 
+// src/commands/compose.ts
+var import_chalk3 = __toESM(require("chalk"));
+var import_ora3 = __toESM(require("ora"));
+var import_fs5 = __toESM(require("fs"));
+var import_path5 = __toESM(require("path"));
+async function compose() {
+  const composePath = import_path5.default.join(process.cwd(), "zenix.compose.ts");
+  if (!import_fs5.default.existsSync(composePath)) {
+    console.log(import_chalk3.default.red("Error: zenix.compose.ts not found in the current directory."));
+    process.exit(1);
+  }
+  const spinner = (0, import_ora3.default)("Reading compose file...").start();
+  try {
+    const fileContent = import_fs5.default.readFileSync(composePath, "utf-8");
+    const componentsMatch = fileContent.match(/components:\s*\[([\s\S]*?)\]/);
+    if (!componentsMatch) {
+      spinner.fail("No components array found in zenix.compose.ts");
+      process.exit(1);
+    }
+    const ids = [];
+    const idRegex = /id:\s*['"]([^'"]+)['"]/g;
+    let match;
+    while ((match = idRegex.exec(componentsMatch[1])) !== null) {
+      ids.push(match[1]);
+    }
+    const modeMatch = fileContent.match(/mode:\s*['"](native|recipe|isolated)['"]/);
+    const mode = modeMatch ? modeMatch[1] : "isolated";
+    spinner.succeed(`Found ${ids.length} component(s) in compose file. Mode: ${mode}`);
+    for (const id of ids) {
+      console.log(`
+${import_chalk3.default.cyan("\u279C")} Installing ${import_chalk3.default.bold(id)} via compose...`);
+      await add(id, { skipExisting: false, mode });
+    }
+    console.log(import_chalk3.default.green("\n\u2714 Compose installation complete."));
+  } catch (err) {
+    spinner.fail(`Failed to parse or run compose file: ${err.message}`);
+    process.exit(1);
+  }
+}
+
 // src/index.ts
 var program = new import_commander.Command();
 program.name("zenix-ui").description("Distribute and install entire ZenixUI experiences.").version("0.0.1");
-program.command("init").description("Initialize your project and install ZenixUI dependencies.").option("-f, --framework <name>", "Framework to use (next, vite, remix)").option("-t, --theme <name>", "Default theme (zenix, ocean, night-city, autumn)").option("-d, --dir <path>", "Experiences directory (default: src/experiences)").option("-y, --yes", "Skip prompts and use defaults/flags").action(init);
-program.command("add <experience-id>").description("Add a complete experience to your project.").option("-o, --overwrite", "Overwrite existing files").option("-s, --skip-existing", "Skip existing files instead of overwriting").action(add);
+program.command("init").description("Initialize your project and install ZenixUI dependencies.").option("-f, --framework <name>", "Framework to use (next, vite, remix)").option("-t, --theme <name>", "Default theme (zenix, ocean, midnight, autumn)").option("-d, --dir <path>", "Experiences directory (default: src/experiences)").option("-y, --yes", "Skip prompts and use defaults/flags").action(init);
+program.command("add <experience-id>").description("Add a complete experience to your project.").option("-o, --overwrite", "Overwrite existing files").option("-s, --skip-existing", "Skip existing files instead of overwriting").option("-m, --mode <type>", "Adaptation mode (native, recipe, isolated)", "isolated").action(add);
+program.command("compose").description("Install components configured in zenix.compose.ts.").action(compose);
 program.parse();

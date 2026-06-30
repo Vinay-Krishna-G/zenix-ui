@@ -52,11 +52,20 @@ New themes are NOT the priority — the engine and the sections are the priority
 ## Taxonomy (use consistently, never deviate)
 
 - **Blueprint** — a complete page experience (not "template", not "experience" in nav)
+- **Section** — an independently installable UI block (header, footer, hero, etc.)
+- **Pattern** — a reusable micro-block smaller than a section (Login Form, Newsletter Form, Contact Form, Testimonial, Pricing Toggle).
 - **Theme Studio** or **Experience Studio** — never "Visual Builder"
 - **Theme Engine** — the CSS variable system
 - **CLI** — `npx zenix-ui` / `pnpm dlx zenix-ui`
 - **Framework** — Next.js | Vite | Remix | Astro (typed union, never raw strings)
-- **Section** — an independently installable UI block (header, footer, hero, etc.)
+
+---
+
+## Aesthetic Variations (Generation)
+A core unique feature of ZenixUI is generating aesthetic variations from identical APIs.
+- When generating a `Header`, the CLI should offer `Glass`, `Glass Minimal`, `Glass Premium`, `Glass Compact`, `Glass Enterprise`, `Glass Startup`.
+- All share the exact same props and underlying layout primitive.
+- This encourages exploration over immediate ejection.
 
 ---
 

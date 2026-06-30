@@ -13,8 +13,8 @@ export const FooterBrand = React.forwardRef<HTMLDivElement, React.HTMLAttributes
 FooterBrand.displayName = 'Footer.Brand';
 
 export const FooterLinks = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ children, direction = 'row', spacing = 'md', ...props }, ref) => (
-    <Stack ref={ref} direction={direction} spacing={spacing} wrap {...props}>
+  ({ children, direction = 'row', gap = 'md', ...props }, ref) => (
+    <Stack ref={ref} direction={direction} gap={gap} wrap {...props}>
       {children}
     </Stack>
   )

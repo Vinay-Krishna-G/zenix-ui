@@ -14,7 +14,7 @@ export function ZenixContact() {
 
   return (
     <Features.Root padded>
-      <Features.Content spacing="xl">
+      <Features.Content gap="xl">
         {/* ── Two-column layout: Info left, Form right ── */}
         <div style={{
           display: 'grid',

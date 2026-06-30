@@ -5,5 +5,6 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   dts: true,
   clean: true,
+  injectStyle: true,
   external: ['react', 'react-dom'],
 });

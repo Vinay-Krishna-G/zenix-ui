@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import { init } from './commands/init';
 import { add } from './commands/add';
+import { compose } from './commands/compose';
 
 const program = new Command();
 
@@ -25,6 +26,12 @@ program
   .description('Add a complete experience to your project.')
   .option('-o, --overwrite', 'Overwrite existing files')
   .option('-s, --skip-existing', 'Skip existing files instead of overwriting')
+  .option('-m, --mode <type>', 'Adaptation mode (native, recipe, isolated)', 'isolated')
   .action(add);
+
+program
+  .command('compose')
+  .description('Install components configured in zenix.compose.ts.')
+  .action(compose);
 
 program.parse();

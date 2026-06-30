@@ -5,7 +5,7 @@ export function ZenixLanding() {
     <div style={{ paddingBottom: '0' }}>
       {/* HERO SECTION */}
       <Hero.Root padded style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
-        <Hero.Content align="center" spacing="xl" style={{ textAlign: 'center' }}>
+        <Hero.Content align="center" gap="xl" style={{ textAlign: 'center' }}>
           <Surface variant="glass" style={{ padding: '0.5rem 1rem', borderRadius: 'var(--zx-radius-pill)', fontSize: '0.875rem', fontWeight: 600, border: '1px solid var(--zx-glass-border)' }}>
             ZenixUI 2.0 is now available →
           </Surface>
@@ -39,7 +39,7 @@ export function ZenixLanding() {
 
       {/* FEATURES GRID */}
       <Features.Root padded>
-        <Features.Content spacing="xl" style={{ textAlign: 'center' }}>
+        <Features.Content gap="xl" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', margin: 0, fontWeight: 700, letterSpacing: '-0.02em' }}>Everything you need.</h2>
           <Features.Grid columns={3}>
             {[
@@ -66,7 +66,7 @@ export function ZenixLanding() {
             <h3 style={{ margin: '0 0 1rem', fontSize: '1.25rem', fontWeight: 700 }}>ZenixUI</h3>
             <p style={{ opacity: 0.5, margin: 0, fontSize: '0.875rem' }}>Designed with precision.</p>
           </Footer.Brand>
-          <Footer.Links justify="flex-end" spacing="lg" style={{ opacity: 0.6, fontSize: '0.875rem', fontWeight: 500 }}>
+          <Footer.Links justify="flex-end" gap="lg" style={{ opacity: 0.6, fontSize: '0.875rem', fontWeight: 500 }}>
             <span>Documentation</span>
             <span>Components</span>
             <span>GitHub</span>

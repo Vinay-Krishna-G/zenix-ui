@@ -6,7 +6,7 @@ export function AutumnPortfolio() {
       {/* HERO SECTION (Story Intro) */}
       <Pattern.Root padded style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
         <Container size="md">
-          <Pattern.Content spacing="xl">
+          <Pattern.Content gap="xl">
             <h1 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', margin: 0, fontFamily: 'serif', fontWeight: 400, color: 'var(--zx-primary)', lineHeight: 1.1 }}>
               Hi, I'm Elena.<br />I weave stories through code.
             </h1>
@@ -19,7 +19,7 @@ export function AutumnPortfolio() {
 
       {/* ABOUT ME (StorySection) */}
       <Pattern.Root padded>
-        <Grid columns={2} spacing="xl" style={{ alignItems: 'center' }}>
+        <Grid columns={2} gap="xl" style={{ alignItems: 'center' }}>
           <Surface variant="card" style={{ height: '500px', borderRadius: '4rem 1rem 4rem 1rem', background: 'var(--zx-elevated)', overflow: 'hidden', position: 'relative' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 70%, var(--zx-accent), transparent 50%)', opacity: 0.2 }} />
           </Surface>
@@ -38,13 +38,13 @@ export function AutumnPortfolio() {
 
       {/* WRITING / ESSAYS (ArticleCard) */}
       <Pattern.Root padded>
-        <Pattern.Content spacing="xl">
+        <Pattern.Content gap="xl">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid var(--zx-elevated)', paddingBottom: '1rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontFamily: 'serif', fontWeight: 400, margin: 0 }}>Recent Essays</h2>
             <span style={{ opacity: 0.7, cursor: 'pointer' }}>View All →</span>
           </div>
           
-          <Stack spacing="lg">
+          <Stack gap="lg">
             {[
               { date: 'Oct 12, 2026', title: 'The Death of the Rectangle', desc: 'Why modern web design must embrace organic shapes and natural flows.' },
               { date: 'Sep 04, 2026', title: 'Atmosphere in UI', desc: 'Using light, shadow, and motion to create emotional resonance.' },

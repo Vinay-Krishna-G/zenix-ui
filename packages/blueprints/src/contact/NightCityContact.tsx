@@ -21,7 +21,7 @@ export function NightCityContact() {
 
   return (
     <Features.Root padded>
-      <Features.Content spacing="xl" align="flex-start" style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'var(--zx-font-mono)' }}>
+      <Features.Content gap="xl" align="flex-start" style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'var(--zx-font-mono)' }}>
         <div style={{ marginBottom: '2rem', borderBottom: '1px solid var(--zx-primary)', paddingBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 600, margin: 0, textTransform: 'uppercase' }}>SYS.CONTACT_PROTO</h2>
           <span style={{ opacity: 0.5, fontSize: '0.875rem' }}>STATUS: ONLINE</span>

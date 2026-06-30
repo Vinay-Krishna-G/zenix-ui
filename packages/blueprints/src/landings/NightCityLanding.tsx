@@ -5,7 +5,7 @@ export function NightCityLanding() {
     <div style={{ paddingBottom: '0' }}>
       {/* HERO SECTION */}
       <Hero.Root padded={false} style={{ paddingTop: '10rem', paddingBottom: '4rem' }}>
-        <Hero.Content align="center" spacing="xl">
+        <Hero.Content align="center" gap="xl">
           <h1 style={{ 
             fontSize: 'clamp(3rem, 8vw, 7rem)', 
             margin: 0, 
@@ -100,7 +100,7 @@ export function NightCityLanding() {
               <h3 style={{ margin: '0 0 1rem', fontSize: '1.5rem', textTransform: 'uppercase' }}>ZenixUI</h3>
               <p style={{ opacity: 0.5, margin: 0 }}>The visual experience engine for the modern web.</p>
             </Footer.Brand>
-            <Footer.Links justify="flex-end" direction="column" spacing="sm" style={{ opacity: 0.7, textAlign: 'right' }}>
+            <Footer.Links justify="flex-end" direction="column" gap="sm" style={{ opacity: 0.7, textAlign: 'right' }}>
               <span>Docs</span>
               <span>GitHub</span>
               <span>Discord</span>

@@ -15,7 +15,7 @@ export function OceanContact() {
 
   return (
     <Features.Root padded>
-      <Features.Content spacing="xl" align="center" style={{ maxWidth: '700px', margin: '0 auto' }}>
+      <Features.Content gap="xl" align="center" style={{ maxWidth: '700px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '3rem', fontWeight: 300, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>Let's connect</h2>
           <p style={{ opacity: 0.7, fontSize: '1.25rem', margin: 0, fontWeight: 300 }}>Reach out to our deep sea explorers.</p>

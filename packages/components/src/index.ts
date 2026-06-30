@@ -3,6 +3,10 @@ export * from './primitives/Section';
 export * from './primitives/Container';
 export * from './primitives/Stack';
 export * from './primitives/Grid';
+export * from './primitives/Cluster';
+export * from './primitives/Center';
+export * from './primitives/Split';
+export * from './primitives/Sidebar';
 
 export * from './patterns/Pattern';
 export * from './patterns/Hero';

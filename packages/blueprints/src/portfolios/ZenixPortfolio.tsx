@@ -5,7 +5,7 @@ export function ZenixPortfolio() {
     <div style={{ paddingBottom: '4rem' }}>
       {/* HERO SECTION */}
       <Hero.Root padded style={{ paddingTop: '10rem', paddingBottom: '4rem' }}>
-        <Hero.Content align="flex-start" spacing="lg">
+        <Hero.Content align="flex-start" gap="lg">
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', margin: 0, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.1, maxWidth: '800px' }}>
             Designing interfaces that feel like tools, not toys.
           </h1>
@@ -25,9 +25,9 @@ export function ZenixPortfolio() {
 
       {/* SELECTED WORK (ProjectCard variant) */}
       <Features.Root padded>
-        <Features.Content spacing="xl">
+        <Features.Content gap="xl">
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, paddingBottom: '1rem', borderBottom: '1px solid var(--zx-elevated)' }}>Selected Work</h2>
-          <Features.Grid columns={2} spacing="xl">
+          <Features.Grid columns={2} gap="xl">
             {[1, 2, 3, 4].map((i) => (
               <Surface key={i} variant="card" style={{ padding: 0, overflow: 'hidden', background: 'transparent', border: 'none' }}>
                 <div style={{ height: '300px', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-overlay)', marginBottom: '1.5rem', border: '1px solid var(--zx-elevated)' }} />
@@ -41,7 +41,7 @@ export function ZenixPortfolio() {
 
       {/* EXPERIENCE TIMELINE */}
       <Features.Root padded>
-        <Features.Content spacing="xl">
+        <Features.Content gap="xl">
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0, paddingBottom: '1rem', borderBottom: '1px solid var(--zx-elevated)' }}>Experience</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {[

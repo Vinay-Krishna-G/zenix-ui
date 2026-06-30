@@ -5,7 +5,7 @@ export function AutumnLanding() {
     <div style={{ paddingBottom: '0' }}>
       {/* HERO SECTION */}
       <Hero.Root padded style={{ paddingTop: '8rem', paddingBottom: '8rem' }}>
-        <Hero.Content align="center" spacing="lg" style={{ textAlign: 'center' }}>
+        <Hero.Content align="center" gap="lg" style={{ textAlign: 'center' }}>
           <Hero.Visual style={{ 
             width: '120px', 
             height: '120px', 

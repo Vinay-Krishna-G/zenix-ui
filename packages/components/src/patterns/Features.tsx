@@ -4,8 +4,8 @@ import { Grid } from '../primitives/Grid';
 import type { GridProps } from '../primitives/Grid';
 
 export const FeaturesGrid = React.forwardRef<HTMLDivElement, GridProps>(
-  ({ children, columns = 3, spacing = 'lg', ...props }, ref) => (
-    <Grid ref={ref} columns={columns} spacing={spacing} {...props}>
+  ({ children, columns = 3, gap = 'lg', ...props }, ref) => (
+    <Grid ref={ref} columns={columns} gap={gap} {...props}>
       {children}
     </Grid>
   )

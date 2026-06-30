@@ -7,10 +7,10 @@
  * ║  Themes: Ocean · Zenix · Any dark theme                 ║
  * ║                                                          ║
  * ║  Safe to edit:                                           ║
- * ║    • LOGO — brand name or swap for an <img> tag          ║
- * ║    • NAV_LINKS — add/remove navigation items             ║
- * ║    • CTA — button label and destination href             ║
- * ║    • BLUR_AMOUNT — backdrop blur intensity (4px–40px)    ║
+ * ║    • content.logo — brand name or swap for an <img> tag          ║
+ * ║    • content.links — add/remove navigation items             ║
+ * ║    • content.cta — button label and destination href             ║
+ * ║    • content.settings.blurAmount — backdrop blur intensity (4px–40px)    ║
  * ║                                                          ║
  * ║  Avoid changing:                                         ║
  * ║    • backdrop-filter / WebkitBackdropFilter              ║
@@ -23,26 +23,28 @@
 import { useState } from 'react';
 import type { SectionMetadata, SectionProps } from '../types';
 
-// ── START CUSTOMIZATION ───────────────────────────────────────
+// ======================================
+// SAFE TO EDIT
+// ======================================
 
-/** Your brand name or replace with an <img> element */
-const LOGO = 'YourBrand';
+const content = {
+  logo: 'YourBrand',
+  links: [
+    { label: 'Features',  href: '#features' },
+    { label: 'Pricing',   href: '#pricing' },
+    { label: 'Docs',      href: '/docs' },
+    { label: 'Blog',      href: '/blog' },
+  ],
+  cta: {
+    label: 'Get Started →',
+    href: '/signup'
+  },
+  settings: {
+    blurAmount: '20px'
+  }
+};
 
-/** Primary navigation items */
-const NAV_LINKS = [
-  { label: 'Features',  href: '#features' },
-  { label: 'Pricing',   href: '#pricing' },
-  { label: 'Docs',      href: '/docs' },
-  { label: 'Blog',      href: '/blog' },
-];
-
-/** Call-to-action button */
-const CTA = { label: 'Get Started →', href: '/signup' };
-
-/** Backdrop blur intensity. Increase for more frosted glass effect. */
-const BLUR_AMOUNT = '20px';
-
-// ── END CUSTOMIZATION ─────────────────────────────────────────
+// ======================================
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Metadata — consumed by Studio, CLI, and AI tools
@@ -76,8 +78,8 @@ export function GlassHeader({ className }: SectionProps) {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backdropFilter: `blur(${BLUR_AMOUNT})`,
-        WebkitBackdropFilter: `blur(${BLUR_AMOUNT})`,
+        backdropFilter: `blur(${content.settings.blurAmount})`,
+        WebkitBackdropFilter: `blur(${content.settings.blurAmount})`,
         background: 'rgba(9,9,11,0.65)',
         borderBottom: '1px solid rgba(255,255,255,0.08)',
         width: '100%',
@@ -107,7 +109,7 @@ export function GlassHeader({ className }: SectionProps) {
             fontFamily: 'Inter, system-ui, sans-serif',
           }}
         >
-          {LOGO}
+          {content.logo}
         </a>
 
         {/* ── Desktop Navigation ── */}
@@ -119,7 +121,7 @@ export function GlassHeader({ className }: SectionProps) {
             alignItems: 'center',
           }}
         >
-          {NAV_LINKS.map(link => (
+          {content.links.map(link => (
             <a
               key={link.label}
               href={link.href}
@@ -149,9 +151,9 @@ export function GlassHeader({ className }: SectionProps) {
           ))}
         </nav>
 
-        {/* ── CTA ── */}
+        {/* ── content.cta ── */}
         <a
-          href={CTA.href}
+          href={content.cta.href}
           style={{
             padding: '0.5rem 1.125rem',
             borderRadius: '8px',
@@ -165,7 +167,7 @@ export function GlassHeader({ className }: SectionProps) {
             letterSpacing: '-0.01em',
           }}
         >
-          {CTA.label}
+          {content.cta.label}
         </a>
 
         {/* ── Mobile menu toggle ── */}
