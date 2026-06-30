@@ -42,8 +42,10 @@ export interface Variant {
 
 export interface Experience {
   id: string;
+  personality: string;
   name: string;
   industryId: string;
+  promise: string;
   description: string;
   perfectFor: string[];
   averageSetupTime: string;
@@ -73,7 +75,8 @@ const industries = [
   { id: 'creator', name: 'Creator' },
   { id: 'interactive', name: 'Interactive' },
   { id: 'dashboard', name: 'Dashboard' },
-  { id: 'community', name: 'Community' }
+  { id: 'community', name: 'Community' },
+  { id: 'ai', name: 'AI & SaaS' }
 ];
 
 let indExports = '';
@@ -122,17 +125,19 @@ fs.writeFileSync(path.join(base, 'brands', 'index.ts'), brandExports);
 
 // experiences
 const exps = [
-  { id: 'student-portfolio', name: 'Student Portfolio', ind: 'education', desc: 'Get hired faster.', perfect: ['Final year students', 'Internships', 'Placements', 'Graduate applications'], variants: [{id: 'modern', name: 'Modern', blueprintIdMap: {'glass': 'ocean-portfolio', 'minimal': 'zenix-portfolio', 'terminal': 'midnight-portfolio'}}], files: 18, comp: 32, sec: 14 },
-  { id: 'developer-portfolio', name: 'Developer Portfolio', ind: 'personal', desc: 'Robust technical portfolio.', perfect: ['Software Engineers', 'Open Source Maintainers'], variants: [{id: 'terminal', name: 'Terminal CLI', blueprintIdMap: {'terminal': 'midnight-portfolio', 'cyberpunk': 'midnight-portfolio'}}], files: 24, comp: 45, sec: 18 },
-  { id: 'agency', name: 'Agency', ind: 'business', desc: 'High-end agency layout.', perfect: ['Creative Agencies', 'Studios'], variants: [{id: 'creative', name: 'Creative', blueprintIdMap: {'glass': 'ocean-portfolio', 'editorial': 'autumn-portfolio'}}], files: 20, comp: 38, sec: 15 },
-  { id: 'magazine', name: 'Magazine', ind: 'creator', desc: 'Editorial layout.', perfect: ['Writers', 'Publishers'], variants: [{id: 'editorial', name: 'Editorial', blueprintIdMap: {'editorial': 'autumn-portfolio'}}], files: 14, comp: 20, sec: 10 }
+  { id: 'student-portfolio', personality: 'Atlas', name: 'Student Portfolio', ind: 'education', promise: 'Get shortlisted faster.', desc: 'Your digital resume, designed to land you the interview.', perfect: ['Final year students', 'Placements', 'MS applications', 'Fresh graduates'], variants: [{id: 'modern', name: 'Modern', blueprintIdMap: {'glass': 'ocean-portfolio', 'minimal': 'zenix-portfolio', 'terminal': 'midnight-portfolio'}}], files: 18, comp: 32, sec: 14 },
+  { id: 'developer-portfolio', personality: 'Vertex', name: 'Developer Portfolio', ind: 'personal', promise: 'Showcase your system design.', desc: 'A robust technical portfolio.', perfect: ['Software Engineers', 'Open Source Maintainers'], variants: [{id: 'terminal', name: 'Terminal CLI', blueprintIdMap: {'terminal': 'midnight-portfolio', 'cyberpunk': 'midnight-portfolio'}}], files: 24, comp: 45, sec: 18 },
+  { id: 'agency', personality: 'Nova', name: 'Agency Website', ind: 'business', promise: 'Close higher-ticket clients.', desc: 'High-end agency layout.', perfect: ['Creative Agencies', 'Studios'], variants: [{id: 'creative', name: 'Creative', blueprintIdMap: {'glass': 'ocean-portfolio', 'editorial': 'autumn-portfolio'}}], files: 20, comp: 38, sec: 15 },
+  { id: 'ai-startup', personality: 'Pulse', name: 'AI Startup', ind: 'ai', promise: 'Convert visitors into beta testers.', desc: 'The future of intelligence.', perfect: ['AI Wrappers', 'SaaS', 'Beta launches'], variants: [{id: 'cyber', name: 'Cyber', blueprintIdMap: {'cyberpunk': 'midnight-portfolio', 'glass': 'ocean-portfolio'}}], files: 22, comp: 40, sec: 16 },
+  { id: 'restaurant', personality: 'Origin', name: 'Restaurant', ind: 'business', promise: 'Take online orders. Accept reservations.', desc: 'Launch this weekend.', perfect: ['Local Restaurants', 'Cafes', 'Fine Dining'], variants: [{id: 'classic', name: 'Classic', blueprintIdMap: {'editorial': 'autumn-portfolio'}}], files: 15, comp: 25, sec: 10 },
+  { id: 'healthcare', personality: 'Prism', name: 'Healthcare', ind: 'healthcare', promise: 'Book appointments. Build trust.', desc: 'Show your doctors and services.', perfect: ['Clinics', 'Dentists', 'Therapists'], variants: [{id: 'clean', name: 'Clean', blueprintIdMap: {'minimal': 'zenix-portfolio'}}], files: 19, comp: 33, sec: 12 },
 ];
 
 let expExports = '';
 exps.forEach(exp => {
-  const code = `import { Experience } from '../types';\n\nexport const ${exp.id.replace('-', '_')}: Experience = { id: '${exp.id}', name: '${exp.name}', industryId: '${exp.ind}', description: '${exp.desc}', perfectFor: ${JSON.stringify(exp.perfect)}, averageSetupTime: '3 minutes', variants: ${JSON.stringify(exp.variants)}, includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready'], technicalDetails: { files: ${exp.files}, components: ${exp.comp}, sections: ${exp.sec} } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };\n`;
-  fs.writeFileSync(path.join(base, 'experiences', `${exp.id}.ts`), code);
-  expExports += `export * from './${exp.id}';\n`;
+  const code = `import { Experience } from '../types';\n\nexport const ${exp.id.replace('-', '_')}: Experience = { id: '${exp.id}', personality: '${exp.personality}', name: '${exp.name}', industryId: '${exp.ind}', promise: '${exp.promise}', description: '${exp.desc}', perfectFor: ${JSON.stringify(exp.perfect)}, averageSetupTime: '3 minutes', variants: ${JSON.stringify(exp.variants)}, includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Animations', 'Dark Mode'], technicalDetails: { files: ${exp.files}, components: ${exp.comp}, sections: ${exp.sec} } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };\n`;
+  fs.writeFileSync(path.join(base, 'experiences', `${exp.id.replace('-', '_')}.ts`), code);
+  expExports += `export * from './${exp.id.replace('-', '_')}';\n`;
 });
 fs.writeFileSync(path.join(base, 'experiences', 'index.ts'), expExports);
 

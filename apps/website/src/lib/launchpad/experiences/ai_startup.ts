@@ -1,0 +1,3 @@
+import { Experience } from '../types';
+
+export const ai_startup: Experience = { id: 'ai-startup', personality: 'Pulse', name: 'AI Startup', industryId: 'ai', promise: 'Convert visitors into beta testers.', description: 'The future of intelligence.', perfectFor: ["AI Wrappers","SaaS","Beta launches"], averageSetupTime: '3 minutes', variants: [{"id":"cyber","name":"Cyber","blueprintIdMap":{"cyberpunk":"midnight-portfolio","glass":"ocean-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Animations', 'Dark Mode'], technicalDetails: { files: 22, components: 40, sections: 16 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };

@@ -228,10 +228,18 @@ export function Launchpad() {
             </button>
           </div>
 
-          {/* Actual Engine Blueprint Rendering */}
+          {/* Actual Engine Blueprint Rendering (Live Brand Injection) */}
           <div style={{ flex: 1, position: 'relative' }}>
              {ActiveBlueprintComponent ? (
-               <ActiveBlueprintComponent />
+               <div style={{
+                 '--zx-primary': activeBrand.colors.primary,
+                 '--zx-background': activeBrand.colors.background,
+                 '--zx-surface': activeBrand.colors.surface,
+                 transition: 'all 0.5s ease',
+                 height: '100%'
+               } as React.CSSProperties}>
+                 <ActiveBlueprintComponent />
+               </div>
              ) : (
                <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
                  Blueprint '{activeBlueprintId}' mapping not found.
@@ -361,7 +369,19 @@ export function Launchpad() {
               <div key={aes.id} style={{ background: '#000', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', fontWeight: 600, textAlign: 'center', background: '#111' }}>{aes.name}</div>
                 <div style={{ flex: 1, overflowY: 'auto', position: 'relative', transform: 'scale(0.8)', transformOrigin: 'top center', width: '125%', height: '125%' }}>
-                  {Comp ? <Comp /> : <div style={{ padding: '2rem', opacity: 0.5 }}>Preview not found for {aes.name}</div>}
+                  {Comp ? (
+                    <div style={{
+                      '--zx-primary': activeBrand.colors.primary,
+                      '--zx-background': activeBrand.colors.background,
+                      '--zx-surface': activeBrand.colors.surface,
+                      transition: 'all 0.5s ease',
+                      height: '100%'
+                    } as React.CSSProperties}>
+                      <Comp />
+                    </div>
+                  ) : (
+                    <div style={{ padding: '2rem', opacity: 0.5 }}>Preview not found for {aes.name}</div>
+                  )}
                 </div>
               </div>
             );

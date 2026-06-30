@@ -7,3 +7,4 @@ export * from './creator';
 export * from './interactive';
 export * from './dashboard';
 export * from './community';
+export * from './ai';

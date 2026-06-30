@@ -1,0 +1,3 @@
+import { Experience } from '../types';
+
+export const healthcare_clinic: Experience = { id: 'healthcare', personality: 'Prism', name: 'Healthcare', industryId: 'healthcare', promise: 'Book appointments. Build trust.', description: 'Show your doctors and services.', perfectFor: ["Clinics","Dentists","Therapists"], averageSetupTime: '3 minutes', variants: [{"id":"clean","name":"Clean","blueprintIdMap":{"minimal":"zenix-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Animations', 'Dark Mode'], technicalDetails: { files: 19, components: 33, sections: 12 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };

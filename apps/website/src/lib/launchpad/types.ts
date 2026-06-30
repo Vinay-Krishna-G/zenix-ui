@@ -31,8 +31,10 @@ export interface Variant {
 
 export interface Experience {
   id: string;
+  personality: string;
   name: string;
   industryId: string;
+  promise: string;
   description: string;
   perfectFor: string[];
   averageSetupTime: string;
