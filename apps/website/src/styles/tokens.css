@@ -1,0 +1,16 @@
+:root {
+  /* Purpose-based Spacing Tokens */
+  --zx-space-control-x: 1rem;       /* 16px */
+  --zx-space-control-y: 0.625rem;   /* 10px */
+  --zx-space-inline: 0.5rem;        /* 8px */
+  --zx-space-stack: 1.5rem;         /* 24px */
+  --zx-space-card: 2.5rem;          /* 40px */
+  --zx-space-section: 6rem;         /* 96px */
+  --zx-space-page: 10rem;           /* 160px */
+
+  /* Purpose-based Radius Tokens */
+  --zx-radius-control: 6px;
+  --zx-radius-card: 16px;
+  --zx-radius-overlay: 24px;
+  --zx-radius-pill: 9999px;
+}

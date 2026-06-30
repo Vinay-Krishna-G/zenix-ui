@@ -1,0 +1,8 @@
+/* Base styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 1 !important;
+}

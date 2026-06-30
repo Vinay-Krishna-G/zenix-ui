@@ -1,18 +1,4 @@
-/* ZenixUI Global Reset */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  opacity: 1 !important;
-}
+@import '../styles/reset.css';
+@import '../styles/base.css';
+@import '../styles/tokens.css';
+@import '../styles/utilities.css';

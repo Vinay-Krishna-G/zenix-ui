@@ -20,6 +20,7 @@ This repository has strict, specialized guidelines. You MUST read the relevant g
 
 ---
 
-## Core Operational Rule
+## Core Operational Rules
 
-Unless the user explicitly says "just give me a plan," implement immediately after writing the plan. Do not stop and ask for permission if the architecture is frozen. Your responsibility is implementation.
+1. **Architecture Freeze**: Unless the user explicitly says "just give me a plan," implement immediately after writing the plan. Do not stop and ask for permission if the architecture is frozen. Your responsibility is implementation.
+2. **The 5+ Files Rule (Mandatory)**: When more than 5 files are modified, automatically generate `updated.md` containing the complete contents of every modified and newly created file instead of trying to inline them. Never omit a file because of response length.
