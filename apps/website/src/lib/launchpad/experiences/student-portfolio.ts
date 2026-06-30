@@ -1,0 +1,3 @@
+import { Experience } from '../types';
+
+export const student_portfolio: Experience = { id: 'student-portfolio', name: 'Student Portfolio', industryId: 'education', description: 'Get hired faster.', perfectFor: ["Final year students","Internships","Placements","Graduate applications"], averageSetupTime: '3 minutes', variants: [{"id":"modern","name":"Modern","blueprintIdMap":{"glass":"ocean-portfolio","minimal":"zenix-portfolio","terminal":"midnight-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready'], technicalDetails: { files: 18, components: 32, sections: 14 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };

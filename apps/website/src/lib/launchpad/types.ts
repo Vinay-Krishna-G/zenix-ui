@@ -1,10 +1,14 @@
-export type Industry = 
-  | 'Healthcare' | 'Education' | 'Business' | 'Ecommerce' 
-  | 'Creator' | 'Interactive' | 'Dashboard' | 'Community' | 'Personal';
 
-export type Aesthetic = 
-  | 'Minimal' | 'Glass' | 'Terminal' | 'Neo Brutalism' 
-  | 'Apple' | 'Editorial' | 'Cyberpunk';
+export interface Industry {
+  id: string;
+  name: string;
+}
+
+export interface Aesthetic {
+  id: string;
+  name: string;
+  description: string;
+}
 
 export interface BrandPack {
   id: string;
@@ -22,14 +26,13 @@ export interface BrandPack {
 export interface Variant {
   id: string;
   name: string;
-  // This maps a Variant + Aesthetic combination to a real Blueprint ID in the registry
-  blueprintIdMap: Partial<Record<Aesthetic, string>>;
+  blueprintIdMap: Partial<Record<string, string>>;
 }
 
 export interface Experience {
   id: string;
   name: string;
-  industry: Industry;
+  industryId: string;
   description: string;
   perfectFor: string[];
   averageSetupTime: string;

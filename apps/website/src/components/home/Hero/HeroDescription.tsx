@@ -4,11 +4,8 @@ import styles from './Hero.module.css';
 export function HeroDescription() {
   return (
     <>
-      <p className={styles.description}>
-        ZenixUI is a complete experience ecosystem for React. Browse production-ready blueprints, customize themes visually, and install via CLI.
-      </p>
-      <p className={styles.subDescription}>
-        Like Tailwind UI meets Vercel templates — but with full theme generation and a CLI installer.
+      <p className={styles.description} style={{ fontSize: '1.5rem', opacity: 0.7, maxWidth: '800px', margin: '0 auto 3rem' }}>
+        From idea to production website. Save hundreds of hours without starting from scratch.
       </p>
     </>
   );

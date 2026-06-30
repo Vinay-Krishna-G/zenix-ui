@@ -1,0 +1,3 @@
+import { Experience } from '../types';
+
+export const agency: Experience = { id: 'agency', name: 'Agency', industryId: 'business', description: 'High-end agency layout.', perfectFor: ["Creative Agencies","Studios"], averageSetupTime: '3 minutes', variants: [{"id":"creative","name":"Creative","blueprintIdMap":{"glass":"ocean-portfolio","editorial":"autumn-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready'], technicalDetails: { files: 20, components: 38, sections: 15 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };

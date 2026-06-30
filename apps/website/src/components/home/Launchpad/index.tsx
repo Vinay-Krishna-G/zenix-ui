@@ -1,7 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { EXPERIENCES, BRAND_PACKS, AESTHETICS, Experience, BrandPack, Aesthetic, Variant } from '../../../lib/launchpad';
+import { 
+  EXPERIENCES, 
+  BRAND_PACKS, 
+  AESTHETICS, 
+  INDUSTRIES,
+  Experience, 
+  BrandPack, 
+  Aesthetic, 
+  Variant,
+  Industry
+} from '../../../lib/launchpad';
 import Image from 'next/image';
 import { blueprints } from '@zenixui/blueprints';
 
@@ -9,10 +19,12 @@ export function Launchpad() {
   const [view, setView] = useState<'browse' | 'details' | 'compose' | 'compare'>('browse');
   const [activeExperience, setActiveExperience] = useState<Experience>(EXPERIENCES[0]);
   const [activeVariant, setActiveVariant] = useState<Variant>(EXPERIENCES[0].variants[0]);
-  const [activeBrand, setActiveBrand] = useState<BrandPack>(BRAND_PACKS['tiffany']);
-  const [activeAesthetic, setActiveAesthetic] = useState<Aesthetic>('Glass');
+  const [activeBrand, setActiveBrand] = useState<BrandPack>(BRAND_PACKS.find(b => b.id === 'tiffany') || BRAND_PACKS[0]);
+  const [activeAesthetic, setActiveAesthetic] = useState<Aesthetic>(AESTHETICS.find(a => a.id === 'glass') || AESTHETICS[0]);
+  
   const [showCli, setShowCli] = useState(false);
   const [showTechnicalDetails, setShowTechnicalDetails] = useState(false);
+  const [installLevel, setInstallLevel] = useState<'cli' | 'compose' | 'manual'>('cli');
 
   const handleSelectExperience = (exp: Experience) => {
     setActiveExperience(exp);
@@ -22,67 +34,64 @@ export function Launchpad() {
     setView('details');
   };
 
-  const activeBlueprintId = activeVariant.blueprintIdMap[activeAesthetic] || 'zenix-portfolio';
+  const activeBlueprintId = activeVariant.blueprintIdMap[activeAesthetic.id] || 'zenix-portfolio';
   const ActiveBlueprintComponent = blueprints.find(b => b.id === activeBlueprintId)?.component;
 
   // ─────────────────────────────────────────────────────────────────────────────
   // 1. BROWSE VIEW
   // ─────────────────────────────────────────────────────────────────────────────
   if (view === 'browse') {
-    const grouped = EXPERIENCES.reduce((acc, exp) => {
-      acc[exp.industry] = acc[exp.industry] || [];
-      acc[exp.industry].push(exp);
-      return acc;
-    }, {} as Record<string, Experience[]>);
-
     return (
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
         <h1 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>Launchpad</h1>
         <p style={{ fontSize: '1.25rem', opacity: 0.7, marginBottom: '4rem', maxWidth: '600px', lineHeight: 1.6 }}>
-          Start with a complete, production-ready digital experience. Select a Starter Kit, adapt the brand architecture, and launch your project in minutes.
+          Launch your entire startup, portfolio, SaaS, or ecommerce store in one afternoon. Start with a complete digital product.
         </p>
 
-        {Object.entries(grouped).map(([industry, exps]) => (
-          <div key={industry} style={{ marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>
-              {industry} <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', flex: 1 }} />
-            </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '2.5rem' }}>
-              {exps.map(exp => (
-                <div 
-                  key={exp.id} 
-                  onClick={() => handleSelectExperience(exp)}
-                  style={{ cursor: 'pointer', transition: 'transform 0.2s ease', position: 'relative' }}
-                  onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-                  onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-                >
-                  <div style={{ 
-                    width: '100%', aspectRatio: '16/10', background: '#171717',
-                    borderRadius: '1rem', marginBottom: '1.25rem', border: '1px solid rgba(255,255,255,0.1)',
-                    position: 'relative', overflow: 'hidden'
-                  }}>
-                    {/* Visual-First Cover */}
-                    <Image src={exp.coverImage} alt={exp.name} fill style={{ objectFit: 'cover' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
-                    
-                    <h3 style={{ position: 'absolute', bottom: '3.5rem', left: '1.5rem', fontSize: '2rem', fontWeight: 800, zIndex: 10, color: '#FFF' }}>
-                      {exp.name}
-                    </h3>
-                    
-                    <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', display: 'flex', gap: '0.5rem', zIndex: 10 }}>
-                      <span style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.2)', borderRadius: '2rem', fontSize: '0.75rem', backdropFilter: 'blur(4px)', color: '#FFF', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                        <span style={{ color: '#FFB800' }}>★</span> {exp.rating}
-                      </span>
-                      <span style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.2)', borderRadius: '2rem', fontSize: '0.75rem', backdropFilter: 'blur(4px)', color: '#FFF' }}>
-                        {exp.variants[0].name}
-                      </span>
+        {INDUSTRIES.map(industry => {
+          const exps = EXPERIENCES.filter(e => e.industryId === industry.id);
+          if (exps.length === 0) return null;
+          return (
+            <div key={industry.id} style={{ marginBottom: '5rem' }}>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>
+                {industry.name} <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', flex: 1 }} />
+              </h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '2.5rem' }}>
+                {exps.map(exp => (
+                  <div 
+                    key={exp.id} 
+                    onClick={() => handleSelectExperience(exp)}
+                    style={{ cursor: 'pointer', transition: 'transform 0.2s ease', position: 'relative' }}
+                    onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                  >
+                    <div style={{ 
+                      width: '100%', aspectRatio: '16/10', background: '#171717',
+                      borderRadius: '1rem', marginBottom: '1.25rem', border: '1px solid rgba(255,255,255,0.1)',
+                      position: 'relative', overflow: 'hidden'
+                    }}>
+                      <Image src={exp.coverImage} alt={exp.name} fill style={{ objectFit: 'cover' }} />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
+                      
+                      <h3 style={{ position: 'absolute', bottom: '3.5rem', left: '1.5rem', fontSize: '2rem', fontWeight: 800, zIndex: 10, color: '#FFF' }}>
+                        {exp.name}
+                      </h3>
+                      
+                      <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', display: 'flex', gap: '0.5rem', zIndex: 10 }}>
+                        <span style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.2)', borderRadius: '2rem', fontSize: '0.75rem', backdropFilter: 'blur(4px)', color: '#FFF', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                          <span style={{ color: '#FFB800' }}>★</span> {exp.rating}
+                        </span>
+                        <span style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.2)', borderRadius: '2rem', fontSize: '0.75rem', backdropFilter: 'blur(4px)', color: '#FFF' }}>
+                          {exp.variants.length} Variants
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   }
@@ -143,7 +152,7 @@ export function Launchpad() {
                       </div>
                       <div>
                         <div style={{ fontWeight: 600 }}>{simExp.name}</div>
-                        <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>{simExp.industry}</div>
+                        <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>{INDUSTRIES.find(i => i.id === simExp.industryId)?.name}</div>
                       </div>
                     </div>
                   );
@@ -225,7 +234,7 @@ export function Launchpad() {
                <ActiveBlueprintComponent />
              ) : (
                <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
-                 Blueprint {activeBlueprintId} not available in registry.
+                 Blueprint '{activeBlueprintId}' mapping not found.
                </div>
              )}
           </div>
@@ -239,30 +248,33 @@ export function Launchpad() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {AESTHETICS.map(a => (
                 <button
-                  key={a}
+                  key={a.id}
                   onClick={() => setActiveAesthetic(a)}
                   style={{
                     padding: '0.5rem 1rem',
                     borderRadius: '2rem',
                     border: '1px solid',
-                    borderColor: activeAesthetic === a ? 'var(--zx-primary)' : 'rgba(255,255,255,0.1)',
-                    background: activeAesthetic === a ? 'rgba(33,241,168,0.1)' : 'transparent',
-                    color: activeAesthetic === a ? 'var(--zx-primary)' : 'var(--zx-text)',
+                    borderColor: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.1)',
+                    background: activeAesthetic.id === a.id ? 'rgba(33,241,168,0.1)' : 'transparent',
+                    color: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'var(--zx-text)',
                     cursor: 'pointer',
                     fontSize: '0.875rem',
                     fontWeight: 600
                   }}
                 >
-                  {a}
+                  {a.name}
                 </button>
               ))}
+            </div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.5, marginTop: '1rem', fontStyle: 'italic' }}>
+              "{activeAesthetic.description}"
             </div>
           </div>
 
           <div>
             <h3 style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '1rem' }}>Brand Packs</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {Object.values(BRAND_PACKS).map(brand => (
+              {BRAND_PACKS.map(brand => (
                 <div
                   key={brand.id}
                   onClick={() => setActiveBrand(brand)}
@@ -291,7 +303,7 @@ export function Launchpad() {
             </div>
           </div>
 
-          <div style={{ marginTop: 'auto' }}>
+          <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
             {!showCli ? (
               <button 
                 onClick={() => setShowCli(true)}
@@ -299,10 +311,26 @@ export function Launchpad() {
                 <span style={{ fontSize: '1.25rem' }}>🚀</span> Launch Experience
               </button>
             ) : (
-              <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '0.5rem', padding: '1rem', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <div style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Copy Command</div>
-                <div style={{ fontSize: '0.875rem', fontFamily: 'monospace', color: 'var(--zx-primary)', wordBreak: 'break-all' }}>
-                  npx zenix-ui new {activeExperience.id} --variant={activeVariant.id} --brand={activeBrand.id} --aesthetic={activeAesthetic.toLowerCase().replace(' ', '-')}
+              <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '0.5rem', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Choose Workflow</div>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                  {[
+                    { id: 'cli', label: 'ZenixUI CLI' },
+                    { id: 'compose', label: 'Compose File' },
+                    { id: 'manual', label: 'Manual Install' }
+                  ].map(opt => (
+                    <label key={opt.id} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
+                      <input type="radio" name="installLevel" checked={installLevel === opt.id} onChange={() => setInstallLevel(opt.id as any)} style={{ accentColor: 'var(--zx-primary)' }} />
+                      <span style={{ fontSize: '0.875rem' }}>{opt.label}</span>
+                    </label>
+                  ))}
+                </div>
+
+                <div style={{ padding: '1rem', background: '#000', borderRadius: '0.25rem', fontFamily: 'monospace', color: 'var(--zx-primary)', fontSize: '0.875rem', wordBreak: 'break-all' }}>
+                  {installLevel === 'cli' && `npx zenix-ui new ${activeExperience.id} -v ${activeVariant.id} -b ${activeBrand.id} -a ${activeAesthetic.id}`}
+                  {installLevel === 'compose' && `npx zenix-ui compose up ./launch.yaml`}
+                  {installLevel === 'manual' && `git clone https://...`}
                 </div>
               </div>
             )}
@@ -316,7 +344,7 @@ export function Launchpad() {
   // 4. COMPARE VIEW (Real Blueprint side-by-side)
   // ─────────────────────────────────────────────────────────────────────────────
   if (view === 'compare') {
-    const compareAesthetics: Aesthetic[] = ['Glass', 'Terminal', 'Minimal', 'Editorial'];
+    const compareAesthetics = AESTHETICS.slice(0, 4); // Take first 4
 
     return (
       <div style={{ padding: '2rem', fontFamily: 'Inter, system-ui, sans-serif', height: 'calc(100vh - 80px)', display: 'flex', flexDirection: 'column' }}>
@@ -327,13 +355,13 @@ export function Launchpad() {
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', flex: 1, minHeight: 0 }}>
           {compareAesthetics.map(aes => {
-            const mappedId = activeVariant.blueprintIdMap[aes] || 'zenix-portfolio';
+            const mappedId = activeVariant.blueprintIdMap[aes.id] || 'zenix-portfolio';
             const Comp = blueprints.find(b => b.id === mappedId)?.component;
             return (
-              <div key={aes} style={{ background: '#000', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', fontWeight: 600, textAlign: 'center', background: '#111' }}>{aes}</div>
+              <div key={aes.id} style={{ background: '#000', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', fontWeight: 600, textAlign: 'center', background: '#111' }}>{aes.name}</div>
                 <div style={{ flex: 1, overflowY: 'auto', position: 'relative', transform: 'scale(0.8)', transformOrigin: 'top center', width: '125%', height: '125%' }}>
-                  {Comp ? <Comp /> : <div style={{ padding: '2rem', opacity: 0.5 }}>Preview not found for {aes}</div>}
+                  {Comp ? <Comp /> : <div style={{ padding: '2rem', opacity: 0.5 }}>Preview not found for {aes.name}</div>}
                 </div>
               </div>
             );

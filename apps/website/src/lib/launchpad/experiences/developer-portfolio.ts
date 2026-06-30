@@ -1,0 +1,3 @@
+import { Experience } from '../types';
+
+export const developer_portfolio: Experience = { id: 'developer-portfolio', name: 'Developer Portfolio', industryId: 'personal', description: 'Robust technical portfolio.', perfectFor: ["Software Engineers","Open Source Maintainers"], averageSetupTime: '3 minutes', variants: [{"id":"terminal","name":"Terminal CLI","blueprintIdMap":{"terminal":"midnight-portfolio","cyberpunk":"midnight-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready'], technicalDetails: { files: 24, components: 45, sections: 18 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };
