@@ -24,11 +24,11 @@ export default function LearnIndexPage() {
           <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <Surface variant="card" style={{ padding: '2rem', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'capitalize' }}>
+                <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>
                   {article.category}
                 </span>
                 {article.framework && (
-                  <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'capitalize' }}>
+                  <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>
                     {article.framework}
                   </span>
                 )}

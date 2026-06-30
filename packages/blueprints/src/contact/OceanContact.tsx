@@ -21,7 +21,7 @@ export function OceanContact() {
           <p style={{ opacity: 0.7, fontSize: '1.25rem', margin: 0, fontWeight: 300 }}>Reach out to our deep sea explorers.</p>
         </div>
 
-        <Surface variant="glass" style={{ padding: '4rem', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', boxShadow: 'var(--zx-glass-shadow)' }}>
+        <Surface variant="glass" style={{ padding: '4rem', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', boxShadow: 'var(--zx-glass-shadow)' }}>
           {status === 'success' ? (
             <div style={{ textAlign: 'center', padding: '3rem 0', animation: 'fadeIn 0.5s ease-out' }}>
               <div style={{ fontSize: '4rem', marginBottom: '1.5rem', opacity: 0.8 }}>🌊</div>

@@ -15,7 +15,7 @@ export function OceanNewsletter() {
   return (
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <Surface variant="glass" style={{ padding: '4rem 2rem', borderRadius: 'var(--zx-radius-lg)', textAlign: 'center' }}>
+        <Surface variant="glass" style={{ padding: '4rem 2rem', borderRadius: 'var(--zx-radius-overlay)', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 300, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>
             Dive into our weekly digest.
           </h2>
@@ -25,7 +25,7 @@ export function OceanNewsletter() {
 
           <div style={{ position: 'relative', maxWidth: '450px', margin: '0 auto' }}>
             {status === 'success' ? (
-              <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--zx-radius-round)', color: 'var(--zx-primary)', fontWeight: 300, fontSize: '1rem', border: '1px solid var(--zx-glass-border)', animation: 'fadeIn 0.5s ease-out' }}>
+              <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--zx-radius-pill)', color: 'var(--zx-primary)', fontWeight: 300, fontSize: '1rem', border: '1px solid var(--zx-glass-border)', animation: 'fadeIn 0.5s ease-out' }}>
                 You are now riding the wave.
               </div>
             ) : (

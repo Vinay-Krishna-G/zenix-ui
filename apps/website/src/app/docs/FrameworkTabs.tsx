@@ -130,7 +130,7 @@ export function FrameworkTabs() {
               background: activeTab === fw.id ? 'var(--zx-elevated)' : 'transparent',
               border: '1px solid',
               borderColor: activeTab === fw.id ? 'var(--zx-border-hover, var(--zx-elevated))' : 'transparent',
-              borderRadius: 'var(--zx-radius-md, 8px)',
+              borderRadius: 'var(--zx-radius-card, 8px)',
               cursor: 'pointer',
               minWidth: '200px',
               transition: 'all 0.2s ease',
@@ -155,7 +155,7 @@ export function FrameworkTabs() {
         <p style={{ opacity: 0.8, marginBottom: '1rem' }}>
           Wrap your root layout with the <code style={{ background: 'var(--zx-elevated)', padding: '0.2rem 0.4rem', borderRadius: '4px' }}>&lt;Experience&gt;</code> provider and pass your generated <code style={{ background: 'var(--zx-elevated)', padding: '0.2rem 0.4rem', borderRadius: '4px' }}>themeConfig</code>.
         </p>
-        <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-md, 8px)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'var(--zx-font-mono, monospace)', border: '1px solid var(--zx-border)' }}>
+        <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-card, 8px)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'var(--zx-font-mono, monospace)', border: '1px solid var(--zx-border)' }}>
           {activeFramework.code}
         </pre>
       </div>

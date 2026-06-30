@@ -42,7 +42,7 @@ export default function RoadmapPage() {
                   <h3 style={{ fontSize: '1.125rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{item.title}</h3>
                   <p style={{ opacity: 0.7, margin: 0, fontSize: '0.875rem' }}>{item.description}</p>
                 </div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', padding: '0.25rem 0.75rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-round)' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', padding: '0.25rem 0.75rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-pill)' }}>
                   {item.status}
                 </div>
               </Surface>

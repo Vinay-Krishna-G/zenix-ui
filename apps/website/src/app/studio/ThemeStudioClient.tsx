@@ -178,7 +178,7 @@ import { themeConfig } from '../theme/zenix';
     padding: '0.3rem 0.75rem',
     fontSize: '0.75rem',
     fontWeight: 600,
-    borderRadius: 'var(--zx-radius-sm)',
+    borderRadius: 'var(--zx-radius-surface)',
     border: '1px solid var(--zx-elevated)',
     background: 'transparent',
     color: 'inherit',
@@ -215,7 +215,7 @@ import { themeConfig } from '../theme/zenix';
                   key={fw.id}
                   onClick={() => setSelectedFramework(fw.id)}
                   style={{
-                    padding: '0.5rem 0.75rem', fontSize: '0.875rem', fontWeight: 500, borderRadius: 'var(--zx-radius-sm)',
+                    padding: '0.5rem 0.75rem', fontSize: '0.875rem', fontWeight: 500, borderRadius: 'var(--zx-radius-surface)',
                     border: '1px solid', borderColor: selectedFramework === fw.id ? 'var(--zx-primary)' : 'var(--zx-elevated)',
                     background: selectedFramework === fw.id ? 'var(--zx-elevated)' : 'transparent',
                     color: 'var(--zx-text-primary)', cursor: 'pointer', transition: 'all 0.15s ease',
@@ -233,7 +233,7 @@ import { themeConfig } from '../theme/zenix';
             <select 
               value={selectedBlueprintId}
               onChange={e => setSelectedBlueprintId(e.target.value)}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
             >
               {blueprints.map(bp => (
                 <option key={bp.id} value={bp.id}>{bp.title} ({bp.category})</option>
@@ -247,7 +247,7 @@ import { themeConfig } from '../theme/zenix';
             <select 
               value={config.base}
               onChange={e => setConfig({ ...config, base: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
             >
               <option value="zenix">Zenix (Solid)</option>
               <option value="ocean">Ocean (Glass)</option>
@@ -284,7 +284,7 @@ import { themeConfig } from '../theme/zenix';
             <select 
               value={config.radius || 'none'}
               onChange={e => setConfig({ ...config, radius: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
             >
               <option value="none">None</option>
               <option value="sm">Small</option>
@@ -301,7 +301,7 @@ import { themeConfig } from '../theme/zenix';
             <select 
               value={config.motion || 'standard'}
               onChange={e => setConfig({ ...config, motion: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
             >
               <option value="none">None</option>
               <option value="minimal">Minimal</option>
@@ -372,7 +372,7 @@ import { themeConfig } from '../theme/zenix';
               <div style={{ position: 'relative', margin: '0.75rem 1rem' }}>
                 <pre style={{
                   margin: 0, padding: '1rem', paddingRight: '4rem',
-                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)',
+                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)',
                   overflowX: 'auto', overflowY: 'auto', maxHeight: '160px',
                   fontSize: '0.75rem', fontFamily: 'monospace', lineHeight: 1.6,
                   border: '1px solid var(--zx-border)', color: 'var(--zx-primary)',
@@ -385,7 +385,7 @@ import { themeConfig } from '../theme/zenix';
                   style={{
                     position: 'absolute', top: '0.5rem', right: '0.5rem',
                     padding: '0.25rem 0.5rem', fontSize: '0.65rem', fontWeight: 700,
-                    borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)',
+                    borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)',
                     background: 'var(--zx-surface)', color: copied === activeTab ? '#22c55e' : 'inherit',
                     cursor: 'pointer', transition: 'all 0.15s ease',
                   }}
@@ -400,7 +400,7 @@ import { themeConfig } from '../theme/zenix';
                   onClick={handleCopyAll}
                   style={{
                     flex: 1, padding: '0.6rem', fontSize: '0.8rem', fontWeight: 700,
-                    borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-primary)',
+                    borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-primary)',
                     background: copied === 'all' ? 'var(--zx-primary)' : 'transparent',
                     color: copied === 'all' ? 'var(--zx-background)' : 'var(--zx-primary)',
                     cursor: 'pointer', transition: 'all 0.15s ease',

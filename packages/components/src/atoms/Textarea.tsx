@@ -25,7 +25,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const variantStyles = {
       default: {
         padding: '0.75rem 1rem',
-        borderRadius: 'var(--zx-radius-sm)',
+        borderRadius: 'var(--zx-radius-surface)',
         border: status === 'error' ? '1px solid #ff3b30' : '1px solid var(--zx-elevated)',
         background: 'var(--zx-background)',
         fontSize: '0.875rem',
@@ -33,7 +33,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       glass: {
         padding: '1rem 1.5rem',
-        borderRadius: 'var(--zx-radius-md)',
+        borderRadius: 'var(--zx-radius-card)',
         border: '1px solid var(--zx-glass-border)',
         background: 'rgba(255, 255, 255, 0.05)',
         backdropFilter: 'var(--zx-glass-blur)',

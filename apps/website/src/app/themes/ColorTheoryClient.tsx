@@ -362,7 +362,7 @@ export function ColorTheoryClient() {
           href="/studio"
           style={{
             padding: '0.75rem 1.5rem',
-            borderRadius: 'var(--zx-radius-sm)',
+            borderRadius: 'var(--zx-radius-surface)',
             background: primary,
             color: getContrastText(primary),
             fontWeight: 700,
@@ -376,7 +376,7 @@ export function ColorTheoryClient() {
           href="/blueprints"
           style={{
             padding: '0.75rem 1.5rem',
-            borderRadius: 'var(--zx-radius-sm)',
+            borderRadius: 'var(--zx-radius-surface)',
             background: 'var(--zx-elevated)',
             color: 'inherit',
             fontWeight: 700,

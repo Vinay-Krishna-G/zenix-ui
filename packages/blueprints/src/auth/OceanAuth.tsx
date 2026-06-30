@@ -15,7 +15,7 @@ export function OceanAuth() {
   return (
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '420px', margin: '0 auto' }}>
-        <Surface variant="glass" style={{ padding: '3.5rem', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
+        <Surface variant="glass" style={{ padding: '3.5rem', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <div style={{ width: '48px', height: '48px', background: 'var(--zx-primary)', borderRadius: '50%', margin: '0 auto 1.5rem', opacity: 0.1 }} />
             <h2 style={{ fontSize: '2rem', fontWeight: 300, margin: '0 0 0.5rem', letterSpacing: '-0.02em' }}>

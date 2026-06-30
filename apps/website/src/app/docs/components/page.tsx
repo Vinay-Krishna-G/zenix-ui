@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function ComponentsPage() {
   const renderComparisonGrid = (content: React.ReactNode) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--zx-elevated)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflow: 'hidden' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--zx-elevated)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflow: 'hidden' }}>
       <Experience preset="zenix">
         <div style={{ background: 'var(--zx-background)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '160px' }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 600, opacity: 0.5, marginBottom: '1rem', textTransform: 'uppercase' }}>Zenix</div>
@@ -54,7 +54,7 @@ export default function ComponentsPage() {
           <div style={{ marginBottom: '2rem' }}>
             {renderComparisonGrid(<Button>Primary Action</Button>)}
           </div>
-          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
             {`import { Button } from '@zenixui/components';\n\n<Button>Primary Action</Button>`}
           </pre>
         </section>
@@ -68,7 +68,7 @@ export default function ComponentsPage() {
           <div style={{ marginBottom: '2rem' }}>
             {renderComparisonGrid(<div style={{ width: '100%', maxWidth: '240px' }}><Input placeholder="Placeholder..." /></div>)}
           </div>
-          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
             {`import { Input } from '@zenixui/components';\n\n<Input placeholder="Placeholder..." />`}
           </pre>
         </section>
@@ -82,7 +82,7 @@ export default function ComponentsPage() {
           <div style={{ marginBottom: '2rem' }}>
             {renderComparisonGrid(<div style={{ width: '100%', maxWidth: '240px' }}><Textarea rows={3} placeholder="Type a message..." /></div>)}
           </div>
-          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
             {`import { Textarea } from '@zenixui/components';\n\n<Textarea rows={3} placeholder="Type a message..." />`}
           </pre>
         </section>
@@ -96,7 +96,7 @@ export default function ComponentsPage() {
           <div style={{ marginBottom: '2rem' }}>
             {renderComparisonGrid(<Badge tone="neutral">Active Status</Badge>)}
           </div>
-          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+          <pre style={{ margin: 0, padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
             {`import { Badge } from '@zenixui/components';\n\n<Badge tone="neutral">Active Status</Badge>`}
           </pre>
         </section>

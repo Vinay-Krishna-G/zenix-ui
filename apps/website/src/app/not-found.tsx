@@ -13,10 +13,10 @@ export default function NotFound() {
         We couldn't find the page or blueprint you were looking for. It might have been moved or removed from the registry.
       </p>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <Link href="/" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
+        <Link href="/" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', textDecoration: 'none', borderRadius: 'var(--zx-radius-surface)', fontWeight: 600 }}>
           Return Home
         </Link>
-        <Link href="/blueprints" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'inherit', textDecoration: 'none', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}>
+        <Link href="/blueprints" style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-elevated)', color: 'inherit', textDecoration: 'none', borderRadius: 'var(--zx-radius-surface)', fontWeight: 600 }}>
           Browse Blueprints
         </Link>
       </div>

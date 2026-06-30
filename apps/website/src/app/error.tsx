@@ -28,7 +28,7 @@ export default function ErrorBoundary({
       <div style={{ display: 'flex', gap: '1rem' }}>
         <button
           onClick={() => reset()}
-          style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', cursor: 'pointer', borderRadius: 'var(--zx-radius-sm)', fontWeight: 600 }}
+          style={{ padding: '0.75rem 1.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', cursor: 'pointer', borderRadius: 'var(--zx-radius-surface)', fontWeight: 600 }}
         >
           Attempt Recovery
         </button>

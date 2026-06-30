@@ -21,7 +21,7 @@ export function OceanBlog() {
             </Button>
             
             <div style={{ marginBottom: '4rem' }}>
-              <span style={{ fontSize: '0.875rem', fontWeight: 400, padding: '0.25rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--zx-glass-border)', borderRadius: 'var(--zx-radius-round)', backdropFilter: 'var(--zx-glass-blur)' }}>
+              <span style={{ fontSize: '0.875rem', fontWeight: 400, padding: '0.25rem 1rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--zx-glass-border)', borderRadius: 'var(--zx-radius-pill)', backdropFilter: 'var(--zx-glass-blur)' }}>
                 Deep Dives
               </span>
               <h1 style={{ fontSize: '4rem', fontWeight: 300, margin: '1.5rem 0 1rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
@@ -43,7 +43,7 @@ export function OceanBlog() {
                 We use clamped font sizes to ensure the reading experience is perfectly scaled on every device, much like water filling its container.
               </p>
 
-              <Surface variant="glass" style={{ padding: '2rem', borderRadius: 'var(--zx-radius-lg)', margin: '3rem 0', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--zx-glass-border)' }}>
+              <Surface variant="glass" style={{ padding: '2rem', borderRadius: 'var(--zx-radius-overlay)', margin: '3rem 0', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--zx-glass-border)' }}>
                 <p style={{ margin: 0, fontStyle: 'italic', fontSize: '1.5rem', lineHeight: 1.6, textAlign: 'center' }}>
                   "A good UI should feel like swimming in clear water. Effortless and transparent."
                 </p>
@@ -81,7 +81,7 @@ export function OceanBlog() {
               key={id}
               variant="glass" 
               onClick={() => setView('detail')}
-              style={{ padding: '2.5rem', borderRadius: 'var(--zx-radius-lg)', cursor: 'pointer', transition: 'transform 0.3s ease, background 0.3s ease', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}
+              style={{ padding: '2.5rem', borderRadius: 'var(--zx-radius-overlay)', cursor: 'pointer', transition: 'transform 0.3s ease, background 0.3s ease', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}
             >
               <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem' }}>
                 <Badge variant="glass" tone="neutral">

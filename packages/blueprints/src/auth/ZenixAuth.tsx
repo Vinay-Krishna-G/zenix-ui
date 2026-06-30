@@ -19,7 +19,7 @@ export function ZenixAuth() {
   return (
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '400px', margin: '0 auto' }}>
-        <Surface variant="card" style={{ padding: '3rem 2.5rem', borderRadius: 'var(--zx-radius-lg)', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-lg)', background: 'var(--zx-surface)' }}>
+        <Surface variant="card" style={{ padding: '3rem 2.5rem', borderRadius: 'var(--zx-radius-overlay)', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-lg)', background: 'var(--zx-surface)' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <h2 style={{ fontSize: '1.75rem', fontWeight: 600, margin: '0 0 0.5rem', letterSpacing: '-0.02em' }}>
               Welcome back
@@ -30,7 +30,7 @@ export function ZenixAuth() {
           </div>
 
           {status === 'success' ? (
-            <div style={{ padding: '1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', color: 'var(--zx-primary)', fontWeight: 500, fontSize: '0.875rem', textAlign: 'center' }}>
+            <div style={{ padding: '1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', color: 'var(--zx-primary)', fontWeight: 500, fontSize: '0.875rem', textAlign: 'center' }}>
               ✓ Authenticated. Redirecting...
             </div>
           ) : (

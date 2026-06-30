@@ -6,7 +6,7 @@ export function ZenixLanding() {
       {/* HERO SECTION */}
       <Hero.Root padded style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
         <Hero.Content align="center" spacing="xl" style={{ textAlign: 'center' }}>
-          <Surface variant="glass" style={{ padding: '0.5rem 1rem', borderRadius: 'var(--zx-radius-round)', fontSize: '0.875rem', fontWeight: 600, border: '1px solid var(--zx-glass-border)' }}>
+          <Surface variant="glass" style={{ padding: '0.5rem 1rem', borderRadius: 'var(--zx-radius-pill)', fontSize: '0.875rem', fontWeight: 600, border: '1px solid var(--zx-glass-border)' }}>
             ZenixUI 2.0 is now available →
           </Surface>
           <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', margin: 0, fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}>
@@ -16,10 +16,10 @@ export function ZenixLanding() {
             The component library that doesn't feel like a library. Give your users a premium, handcrafted experience out of the box.
           </p>
           <Hero.Actions justify="center">
-            <button style={{ padding: '1rem 2rem', borderRadius: 'var(--zx-radius-sm)', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', fontSize: '1rem', fontWeight: 600, cursor: 'pointer', boxShadow: 'var(--zx-shadow-md)' }}>
+            <button style={{ padding: '1rem 2rem', borderRadius: 'var(--zx-radius-surface)', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', fontSize: '1rem', fontWeight: 600, cursor: 'pointer', boxShadow: 'var(--zx-shadow-md)' }}>
               Start Building
             </button>
-            <button style={{ padding: '1rem 2rem', borderRadius: 'var(--zx-radius-sm)', background: 'transparent', color: 'var(--zx-primary)', border: '1px solid var(--zx-elevated)', fontSize: '1rem', fontWeight: 600, cursor: 'pointer' }}>
+            <button style={{ padding: '1rem 2rem', borderRadius: 'var(--zx-radius-surface)', background: 'transparent', color: 'var(--zx-primary)', border: '1px solid var(--zx-elevated)', fontSize: '1rem', fontWeight: 600, cursor: 'pointer' }}>
               Read the Docs
             </button>
           </Hero.Actions>
@@ -28,7 +28,7 @@ export function ZenixLanding() {
 
       {/* DASHBOARD PREVIEW */}
       <Features.Root padded>
-        <Surface variant="card" style={{ height: '600px', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-surface)', boxShadow: 'var(--zx-shadow-lg)', border: '1px solid var(--zx-elevated)', position: 'relative', overflow: 'hidden' }}>
+        <Surface variant="card" style={{ height: '600px', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-surface)', boxShadow: 'var(--zx-shadow-lg)', border: '1px solid var(--zx-elevated)', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '60px', borderBottom: '1px solid var(--zx-elevated)', display: 'flex', alignItems: 'center', padding: '0 2rem', gap: '0.5rem' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
@@ -47,8 +47,8 @@ export function ZenixLanding() {
               { icon: '⚡️', title: 'Zero Runtime', desc: 'Extracts to static CSS at build time for unparalleled performance.' },
               { icon: '🎨', title: 'Themeable', desc: 'Easily match your brand with our powerful token system.' }
             ].map((f, i) => (
-              <Surface key={i} variant="card" style={{ padding: '3rem 2rem', textAlign: 'left', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius)' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '1.5rem', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-sm)' }}>
+              <Surface key={i} variant="card" style={{ padding: '3rem 2rem', textAlign: 'left', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
+                <div style={{ fontSize: '2rem', marginBottom: '1.5rem', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-sm)' }}>
                   {f.icon}
                 </div>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{f.title}</h3>

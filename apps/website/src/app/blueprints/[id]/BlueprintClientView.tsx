@@ -41,12 +41,12 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
       {/* FULL WIDTH LIVE PREVIEW */}
       <div style={{ width: '100%', height: '80vh', borderBottom: '1px solid var(--zx-elevated)', position: 'relative', background: 'var(--zx-elevated)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 100 }}>
-          <Link href="/blueprints" style={{ fontSize: '0.875rem', fontWeight: 600, padding: '0.5rem 1rem', background: 'var(--zx-background)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-round)', textDecoration: 'none', boxShadow: 'var(--zx-shadow-sm)' }}>
+          <Link href="/blueprints" style={{ fontSize: '0.875rem', fontWeight: 600, padding: '0.5rem 1rem', background: 'var(--zx-background)', color: 'var(--zx-primary)', borderRadius: 'var(--zx-radius-pill)', textDecoration: 'none', boxShadow: 'var(--zx-shadow-sm)' }}>
             ← Back to Blueprints
           </Link>
         </div>
         <div style={{ height: '100%', overflowY: 'auto', padding: '2rem' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-lg)', overflow: 'hidden', boxShadow: 'var(--zx-shadow-lg)', border: '1px solid var(--zx-elevated)' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-overlay)', overflow: 'hidden', boxShadow: 'var(--zx-shadow-lg)', border: '1px solid var(--zx-elevated)' }}>
             <Experience preset={blueprint.theme as any}>
               <Component />
             </Experience>
@@ -67,15 +67,15 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
             </p>
             
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)' }}>
+              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)' }}>
                 <div style={{ fontSize: '0.75rem', opacity: 0.5, fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Theme</div>
                 <div style={{ fontWeight: 600, textTransform: 'capitalize' }}>{blueprint.theme.replace('-', ' ')}</div>
               </div>
-              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)' }}>
+              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)' }}>
                 <div style={{ fontSize: '0.75rem', opacity: 0.5, fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Category</div>
                 <div style={{ fontWeight: 600, textTransform: 'capitalize' }}>{blueprint.category}</div>
               </div>
-              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)' }}>
+              <div style={{ padding: '0.5rem 1rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)' }}>
                 <div style={{ fontSize: '0.75rem', opacity: 0.5, fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Tags</div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   {blueprint.tags.map(tag => (
@@ -109,7 +109,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
               <div style={{ position: 'relative', marginBottom: '1rem' }}>
                 <code style={{
                   display: 'block', padding: '0.75rem 3rem 0.75rem 0.75rem',
-                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)',
+                  background: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)',
                   fontSize: '0.75rem', fontFamily: 'monospace', lineHeight: 1.5,
                   border: '1px solid var(--zx-border)', color: 'var(--zx-primary)',
                   wordBreak: 'break-all',
@@ -188,7 +188,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
                     <div style={{ height: '200px', background: 'var(--zx-elevated)', backgroundImage: `url(${bp.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
                     <div style={{ padding: '1.5rem' }}>
                       <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{bp.title}</h3>
-                      <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'capitalize' }}>
+                      <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>
                         {bp.theme.replace('-', ' ')}
                       </span>
                     </div>

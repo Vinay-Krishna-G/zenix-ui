@@ -75,11 +75,11 @@ export default async function TemplateCategoryPage({ params }: { params: Promise
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{bp.title}</h3>
                 <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>{bp.description}</p>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', textTransform: 'capitalize' }}>
+                  <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>
                     {bp.theme.replace('-', ' ')}
                   </span>
                   {bp.supportedFrameworks?.includes(fwId) && (
-                    <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)' }}>
+                    <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)' }}>
                       {framework} Ready
                     </span>
                   )}

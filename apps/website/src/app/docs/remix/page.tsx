@@ -28,7 +28,7 @@ export default function RemixDocsPage() {
       </p>
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>1. Install Dependencies</h2>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`npm install @zenixui/react @zenixui/core @zenixui/components`}
       </pre>
 
@@ -36,7 +36,7 @@ export default function RemixDocsPage() {
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         In Remix, <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>app/root.tsx</code> renders the full HTML document and contains the <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>{'<Outlet />'}</code> where nested routes render. Wrap <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>{'<Outlet />'}</code> — not the entire document — with <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>Experience</code>:
       </p>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/root.tsx
 import {
   Links, Meta, Outlet, Scripts, ScrollRestoration,
@@ -72,7 +72,7 @@ export default function App() {
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         Remix handles CSS differently from Next.js. Use the <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>links</code> export to include the ZenixUI stylesheet — this ensures it's included in the document head with correct SSR support:
       </p>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`// Import with ?url to get the resolved path
 import zenixStyles from '@zenixui/core/dist/index.css?url';
 
@@ -82,7 +82,7 @@ export const links = () => [
       </pre>
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>4. Theme Config</h2>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/theme/zenix.ts
 import type { ThemeConfig } from '@zenixui/core';
 
@@ -103,10 +103,10 @@ export const themeConfig = {
       </pre>
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>5. Install a Blueprint</h2>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`pnpm dlx zenix-ui add zenix-landing --config ./zenix-theme.json`}
       </pre>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/routes/_index.tsx
 import { ZenixLanding } from '~/blueprints/zenix-landing';
 
@@ -150,7 +150,7 @@ export default function Index() {
         ))}
       </div>
 
-      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-lg)' }}>
+      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-overlay)' }}>
         <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '0 0 1rem' }}>Ship your Remix app faster</h2>
         <p style={{ opacity: 0.7, margin: '0 auto 2rem', maxWidth: '500px', lineHeight: 1.6 }}>
           Customize your theme visually, get the CLI command, and drop the blueprint into your route.

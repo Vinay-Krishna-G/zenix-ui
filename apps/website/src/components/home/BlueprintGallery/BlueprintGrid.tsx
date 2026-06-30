@@ -1,33 +1,16 @@
 import React from 'react';
-import { blueprints } from '@zenixui/blueprints';
+import { blueprints } from '@zenixui/blueprints/src/registry';
 import { BlueprintCard } from './BlueprintCard';
+import styles from './BlueprintGallery.module.css';
 
 export function BlueprintGrid() {
-  const categories = ['Landing Pages', 'Portfolios', 'Dashboards', 'Blogs'];
-  const idMap: Record<string, string> = { 
-    'Landing Pages': 'landing', 
-    'Portfolios': 'portfolio', 
-    'Dashboards': 'dashboard', 
-    'Blogs': 'blog' 
-  };
-
+  const featured = blueprints.filter(b => b.featured).slice(0, 3);
+  
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
-      {categories.map((category) => {
-        const categoryId = idMap[category];
-        const topBp = blueprints.find(bp => bp.category === categoryId);
-        const count = blueprints.filter(bp => bp.category === categoryId).length;
-        
-        return (
-          <BlueprintCard 
-            key={category} 
-            categoryName={category} 
-            categoryId={categoryId} 
-            count={count} 
-            previewImage={topBp?.previewImage} 
-          />
-        );
-      })}
+    <div className={styles.grid}>
+      {featured.map(blueprint => (
+        <BlueprintCard key={blueprint.id} blueprint={blueprint} />
+      ))}
     </div>
   );
 }

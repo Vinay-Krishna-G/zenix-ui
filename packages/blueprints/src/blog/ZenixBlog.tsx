@@ -53,14 +53,14 @@ export function ZenixBlog() {
             </p>
             
             {/* Code Block Discovery */}
-            <div style={{ background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', padding: '1.5rem', fontFamily: 'monospace', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
+            <div style={{ background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', padding: '1.5rem', fontFamily: 'monospace', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
               <span style={{ color: '#0A84FF' }}>const</span> engine = <span style={{ color: '#FF9F0A' }}>new</span> <span style={{ color: '#32D74B' }}>ExperienceEngine</span>();<br />
               engine.<span style={{ color: '#FF453A' }}>mount</span>();
             </div>
           </div>
 
           {/* Author Card Discovery */}
-          <Surface variant="card" style={{ marginTop: '4rem', padding: '2rem', display: 'flex', gap: '1.5rem', alignItems: 'center', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-lg)' }}>
+          <Surface variant="card" style={{ marginTop: '4rem', padding: '2rem', display: 'flex', gap: '1.5rem', alignItems: 'center', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-overlay)' }}>
             <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
             <div>
               <h4 style={{ margin: '0 0 0.25rem', fontSize: '1.125rem', fontWeight: 600 }}>Alex Developer</h4>
@@ -85,7 +85,7 @@ export function ZenixBlog() {
               key={post.id}
               variant="card" 
               onClick={() => setView('detail')}
-              style={{ padding: '2rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-md)', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+              style={{ padding: '2rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
             >
               <div>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '0.5rem' }}>

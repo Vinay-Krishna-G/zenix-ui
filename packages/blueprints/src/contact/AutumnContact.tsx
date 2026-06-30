@@ -121,7 +121,7 @@ export function AutumnContact() {
             variant="card"
             style={{
               padding: '2.5rem',
-              borderRadius: 'var(--zx-radius-lg)',
+              borderRadius: 'var(--zx-radius-overlay)',
               background: 'var(--zx-surface)',
               border: '1px solid var(--zx-elevated)',
               boxShadow: '0 4px 24px rgba(0,0,0,0.06)',

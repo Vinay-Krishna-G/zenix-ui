@@ -351,7 +351,7 @@ export default function ThemesPage() {
             href="/studio"
             style={{
               padding: '0.875rem 2rem',
-              borderRadius: 'var(--zx-radius-sm)',
+              borderRadius: 'var(--zx-radius-surface)',
               background: 'var(--zx-primary)',
               color: 'var(--zx-background)',
               fontWeight: 700,
@@ -365,7 +365,7 @@ export default function ThemesPage() {
             href="/blueprints"
             style={{
               padding: '0.875rem 2rem',
-              borderRadius: 'var(--zx-radius-sm)',
+              borderRadius: 'var(--zx-radius-surface)',
               background: 'var(--zx-elevated)',
               color: 'inherit',
               fontWeight: 700,

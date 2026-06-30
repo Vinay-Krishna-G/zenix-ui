@@ -41,7 +41,7 @@ export default function NextjsDocsPage() {
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         Start with a fresh Next.js project or use an existing one. Install the ZenixUI packages:
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`# npm
 npm install @zenixui/react @zenixui/core @zenixui/components
 
@@ -60,7 +60,7 @@ yarn add @zenixui/react @zenixui/core @zenixui/components`}
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         The <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>Experience</code> provider must sit at the root of your component tree, inside <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>{'<body>'}</code>. It resolves the theme config and injects CSS variables — every blueprint component downstream reads from those variables.
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/layout.tsx
 import type { Metadata } from 'next';
 import { Experience } from '@zenixui/react';
@@ -97,7 +97,7 @@ export default function RootLayout({
         Create a <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>theme/zenix.ts</code> file in your project root. You can generate this file using the{' '}
         <Link href="/studio" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontWeight: 600 }}>Theme Studio</Link> — configure your palette, radius, and motion, then click Download .ts.
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// theme/zenix.ts
 import type { ThemeConfig } from '@zenixui/core';
 
@@ -130,7 +130,7 @@ export const themeConfig = {
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         Blueprints are complete page templates that copy directly into your project. The CLI places the source code in your repo — you own it completely. Run from your project root:
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`# Install the Zenix Dashboard blueprint
 pnpm dlx zenix-ui add zenix-dashboard --config ./zenix-theme.json
 
@@ -140,7 +140,7 @@ pnpm dlx zenix-ui add midnight-portfolio --config ./zenix-theme.json`}
       <p style={{ opacity: 0.7, lineHeight: 1.7, marginBottom: '1rem', fontSize: '0.9rem' }}>
         The CLI will scaffold the blueprint into <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>src/blueprints/</code> and print the import path. Then import and render it anywhere in your Next.js app:
       </p>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/dashboard/page.tsx
 import { ZenixDashboard } from '@/blueprints/zenix-dashboard';
 
@@ -154,7 +154,7 @@ export default function DashboardPage() {
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         ZenixUI dashboard blueprints include a shell layout — sidebar, header, content area. The recommended approach is to use a Next.js App Router route group to apply that shell only to authenticated routes:
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`app/
   (auth)/
     layout.tsx          // Minimal layout, no sidebar
@@ -165,7 +165,7 @@ export default function DashboardPage() {
     page.tsx            // Overview
     settings/page.tsx`}
       </pre>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// app/(dashboard)/layout.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
@@ -222,7 +222,7 @@ export default async function DashboardLayout({
       </div>
 
       {/* CTA */}
-      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-lg)' }}>
+      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-overlay)' }}>
         <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '0 0 1rem' }}>Ready to install your first blueprint?</h2>
         <p style={{ opacity: 0.7, margin: '0 auto 2rem', maxWidth: '500px', lineHeight: 1.6 }}>
           Open the Theme Studio, customize your palette and motion profile, then copy the generated install command.

@@ -107,7 +107,7 @@ function SidebarLink({ children, active, onClick }: any) {
 
 function MetricTile({ title, value, desc }: any) {
   return (
-    <div style={{ padding: '2rem', background: 'transparent', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-lg)' }}>
+    <div style={{ padding: '2rem', background: 'transparent', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-overlay)' }}>
       <div style={{ fontSize: '1rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', opacity: 0.7, marginBottom: '1rem' }}>{title}</div>
       <div style={{ fontSize: '3rem', fontWeight: 300, marginBottom: '1rem' }}>{value}</div>
       <div style={{ fontSize: '0.875rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{desc}</div>

@@ -117,7 +117,7 @@ export function ZenixContact() {
             variant="card"
             style={{
               padding: '2.5rem',
-              borderRadius: 'var(--zx-radius-lg)',
+              borderRadius: 'var(--zx-radius-overlay)',
               background: 'var(--zx-surface)',
               border: '1px solid var(--zx-elevated)',
               boxShadow: '0 8px 40px rgba(0,0,0,0.12), 0 1px 0 rgba(255,255,255,0.04)',

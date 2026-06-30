@@ -13,10 +13,10 @@ export function ZenixPortfolio() {
             I'm a product designer and frontend engineer focused on high-density data applications and developer tooling.
           </p>
           <Hero.Actions style={{ marginTop: '2rem' }}>
-            <button style={{ padding: '0.75rem 1.5rem', borderRadius: 'var(--zx-radius-sm)', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
+            <button style={{ padding: '0.75rem 1.5rem', borderRadius: 'var(--zx-radius-surface)', background: 'var(--zx-primary)', color: 'var(--zx-background)', border: 'none', fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
               View Resume
             </button>
-            <button style={{ padding: '0.75rem 1.5rem', borderRadius: 'var(--zx-radius-sm)', background: 'var(--zx-elevated)', color: 'var(--zx-primary)', border: 'none', fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
+            <button style={{ padding: '0.75rem 1.5rem', borderRadius: 'var(--zx-radius-surface)', background: 'var(--zx-elevated)', color: 'var(--zx-primary)', border: 'none', fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
               Email Me
             </button>
           </Hero.Actions>
@@ -30,7 +30,7 @@ export function ZenixPortfolio() {
           <Features.Grid columns={2} spacing="xl">
             {[1, 2, 3, 4].map((i) => (
               <Surface key={i} variant="card" style={{ padding: 0, overflow: 'hidden', background: 'transparent', border: 'none' }}>
-                <div style={{ height: '300px', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-lg)', marginBottom: '1.5rem', border: '1px solid var(--zx-elevated)' }} />
+                <div style={{ height: '300px', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-overlay)', marginBottom: '1.5rem', border: '1px solid var(--zx-elevated)' }} />
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>Datagrid Infrastructure</h3>
                 <p style={{ margin: 0, opacity: 0.6, lineHeight: 1.5 }}>A high-performance table engine for viewing billions of rows instantly.</p>
               </Surface>

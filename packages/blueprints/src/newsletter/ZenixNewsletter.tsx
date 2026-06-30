@@ -17,7 +17,7 @@ export function ZenixNewsletter() {
   return (
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Surface variant="card" style={{ padding: '3rem', borderRadius: 'var(--zx-radius-lg)', textAlign: 'center', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-md)' }}>
+        <Surface variant="card" style={{ padding: '3rem', borderRadius: 'var(--zx-radius-overlay)', textAlign: 'center', border: '1px solid var(--zx-elevated)', boxShadow: 'var(--zx-shadow-md)' }}>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 0.5rem', letterSpacing: '-0.02em' }}>
             Join our newsletter
           </h2>
@@ -26,7 +26,7 @@ export function ZenixNewsletter() {
           </p>
 
           {status === 'success' ? (
-            <div style={{ padding: '0.75rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', color: 'var(--zx-primary)', fontWeight: 500, fontSize: '0.875rem' }}>
+            <div style={{ padding: '0.75rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', color: 'var(--zx-primary)', fontWeight: 500, fontSize: '0.875rem' }}>
               ✓ You've been subscribed successfully.
             </div>
           ) : (

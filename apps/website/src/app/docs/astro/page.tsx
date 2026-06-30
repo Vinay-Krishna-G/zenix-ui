@@ -24,7 +24,7 @@ export default function AstroDocsPage() {
         <h1 style={{ fontSize: '3rem', fontWeight: 800, margin: 0, letterSpacing: '-0.04em', lineHeight: 1.1 }}>
           ZenixUI with Astro
         </h1>
-        <span style={{ padding: '0.25rem 0.75rem', background: 'var(--zx-warning, #f59e0b)', color: '#000', borderRadius: 'var(--zx-radius-round)', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>
+        <span style={{ padding: '0.25rem 0.75rem', background: 'var(--zx-warning, #f59e0b)', color: '#000', borderRadius: 'var(--zx-radius-pill)', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>
           Beta
         </span>
       </div>
@@ -41,7 +41,7 @@ export default function AstroDocsPage() {
       </p>
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>1. Install Dependencies</h2>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`# Add the React integration to Astro first
 npx astro add react
 
@@ -53,7 +53,7 @@ npm install @zenixui/react @zenixui/core @zenixui/components`}
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         Import the ZenixUI CSS globally in your base layout file. The <code style={{ background: 'var(--zx-elevated)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>Experience</code> provider wraps the React island, not the entire Astro document:
       </p>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`---
 // src/layouts/Layout.astro
 import '@zenixui/core/dist/index.css';
@@ -76,7 +76,7 @@ import '@zenixui/core/dist/index.css';
       <p style={{ opacity: 0.8, lineHeight: 1.7, marginBottom: '1rem' }}>
         Create a wrapper React component that applies the Experience provider, then use it as an island:
       </p>
-      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 1rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`// src/components/BlueprintWrapper.tsx
 import { Experience } from '@zenixui/react';
 import { themeConfig } from '../theme/zenix';
@@ -90,7 +90,7 @@ export function BlueprintWrapper() {
   );
 }`}
       </pre>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)', lineHeight: 1.7 }}>
 {`---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
@@ -103,7 +103,7 @@ import { BlueprintWrapper } from '../components/BlueprintWrapper';
       </pre>
 
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>4. Install a Blueprint</h2>
-      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
+      <pre style={{ margin: '0 0 3rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace', border: '1px solid var(--zx-border)' }}>
 {`pnpm dlx zenix-ui add zenix-landing --config ./zenix-theme.json`}
       </pre>
 
@@ -160,7 +160,7 @@ import { BlueprintWrapper } from '../components/BlueprintWrapper';
         ))}
       </div>
 
-      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-lg)' }}>
+      <Surface variant="card" style={{ padding: '3rem', border: '1px solid var(--zx-elevated)', textAlign: 'center', borderRadius: 'var(--zx-radius-overlay)' }}>
         <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: '0 0 1rem' }}>Build blazing fast Astro sites</h2>
         <p style={{ opacity: 0.7, margin: '0 auto 2rem', maxWidth: '500px', lineHeight: 1.6 }}>
           Combine Astro's zero-JS approach with ZenixUI's complete blueprint architecture.

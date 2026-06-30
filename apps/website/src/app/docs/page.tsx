@@ -48,7 +48,7 @@ export default function DocsPage() {
       <p style={{ fontSize: '1.125rem', opacity: 0.8, lineHeight: 1.6, marginBottom: '1.5rem' }}>
         Before you can paste blueprints, you need the engine that powers them.
       </p>
-      <pre style={{ margin: '0 0 4rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
+      <pre style={{ margin: '0 0 4rem', padding: '1.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', overflowX: 'auto', fontSize: '0.875rem', fontFamily: 'monospace' }}>
         {`npm install @zenixui/react @zenixui/core @zenixui/components`}
       </pre>
 

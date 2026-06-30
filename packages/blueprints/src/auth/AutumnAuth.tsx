@@ -15,7 +15,7 @@ export function AutumnAuth() {
   return (
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '450px', margin: '0 auto' }}>
-        <Surface variant="card" style={{ padding: '4rem 3rem', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius)' }}>
+        <Surface variant="card" style={{ padding: '4rem 3rem', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', margin: '0 0 1rem', color: 'var(--zx-primary)' }}>
               Sign In

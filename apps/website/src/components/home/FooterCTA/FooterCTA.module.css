@@ -1,0 +1,48 @@
+.card {
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 1px solid var(--zx-border);
+  border-radius: var(--zx-radius-overlay, 24px);
+  background: var(--zx-surface);
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 6rem 4rem;
+  }
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.description {
+  opacity: 0.7;
+  margin: 0 auto 3rem;
+  max-width: 576px;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: var(--zx-space-inline, 1.5rem);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.codeBlock {
+  font-size: 1rem;
+  opacity: 0.6;
+  font-family: ui-monospace, monospace;
+  background: var(--zx-elevated);
+  padding: 0.5rem 1rem;
+  border-radius: var(--zx-radius-sm, 6px);
+  display: inline-block;
+  word-break: break-all;
+}

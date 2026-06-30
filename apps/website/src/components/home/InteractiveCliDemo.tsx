@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Surface, Button } from '@zenixui/components';
+import { Surface, Button, PageSection, SectionHeader, SectionHeading, SectionDescription } from '@zenixui/components';
 import { Experience } from '@zenixui/react';
 import dynamic from 'next/dynamic';
+import styles from './InteractiveCliDemo.module.css';
 
 const GlassHeader = dynamic(() => import('@/components/sections/headers/GlassHeader').then(m => ({ default: m.GlassHeader })), { ssr: false });
 const MinimalHeader = dynamic(() => import('@/components/sections/headers/MinimalHeader').then(m => ({ default: m.MinimalHeader })), { ssr: false });
@@ -50,40 +51,30 @@ export function InteractiveCliDemo() {
   };
 
   return (
-    <Surface variant="card" style={{ 
-      display: 'grid', 
-      gridTemplateColumns: '320px 1fr', 
-      gap: '0', 
-      border: '1px solid var(--zx-elevated)', 
-      borderRadius: 'var(--zx-radius-lg)', 
-      overflow: 'hidden',
-      background: 'var(--zx-background)'
-    }}>
+    <PageSection>
+      <SectionHeader>
+        <div>
+          <SectionHeading>Install exactly what you need.</SectionHeading>
+          <SectionDescription>Pick a section, pick a design language, generate the command.</SectionDescription>
+        </div>
+      </SectionHeader>
+      
+      <Surface variant="card" className={styles.card}>
       
       {/* LEFT: Controls & CLI */}
-      <div style={{ padding: '2.5rem 2rem', borderRight: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+      <div className={styles.sidebar}>
         
         <div>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '0.75rem' }}>
+          <div className={styles.stepTitle}>
             1. Choose Section
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className={styles.sectionGrid}>
             {['glass', 'minimal', 'saas'].map(s => (
               <button 
                 key={s} 
                 onClick={() => setSection(s as Section)}
-                style={{ 
-                  padding: '0.5rem 1rem', 
-                  borderRadius: 'var(--zx-radius-sm)', 
-                  border: section === s ? '1px solid var(--zx-primary)' : '1px solid var(--zx-elevated)', 
-                  background: section === s ? 'rgba(var(--zx-primary-rgb, 99, 102, 241), 0.1)' : 'transparent',
-                  color: section === s ? 'var(--zx-primary)' : 'inherit',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  transition: 'all 0.2s ease'
-                }}
+                className={styles.sectionButton}
+                data-active={section === s}
               >
                 {s.charAt(0).toUpperCase() + s.slice(1)} Header
               </button>
@@ -92,10 +83,10 @@ export function InteractiveCliDemo() {
         </div>
 
         <div>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '0.75rem' }}>
+          <div className={styles.stepTitle}>
             2. Choose Design Language
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+          <div className={styles.themeGrid}>
             {[
               { id: 'zenix', color: '#6366f1' },
               { id: 'ocean', color: '#0ea5e9' },
@@ -105,19 +96,10 @@ export function InteractiveCliDemo() {
               <button 
                 key={t.id} 
                 onClick={() => setTheme(t.id as Theme)}
-                style={{ 
-                  padding: '0.5rem', 
-                  borderRadius: 'var(--zx-radius-sm)', 
-                  border: theme === t.id ? '1px solid var(--zx-primary)' : '1px solid var(--zx-elevated)', 
-                  background: 'var(--zx-surface)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.2s ease'
-                }}
+                className={styles.themeButton}
+                data-active={theme === t.id}
               >
-                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: t.color }} />
+                <div className={styles.themeDot} style={{ background: t.color }} />
                 <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' }}>
                   {t.id}
                 </span>
@@ -127,82 +109,64 @@ export function InteractiveCliDemo() {
         </div>
 
         <div style={{ marginTop: 'auto' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '0.75rem' }}>
+          <div className={styles.stepTitle}>
             3. CLI Output
           </div>
-          <div style={{ 
-            background: 'var(--zx-surface)', 
-            border: '1px solid var(--zx-elevated)', 
-            borderRadius: 'var(--zx-radius-sm)', 
-            padding: '1rem',
-            fontFamily: 'ui-monospace, monospace',
-            fontSize: '0.8rem',
-            minHeight: '120px'
-          }}>
-            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', color: 'var(--zx-primary)' }}>
+          <div className={styles.cliOutput}>
+            <div className={styles.cliPrompt}>
               <span style={{ opacity: 0.5 }}>$</span>
               <span>
                 {commandText}
-                {installState === 'typing' && <span style={{ animation: 'blink 1s step-end infinite' }}>_</span>}
+                {installState === 'typing' && <span className={styles.blink}>_</span>}
               </span>
             </div>
             
             {installState === 'installing' && (
-              <div style={{ color: '#a1a1aa', marginTop: '0.5rem' }}>Downloading {section} header...</div>
+              <div className={styles.installing}>
+                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ animation: 'zx-spin 1s linear infinite' }}>
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                </svg>
+                Installing dependencies...
+              </div>
             )}
             
             {installState === 'done' && (
-              <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                <div style={{ color: '#22c55e' }}>✓ Installed components/headers/{section.charAt(0).toUpperCase() + section.slice(1)}Header.tsx</div>
-                <div style={{ color: '#22c55e' }}>✓ Applied {theme} design language</div>
-                <div style={{ color: '#a1a1aa', marginTop: '0.5rem' }}>Ready to use.</div>
+              <div className={styles.done}>
+                ✓ Installed components/headers/{section}.tsx
               </div>
             )}
           </div>
         </div>
-
       </div>
 
       {/* RIGHT: Live Preview */}
-      <div style={{ position: 'relative', background: 'var(--zx-elevated)', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--zx-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--zx-surface)' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>
+      <div className={styles.previewContainer}>
+        <div className={styles.previewHeader}>
+          <div className={styles.previewTitle}>
             Live Preview
-          </span>
-          <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: installState === 'done' ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.05)', color: installState === 'done' ? '#22c55e' : 'inherit', borderRadius: '4px', transition: 'all 0.3s ease' }}>
-            {installState === 'done' ? 'Updated' : 'Updating...'}
-          </span>
-        </div>
-        
-        <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-          <div style={{ 
-            position: 'absolute', 
-            top: 0, left: 0, right: 0, bottom: 0, 
-            opacity: installState === 'done' ? 1 : 0.5,
-            transition: 'opacity 0.3s ease',
-            pointerEvents: installState === 'done' ? 'auto' : 'none'
-          }}>
-            <Experience preset={theme}>
-              {/* Add a dummy height to show header properly */}
-              <div style={{ minHeight: '100%', background: 'var(--zx-background)' }}>
-                <PreviewComponent />
-                {/* Dummy content below header */}
-                <div style={{ padding: '4rem 2rem', textAlign: 'center', opacity: 0.3 }}>
-                  <div style={{ width: '60%', height: '24px', background: 'var(--zx-elevated)', margin: '0 auto 1rem', borderRadius: '4px' }} />
-                  <div style={{ width: '80%', height: '16px', background: 'var(--zx-elevated)', margin: '0 auto 0.5rem', borderRadius: '4px' }} />
-                  <div style={{ width: '75%', height: '16px', background: 'var(--zx-elevated)', margin: '0 auto', borderRadius: '4px' }} />
-                </div>
-              </div>
-            </Experience>
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
+            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
+            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-elevated)' }} />
           </div>
         </div>
+        <div className={styles.previewContent}>
+          <Experience preset={theme}>
+            {/* Add a dummy height to show header properly */}
+            <div style={{ minHeight: '100%', background: 'var(--zx-background)' }}>
+              <PreviewComponent />
+              {/* Dummy content below header */}
+              <div style={{ padding: '4rem 2rem', textAlign: 'center', opacity: 0.3 }}>
+                <div style={{ width: '60%', height: '24px', background: 'var(--zx-elevated)', margin: '0 auto 1rem', borderRadius: '4px' }} />
+                <div style={{ width: '80%', height: '16px', background: 'var(--zx-elevated)', margin: '0 auto 0.5rem', borderRadius: '4px' }} />
+                <div style={{ width: '75%', height: '16px', background: 'var(--zx-elevated)', margin: '0 auto', borderRadius: '4px' }} />
+              </div>
+            </div>
+          </Experience>
+        </div>
       </div>
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-      `}} />
-    </Surface>
+      </Surface>
+    </PageSection>
   );
 }

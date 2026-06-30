@@ -37,7 +37,7 @@ export function ZenixDashboard() {
               </div>
               
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-                <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-md)' }}>
+                <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
                   <h3 style={{ margin: '0 0 1.5rem', fontSize: '1rem', fontWeight: 600 }}>Recent Sales</h3>
                   {/* Table Row Discovery */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -55,7 +55,7 @@ export function ZenixDashboard() {
                     ))}
                   </div>
                 </Surface>
-                <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-md)' }}>
+                <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
                   <h3 style={{ margin: '0 0 1rem', fontSize: '1rem', fontWeight: 600 }}>Activity</h3>
                   {/* ActivityFeed Discovery */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
@@ -75,7 +75,7 @@ export function ZenixDashboard() {
           {view === 'settings' && (
             <div style={{ maxWidth: '600px' }}>
               <h1 style={{ fontSize: '2rem', fontWeight: 600, margin: '0 0 2rem' }}>Settings</h1>
-              <Surface variant="card" style={{ border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-md)' }}>
+              <Surface variant="card" style={{ border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
                 {/* FormRow & Toggle Discovery */}
                 <div style={{ padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--zx-elevated)' }}>
                   <div>
@@ -123,7 +123,7 @@ function SidebarLink({ children, active, onClick }: any) {
         width: '100%',
         textAlign: 'left',
         padding: '0.5rem 0.75rem',
-        borderRadius: 'var(--zx-radius-sm)',
+        borderRadius: 'var(--zx-radius-surface)',
         background: active ? 'var(--zx-elevated)' : 'transparent',
         border: 'none',
         color: 'var(--zx-primary)',
@@ -141,7 +141,7 @@ function SidebarLink({ children, active, onClick }: any) {
 
 function MetricTile({ title, value, trend }: any) {
   return (
-    <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-md)' }}>
+    <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
       <div style={{ fontSize: '0.875rem', fontWeight: 500, opacity: 0.7, marginBottom: '0.5rem' }}>{title}</div>
       <div style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>{value}</div>
       <div style={{ fontSize: '0.75rem', color: '#32D74B', fontWeight: 500 }}>{trend} from last month</div>

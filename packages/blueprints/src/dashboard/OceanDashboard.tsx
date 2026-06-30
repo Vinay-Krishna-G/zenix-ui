@@ -33,7 +33,7 @@ export function OceanDashboard() {
                 <MetricTile title="Deep Dives" value="442" />
               </div>
               
-              <Surface variant="glass" style={{ padding: '2.5rem', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
+              <Surface variant="glass" style={{ padding: '2.5rem', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
                 <h3 style={{ margin: '0 0 2rem', fontSize: '1.25rem', fontWeight: 300 }}>Recent Currents</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   {[1,2,3].map(id => (
@@ -45,7 +45,7 @@ export function OceanDashboard() {
                           <div style={{ fontSize: '0.875rem', opacity: 0.5, fontWeight: 300 }}>Just now</div>
                         </div>
                       </div>
-                      <div style={{ padding: '0.25rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--zx-radius-round)', fontSize: '0.75rem', border: '1px solid rgba(255,255,255,0.1)' }}>Completed</div>
+                      <div style={{ padding: '0.25rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--zx-radius-pill)', fontSize: '0.75rem', border: '1px solid rgba(255,255,255,0.1)' }}>Completed</div>
                     </div>
                   ))}
                 </div>
@@ -56,7 +56,7 @@ export function OceanDashboard() {
           {view === 'settings' && (
             <div style={{ maxWidth: '700px' }}>
               <h1 style={{ fontSize: '3rem', fontWeight: 300, margin: '0 0 3rem', letterSpacing: '-0.02em' }}>Depths</h1>
-              <Surface variant="glass" style={{ borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', overflow: 'hidden' }}>
+              <Surface variant="glass" style={{ borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', overflow: 'hidden' }}>
                 <div style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                   <div>
                     <h4 style={{ margin: '0 0 0.5rem', fontSize: '1.125rem', fontWeight: 400 }}>Sonar Pings</h4>
@@ -70,7 +70,7 @@ export function OceanDashboard() {
 
           {view === 'profile' && (
             <div style={{ maxWidth: '800px' }}>
-              <Surface variant="glass" style={{ position: 'relative', height: '200px', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', marginBottom: '5rem' }}>
+              <Surface variant="glass" style={{ position: 'relative', height: '200px', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)', marginBottom: '5rem' }}>
                 <div style={{ position: 'absolute', bottom: '-50px', left: '3rem', width: '120px', height: '120px', borderRadius: '50%', background: 'var(--zx-background)', padding: '0.5rem' }}>
                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
                 </div>
@@ -96,7 +96,7 @@ function SidebarLink({ children, active, onClick }: any) {
         width: '100%',
         textAlign: 'left',
         padding: '1rem 1.5rem',
-        borderRadius: 'var(--zx-radius-round)',
+        borderRadius: 'var(--zx-radius-pill)',
         background: active ? 'rgba(255,255,255,0.05)' : 'transparent',
         border: active ? '1px solid var(--zx-glass-border)' : '1px solid transparent',
         color: 'var(--zx-primary)',
@@ -114,7 +114,7 @@ function SidebarLink({ children, active, onClick }: any) {
 
 function MetricTile({ title, value }: any) {
   return (
-    <Surface variant="glass" style={{ padding: '2rem', borderRadius: 'var(--zx-radius-lg)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
+    <Surface variant="glass" style={{ padding: '2rem', borderRadius: 'var(--zx-radius-overlay)', background: 'var(--zx-glass-bg)', backdropFilter: 'var(--zx-glass-blur)', border: '1px solid var(--zx-glass-border)' }}>
       <div style={{ fontSize: '1rem', fontWeight: 300, opacity: 0.7, marginBottom: '1rem' }}>{title}</div>
       <div style={{ fontSize: '3rem', fontWeight: 300, letterSpacing: '-0.02em' }}>{value}</div>
     </Surface>

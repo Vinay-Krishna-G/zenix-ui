@@ -35,7 +35,7 @@ export function FrameworkTemplatesView({ frameworkId, frameworkName }: { framewo
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{frameworkName} {displayCategory} Templates</h3>
                   <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>Browse all {displayCategory.toLowerCase()} blueprints optimized for {frameworkName}.</p>
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-sm)' }}>
+                    <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)' }}>
                       {blueprints.filter(bp => bp.category === category).length} Templates
                     </span>
                   </div>

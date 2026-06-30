@@ -108,7 +108,7 @@ export function ExperienceGalleryClient() {
                     padding: '0.75rem 1rem', 
                     background: isActive ? 'var(--zx-elevated)' : 'transparent',
                     border: 'none',
-                    borderRadius: 'var(--zx-radius-sm)',
+                    borderRadius: 'var(--zx-radius-surface)',
                     color: isActive ? 'var(--zx-primary)' : 'inherit',
                     fontWeight: isActive ? 600 : 400,
                     opacity: isActive ? 1 : 0.7,
@@ -143,7 +143,7 @@ export function ExperienceGalleryClient() {
               {filteredBlueprints.map(blueprint => (
                 <Surface variant="card" key={blueprint.id} style={{ padding: '0', overflow: 'hidden', border: '1px solid var(--zx-elevated)', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ height: '220px', background: 'var(--zx-elevated)', position: 'relative', backgroundImage: `url(${blueprint.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }}>
-                    <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--zx-background)', padding: '0.25rem 0.75rem', borderRadius: 'var(--zx-radius-round)', fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' }}>
+                    <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--zx-background)', padding: '0.25rem 0.75rem', borderRadius: 'var(--zx-radius-pill)', fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' }}>
                       {blueprint.theme.replace('-', ' ')}
                     </div>
                   </div>
@@ -151,7 +151,7 @@ export function ExperienceGalleryClient() {
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{blueprint.title}</h3>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
                       {blueprint.tags.map(tag => (
-                        <span key={tag} style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-sm)', opacity: 0.8 }}>
+                        <span key={tag} style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', opacity: 0.8 }}>
                           {tag}
                         </span>
                       ))}
