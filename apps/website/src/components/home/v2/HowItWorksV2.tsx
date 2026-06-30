@@ -5,59 +5,62 @@ import Link from 'next/link';
 
 export function HowItWorksV2() {
   return (
-    <section style={{ padding: '10rem 2rem', borderBottom: '1px solid rgba(255,255,255,0.05)', background: '#09090B' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '4rem', fontWeight: 800, textAlign: 'center', marginBottom: '8rem', letterSpacing: '-0.04em' }}>
-          From zero to production in minutes.
+    <section style={{ padding: '96px 40px', borderBottom: '1px solid rgba(255,255,255,0.08)', background: '#09090B' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '56px', fontWeight: 800, marginBottom: '80px', letterSpacing: '-0.04em', color: '#FAFAFA' }}>
+          From zero to production.
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6rem', position: 'relative' }}>
-          {/* Connecting line */}
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '40px', width: '2px', background: 'linear-gradient(to bottom, var(--zx-primary), rgba(255,255,255,0.05))', zIndex: 0 }} />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px', position: 'relative' }}>
+          
+          {/* Background Connecting Line */}
+          <div style={{ position: 'absolute', top: '48px', left: '16%', right: '16%', height: '2px', background: 'rgba(255,255,255,0.08)', zIndex: 0 }} />
 
           {/* STEP 1 */}
-          <div style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-            <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: '#000', border: '2px solid var(--zx-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 800, color: 'var(--zx-primary)', flexShrink: 0, boxShadow: '0 0 30px rgba(33,241,168,0.2)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+            <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: '#111113', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontWeight: 800, color: '#A1A1AA', marginBottom: '32px' }}>
               1
             </div>
-            <div>
-              <h3 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>Choose your business.</h3>
-              <p style={{ fontSize: '1.5rem', opacity: 0.6, maxWidth: '600px', lineHeight: 1.5 }}>
-                Browse our gallery of handcrafted experiences. Whether you're a Michelin star restaurant or a Series A startup, we have your foundation ready.
-              </p>
-            </div>
+            <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '16px', letterSpacing: '-0.02em', color: '#FAFAFA' }}>Choose Experience</h3>
+            <p style={{ fontSize: '16px', color: '#A1A1AA', lineHeight: 1.6, maxWidth: '320px' }}>
+              Select a handcrafted business foundation. Restaurant, startup, or studio—we have it ready.
+            </p>
           </div>
 
           {/* STEP 2 */}
-          <div style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-            <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: '#000', border: '2px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 800, flexShrink: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+            <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: '#111113', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontWeight: 800, color: '#A1A1AA', marginBottom: '32px' }}>
               2
             </div>
-            <div>
-              <h3 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>Inject your identity.</h3>
-              <p style={{ fontSize: '1.5rem', opacity: 0.6, maxWidth: '600px', lineHeight: 1.5 }}>
-                No CSS required. Open the Studio Editor and click to instantly inject premium Brand Packs and Aesthetics. Watch the entire website transform in real-time.
-              </p>
-            </div>
+            <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '16px', letterSpacing: '-0.02em', color: '#FAFAFA' }}>Inject Identity</h3>
+            <p style={{ fontSize: '16px', color: '#A1A1AA', lineHeight: 1.6, maxWidth: '320px' }}>
+              Apply premium Brand Packs and Aesthetics. Watch the entire application adapt instantly.
+            </p>
           </div>
 
           {/* STEP 3 */}
-          <div style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-            <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: '#FFF', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 800, flexShrink: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+            <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: '#FAFAFA', border: '1px solid #FAFAFA', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontWeight: 800, color: '#09090B', marginBottom: '32px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2)' }}>
               3
             </div>
-            <div>
-              <h3 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>Launch.</h3>
-              <p style={{ fontSize: '1.5rem', opacity: 0.6, maxWidth: '600px', lineHeight: 1.5, marginBottom: '2rem' }}>
-                Run the ZenixUI installer in your terminal. Get the complete source code, fully typed, animated, and ready to deploy to Vercel.
-              </p>
-              <Link href="/launchpad" style={{ textDecoration: 'none' }}>
-                <button style={{ padding: '1rem 2.5rem', background: '#FFF', color: '#000', border: 'none', borderRadius: '3rem', fontSize: '1.1rem', fontWeight: 800, cursor: 'pointer' }}>
-                  Start Building →
-                </button>
-              </Link>
-            </div>
+            <h3 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '16px', letterSpacing: '-0.02em', color: '#FAFAFA' }}>Launch Tonight</h3>
+            <p style={{ fontSize: '16px', color: '#A1A1AA', lineHeight: 1.6, maxWidth: '320px', marginBottom: '32px' }}>
+              Get the complete Next.js source code, fully typed and animated. Ready for Vercel.
+            </p>
+            <Link href="/launchpad" style={{ textDecoration: 'none' }}>
+              <button style={{ 
+                padding: '16px 32px', background: '#FAFAFA', color: '#09090B', 
+                border: 'none', borderRadius: '16px', fontSize: '16px', fontWeight: 700, 
+                cursor: 'pointer', transition: 'transform 150ms ease'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                Start Building
+              </button>
+            </Link>
           </div>
+
         </div>
 
       </div>
