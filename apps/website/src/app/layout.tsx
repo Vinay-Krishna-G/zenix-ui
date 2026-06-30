@@ -40,11 +40,9 @@ export default function RootLayout({
                 <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>ZenixUI</a>
               </div>
               <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                <a href="/sections" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Section Library</a>
-                <a href="/blueprints" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Blueprint Gallery</a>
-                <a href="/themes" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Design Languages</a>
-                <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Theme Studio</a>
-                <a href="/learn" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Learn Hub</a>
+                <a href="/launchpad" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Product</a>
+                <a href="/launchpad" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Gallery</a>
+                <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Studio</a>
                 <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
               </div>
             </nav>
