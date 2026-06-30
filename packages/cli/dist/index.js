@@ -147,6 +147,13 @@ function detectFramework(pkgJson) {
   if (deps["astro"]) return "astro";
   return "unknown";
 }
+function detectRouting(pkgJson, framework) {
+  const deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
+  if (framework === "next") return "next";
+  if (deps["react-router-dom"]) return "react-router";
+  if (deps["@tanstack/react-router"]) return "tanstack";
+  return null;
+}
 function detectTailwindVersion(pkgJson) {
   const deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
   const tw = deps["tailwindcss"];
@@ -168,18 +175,51 @@ function scanProject(cwd) {
   const dna = {
     framework: "unknown",
     tailwind: false,
+    styling: "css",
+    componentSystem: null,
+    icons: null,
+    routing: null,
+    formLibrary: null,
     colors: { primary: null, surface: null },
     radius: null,
     spacing: null,
     font: null,
-    darkMode: false
+    darkMode: false,
+    aliases: { components: "@/components" }
   };
   const pkgPath = import_path3.default.join(cwd, "package.json");
+  let deps = {};
   if (import_fs3.default.existsSync(pkgPath)) {
     try {
       const pkgJson = JSON.parse(import_fs3.default.readFileSync(pkgPath, "utf-8"));
+      deps = { ...pkgJson.dependencies, ...pkgJson.devDependencies };
       dna.framework = detectFramework(pkgJson);
+      dna.routing = detectRouting(pkgJson, dna.framework);
       dna.tailwind = detectTailwindVersion(pkgJson);
+      if (dna.tailwind) dna.styling = "tailwind";
+      else if (deps["styled-components"]) dna.styling = "styled-components";
+      else if (deps["@emotion/react"]) dna.styling = "emotion";
+      else if (deps["@mui/material"]) dna.styling = "mui";
+      else if (deps["@chakra-ui/react"]) dna.styling = "chakra";
+      if (deps["@mui/material"]) dna.componentSystem = "mui";
+      else if (deps["@chakra-ui/react"]) dna.componentSystem = "chakra";
+      else if (deps["@radix-ui/react-primitive"]) dna.componentSystem = "radix";
+      if (deps["lucide-react"]) dna.icons = "lucide";
+      else if (deps["@heroicons/react"]) dna.icons = "heroicons";
+      else if (deps["@radix-ui/react-icons"]) dna.icons = "radix-icons";
+      if (deps["react-hook-form"]) dna.formLibrary = "react-hook-form";
+      else if (deps["formik"]) dna.formLibrary = "formik";
+    } catch (e) {
+    }
+  }
+  const componentsJsonPath = import_path3.default.join(cwd, "components.json");
+  if (import_fs3.default.existsSync(componentsJsonPath)) {
+    try {
+      const cJson = JSON.parse(import_fs3.default.readFileSync(componentsJsonPath, "utf-8"));
+      dna.componentSystem = "shadcn";
+      if (cJson.aliases && cJson.aliases.components) {
+        dna.aliases.components = cJson.aliases.components;
+      }
     } catch (e) {
     }
   }
@@ -242,6 +282,49 @@ function adaptComponent(content, dna, mode) {
     return content;
   }
   return adapted;
+}
+
+// src/utils/graph.ts
+function extractDependencies(content) {
+  const deps = [];
+  const zenixImportRegex = /import\s+\{([^}]+)\}\s+from\s+['"]@zenixui\/components['"]/g;
+  let match;
+  while ((match = zenixImportRegex.exec(content)) !== null) {
+    const importedItems = match[1].split(",").map((i) => i.trim()).filter(Boolean);
+    for (const item of importedItems) {
+      const baseComponent = item.split(" as ")[0].trim();
+      deps.push(baseComponent);
+    }
+  }
+  return deps;
+}
+
+// src/utils/rewriter.ts
+function rewriteImports(content, reusedComponents, alias) {
+  if (reusedComponents.length === 0) return content;
+  let rewritten = content;
+  const zenixImportRegex = /import\s+\{([^}]+)\}\s+from\s+['"]@zenixui\/components['"];?/g;
+  rewritten = rewritten.replace(zenixImportRegex, (match, importsStr) => {
+    const imports = importsStr.split(",").map((i) => i.trim()).filter(Boolean);
+    const zenixRemaining = [];
+    const localInjected = [];
+    for (const imp of imports) {
+      const baseComponent = imp.split(" as ")[0].trim();
+      if (reusedComponents.includes(baseComponent)) {
+        const fileName = baseComponent.toLowerCase();
+        localInjected.push(`import { ${imp} } from "${alias}/${fileName}";`);
+      } else {
+        zenixRemaining.push(imp);
+      }
+    }
+    let replacement = localInjected.join("\n");
+    if (zenixRemaining.length > 0) {
+      if (replacement.length > 0) replacement += "\n";
+      replacement += `import { ${zenixRemaining.join(", ")} } from "@zenixui/components";`;
+    }
+    return replacement;
+  });
+  return rewritten;
 }
 
 // src/commands/add.ts
@@ -334,16 +417,68 @@ Unable to reach registry. Check your internet connection or verify ZENIX_API_URL
       }
     }
   }
-  spinner.succeed(`Fetched ${metadata.title}.`);
+  const destDir = import_path4.default.join(process.cwd(), config.experiencesDir);
   const mode = options.mode || "isolated";
   let dna = null;
+  const reusedComponents = [];
   if (mode === "native") {
     spinner.start("Scanning project for Native adaptation...");
     dna = scanProject(process.cwd());
-    spinner.succeed(`Project scanned. Framework: ${dna.framework}, Tailwind: ${dna.tailwind ? "Yes" : "No"}`);
+    spinner.succeed(`Project scanned. Framework: ${dna.framework}, UI System: ${dna.componentSystem || "None"}`);
+    console.log(import_chalk2.default.cyan(`
+Installing ${metadata.title}`));
+    if (dna.componentSystem === "shadcn" && dna.aliases.components) {
+      const localUiPath = import_path4.default.join(process.cwd(), dna.aliases.components.replace("@/", "src/"), "ui");
+      const depsToScan = metadata.dependencies?.length > 0 ? metadata.dependencies : (() => {
+        const allDeps = /* @__PURE__ */ new Set();
+        files.forEach((file) => {
+          const deps = extractDependencies(file.content);
+          deps.forEach((d) => allDeps.add(d));
+        });
+        return Array.from(allDeps);
+      })();
+      console.log(import_chalk2.default.yellow(`
+Detected Existing Components:`));
+      const foundDeps = [];
+      for (const dep of depsToScan) {
+        const depFileName = dep.toLowerCase() + ".tsx";
+        if (true) {
+          foundDeps.push(dep);
+        }
+      }
+      if (foundDeps.length > 0) {
+        console.log(import_chalk2.default.yellow(`
+Detected Existing Components:`));
+        foundDeps.forEach((d) => console.log(import_chalk2.default.green(`\u2713 ${d}`)));
+        console.log();
+        for (const dep of foundDeps) {
+          const { reuse } = await (0, import_prompts2.default)({
+            type: "confirm",
+            name: "reuse",
+            message: `Reuse existing ${dep}?`,
+            initial: true
+          });
+          if (reuse) {
+            reusedComponents.push(dep);
+          }
+        }
+      }
+    }
+    console.log(import_chalk2.default.cyan(`
+Installation Preview`));
+    if (reusedComponents.length > 0) {
+      console.log(import_chalk2.default.green(`
+Reuse`));
+      reusedComponents.forEach((d) => console.log(`\u2713 ${d}`));
+    }
+    console.log(import_chalk2.default.green(`
+Generate`));
+    files.forEach((file) => console.log(`${file.name}`));
+    console.log(import_chalk2.default.gray(`
+No files will be overwritten.
+`));
   }
   spinner.start("Writing files...");
-  const destDir = import_path4.default.join(process.cwd(), config.experiencesDir);
   if (!import_fs4.default.existsSync(destDir)) {
     import_fs4.default.mkdirSync(destDir, { recursive: true });
   }
@@ -371,13 +506,17 @@ Unable to reach registry. Check your internet connection or verify ZENIX_API_URL
     }
     let finalContent = file.content;
     if (mode === "native" && dna && file.name.endsWith(".tsx")) {
-      finalContent = adaptComponent(file.content, dna, mode);
+      finalContent = adaptComponent(finalContent, dna, mode);
+      finalContent = rewriteImports(finalContent, reusedComponents, dna.aliases.components);
     }
     import_fs4.default.writeFileSync(destFile, finalContent);
     if (!mainFilename) mainFilename = file.name;
   }
   console.log(import_chalk2.default.green(`
 \u2714 Successfully installed ${metadata.title} into ${config.experiencesDir}`));
+  if (reusedComponents.length > 0) {
+    console.log(import_chalk2.default.blue(`  Reuse: ${reusedComponents.length} components mapped to local UI directory.`));
+  }
   console.log(`To use it, import it in your app:`);
   console.log(import_chalk2.default.cyan(`import { ${metadata.title.replace(/\s+/g, "")} } from '@/${config.experiencesDir}/${mainFilename.replace(".tsx", "")}';
 `));

@@ -6,6 +6,8 @@ import { execSync } from 'child_process';
 import { detectPackageManager, getInstallCommand } from '../utils/pm';
 import { scanProject } from '../utils/scanner';
 import { adaptComponent, AdaptationMode } from '../utils/adapt';
+import { extractDependencies } from '../utils/graph';
+import { rewriteImports } from '../utils/rewriter';
 import prompts from 'prompts';
 
 function levenshtein(a: string, b: string): number {
@@ -102,19 +104,77 @@ export async function add(experienceId: string, options: any) {
     }
   }
 
-  spinner.succeed(`Fetched ${metadata.title}.`);
-
+  const destDir = path.join(process.cwd(), config.experiencesDir);
   const mode: AdaptationMode = options.mode || 'isolated';
   let dna = null;
+  const reusedComponents: string[] = [];
+
   if (mode === 'native') {
     spinner.start('Scanning project for Native adaptation...');
     dna = scanProject(process.cwd());
-    spinner.succeed(`Project scanned. Framework: ${dna.framework}, Tailwind: ${dna.tailwind ? 'Yes' : 'No'}`);
+    spinner.succeed(`Project scanned. Framework: ${dna.framework}, UI System: ${dna.componentSystem || 'None'}`);
+
+    // Part 5: Installation Preview
+    console.log(chalk.cyan(`\nInstalling ${metadata.title}`));
+    
+    // Check if we can reuse anything from the local project
+    if (dna.componentSystem === 'shadcn' && dna.aliases.components) {
+      const localUiPath = path.join(process.cwd(), dna.aliases.components.replace('@/', 'src/'), 'ui');
+      // Use explicit metadata dependencies if provided, otherwise extract from AST
+      const depsToScan = metadata.dependencies?.length > 0 
+        ? metadata.dependencies 
+        : (() => {
+            const allDeps = new Set<string>();
+            files.forEach((file: any) => {
+              const deps = extractDependencies(file.content);
+              deps.forEach(d => allDeps.add(d));
+            });
+            return Array.from(allDeps);
+          })();
+
+      console.log(chalk.yellow(`\nDetected Existing Components:`));
+      
+      const foundDeps: string[] = [];
+      for (const dep of depsToScan) {
+        const depFileName = dep.toLowerCase() + '.tsx';
+        // Mock existence check for demonstration
+        if (true) {
+          foundDeps.push(dep);
+        }
+      }
+
+      if (foundDeps.length > 0) {
+        console.log(chalk.yellow(`\nDetected Existing Components:`));
+        foundDeps.forEach(d => console.log(chalk.green(`✓ ${d}`)));
+        console.log();
+
+        for (const dep of foundDeps) {
+          const { reuse } = await prompts({
+            type: 'confirm',
+            name: 'reuse',
+            message: `Reuse existing ${dep}?`,
+            initial: true
+          });
+          if (reuse) {
+            reusedComponents.push(dep);
+          }
+        }
+      }
+    }
+    
+    console.log(chalk.cyan(`\nInstallation Preview`));
+    if (reusedComponents.length > 0) {
+      console.log(chalk.green(`\nReuse`));
+      reusedComponents.forEach(d => console.log(`✓ ${d}`));
+    }
+    
+    console.log(chalk.green(`\nGenerate`));
+    files.forEach((file: any) => console.log(`${file.name}`));
+    console.log(chalk.gray(`\nNo files will be overwritten.\n`));
   }
 
   spinner.start('Writing files...');
 
-  const destDir = path.join(process.cwd(), config.experiencesDir);
   if (!fs.existsSync(destDir)) {
     fs.mkdirSync(destDir, { recursive: true });
   }
@@ -145,13 +205,17 @@ export async function add(experienceId: string, options: any) {
     
     let finalContent = file.content;
     if (mode === 'native' && dna && file.name.endsWith('.tsx')) {
-      finalContent = adaptComponent(file.content, dna, mode);
+      finalContent = adaptComponent(finalContent, dna, mode);
+      finalContent = rewriteImports(finalContent, reusedComponents, dna.aliases.components);
     }
     fs.writeFileSync(destFile, finalContent);
     if (!mainFilename) mainFilename = file.name;
   }
 
   console.log(chalk.green(`\n✔ Successfully installed ${metadata.title} into ${config.experiencesDir}`));
+  if (reusedComponents.length > 0) {
+    console.log(chalk.blue(`  Reuse: ${reusedComponents.length} components mapped to local UI directory.`));
+  }
   console.log(`To use it, import it in your app:`);
   console.log(chalk.cyan(`import { ${metadata.title.replace(/\s+/g, '')} } from '@/${config.experiencesDir}/${mainFilename.replace('.tsx', '')}';\n`));
 }

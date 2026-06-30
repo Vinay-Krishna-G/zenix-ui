@@ -15,7 +15,7 @@
     "./dist/registry.json": "./dist/registry.json"
   },
   "scripts": {
-    "build:registry": "npx tsx scripts/build-registry.ts"
+    "build:registry": "npx tsx -r ./scripts/mock-css.js scripts/build-registry.ts"
   },
   "dependencies": {
     "@zenixui/components": "workspace:*",

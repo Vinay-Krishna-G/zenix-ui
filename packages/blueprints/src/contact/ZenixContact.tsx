@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { Surface, Features, Input, Button, Textarea } from '@zenixui/components';
 
+export const metadata = {
+  id: "contact/minimal",
+  dependencies: ["Surface", "Features", "Input", "Button", "Textarea"],
+  capabilities: ["glass", "gradient", "animated"]
+};
+
 export function ZenixContact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 

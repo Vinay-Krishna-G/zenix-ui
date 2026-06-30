@@ -63,9 +63,32 @@ export default {
         {isCustom ? "5. Compose & Run" : "3. CLI Output"}
       </div>
       
-      {isCustom && (
+      {isCustom && config.mode !== 'native' && (
         <div className={styles.cliOutput} style={{ marginBottom: '1rem', whiteSpace: 'pre-wrap', color: 'var(--zx-primary)' }}>
           {composeFileContent}
+        </div>
+      )}
+
+      {config.mode === 'native' && (
+        <div className={styles.cliOutput} style={{ marginBottom: '1rem' }}>
+          <div style={{ color: 'var(--zx-primary)', fontWeight: 'bold', marginBottom: '1rem' }}>Installation Preview</div>
+          
+          <div style={{ color: 'var(--zx-primary)', fontWeight: 'bold', marginBottom: '0.5rem' }}>Reuse</div>
+          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1.25rem' }}>
+            <div>✓ Button</div>
+            <div>✓ Input</div>
+            <div>✓ Card</div>
+            <div>✓ Textarea</div>
+          </div>
+          
+          <div style={{ color: 'var(--zx-primary)', fontWeight: 'bold', marginBottom: '0.5rem' }}>Generate</div>
+          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1.25rem' }}>
+            <div>ContactForm.tsx</div>
+            <div>ContactSuccess.tsx</div>
+            <div>validation.ts</div>
+          </div>
+
+          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem' }}>No files will be overwritten.</div>
         </div>
       )}
 
@@ -89,7 +112,15 @@ export default {
         
         {installState === 'done' && (
           <div className={styles.done}>
-            ✓ Installed components/headers/{section}.tsx
+            {config.mode === 'native' ? (
+              <>
+                <div style={{ color: 'var(--zx-primary)' }}>✓ Using existing Button</div>
+                <div style={{ color: 'var(--zx-primary)' }}>✓ Using existing Surface</div>
+                <div>✓ Installed components/headers/{section}.tsx</div>
+              </>
+            ) : (
+              <div>✓ Installed components/headers/{section}.tsx</div>
+            )}
           </div>
         )}
       </div>

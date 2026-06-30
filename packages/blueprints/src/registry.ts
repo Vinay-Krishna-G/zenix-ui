@@ -445,6 +445,48 @@ export const blueprints: BlueprintMetadata[] = [
     createdAt: "2026-06-18",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
+  },
+  {
+    id: "header/glass",
+    title: "Glass Header",
+    description: "Frosted glass navbar with backdrop blur.",
+    category: "header" as any,
+    theme: "ocean",
+    tags: ["Glass", "Sticky", "Blur", "Responsive", "Dark"],
+    component: () => null,
+    sourcePath: "apps/website/src/components/sections/headers/GlassHeader.tsx",
+    previewImage: "/previews/glass-header.png",
+    createdAt: "2026-06-25",
+    featured: true,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
+  },
+  {
+    id: "header/minimal",
+    title: "Minimal Header",
+    description: "Clean, ultra-minimalist navigation.",
+    category: "header" as any,
+    theme: "zenix",
+    tags: ["Minimal", "Clean", "Light"],
+    component: () => null,
+    sourcePath: "apps/website/src/components/sections/headers/MinimalHeader.tsx",
+    previewImage: "/previews/minimal-header.png",
+    createdAt: "2026-06-25",
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
+  },
+  {
+    id: "header/saas",
+    title: "SaaS Header",
+    description: "Feature-rich navigation for SaaS apps.",
+    category: "header" as any,
+    theme: "zenix",
+    tags: ["SaaS", "Mega-menu", "App"],
+    component: () => null,
+    sourcePath: "apps/website/src/components/sections/headers/SaaSHeader.tsx",
+    previewImage: "/previews/saas-header.png",
+    createdAt: "2026-06-25",
+    featured: false,
+    supportedFrameworks: ['react', 'nextjs', 'vite']
   }
 ];
 

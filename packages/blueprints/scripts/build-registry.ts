@@ -61,7 +61,19 @@ async function buildRegistry() {
       theme: bp.theme,
       tags: bp.tags,
       previewImage: bp.previewImage,
-      dependencies: bp.dependencies || [],
+      dependencies: (() => {
+        const match = sourceCode.match(/export\s+const\s+metadata\s*=\s*({[\s\S]*?});/);
+        if (match) {
+          try {
+            // Using a simple Function constructor to evaluate the JSON-like object string
+            const obj = new Function('return ' + match[1])();
+            return obj.dependencies || bp.dependencies || [];
+          } catch (e) {
+            return bp.dependencies || [];
+          }
+        }
+        return bp.dependencies || [];
+      })(),
       devDependencies: bp.devDependencies || [],
       files: [
         {
