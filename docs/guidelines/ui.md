@@ -155,3 +155,53 @@ Generate
 ↓
 Install
 ```
+
+## Visual Accessibility Requirements (Mandatory)
+
+Every generated template must pass visual contrast validation.
+
+### Requirements
+
+- Never allow foreground and background colors to have insufficient contrast.
+- Validate every text color against its background.
+- Validate buttons, badges, cards, links, and inputs separately.
+- Hover and active states must also pass contrast checks.
+- Light and dark themes must both be validated independently.
+- Do not rely only on inherited colors.
+- Automatically adjust foreground colors if a generated palette creates unreadable combinations.
+- Decorative gradients may never reduce text readability.
+- Borders must remain distinguishable from their backgrounds.
+- Focus rings must remain visible in every theme.
+- Before considering a template complete, run an accessibility audit for:
+  • Normal text
+  • Large text
+  • Buttons
+  • Inputs
+  • Cards
+  • Navigation
+  • Disabled states
+  • Hover states
+  • Dark mode
+  • Light mode
+
+A visually beautiful template that is difficult to read is considered a failed generation and must be corrected automatically before completion.
+
+## Visual Consistency Requirements (Mandatory)
+
+Every generated experience must feel intentionally designed.
+
+Requirements
+
+- Use a consistent spacing rhythm throughout.
+- Radius values must come from the selected Brand Pack.
+- Shadow language must be consistent.
+- Motion timing must be consistent.
+- Border thickness must be consistent.
+- Typography scale must remain consistent.
+- Section spacing must follow a defined vertical rhythm.
+- Cards within the same layout must share the same elevation.
+- Icon sizes must remain consistent.
+- Primary and secondary buttons must be visually distinguishable.
+- Interactive elements must have consistent hover, focus, active, and disabled states.
+
+A page should look like it was designed by one designer, not assembled from unrelated sections.

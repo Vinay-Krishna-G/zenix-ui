@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import { init } from './commands/init';
 import { add } from './commands/add';
 import { compose } from './commands/compose';
+import { newCommand } from './commands/new';
 
 const program = new Command();
 
@@ -20,6 +21,14 @@ program
   .option('-d, --dir <path>', 'Experiences directory (default: src/experiences)')
   .option('-y, --yes', 'Skip prompts and use defaults/flags')
   .action(init);
+
+program
+  .command('new <experience>')
+  .description('Generate a complete experience starter kit')
+  .option('-b, --brand <brand>', 'Specify the brand pack to use')
+  .option('-a, --aesthetic <aesthetic>', 'Specify the aesthetic to use')
+  .option('-m, --mode <mode>', 'Install mode (native | isolated)')
+  .action(newCommand);
 
 program
   .command('add <experience-id>')

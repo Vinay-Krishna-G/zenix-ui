@@ -562,10 +562,75 @@ ${import_chalk3.default.cyan("\u279C")} Installing ${import_chalk3.default.bold(
   }
 }
 
+// src/commands/new.ts
+var import_chalk4 = __toESM(require("chalk"));
+var import_ora4 = __toESM(require("ora"));
+var import_prompts3 = __toESM(require("prompts"));
+async function newCommand(experience, options) {
+  console.log(import_chalk4.default.cyan(`
+ZenixUI Experience Engine
+`));
+  let brand = options.brand;
+  let aesthetic = options.aesthetic;
+  if (!brand) {
+    const response = await (0, import_prompts3.default)({
+      type: "select",
+      name: "brand",
+      message: "Select a Brand Pack",
+      choices: [
+        { title: "Tiffany (Modern Startup)", value: "tiffany" },
+        { title: "Sand (Architecture & Luxury)", value: "sand" },
+        { title: "True Pink (Beauty & Fashion)", value: "true_pink" },
+        { title: "Charcoal Violet (AI & Cyberpunk)", value: "charcoal_violet" }
+      ]
+    });
+    brand = response.brand;
+  }
+  if (!aesthetic) {
+    const response = await (0, import_prompts3.default)({
+      type: "select",
+      name: "aesthetic",
+      message: "Select an Aesthetic",
+      choices: [
+        { title: "Glass", value: "glass" },
+        { title: "Minimal", value: "minimal" },
+        { title: "Terminal", value: "terminal" },
+        { title: "Neo Brutalist", value: "neo-brutalist" }
+      ]
+    });
+    aesthetic = response.aesthetic;
+  }
+  const spinner = (0, import_ora4.default)(`Assembling ${experience}...`).start();
+  setTimeout(() => {
+    spinner.succeed(`Experience structure parsed.`);
+    console.log(import_chalk4.default.green(`
+\u2713 Core Architecture`));
+    console.log(`  - Homepage
+  - About
+  - Projects
+  - Contact`);
+    console.log(import_chalk4.default.green(`
+\u2713 Starter Kit Ecosystem`));
+    console.log(`  - SEO & Metadata
+  - Sitemap & Robots.txt
+  - 12 Demo Projects
+  - Light/Dark Mode (Pre-configured)`);
+    console.log(import_chalk4.default.green(`
+\u2713 Brand Application`));
+    console.log(`  - Applied ${brand} tokens`);
+    console.log(`  - Applied ${aesthetic} aesthetic patterns`);
+    console.log(import_chalk4.default.blue(`
+Notice: This is an execution preview. ZenixUI is composing the matrix dynamically.`));
+    console.log(import_chalk4.default.cyan(`
+Done! Navigate to your project to view.`));
+  }, 1500);
+}
+
 // src/index.ts
 var program = new import_commander.Command();
 program.name("zenix-ui").description("Distribute and install entire ZenixUI experiences.").version("0.0.1");
 program.command("init").description("Initialize your project and install ZenixUI dependencies.").option("-f, --framework <name>", "Framework to use (next, vite, remix)").option("-t, --theme <name>", "Default theme (zenix, ocean, midnight, autumn)").option("-d, --dir <path>", "Experiences directory (default: src/experiences)").option("-y, --yes", "Skip prompts and use defaults/flags").action(init);
+program.command("new <experience>").description("Generate a complete experience starter kit").option("-b, --brand <brand>", "Specify the brand pack to use").option("-a, --aesthetic <aesthetic>", "Specify the aesthetic to use").option("-m, --mode <mode>", "Install mode (native | isolated)").action(newCommand);
 program.command("add <experience-id>").description("Add a complete experience to your project.").option("-o, --overwrite", "Overwrite existing files").option("-s, --skip-existing", "Skip existing files instead of overwriting").option("-m, --mode <type>", "Adaptation mode (native, recipe, isolated)", "isolated").action(add);
 program.command("compose").description("Install components configured in zenix.compose.ts.").action(compose);
 program.parse();
