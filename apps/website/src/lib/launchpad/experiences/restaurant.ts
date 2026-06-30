@@ -1,3 +1,0 @@
-import { Experience } from '../types';
-
-export const restaurant: Experience = { id: 'restaurant', personality: 'Origin', name: 'Restaurant', industryId: 'business', promise: 'Take online orders. Accept reservations.', description: 'Launch this weekend.', perfectFor: ["Local Restaurants","Cafes","Fine Dining"], averageSetupTime: '3 minutes', variants: [{"id":"classic","name":"Classic","blueprintIdMap":{"editorial":"autumn-portfolio"}}], includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Animations', 'Dark Mode'], technicalDetails: { files: 15, components: 25, sections: 10 } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };

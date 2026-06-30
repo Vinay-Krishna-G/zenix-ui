@@ -5,7 +5,6 @@ import {
   EXPERIENCES, 
   BRAND_PACKS, 
   AESTHETICS, 
-  INDUSTRIES,
   Experience, 
   BrandPack, 
   Aesthetic, 
@@ -36,17 +35,17 @@ export function Launchpad() {
   const ActiveBlueprintComponent = blueprints.find(b => b.id === activeBlueprintId)?.component;
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // 1. BROWSE VIEW (Redirected to the Homepage in V4 vision usually, but we'll keep the grid here for full gallery)
+  // 1. BROWSE VIEW
   // ─────────────────────────────────────────────────────────────────────────────
   if (view === 'browse') {
     return (
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '4rem 2rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
-        <h1 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.04em' }}>Launchpad Gallery</h1>
+        <h1 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.04em' }}>Explore the Worlds.</h1>
         <p style={{ fontSize: '1.5rem', opacity: 0.7, marginBottom: '4rem', maxWidth: '600px', lineHeight: 1.6 }}>
-          Explore the complete collection of production-ready experiences.
+          Choose your industry. Launch your empire.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '4rem' }}>
           {EXPERIENCES.map(exp => (
             <div 
               key={exp.id} 
@@ -57,9 +56,9 @@ export function Launchpad() {
                 display: 'flex', flexDirection: 'column', overflow: 'hidden'
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px) scale(1.01)';
+                e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
                 e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
-                e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.5)';
+                e.currentTarget.style.boxShadow = '0 30px 60px -15px rgba(0, 0, 0, 0.6)';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.transform = 'translateY(0) scale(1)';
@@ -71,8 +70,8 @@ export function Launchpad() {
                 <Image src={exp.coverImage} alt={exp.name} fill style={{ objectFit: 'cover' }} loading="lazy" />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
                 
-                <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem' }}>
-                  <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)', borderRadius: '2rem', fontSize: '0.75rem', color: '#FFF', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', display: 'flex', gap: '0.5rem' }}>
+                  <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', borderRadius: '2rem', fontSize: '0.75rem', color: '#FFF', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     {exp.personality}
                   </span>
                 </div>
@@ -89,100 +88,137 @@ export function Launchpad() {
   }
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // 2. DETAILS VIEW (The Premium Product Page)
+  // 2. DETAILS VIEW (The Framer Product Page)
   // ─────────────────────────────────────────────────────────────────────────────
   if (view === 'details') {
     return (
       <div style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
         
         {/* Fixed Navigation Header */}
-        <div style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(9,9,11,0.8)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <button onClick={() => setView('browse')} style={{ background: 'none', border: 'none', color: 'var(--zx-text)', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            ← Gallery
+        <div style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(9,9,11,0.8)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <button onClick={() => setView('browse')} style={{ background: 'none', border: 'none', color: 'var(--zx-text)', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1rem' }}>
+            ← Back to Gallery
           </button>
-          <div style={{ fontWeight: 800 }}>{activeExperience.personality}</div>
-          <button onClick={() => setView('compose')} style={{ padding: '0.5rem 1.5rem', background: 'var(--zx-primary)', color: '#000', border: 'none', borderRadius: '2rem', fontWeight: 700, cursor: 'pointer' }}>
-            Customize & Launch
+          <div style={{ fontWeight: 800, letterSpacing: '0.1em' }}>{activeExperience.personality}</div>
+          <button onClick={() => setView('compose')} style={{ padding: '0.75rem 2rem', background: 'var(--zx-primary)', color: '#000', border: 'none', borderRadius: '2rem', fontWeight: 800, cursor: 'pointer', boxShadow: '0 0 20px rgba(33,241,168,0.2)' }}>
+            Get {activeExperience.personality}
           </button>
         </div>
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem 10rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '6rem 2rem 10rem' }}>
           
           {/* Header Section */}
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
             <div style={{ display: 'inline-flex', gap: '1rem', marginBottom: '2rem' }}>
-              <span style={{ padding: '0.4rem 1rem', background: 'rgba(33,241,168,0.1)', color: 'var(--zx-primary)', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 700 }}>
+              <span style={{ padding: '0.5rem 1.25rem', background: 'rgba(33,241,168,0.1)', color: 'var(--zx-primary)', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 800 }}>
                 Deploy Ready
               </span>
-              <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                ★★★★★ {activeExperience.rating}
+              <span style={{ padding: '0.5rem 1.25rem', background: 'rgba(255,255,255,0.05)', borderRadius: '2rem', fontSize: '0.875rem', fontWeight: 700, border: '1px solid rgba(255,255,255,0.1)' }}>
+                <span style={{ color: '#FFB800' }}>★★★★★</span> 5.0 ({activeExperience.launches} launches)
               </span>
             </div>
-            <h1 style={{ fontSize: '5rem', fontWeight: 800, letterSpacing: '-0.04em', marginBottom: '1.5rem', lineHeight: 1 }}>
+            <h1 style={{ fontSize: '6rem', fontWeight: 800, letterSpacing: '-0.05em', marginBottom: '2rem', lineHeight: 1 }}>
               {activeExperience.name}
             </h1>
-            <p style={{ fontSize: '1.5rem', opacity: 0.6, maxWidth: '600px', margin: '0 auto 3rem' }}>
-              {activeExperience.promise}
+            <p style={{ fontSize: '1.5rem', opacity: 0.7, maxWidth: '800px', margin: '0 auto 4rem', lineHeight: 1.5 }}>
+              {activeExperience.marketingCopy}
             </p>
-            <button onClick={() => setView('compose')} style={{ padding: '1.25rem 3rem', background: 'var(--zx-text)', color: 'var(--zx-background)', border: 'none', borderRadius: '3rem', fontSize: '1.1rem', fontWeight: 800, cursor: 'pointer' }}>
-              Customize Experience
+            <button onClick={() => setView('compose')} style={{ padding: '1.25rem 4rem', background: '#FFF', color: '#000', border: 'none', borderRadius: '3rem', fontSize: '1.25rem', fontWeight: 800, cursor: 'pointer', boxShadow: '0 20px 40px -10px rgba(255,255,255,0.2)' }}>
+              Open Studio Editor
             </button>
           </div>
 
           {/* Massive Hero Preview */}
           <div style={{ 
-            width: '100%', height: '700px', position: 'relative', borderRadius: '1.5rem', overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-            marginBottom: '8rem'
+            width: '100%', height: '800px', position: 'relative', borderRadius: '1.5rem', overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 50px 100px -20px rgba(0,0,0,0.5)',
+            marginBottom: '10rem', background: '#09090B'
           }}>
-            <Image src={activeExperience.coverImage} alt={activeExperience.name} fill style={{ objectFit: 'cover' }} priority />
+             {ActiveBlueprintComponent ? (
+               <div style={{
+                 '--zx-primary': activeBrand.colors.primary,
+                 '--zx-background': activeBrand.colors.background,
+                 '--zx-surface': activeBrand.colors.surface,
+                 width: '100%', height: '100%'
+               } as React.CSSProperties}>
+                 <ActiveBlueprintComponent />
+               </div>
+             ) : (
+               <Image src={activeExperience.coverImage} alt={activeExperience.name} fill style={{ objectFit: 'cover' }} priority />
+             )}
           </div>
 
-          {/* Features & Pages Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', marginBottom: '8rem' }}>
+          {/* Marketing Features Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem', marginBottom: '10rem' }}>
             <div>
-              <h3 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '2rem', letterSpacing: '-0.02em' }}>Pages & Outcomes</h3>
+              <h3 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '2.5rem', letterSpacing: '-0.03em' }}>Everything you need.</h3>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 {activeExperience.includes.outcomes.map(out => (
-                  <li key={out} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem', fontWeight: 500 }}>
-                    <span style={{ color: 'var(--zx-primary)' }}>✔</span> {out}
+                  <li key={out} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.25rem', fontWeight: 600 }}>
+                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(33,241,168,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--zx-primary)' }}>✔</div>
+                    {out}
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div>
-              <h3 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '2rem', letterSpacing: '-0.02em' }}>Perfect For</h3>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                {activeExperience.perfectFor.map(pf => (
-                  <li key={pf} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem', fontWeight: 500 }}>
-                    <span style={{ color: 'var(--zx-text)', opacity: 0.5 }}>→</span> {pf}
-                  </li>
-                ))}
-              </ul>
+            <div style={{ padding: '4rem', background: 'rgba(255,255,255,0.02)', borderRadius: '2rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Perfect For</h3>
+                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {activeExperience.perfectFor.map(pf => (
+                    <li key={pf} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem', fontWeight: 500, color: 'rgba(255,255,255,0.7)' }}>
+                      <span style={{ color: '#FFF' }}>→</span> {pf}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <div style={{ marginTop: '4rem', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <h4 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '1rem' }}>Technical Specs</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Technical Specs</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800 }}>{activeExperience.includes.technicalDetails.files}</div>
-                    <div style={{ fontSize: '0.875rem', opacity: 0.5 }}>Files</div>
+                    <div style={{ fontSize: '3rem', fontWeight: 800, color: '#FFF' }}>{activeExperience.includes.technicalDetails.files}</div>
+                    <div style={{ fontSize: '1rem', opacity: 0.5, fontWeight: 600 }}>Files</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800 }}>{activeExperience.includes.technicalDetails.components}</div>
-                    <div style={{ fontSize: '0.875rem', opacity: 0.5 }}>Components</div>
+                    <div style={{ fontSize: '3rem', fontWeight: 800, color: '#FFF' }}>{activeExperience.averageSetupTime}</div>
+                    <div style={{ fontSize: '1rem', opacity: 0.5, fontWeight: 600 }}>Setup Time</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Social Proof */}
+          <div style={{ textAlign: 'center', marginBottom: '10rem' }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '4rem', letterSpacing: '-0.03em' }}>Trusted by {activeExperience.launches} launches.</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+               {[1, 2, 3].map(i => (
+                 <div key={i} style={{ width: '300px', padding: '2rem', background: '#111', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'left' }}>
+                   <div style={{ color: '#FFB800', marginBottom: '1rem' }}>★★★★★</div>
+                   <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '1.5rem' }}>"I deployed {activeExperience.personality} on Friday and had my first customer by Sunday. The code quality is insane."</p>
+                   <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                     <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
+                     <div>
+                       <div style={{ fontWeight: 800, fontSize: '0.875rem' }}>Founder {i}</div>
+                       <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>Startup Inc.</div>
+                     </div>
+                   </div>
+                 </div>
+               ))}
+            </div>
+          </div>
+
           {/* CTA */}
-          <div style={{ textAlign: 'center', padding: '6rem 2rem', background: '#111', borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.03em' }}>Ready to launch?</h2>
-            <p style={{ fontSize: '1.25rem', opacity: 0.6, marginBottom: '3rem' }}>Open the studio to customize your aesthetic and brand pack.</p>
-            <button onClick={() => setView('compose')} style={{ padding: '1.25rem 3rem', background: 'var(--zx-primary)', color: '#000', border: 'none', borderRadius: '3rem', fontSize: '1.1rem', fontWeight: 800, cursor: 'pointer' }}>
-              Launch {activeExperience.personality}
+          <div style={{ textAlign: 'center', padding: '8rem 2rem', background: 'linear-gradient(135deg, #111 0%, #000 100%)', borderRadius: '2rem', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 50px 100px -20px rgba(0,0,0,0.5)' }}>
+            <h2 style={{ fontSize: '4rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.04em' }}>Make it yours.</h2>
+            <p style={{ fontSize: '1.5rem', opacity: 0.6, marginBottom: '4rem' }}>Enter the studio to inject your brand and launch.</p>
+            <button onClick={() => setView('compose')} style={{ padding: '1.5rem 4rem', background: 'var(--zx-primary)', color: '#000', border: 'none', borderRadius: '4rem', fontSize: '1.25rem', fontWeight: 800, cursor: 'pointer', transition: 'transform 0.2s ease', boxShadow: '0 0 40px rgba(33,241,168,0.3)' }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              Open Studio Editor
             </button>
           </div>
 
@@ -192,11 +228,11 @@ export function Launchpad() {
   }
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // 3. COMPOSE VIEW (Real Engine Rendering + Premium Motion)
+  // 3. COMPOSE VIEW (The Studio - Magical Customization)
   // ─────────────────────────────────────────────────────────────────────────────
   if (view === 'compose') {
     return (
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '0', height: '100vh', boxSizing: 'border-box' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 480px', gap: '0', height: '100vh', boxSizing: 'border-box' }}>
         
         {/* Center: Live Engine Canvas */}
         <main style={{ 
@@ -209,13 +245,11 @@ export function Launchpad() {
           transition: 'background 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
         }}>
           {/* Header Controls */}
-          <div style={{ position: 'sticky', top: 0, zIndex: 100, padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: `linear-gradient(to bottom, ${activeBrand.colors.background} 50%, transparent)` }}>
+          <div style={{ position: 'sticky', top: 0, zIndex: 100, padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: `linear-gradient(to bottom, ${activeBrand.colors.background} 90%, transparent)` }}>
             <button onClick={() => setView('details')} style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)', color: '#FFF', padding: '0.75rem 1.5rem', borderRadius: '2rem', cursor: 'pointer', backdropFilter: 'blur(10px)', fontWeight: 600 }}>
-              ← Overview
+              ← Exit Studio
             </button>
-            <button onClick={() => setView('compare')} style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#FFF', padding: '0.75rem 1.5rem', borderRadius: '2rem', cursor: 'pointer', backdropFilter: 'blur(10px)', fontWeight: 600 }}>
-              ◫ Compare
-            </button>
+            <div style={{ fontSize: '0.875rem', fontWeight: 700, opacity: 0.5 }}>Studio Editor</div>
           </div>
 
           {/* Actual Engine Blueprint Rendering (Live Brand Injection) */}
@@ -239,114 +273,121 @@ export function Launchpad() {
           </div>
         </main>
 
-        {/* Right Sidebar: Configuration Panel */}
-        <aside style={{ borderLeft: '1px solid rgba(255,255,255,0.05)', background: '#09090B', padding: '3rem 2rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        {/* Right Sidebar: Giant Beautiful Cards (Not Radio Buttons) */}
+        <aside style={{ borderLeft: '1px solid rgba(255,255,255,0.05)', background: '#09090B', padding: '0', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
           
-          <div>
-            <h3 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '1.5rem', fontWeight: 800 }}>Aesthetic</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-              {AESTHETICS.map(a => (
-                <button
-                  key={a.id}
-                  onClick={() => setActiveAesthetic(a)}
-                  style={{
-                    padding: '1rem',
-                    borderRadius: '0.75rem',
-                    border: '1px solid',
-                    borderColor: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.1)',
-                    background: activeAesthetic.id === a.id ? 'rgba(33,241,168,0.05)' : 'transparent',
-                    color: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'var(--zx-text)',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    transition: 'all 0.2s ease',
-                    textAlign: 'center'
-                  }}
-                  onMouseOver={(e) => {
-                     if (activeAesthetic.id !== a.id) {
-                       e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
-                     }
-                  }}
-                  onMouseOut={(e) => {
-                     if (activeAesthetic.id !== a.id) {
-                       e.currentTarget.style.background = 'transparent';
-                     }
-                  }}
-                >
-                  {a.name}
-                </button>
-              ))}
-            </div>
-            <div style={{ fontSize: '0.875rem', opacity: 0.5, marginTop: '1.5rem', fontStyle: 'italic', lineHeight: 1.5 }}>
-              "{activeAesthetic.description}"
-            </div>
-          </div>
+          <div style={{ padding: '3rem 2.5rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>Brand & Aesthetics</h2>
+            <p style={{ opacity: 0.6, fontSize: '1rem', marginBottom: '3rem' }}>Click to instantly mutate the entire website.</p>
 
-          <div>
-            <h3 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginBottom: '1.5rem', fontWeight: 800 }}>Brand Pack</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {BRAND_PACKS.map(brand => (
-                <div
-                  key={brand.id}
-                  onClick={() => setActiveBrand(brand)}
-                  style={{
-                    borderRadius: '1rem',
-                    border: '2px solid',
-                    borderColor: activeBrand.id === brand.id ? brand.colors.primary : 'rgba(255,255,255,0.05)',
-                    background: 'rgba(255,255,255,0.02)',
-                    cursor: 'pointer',
-                    overflow: 'hidden',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: activeBrand.id === brand.id ? 'scale(1.02)' : 'scale(1)'
-                  }}
-                >
-                  <div style={{ width: '100%', height: '100px', position: 'relative' }}>
-                    <Image src={brand.image} alt={brand.name} fill style={{ objectFit: 'cover' }} />
-                  </div>
-                  <div style={{ padding: '1.25rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                      <div style={{ fontSize: '1.1rem', fontWeight: 800 }}>{brand.name}</div>
-                      <div style={{ width: 16, height: 16, borderRadius: '50%', background: brand.colors.primary, boxShadow: `0 0 10px ${brand.colors.primary}55` }} />
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Select Brand Identity</h3>
+                <span style={{ fontSize: '0.75rem', background: 'rgba(255,255,255,0.1)', padding: '0.25rem 0.75rem', borderRadius: '1rem' }}>Global</span>
+              </div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
+                {BRAND_PACKS.map(brand => (
+                  <div
+                    key={brand.id}
+                    onClick={() => setActiveBrand(brand)}
+                    style={{
+                      borderRadius: '1.5rem',
+                      border: '2px solid',
+                      borderColor: activeBrand.id === brand.id ? brand.colors.primary : 'rgba(255,255,255,0.05)',
+                      background: 'rgba(255,255,255,0.02)',
+                      cursor: 'pointer',
+                      overflow: 'hidden',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      transform: activeBrand.id === brand.id ? 'scale(1.02)' : 'scale(1)',
+                      boxShadow: activeBrand.id === brand.id ? `0 20px 40px -10px ${brand.colors.primary}44` : 'none'
+                    }}
+                    onMouseOver={(e) => {
+                      if (activeBrand.id !== brand.id) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                    }}
+                    onMouseOut={(e) => {
+                      if (activeBrand.id !== brand.id) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                    }}
+                  >
+                    <div style={{ width: '100%', height: '140px', position: 'relative' }}>
+                      <Image src={brand.image} alt={brand.name} fill style={{ objectFit: 'cover' }} />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
+                      
+                      <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', right: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div>
+                          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#FFF', marginBottom: '0.25rem' }}>{brand.name}</div>
+                          <div style={{ fontSize: '0.875rem', color: brand.colors.primary, fontWeight: 700 }}>{brand.mood}</div>
+                        </div>
+                        <div style={{ width: 24, height: 24, borderRadius: '50%', background: brand.colors.primary, boxShadow: `0 0 20px ${brand.colors.primary}` }} />
+                      </div>
                     </div>
-                    <div style={{ fontSize: '0.875rem', color: brand.colors.primary, fontWeight: 600, marginBottom: '0.5rem' }}>{brand.mood}</div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Select UI Layout</h3>
+                <span style={{ fontSize: '0.75rem', background: 'rgba(255,255,255,0.1)', padding: '0.25rem 0.75rem', borderRadius: '1rem' }}>Structure</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {AESTHETICS.map(a => (
+                  <button
+                    key={a.id}
+                    onClick={() => setActiveAesthetic(a)}
+                    style={{
+                      padding: '1.5rem',
+                      borderRadius: '1rem',
+                      border: '1px solid',
+                      borderColor: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.05)',
+                      background: activeAesthetic.id === a.id ? 'rgba(33,241,168,0.05)' : 'rgba(255,255,255,0.02)',
+                      color: activeAesthetic.id === a.id ? 'var(--zx-primary)' : 'var(--zx-text)',
+                      cursor: 'pointer',
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      transition: 'all 0.3s ease',
+                      textAlign: 'left',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.5rem'
+                    }}
+                  >
+                    <div>{a.name}</div>
+                    <div style={{ fontSize: '0.75rem', opacity: 0.6, fontWeight: 500 }}>{a.description}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
           </div>
 
-          <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+          <div style={{ marginTop: 'auto', background: '#000', padding: '3rem 2.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             {!showCli ? (
               <button 
                 onClick={() => setShowCli(true)}
                 style={{ 
-                  width: '100%', padding: '1.25rem', background: 'var(--zx-primary)', 
+                  width: '100%', padding: '1.5rem', background: 'var(--zx-primary)', 
                   color: '#000', fontWeight: 800, border: 'none', borderRadius: '1rem', 
-                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  boxShadow: '0 10px 25px -5px rgba(33,241,168,0.3)'
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem',
+                  fontSize: '1.25rem',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  boxShadow: '0 10px 30px -5px rgba(33,241,168,0.4)'
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 15px 30px -5px rgba(33,241,168,0.4)'; }}
-                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(33,241,168,0.3)'; }}
               >
-                <span style={{ fontSize: '1.25rem' }}>🚀</span> Launch {activeExperience.personality}
+                <span style={{ fontSize: '1.5rem' }}>🚀</span> Launch {activeExperience.personality}
               </button>
             ) : (
-              <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '1rem', padding: '2rem', border: '1px solid rgba(255,255,255,0.1)', animation: 'fadeIn 0.3s ease-out' }}>
-                <div style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 800 }}>Choose Workflow</div>
+              <div style={{ animation: 'fadeIn 0.3s ease-out' }}>
+                <div style={{ fontSize: '0.875rem', opacity: 0.5, marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 800 }}>Launch Workflow</div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
                   {[
-                    { id: 'cli', label: 'ZenixUI CLI' },
-                    { id: 'compose', label: 'Compose File' },
-                    { id: 'manual', label: 'Manual Install' }
+                    { id: 'cli', label: 'ZenixUI Installer' },
+                    { id: 'compose', label: 'Compose File' }
                   ].map(opt => (
-                    <label key={opt.id} style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }}>
-                      <div style={{ 
-                        width: '20px', height: '20px', borderRadius: '50%', border: '2px solid',
-                        borderColor: installLevel === opt.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.2)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center'
-                      }}>
+                    <label key={opt.id} style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer', padding: '1rem', border: '1px solid', borderColor: installLevel === opt.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.1)', borderRadius: '0.75rem', background: installLevel === opt.id ? 'rgba(33,241,168,0.05)' : 'transparent' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2px solid', borderColor: installLevel === opt.id ? 'var(--zx-primary)' : 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                          {installLevel === opt.id && <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--zx-primary)' }} />}
                       </div>
                       <span style={{ fontSize: '1rem', fontWeight: installLevel === opt.id ? 700 : 500, color: installLevel === opt.id ? '#FFF' : 'rgba(255,255,255,0.7)' }}>{opt.label}</span>
@@ -354,58 +395,19 @@ export function Launchpad() {
                   ))}
                 </div>
 
-                <div style={{ padding: '1.5rem', background: '#000', borderRadius: '0.75rem', fontFamily: 'monospace', color: 'var(--zx-primary)', fontSize: '0.875rem', wordBreak: 'break-all', border: '1px solid rgba(33,241,168,0.2)' }}>
-                  {installLevel === 'cli' && `npx zenix-ui new ${activeExperience.id} -v ${activeVariant.id} -b ${activeBrand.id} -a ${activeAesthetic.id}`}
-                  {installLevel === 'compose' && `npx zenix-ui compose up ./launch.yaml`}
-                  {installLevel === 'manual' && `git clone https://...`}
+                <div style={{ position: 'relative' }}>
+                  <div style={{ padding: '1.5rem', background: '#050505', borderRadius: '0.75rem', fontFamily: 'monospace', color: 'var(--zx-primary)', fontSize: '0.875rem', wordBreak: 'break-all', border: '1px solid rgba(33,241,168,0.2)' }}>
+                    {installLevel === 'cli' && `npx zenix-ui new ${activeExperience.id} -v ${activeVariant.id} -b ${activeBrand.id} -a ${activeAesthetic.id}`}
+                    {installLevel === 'compose' && `npx zenix-ui compose up ./launch.yaml`}
+                  </div>
+                  <button style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#FFF', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.75rem', cursor: 'pointer', fontWeight: 700 }}>
+                    Copy
+                  </button>
                 </div>
               </div>
             )}
           </div>
         </aside>
-      </div>
-    );
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────────
-  // 4. COMPARE VIEW (Real Blueprint side-by-side)
-  // ─────────────────────────────────────────────────────────────────────────────
-  if (view === 'compare') {
-    const compareAesthetics = AESTHETICS.slice(0, 4);
-
-    return (
-      <div style={{ padding: '4rem', fontFamily: 'Inter, system-ui, sans-serif', height: '100vh', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
-        <button onClick={() => setView('compose')} style={{ background: 'none', border: 'none', color: 'var(--zx-text)', cursor: 'pointer', fontWeight: 600, marginBottom: '2rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          ← Exit Compare Mode
-        </button>
-        <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '3rem', letterSpacing: '-0.03em' }}>Comparing Aesthetics</h1>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', flex: 1, minHeight: 0 }}>
-          {compareAesthetics.map(aes => {
-            const mappedId = activeVariant.blueprintIdMap[aes.id] || 'zenix-portfolio';
-            const Comp = blueprints.find(b => b.id === mappedId)?.component;
-            return (
-              <div key={aes.id} style={{ background: '#09090B', borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
-                <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', fontWeight: 800, textAlign: 'center', background: '#111', fontSize: '1.25rem' }}>{aes.name}</div>
-                <div style={{ flex: 1, overflowY: 'auto', position: 'relative', transform: 'scale(0.8)', transformOrigin: 'top center', width: '125%', height: '125%' }}>
-                  {Comp ? (
-                    <div style={{
-                      '--zx-primary': activeBrand.colors.primary,
-                      '--zx-background': activeBrand.colors.background,
-                      '--zx-surface': activeBrand.colors.surface,
-                      transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                      height: '100%'
-                    } as React.CSSProperties}>
-                      <Comp />
-                    </div>
-                  ) : (
-                    <div style={{ padding: '2rem', opacity: 0.5, textAlign: 'center' }}>Preview not found for {aes.name}</div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
     );
   }

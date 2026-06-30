@@ -35,6 +35,7 @@ export interface Experience {
   name: string;
   industryId: string;
   promise: string;
+  marketingCopy: string;
   description: string;
   perfectFor: string[];
   averageSetupTime: string;
@@ -49,5 +50,7 @@ export interface Experience {
   };
   coverImage: string;
   rating: number;
+  launches: string;
+  tags: string[]; // e.g. "Trending", "Editor's Pick"
   similarExperiences: string[];
 }

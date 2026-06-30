@@ -46,6 +46,7 @@ export interface Experience {
   name: string;
   industryId: string;
   promise: string;
+  marketingCopy: string;
   description: string;
   perfectFor: string[];
   averageSetupTime: string;
@@ -60,6 +61,8 @@ export interface Experience {
   };
   coverImage: string;
   rating: number;
+  launches: string;
+  tags: string[]; // e.g. "Trending", "Editor's Pick"
   similarExperiences: string[];
 }
 `;
@@ -67,16 +70,11 @@ fs.writeFileSync(path.join(base, 'types.ts'), typesCode);
 
 // industries
 const industries = [
-  { id: 'education', name: 'Education' },
-  { id: 'healthcare', name: 'Healthcare' },
-  { id: 'ecommerce', name: 'Ecommerce' },
-  { id: 'personal', name: 'Personal' },
-  { id: 'business', name: 'Business' },
-  { id: 'creator', name: 'Creator' },
-  { id: 'interactive', name: 'Interactive' },
-  { id: 'dashboard', name: 'Dashboard' },
-  { id: 'community', name: 'Community' },
-  { id: 'ai', name: 'AI & SaaS' }
+  { id: 'creator', name: 'Creator Economy' },
+  { id: 'startup', name: 'Startups & AI' },
+  { id: 'local', name: 'Local Business' },
+  { id: 'studio', name: 'Agencies & Studios' },
+  { id: 'health', name: 'Health & Wellness' }
 ];
 
 let indExports = '';
@@ -94,7 +92,6 @@ const aesthetics = [
   { id: 'apple', name: 'Apple', desc: 'precision, minimal spacing, clean typography, gentle depth' },
   { id: 'terminal', name: 'Terminal', desc: 'monospace, CLI, ASCII, green phosphor' },
   { id: 'editorial', name: 'Editorial', desc: 'large typography, magazine rhythm, high whitespace, photography first' },
-  { id: 'cyberpunk', name: 'Cyberpunk', desc: 'glow, neon, motion, noise' },
   { id: 'neo-brutalism', name: 'Neo Brutalism', desc: 'thick borders, playful layouts, loud colors, hard shadows' }
 ];
 
@@ -125,17 +122,19 @@ fs.writeFileSync(path.join(base, 'brands', 'index.ts'), brandExports);
 
 // experiences
 const exps = [
-  { id: 'student-portfolio', personality: 'Atlas', name: 'Student Portfolio', ind: 'education', promise: 'Get shortlisted faster.', desc: 'Your digital resume, designed to land you the interview.', perfect: ['Final year students', 'Placements', 'MS applications', 'Fresh graduates'], variants: [{id: 'modern', name: 'Modern', blueprintIdMap: {'glass': 'ocean-portfolio', 'minimal': 'zenix-portfolio', 'terminal': 'midnight-portfolio'}}], files: 18, comp: 32, sec: 14 },
-  { id: 'developer-portfolio', personality: 'Vertex', name: 'Developer Portfolio', ind: 'personal', promise: 'Showcase your system design.', desc: 'A robust technical portfolio.', perfect: ['Software Engineers', 'Open Source Maintainers'], variants: [{id: 'terminal', name: 'Terminal CLI', blueprintIdMap: {'terminal': 'midnight-portfolio', 'cyberpunk': 'midnight-portfolio'}}], files: 24, comp: 45, sec: 18 },
-  { id: 'agency', personality: 'Nova', name: 'Agency Website', ind: 'business', promise: 'Close higher-ticket clients.', desc: 'High-end agency layout.', perfect: ['Creative Agencies', 'Studios'], variants: [{id: 'creative', name: 'Creative', blueprintIdMap: {'glass': 'ocean-portfolio', 'editorial': 'autumn-portfolio'}}], files: 20, comp: 38, sec: 15 },
-  { id: 'ai-startup', personality: 'Pulse', name: 'AI Startup', ind: 'ai', promise: 'Convert visitors into beta testers.', desc: 'The future of intelligence.', perfect: ['AI Wrappers', 'SaaS', 'Beta launches'], variants: [{id: 'cyber', name: 'Cyber', blueprintIdMap: {'cyberpunk': 'midnight-portfolio', 'glass': 'ocean-portfolio'}}], files: 22, comp: 40, sec: 16 },
-  { id: 'restaurant', personality: 'Origin', name: 'Restaurant', ind: 'business', promise: 'Take online orders. Accept reservations.', desc: 'Launch this weekend.', perfect: ['Local Restaurants', 'Cafes', 'Fine Dining'], variants: [{id: 'classic', name: 'Classic', blueprintIdMap: {'editorial': 'autumn-portfolio'}}], files: 15, comp: 25, sec: 10 },
-  { id: 'healthcare', personality: 'Prism', name: 'Healthcare', ind: 'healthcare', promise: 'Book appointments. Build trust.', desc: 'Show your doctors and services.', perfect: ['Clinics', 'Dentists', 'Therapists'], variants: [{id: 'clean', name: 'Clean', blueprintIdMap: {'minimal': 'zenix-portfolio'}}], files: 19, comp: 33, sec: 12 },
+  { id: 'student-portfolio', personality: 'ATLAS', name: 'Launch Your Career', ind: 'creator', promise: 'Get shortlisted faster.', mktg: 'Designed for placements, internships and graduate applications. Deploy in under 3 minutes.', desc: 'Your digital resume, designed to land you the interview.', perfect: ['Final year students', 'Placements', 'Fresh graduates'], variants: [{id: 'modern', name: 'Modern', blueprintIdMap: {'glass': 'ocean-portfolio', 'minimal': 'zenix-portfolio'}}], files: 18, comp: 32, sec: 14, launches: '4,281', tags: ['Trending', "Editor's Pick"] },
+  { id: 'developer-portfolio', personality: 'ORBIT', name: 'For Engineers Who Build', ind: 'creator', promise: 'Showcase your system design.', mktg: 'Build impossible things. Present them perfectly. A robust technical portfolio for serious developers.', desc: 'A robust technical portfolio.', perfect: ['Software Engineers', 'Open Source Maintainers'], variants: [{id: 'terminal', name: 'Terminal CLI', blueprintIdMap: {'terminal': 'midnight-portfolio'}}], files: 24, comp: 45, sec: 18, launches: '12,940', tags: ['Most Installed'] },
+  { id: 'agency', personality: 'STUDIO', name: 'Win Better Clients', ind: 'studio', promise: 'High-end agency layout.', mktg: 'Your work deserves a flawless presentation. Close higher-ticket clients with an immersive digital studio.', desc: 'High-end agency layout.', perfect: ['Creative Agencies', 'Design Studios'], variants: [{id: 'creative', name: 'Creative', blueprintIdMap: {'glass': 'ocean-portfolio'}}], files: 20, comp: 38, sec: 15, launches: '3,102', tags: ['Newest'] },
+  { id: 'ai-startup', personality: 'NOVA', name: 'Launch Your AI Startup', ind: 'startup', promise: 'Convert visitors into beta testers.', mktg: 'The future of intelligence requires a future-proof website. Ship your AI wrapper tonight.', desc: 'The future of intelligence.', perfect: ['AI Wrappers', 'SaaS', 'Beta launches'], variants: [{id: 'cyber', name: 'Cyber', blueprintIdMap: {'cyberpunk': 'midnight-portfolio'}}], files: 22, comp: 40, sec: 16, launches: '8,432', tags: ['Trending'] },
+  { id: 'fine-dining', personality: 'ORIGIN', name: 'Fine Dining Experience', ind: 'local', promise: 'Accept reservations immediately.', mktg: 'An exquisite digital presence for your culinary masterpiece. Take orders and book tables seamlessly.', desc: 'Launch this weekend.', perfect: ['Fine Dining', 'Michelin Star', 'High-end Cafes'], variants: [{id: 'classic', name: 'Classic', blueprintIdMap: {'editorial': 'autumn-portfolio'}}], files: 15, comp: 25, sec: 10, launches: '1,204', tags: [] },
+  { id: 'dental-clinic', personality: 'PRISM', name: 'Dental & Health', ind: 'health', promise: 'Book appointments. Build trust.', mktg: 'Show your doctors, manage services, and build patient trust with a clinical, flawless UI.', desc: 'Show your doctors and services.', perfect: ['Dental Clinics', 'Therapists'], variants: [{id: 'clean', name: 'Clean', blueprintIdMap: {'minimal': 'zenix-portfolio'}}], files: 19, comp: 33, sec: 12, launches: '2,890', tags: ['Updated Yesterday'] },
+  { id: 'architecture', personality: 'FOUNDRY', name: 'Architecture Firm', ind: 'studio', promise: 'Design deserves beautiful presentation.', mktg: 'Showcase your blueprints and built spaces with a minimalist, structural aesthetic.', desc: 'Minimalist structural presentation.', perfect: ['Architects', 'Interior Designers'], variants: [{id: 'structure', name: 'Structure', blueprintIdMap: {'minimal': 'zenix-portfolio'}}], files: 21, comp: 34, sec: 14, launches: '930', tags: [] },
+  { id: 'creator-brand', personality: 'LUMINA', name: 'The Creator Kit', ind: 'creator', promise: 'Monetize your audience.', mktg: 'Sell courses, digital products, and manage your newsletter from one beautiful hub.', desc: 'Sell courses and digital products.', perfect: ['YouTubers', 'Newsletter Authors'], variants: [{id: 'vibrant', name: 'Vibrant', blueprintIdMap: {'glass': 'ocean-portfolio'}}], files: 30, comp: 50, sec: 22, launches: '5,120', tags: ['Trending'] },
 ];
 
 let expExports = '';
 exps.forEach(exp => {
-  const code = `import { Experience } from '../types';\n\nexport const ${exp.id.replace('-', '_')}: Experience = { id: '${exp.id}', personality: '${exp.personality}', name: '${exp.name}', industryId: '${exp.ind}', promise: '${exp.promise}', description: '${exp.desc}', perfectFor: ${JSON.stringify(exp.perfect)}, averageSetupTime: '3 minutes', variants: ${JSON.stringify(exp.variants)}, includes: { outcomes: ['Homepage', 'About', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Animations', 'Dark Mode'], technicalDetails: { files: ${exp.files}, components: ${exp.comp}, sections: ${exp.sec} } }, coverImage: '/previews/glass-header.png', rating: 5.0, similarExperiences: [] };\n`;
+  const code = `import { Experience } from '../types';\n\nexport const ${exp.id.replace('-', '_')}: Experience = { id: '${exp.id}', personality: '${exp.personality}', name: '${exp.name}', industryId: '${exp.ind}', promise: '${exp.promise}', marketingCopy: '${exp.mktg}', description: '${exp.desc}', perfectFor: ${JSON.stringify(exp.perfect)}, averageSetupTime: '3 min', variants: ${JSON.stringify(exp.variants)}, includes: { outcomes: ['Homepage', 'Pricing', 'Dashboard', 'Blog', 'Contact', 'SEO', 'Mobile Ready', 'Dark Mode'], technicalDetails: { files: ${exp.files}, components: ${exp.comp}, sections: ${exp.sec} } }, coverImage: '/previews/glass-header.png', rating: 5.0, launches: '${exp.launches}', tags: ${JSON.stringify(exp.tags)}, similarExperiences: [] };\n`;
   fs.writeFileSync(path.join(base, 'experiences', `${exp.id.replace('-', '_')}.ts`), code);
   expExports += `export * from './${exp.id.replace('-', '_')}';\n`;
 });
