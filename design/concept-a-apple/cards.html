@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenix | Experience Cards Exploration</title>
+  <link rel="stylesheet" href="../design-tokens/tokens.css">
+  <style>
+    body { padding: var(--space-8); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .exploration-title { margin-bottom: var(--space-6); text-align: center; }
+
+    /* Base reset for images */
+    .preview-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Style 1: Editorial (Elegant, serif, borders) */
+    .card-editorial {
+      background: #FAFAFA;
+      color: #09090B;
+      border: 1px solid #E4E4E7;
+      padding: 16px;
+      font-family: serif;
+    }
+    .card-editorial .img-wrap { height: 260px; margin-bottom: 16px; border: 1px solid #E4E4E7; }
+    .card-editorial h3 { font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+    .card-editorial p { font-size: 14px; font-family: var(--font-sans); color: #52525B; }
+    .card-editorial .meta { font-family: var(--font-sans); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; margin-top: 16px; border-top: 1px solid #E4E4E7; padding-top: 16px; }
+
+    /* Style 2: Glass (SaaS, gradients, blur) */
+    .card-glass {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-xl);
+      padding: 8px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .card-glass .img-wrap { height: 220px; border-radius: var(--radius-lg); overflow: hidden; }
+    .card-glass .content { padding: 24px 16px 16px; }
+    .card-glass h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .card-glass p { font-size: 14px; color: var(--text-secondary); }
+    .card-glass::before {
+      content: ''; position: absolute; top: -50px; left: -50px; width: 150px; height: 150px;
+      background: rgba(94, 106, 210, 0.4); filter: blur(50px); z-index: -1;
+    }
+
+    /* Style 3: Marketplace (Dense, info-heavy) */
+    .card-marketplace {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+    }
+    .card-marketplace .img-wrap { height: 200px; border-bottom: 1px solid var(--border-subtle); }
+    .card-marketplace .content { padding: 16px; }
+    .card-marketplace h3 { font-size: 16px; font-weight: 700; display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .card-marketplace h3 span { color: var(--text-secondary); font-weight: 400; font-size: 13px; }
+    .card-marketplace p { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+    .card-marketplace .tags { display: flex; gap: 8px; }
+    .card-marketplace .tag { background: rgba(255,255,255,0.1); font-size: 11px; padding: 4px 8px; border-radius: 4px; color: var(--text-primary); font-weight: 600; }
+
+    /* Style 4: Luxury (Dark, gold accents, spacious) */
+    .card-luxury {
+      background: #000;
+      border: 1px solid #222;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card-luxury .img-wrap { width: 100%; height: 240px; margin-bottom: 24px; }
+    .card-luxury h3 { font-family: serif; font-size: 28px; font-weight: 400; margin-bottom: 12px; letter-spacing: 0.05em; }
+    .card-luxury p { font-size: 13px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; }
+    .card-luxury .accent { color: #C5A059; margin-top: 16px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* Style 5: Apple (Minimal, grey surface, flawless typography) */
+    .card-apple {
+      background: #F5F5F7;
+      color: #1D1D1F;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-apple .content { padding: 32px; text-align: center; }
+    .card-apple h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .card-apple p { font-size: 16px; color: #86868B; margin-bottom: 24px; }
+    .card-apple .img-wrap { height: 220px; margin: 0 24px; border-radius: 12px 12px 0 0; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); }
+
+    /* Style 6: Framer (Interactive, floating, stark) */
+    .card-framer {
+      background: #111;
+      border-radius: 16px;
+      padding: 16px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .card-framer:hover { background: #1a1a1a; transform: scale(1.02); }
+    .card-framer .img-wrap { height: 240px; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+    .card-framer h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .card-framer p { font-size: 14px; color: #888; }
+  </style>
+</head>
+<body>
+  <h1 class="h2 exploration-title">Experience Card Exploration</h1>
+  
+  <div class="grid">
+    <!-- Style 1: Editorial -->
+    <div class="card-editorial">
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+      <h3>The Artisan's Table</h3>
+      <p>Fine dining meets rustic charm. A layout designed for storytelling and culinary excellence.</p>
+      <div class="meta">Restaurant • Editorial</div>
+    </div>
+
+    <!-- Style 2: Glass -->
+    <div class="card-glass">
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+      <div class="content">
+        <h3>MetricsFlow SaaS</h3>
+        <p>Drive conversions with deep gradients and blur effects.</p>
+      </div>
+    </div>
+
+    <!-- Style 3: Marketplace -->
+    <div class="card-marketplace">
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+      <div class="content">
+        <h3>Corporate Nexus <span>$49</span></h3>
+        <p>A highly structured layout for enterprise services and B2B consulting.</p>
+        <div class="tags"><span class="tag">Agency</span><span class="tag">1.2k Installs</span></div>
+      </div>
+    </div>
+
+    <!-- Style 4: Luxury -->
+    <div class="card-luxury">
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd15?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+      <h3>Maison Architecture</h3>
+      <p>Modernism defined by light and shadow</p>
+      <div class="accent">Discover</div>
+    </div>
+
+    <!-- Style 5: Apple -->
+    <div class="card-apple">
+      <div class="content">
+        <h3>Smile Dental</h3>
+        <p>Establish trust instantly with a clean, welcoming interface.</p>
+      </div>
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1582750433449-648ed127d09e?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+    </div>
+
+    <!-- Style 6: Framer -->
+    <div class="card-framer">
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" class="preview-img"></div>
+      <h3>Creative Studio</h3>
+      <p>Interactive portfolios for the modern creative.</p>
+    </div>
+  </div>
+</body>
+</html>

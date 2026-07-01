@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenix | Hero Explorations</title>
+  <link rel="stylesheet" href="../design-tokens/tokens.css">
+  <style>
+    body { background-color: #000; padding: var(--space-4); }
+    .hero-container {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-8);
+      overflow: hidden;
+      background: var(--bg-surface);
+      min-height: 80vh;
+      position: relative;
+      display: flex;
+    }
+    
+    .label {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 100;
+    }
+
+    /* Variation A: Minimal */
+    .hero-minimal {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8);
+    }
+    .hero-minimal h1 {
+      font-size: 88px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      max-width: 900px;
+    }
+    .hero-minimal p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: var(--space-6);
+    }
+    .hero-minimal .cta {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+    }
+
+    /* Variation B: Interactive (Split panel, composer tease) */
+    .hero-interactive {
+      flex: 1;
+      display: flex;
+    }
+    .hero-interactive-left {
+      flex: 1;
+      padding: var(--space-12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-interactive-right {
+      flex: 1;
+      background: #1A1A1C;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-interactive h1 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-4);
+    }
+    .composer-tease {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      backdrop-filter: var(--glass-blur);
+      width: 300px;
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Variation C: Large Preview */
+    .hero-large-preview {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 120px;
+    }
+    .hero-large-preview h1 {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+    .preview-window {
+      width: 90%;
+      max-width: 1200px;
+      height: 600px;
+      background: #111;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      margin-top: var(--space-6);
+      box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-window img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Variation A -->
+  <div class="hero-container">
+    <div class="label">Variation A: Minimal</div>
+    <div class="hero-minimal">
+      <h1>The new standard for web experiences.</h1>
+      <p>Discover, customize, and launch premium websites without writing a line of code. Designed for creators who care about the details.</p>
+      <button class="cta">Start Creating</button>
+    </div>
+  </div>
+
+  <!-- Variation B -->
+  <div class="hero-container">
+    <div class="label">Variation B: Interactive</div>
+    <div class="hero-interactive">
+      <div class="hero-interactive-left">
+        <h1>Customize your<br>digital identity.</h1>
+        <p class="body-lg text-secondary" style="margin-bottom: 32px; max-width: 400px;">Every experience in Zenix is fully adaptable. Change the mood, layout, and colors instantly.</p>
+        <div>
+          <button class="cta" style="background: #fff; color: #000; padding: 16px 32px; border-radius: 99px; font-weight: 600; border: none;">Browse Templates</button>
+        </div>
+      </div>
+      <div class="hero-interactive-right">
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1200&auto=format&fit=crop" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+        
+        <div class="composer-tease">
+          <div style="font-size: 12px; color: #aaa; text-transform: uppercase; margin-bottom: 12px;">Visual System</div>
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <div style="background: rgba(255,255,255,0.1); border: 1px solid #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px;">Editorial</div>
+            <div style="background: transparent; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; font-size: 14px; color: #aaa;">Minimal</div>
+          </div>
+          <div style="font-size: 12px; color: #aaa; text-transform: uppercase; margin-bottom: 12px;">Identity</div>
+          <div style="display: flex; gap: 8px;">
+            <div style="width: 32px; height: 32px; border-radius: 16px; background: #fff; border: 2px solid #fff;"></div>
+            <div style="width: 32px; height: 32px; border-radius: 16px; background: #C5A059;"></div>
+            <div style="width: 32px; height: 32px; border-radius: 16px; background: #3B82F6;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variation C -->
+  <div class="hero-container">
+    <div class="label">Variation C: Large Preview</div>
+    <div class="hero-large-preview">
+      <h1>Build something beautiful.</h1>
+      <p class="body-lg text-secondary">The marketplace for premium Next.js experiences.</p>
+      
+      <div class="preview-window">
+        <div style="position: absolute; top: 16px; left: 16px; display: flex; gap: 8px; z-index: 10;">
+          <div style="width: 12px; height: 12px; border-radius: 6px; background: rgba(255,255,255,0.2);"></div>
+          <div style="width: 12px; height: 12px; border-radius: 6px; background: rgba(255,255,255,0.2);"></div>
+          <div style="width: 12px; height: 12px; border-radius: 6px; background: rgba(255,255,255,0.2);"></div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop" alt="UI Preview">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

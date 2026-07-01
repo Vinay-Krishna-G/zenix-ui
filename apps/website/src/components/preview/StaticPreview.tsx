@@ -28,10 +28,11 @@ export function StaticPreview({ experienceId, brandId, variantId = 'default', ae
         ...style 
       }}
     >
-      <Image 
-        src={imagePath} 
+      <Image
+        src={imagePath}
         alt={`Preview of ${experienceId}`}
-        fill 
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         style={{ objectFit: 'cover', objectPosition: 'top' }}
         unoptimized
         onError={(e) => {

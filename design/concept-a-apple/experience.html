@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenix | The Editorial Experience</title>
+  <link rel="stylesheet" href="../design-tokens/tokens.css">
+  <style>
+    body { background-color: var(--bg-base); padding-bottom: var(--space-16); }
+
+    /* Nav */
+    .nav {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--space-4); border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Page Header */
+    .exp-header {
+      padding: var(--space-12) var(--space-4);
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .exp-tag {
+      font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-secondary); margin-bottom: var(--space-3);
+    }
+    .exp-title {
+      font-size: 64px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: var(--space-3);
+    }
+    .exp-desc {
+      font-size: 20px; color: var(--text-secondary); max-width: 600px; margin-bottom: var(--space-6); line-height: 1.5;
+    }
+    .cta-group {
+      display: flex; gap: var(--space-3);
+    }
+    .btn-primary {
+      background: var(--text-primary); color: var(--bg-base); border: none; padding: 16px 32px;
+      border-radius: var(--radius-full); font-weight: 600; font-size: 16px; cursor: pointer;
+    }
+    .btn-secondary {
+      background: transparent; color: var(--text-primary); border: 1px solid var(--border-subtle);
+      padding: 16px 32px; border-radius: var(--radius-full); font-weight: 600; font-size: 16px; cursor: pointer;
+    }
+
+    /* Massive Preview */
+    .massive-preview {
+      max-width: 1400px; margin: 0 auto; padding: 0 var(--space-4);
+    }
+    .preview-window {
+      width: 100%; height: 700px; background: #111; border-radius: var(--radius-xl);
+      overflow: hidden; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-lg);
+    }
+    .preview-window img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Features Grid */
+    .features-section {
+      max-width: 1200px; margin: var(--space-16) auto 0; padding: 0 var(--space-4);
+    }
+    .section-title { font-size: 32px; font-weight: 700; margin-bottom: var(--space-8); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
+    }
+    .feature-card {
+      background: var(--bg-surface); padding: var(--space-6); border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 24px; background: rgba(255,255,255,0.05);
+      margin-bottom: var(--space-4); display: flex; align-items: center; justify-content: center;
+    }
+    .feature-title { font-size: 20px; font-weight: 600; margin-bottom: var(--space-2); }
+    .feature-desc { color: var(--text-secondary); line-height: 1.5; }
+
+    /* Supported Industries */
+    .industries-section {
+      max-width: 1200px; margin: var(--space-16) auto 0; padding: var(--space-12) var(--space-8);
+      background: var(--bg-surface); border-radius: var(--radius-xl); border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+    .industry-list {
+      display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);
+    }
+    .industry-pill {
+      padding: 12px 24px; border-radius: var(--radius-full); background: var(--bg-base);
+      border: 1px solid var(--border-subtle); font-weight: 500;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div style="font-weight: 700;">Zenix</div>
+    <div><a href="#" style="color: #fff; text-decoration: none; font-size: 14px;">Back to Marketplace</a></div>
+  </nav>
+
+  <header class="exp-header">
+    <div class="exp-tag">Visual System</div>
+    <h1 class="exp-title">The Editorial Experience</h1>
+    <p class="exp-desc">Designed for storytelling. Features elegant typography, asymmetric grids, and massive imagery to bring your brand to life.</p>
+    <div class="cta-group">
+      <button class="btn-primary">Customize Experience</button>
+      <button class="btn-secondary">View Live Demo</button>
+    </div>
+  </header>
+
+  <section class="massive-preview">
+    <div class="preview-window">
+      <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=2000&auto=format&fit=crop" alt="Editorial Preview">
+    </div>
+  </section>
+
+  <section class="features-section">
+    <h2 class="section-title">Why choose Editorial?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3 class="feature-title">Immersive Typography</h3>
+        <p class="feature-desc">Pairs beautiful serif headings with highly legible sans-serif body copy for a true magazine feel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📐</div>
+        <h3 class="feature-title">Asymmetric Layouts</h3>
+        <p class="feature-desc">Breaks the grid naturally to draw the user's eye exactly where you want it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3 class="feature-title">Identity Ready</h3>
+        <p class="feature-desc">Comes with 4 pre-configured identities: Classic, Dark Mode, High Contrast, and Warm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries-section">
+    <h2 class="section-title">Built for any industry</h2>
+    <p class="feature-desc" style="max-width: 500px; margin: 0 auto;">Editorial adapts its payload to match your business. Same beautiful structure, entirely different content.</p>
+    
+    <div class="industry-list">
+      <div class="industry-pill">Fine Dining</div>
+      <div class="industry-pill">Architecture</div>
+      <div class="industry-pill">Creative Agency</div>
+      <div class="industry-pill">Luxury Retail</div>
+      <div class="industry-pill">Photography</div>
+    </div>
+  </section>
+
+</body>
+</html>

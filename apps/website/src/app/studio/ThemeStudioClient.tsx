@@ -230,10 +230,21 @@ import { themeConfig } from '../theme/zenix';
           {/* 2. Blueprint */}
           <div>
             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.75rem' }}>2. Blueprint</label>
-            <select 
+            <select
               value={selectedBlueprintId}
               onChange={e => setSelectedBlueprintId(e.target.value)}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{
+                width: '100%', padding: '0.75rem',
+                borderRadius: 'var(--zx-radius-surface)',
+                border: '1px solid var(--zx-elevated)',
+                background: 'var(--zx-surface)',
+                // colorScheme forces the OS to render the select in dark mode
+                // on macOS/Windows — without this, the OS uses black text on
+                // a light background, ignoring your color: inherit.
+                colorScheme: 'dark',
+                color: '#FAFAFA',
+                fontSize: '0.875rem',
+              }}
             >
               {blueprints.map(bp => (
                 <option key={bp.id} value={bp.id}>{bp.title} ({bp.category})</option>
@@ -244,10 +255,18 @@ import { themeConfig } from '../theme/zenix';
           {/* 3. Theme Engine */}
           <div>
             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.75rem' }}>3. Theme Engine</label>
-            <select 
+            <select
               value={config.base}
               onChange={e => setConfig({ ...config, base: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{
+                width: '100%', padding: '0.75rem',
+                borderRadius: 'var(--zx-radius-surface)',
+                border: '1px solid var(--zx-elevated)',
+                background: 'var(--zx-surface)',
+                colorScheme: 'dark',
+                color: '#FAFAFA',
+                fontSize: '0.875rem',
+              }}
             >
               <option value="zenix">Zenix (Solid)</option>
               <option value="ocean">Ocean (Glass)</option>
@@ -281,10 +300,18 @@ import { themeConfig } from '../theme/zenix';
           {/* 5. Radius */}
           <div>
             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.75rem' }}>5. Radius</label>
-            <select 
+            <select
               value={config.radius || 'none'}
               onChange={e => setConfig({ ...config, radius: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{
+                width: '100%', padding: '0.75rem',
+                borderRadius: 'var(--zx-radius-surface)',
+                border: '1px solid var(--zx-elevated)',
+                background: 'var(--zx-surface)',
+                colorScheme: 'dark',
+                color: '#FAFAFA',
+                fontSize: '0.875rem',
+              }}
             >
               <option value="none">None</option>
               <option value="sm">Small</option>
@@ -298,10 +325,18 @@ import { themeConfig } from '../theme/zenix';
           {/* 6. Motion Profile */}
           <div>
             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.5, marginBottom: '0.75rem' }}>6. Motion</label>
-            <select 
+            <select
               value={config.motion || 'standard'}
               onChange={e => setConfig({ ...config, motion: e.target.value as any })}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--zx-radius-surface)', border: '1px solid var(--zx-elevated)', background: 'var(--zx-surface)', color: 'inherit', fontSize: '0.875rem' }}
+              style={{
+                width: '100%', padding: '0.75rem',
+                borderRadius: 'var(--zx-radius-surface)',
+                border: '1px solid var(--zx-elevated)',
+                background: 'var(--zx-surface)',
+                colorScheme: 'dark',
+                color: '#FAFAFA',
+                fontSize: '0.875rem',
+              }}
             >
               <option value="none">None</option>
               <option value="minimal">Minimal</option>

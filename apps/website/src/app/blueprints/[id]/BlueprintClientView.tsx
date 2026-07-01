@@ -7,6 +7,7 @@ import { Experience } from '@zenixui/react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { track } from '@vercel/analytics/react';
+import { BlueprintThumbnail } from '../../../components/preview/BlueprintThumbnail';
 
 export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode: string }) {
   const blueprint = getBlueprint(id);
@@ -184,11 +185,35 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
               {moreBlueprints.map(bp => (
                 <Link key={bp.id} href={`/blueprints/${bp.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s' }}>
-                    <div style={{ height: '200px', background: 'var(--zx-elevated)', backgroundImage: `url(${bp.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
-                    <div style={{ padding: '1.5rem' }}>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{bp.title}</h3>
-                      <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>
+                  <Surface variant="card" style={{
+                    padding: 0, overflow: 'hidden',
+                    border: '1px solid var(--zx-elevated)',
+                    transition: 'border-color 0.2s ease, transform 0.2s ease',
+                  }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--zx-primary)';
+                      (e.currentTarget as HTMLElement).style.transform   = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--zx-elevated)';
+                      (e.currentTarget as HTMLElement).style.transform   = 'translateY(0)';
+                    }}
+                  >
+                    {/* Live preview thumbnail — never stale, zero 404s */}
+                    <BlueprintThumbnail
+                      Component={bp.component}
+                      theme={bp.theme}
+                      previewHeight={200}
+                      cardWidth={320}
+                    />
+                    <div style={{ padding: '1.25rem 1.5rem' }}>
+                      <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: '0 0 0.375rem' }}>{bp.title}</h3>
+                      <span style={{
+                        fontSize: '0.7rem', padding: '0.15rem 0.5rem',
+                        background: 'var(--zx-elevated)',
+                        borderRadius: 'var(--zx-radius-surface)',
+                        textTransform: 'capitalize', fontWeight: 600,
+                      }}>
                         {bp.theme.replace('-', ' ')}
                       </span>
                     </div>
