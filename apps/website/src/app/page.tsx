@@ -2,13 +2,13 @@ import React from 'react';
 import { HeroV2 } from '../components/home/v2/HeroV2';
 import { WorldScrollV2 } from '../components/home/v2/WorldScrollV2';
 import { ValuePropV2 } from '../components/home/v2/ValuePropV2';
-import { ComposerV2 } from '../components/home/v2/ComposerV2';
+import { Composer } from '../components/home/v2/Composer';
 
 export default function Home() {
   return (
     <main style={{ background: '#09090B', color: '#FAFAFA' }}>
       <HeroV2 />
-      <ComposerV2 />
+      <Composer />
       <WorldScrollV2 />
       <ValuePropV2 />
       
