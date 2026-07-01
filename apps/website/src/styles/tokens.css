@@ -13,4 +13,23 @@
   --zx-radius-card: 16px;
   --zx-radius-overlay: 24px;
   --zx-radius-pill: 9999px;
+
+  /* Purpose-based Color Tokens (Dark Mode Default) */
+  --zx-background: #09090B;
+  --zx-surface: #111113;
+  --zx-elevated: rgba(255, 255, 255, 0.08);
+  --zx-text: #FAFAFA;
+  --zx-text-muted: #A1A1AA;
+  --zx-primary: #FAFAFA;
+  --zx-accent: #5E6AD2;
+  
+  /* Glass Tokens */
+  --zx-glass-bg: rgba(17, 17, 19, 0.6);
+  --zx-glass-border: rgba(255, 255, 255, 0.08);
+  --zx-glass-blur: blur(24px);
+  
+  /* Shadow Tokens */
+  --zx-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --zx-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  --zx-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }

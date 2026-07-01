@@ -1,12 +1,19 @@
 import React from 'react';
 import styles from './Composer.module.css';
 
-export function PreviewCanvas({ targetKey, TargetComp, targetStack }: any) {
+import { LivePreview } from '../../../preview/LivePreview';
+
+export function PreviewCanvas({ experienceId, brandId, variantId, aestheticId, targetStack }: any) {
   return (
     <div className={styles.previewSection}>
       <div className={styles.previewCanvas}>
-        <div key={targetKey} className={styles.previewContent}>
-          {TargetComp ? <TargetComp /> : null}
+        <div key={`${experienceId}-${brandId}-${aestheticId}`} className={styles.previewContent}>
+          <LivePreview 
+            experienceId={experienceId}
+            brandId={brandId}
+            variantId={variantId}
+            aestheticId={aestheticId}
+          />
         </div>
       </div>
       <div className={styles.previewHud}>

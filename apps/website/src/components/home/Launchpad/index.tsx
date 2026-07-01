@@ -10,6 +10,8 @@ import {
   Aesthetic, 
   Variant
 } from '../../../lib/launchpad';
+import { StaticPreview } from '../../preview/StaticPreview';
+import { LivePreview } from '../../preview/LivePreview';
 import Image from 'next/image';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
@@ -67,8 +69,14 @@ export function Launchpad() {
               }}
             >
               <div style={{ width: '100%', aspectRatio: '16/10', position: 'relative' }}>
-                <Image src={exp.coverImage} alt={exp.name} fill style={{ objectFit: 'cover' }} loading="lazy" />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
+                <StaticPreview 
+                  experienceId={exp.id} 
+                  brandId={activeBrand.id} 
+                  variantId={exp.variants[0]?.id}
+                  aestheticId={activeAesthetic.id}
+                  style={{ width: '100%', height: '100%' }} 
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)' }} />
                 
                 <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', display: 'flex', gap: '0.5rem' }}>
                   <span style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', borderRadius: '2rem', fontSize: '0.75rem', color: '#FFF', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
@@ -134,18 +142,12 @@ export function Launchpad() {
             border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 50px 100px -20px rgba(0,0,0,0.5)',
             marginBottom: '10rem', background: '#09090B'
           }}>
-             {ActiveBlueprintComponent ? (
-               <div style={{
-                 '--zx-primary': activeBrand.colors.primary,
-                 '--zx-background': activeBrand.colors.background,
-                 '--zx-surface': activeBrand.colors.surface,
-                 width: '100%', height: '100%'
-               } as React.CSSProperties}>
-                 <ActiveBlueprintComponent />
-               </div>
-             ) : (
-               <Image src={activeExperience.coverImage} alt={activeExperience.name} fill style={{ objectFit: 'cover' }} priority />
-             )}
+              <LivePreview 
+                experienceId={activeExperience.id} 
+                brandId={activeBrand.id} 
+                variantId={activeVariant.id}
+                aestheticId={activeAesthetic.id}
+              />
           </div>
 
           {/* Marketing Features Grid */}

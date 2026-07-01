@@ -67,6 +67,7 @@ export function Experience({
     <ExperienceContext.Provider value={{ preset: resolvedPreset, motion: activeMotion as MotionProfile, overrides: resolvedOverrides }}>
       <div 
         className={`zx-experience ${themeClass || ''}`} 
+        data-zx-theme={resolvedPreset.metadata.id}
         data-zx-motion={activeMotion}
         style={{ 
           position: 'relative', 

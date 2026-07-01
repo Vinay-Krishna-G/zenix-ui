@@ -1,1 +1,7 @@
 node_modules
+
+# Verification Artifacts
+apps/website/public/verification/
+*playwright-report/
+*test-results/
+

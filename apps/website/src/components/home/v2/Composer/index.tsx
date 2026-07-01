@@ -43,9 +43,8 @@ export function Composer() {
   const targetAes = AESTHETICS.find(a => a.id === targetAesId) ?? AESTHETICS[0] ?? { id: 'unknown', name: 'Unknown' };
   const targetIden = IDENTITIES.find(i => i.id === targetIdenId) ?? IDENTITIES[0] ?? { id: 'unknown', name: 'Unknown' };
 
-  const targetAestheticMap = targetExp?.variants[0]?.blueprintIdMap || {};
+  const targetAestheticMap = targetExp?.variants?.[0]?.blueprintIdMap || {};
   const targetBlueprintId = targetAestheticMap[targetAesId] || Object.values(targetAestheticMap)[0] || 'zenix-portfolio';
-  const TargetComp = blueprints.find(b => b.id === targetBlueprintId)?.component;
 
   const handleGenerate = () => {
     setIsGenerating(true);
@@ -67,9 +66,10 @@ export function Composer() {
         
         {/* LEFT: Massive Preview Area (75%) */}
         <PreviewCanvas 
-          targetExpName={targetExp.name} 
-          targetKey={`${targetExp.id}-${targetAes.id}-${targetIden.id}`} 
-          TargetComp={TargetComp} 
+          experienceId={targetExpId}
+          brandId={targetIdenId}
+          variantId={targetExp?.variants?.[0]?.id || 'unknown'}
+          aestheticId={targetAesId}
           targetStack={{
             exp: targetExp.name,
             iden: targetIden.name,

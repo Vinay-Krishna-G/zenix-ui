@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { EXPERIENCES } from '../../../lib/launchpad';
-import { blueprints } from '@zenixui/blueprints';
+import { LivePreview } from '../../preview/LivePreview';
 
 export function HeroV2() {
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const rotatingExps = EXPERIENCES.slice(0, 5);
+  const rotatingExps = EXPERIENCES.filter(e => ['ai-startup', 'dental-clinic', 'agency', 'architecture', 'fine-dining'].includes(e.id));
   const activeExp = rotatingExps[activeIdx];
 
   useEffect(() => {
@@ -19,8 +19,7 @@ export function HeroV2() {
   }, [rotatingExps.length]);
 
   const activeAestheticMap = activeExp?.variants[0]?.blueprintIdMap || {};
-  const activeBlueprintId = Object.values(activeAestheticMap)[0] || 'zenix-portfolio';
-  const ActiveComp = blueprints.find(b => b.id === activeBlueprintId)?.component;
+  const activeAestheticId = Object.keys(activeAestheticMap)[0] || 'glass';
 
   return (
     <section style={{ 
@@ -130,7 +129,12 @@ export function HeroV2() {
             {/* Live component */}
             <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#09090B' }}>
                <div key={activeExp.id} style={{ position: 'absolute', inset: 0, animation: 'blurFadeIn 400ms cubic-bezier(0.4, 0, 0.2, 1)' }}>
-                 {ActiveComp ? <ActiveComp /> : null}
+                 <LivePreview 
+                   experienceId={activeExp.id} 
+                   brandId="tiffany" 
+                   variantId={activeExp.variants[0].id}
+                   aestheticId={activeAestheticId}
+                 />
                </div>
             </div>
           </div>
