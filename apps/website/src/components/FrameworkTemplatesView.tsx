@@ -1,6 +1,7 @@
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
+import { PreviewThumbnailResolver } from './preview/PreviewThumbnailResolver';
 
 export function FrameworkTemplatesView({ frameworkId, frameworkName }: { frameworkId: string, frameworkName: string }) {
   // Get all unique categories
@@ -22,18 +23,25 @@ export function FrameworkTemplatesView({ frameworkId, frameworkName }: { framewo
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '2rem' }}>
         {categories.map(category => {
-          const displayCategory = category ? category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Experience';
+          const displayCategory = category
+            ? category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+            : 'Experience';
           const coverBlueprint = blueprints.find(bp => bp.category === category);
-          
+
           if (!coverBlueprint) return null;
 
           return (
             <Link key={category} href={`/templates/${frameworkId}-${category}-template`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ height: '200px', background: 'var(--zx-elevated)', backgroundImage: `url(${coverBlueprint.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                {/*
+                 * Previously: backgroundImage: url(coverBlueprint.previewImage) — always 404.
+                 * Now: live React preview via DocsBlueprintCard thumbnail.
+                 */}
+                <PreviewThumbnailResolver id={coverBlueprint.id} previewHeight={120} />
                 <div style={{ padding: '1.5rem', flex: 1 }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{frameworkName} {displayCategory} Templates</h3>
-                  <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>Browse all {displayCategory.toLowerCase()} blueprints optimized for {frameworkName}.</p>
+                  <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>
+                    Browse all {displayCategory.toLowerCase()} blueprints optimized for {frameworkName}.
+                  </p>
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-primary)', color: 'var(--zx-background)', borderRadius: 'var(--zx-radius-surface)' }}>
                       {blueprints.filter(bp => bp.category === category).length} Templates

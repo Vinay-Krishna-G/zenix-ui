@@ -1,18 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  EXPERIENCES, 
-  IDENTITIES, 
-  AESTHETICS, 
-  Experience, 
-  Identity, 
-  Aesthetic, 
+import {
+  EXPERIENCES,
+  IDENTITIES,
+  AESTHETICS,
+  Experience,
+  Identity,
+  Aesthetic,
   Variant
 } from '../../../lib/launchpad';
 import { StaticPreview } from '../../preview/StaticPreview';
 import { LivePreview } from '../../preview/LivePreview';
-import Image from 'next/image';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 
@@ -312,7 +311,21 @@ export function Launchpad() {
                     }}
                   >
                     <div style={{ width: '100%', height: '140px', position: 'relative' }}>
-                      <Image src={brand.image} alt={brand.name} fill style={{ objectFit: 'cover' }} />
+                      {/* Brand identity swatch — color is the identity, no PNG needed */}
+                      <div style={{
+                        width: '100%', height: '100%',
+                        background: `linear-gradient(135deg, ${brand.colors.background} 0%, ${brand.colors.surface} 50%, ${brand.colors.primary}33 100%)`,
+                        position: 'relative',
+                      }}>
+                        {/* Accent orb */}
+                        <div style={{
+                          position: 'absolute', top: '50%', right: '1.5rem',
+                          transform: 'translateY(-50%)',
+                          width: 32, height: 32, borderRadius: '50%',
+                          background: brand.colors.primary,
+                          boxShadow: `0 0 24px ${brand.colors.primary}99`,
+                        }} />
+                      </div>
                       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)' }} />
                       
                       <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', right: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

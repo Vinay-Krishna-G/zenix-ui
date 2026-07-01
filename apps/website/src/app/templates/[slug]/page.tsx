@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { blueprints, type Framework } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
+import { PreviewThumbnailResolver } from '../../../components/preview/PreviewThumbnailResolver';
 
 const FRAMEWORKS: { id: Framework; name: string }[] = [
   { id: 'react', name: 'React' },
@@ -70,9 +71,9 @@ export default async function TemplateCategoryPage({ params }: { params: Promise
         {matchingBlueprints.map(bp => (
           <Link key={bp.id} href={`/blueprints/${bp.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s', height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ height: '200px', background: 'var(--zx-elevated)', backgroundImage: `url(${bp.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+              {/* Live preview — replaced broken backgroundImage: url(bp.previewImage) */}
+              <PreviewThumbnailResolver id={bp.id} previewHeight={200} />
               <div style={{ padding: '1.5rem', flex: 1 }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0 0 0.5rem' }}>{bp.title}</h3>
                 <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>{bp.description}</p>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <span style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', background: 'var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', textTransform: 'capitalize' }}>

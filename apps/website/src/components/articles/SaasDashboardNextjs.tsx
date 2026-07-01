@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@zenixui/components';
+import { DocsBlueprintCard } from '../DocsBlueprintCard';
 
 export function SaasDashboardNextjs() {
   return (
@@ -57,9 +58,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       <h2 style={{ marginTop: '3rem', fontSize: '2rem' }}>3. The Dashboard Shell Architecture</h2>
       <p>
-        A professional dashboard shell typically consists of three regions: a persistent Sidebar, a Top Header (often containing breadcrumbs and a global search), and the scrollable Main Content area.
+        Dashboard layouts are challenging because they must balance dense information with clean aesthetics. A standard approach uses a fixed sidebar navigation with a flexible main content area.
       </p>
-      <img src="/previews/zenix-dashboard.png" alt="Zenix Dashboard Architecture" style={{ width: '100%', borderRadius: '12px', marginTop: '2rem', border: '1px solid var(--zx-elevated)' }} />
+      <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+        <DocsBlueprintCard id="zenix-dashboard" title="Zenix Dashboard Architecture" category="Dashboard" />
+      </div>
       <p style={{ marginTop: '1rem', fontSize: '0.875rem', opacity: 0.6, textAlign: 'center' }}>Example: The Zenix Dashboard Blueprint showcasing a dense, data-rich shell.</p>
       
       <p style={{ marginTop: '2rem' }}>

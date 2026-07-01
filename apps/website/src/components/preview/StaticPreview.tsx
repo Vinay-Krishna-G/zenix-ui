@@ -1,8 +1,15 @@
 'use client';
 
+/**
+ * StaticPreview — Previously loaded PNG screenshots which caused 404s.
+ *
+ * Now uses resolvePreview() to get the actual React component and renders it
+ * using BlueprintThumbnail for a live, scaled, zero-404 thumbnail.
+ */
+
 import React from 'react';
-import Image from 'next/image';
-import { getPreviewImage } from './PreviewManifest';
+import { resolvePreview } from './PreviewResolver';
+import { BlueprintThumbnail } from './BlueprintThumbnail';
 
 interface StaticPreviewProps {
   experienceId: string;
@@ -13,33 +20,56 @@ interface StaticPreviewProps {
   style?: React.CSSProperties;
 }
 
-export function StaticPreview({ experienceId, brandId, variantId = 'default', aestheticId = 'glass', className, style }: StaticPreviewProps) {
-  const imagePath = getPreviewImage(experienceId, brandId, variantId, aestheticId);
+export function StaticPreview({
+  experienceId,
+  brandId,
+  variantId = 'default',
+  aestheticId = 'glass',
+  className,
+  style,
+}: StaticPreviewProps) {
+  const { isValid, BlueprintComponent, experience, brand, resolvedBlueprintId } = resolvePreview(
+    experienceId,
+    brandId,
+    variantId,
+    aestheticId
+  );
+
+  if (!isValid || !BlueprintComponent) {
+    return (
+      <div
+        className={className}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          background: 'linear-gradient(135deg, #111113 0%, #1a1a1f 100%)',
+          color: 'rgba(255,255,255,0.4)',
+          position: 'relative',
+          overflow: 'hidden',
+          ...style,
+        }}
+      >
+        <span style={{ fontSize: '2rem', opacity: 0.15, fontWeight: 800, letterSpacing: '0.1em' }}>
+          {experience?.personality || 'N/A'}
+        </span>
+      </div>
+    );
+  }
+
+  const bpTheme = require('@zenixui/blueprints').blueprints.find((b: any) => b.id === resolvedBlueprintId)?.theme || 'default';
 
   return (
-    <div 
-      className={className}
-      style={{ 
-        width: '100%', 
-        height: '100%',
-        position: 'relative',
-        background: '#09090B',
-        overflow: 'hidden',
-        ...style 
-      }}
-    >
-      <Image
-        src={imagePath}
-        alt={`Preview of ${experienceId}`}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: 'cover', objectPosition: 'top' }}
-        unoptimized
-        onError={(e) => {
-          // Fallback if screenshot hasn't been generated yet
-          const target = e.target as HTMLImageElement;
-          target.style.display = 'none';
-        }}
+    <div className={className} style={{ width: '100%', height: '100%', position: 'relative', ...style }}>
+      <BlueprintThumbnail
+        Component={BlueprintComponent}
+        theme={bpTheme}
+        previewHeight={400}
+        cardWidth={600}
       />
     </div>
   );

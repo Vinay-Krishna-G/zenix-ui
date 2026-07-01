@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@zenixui/components';
+import { DocsBlueprintCard } from '../DocsBlueprintCard';
 
 export function ReactAdminPanel() {
   return (
@@ -85,7 +86,9 @@ export function RequirePermission({ permission, children, fallback = null }) {
       <p>
         Consumer apps love whitespace. Admin panels hate it. When designing your components, you need a highly dense design system that can display maximum information without feeling cluttered.
       </p>
-      <img src="/previews/ocean-dashboard.png" alt="Dense Admin Panel Layout" style={{ width: '100%', borderRadius: '12px', marginTop: '2rem', border: '1px solid var(--zx-elevated)' }} />
+      <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+        <DocsBlueprintCard id="ocean-dashboard" title="Admin Panel Architecture" category="Ocean Dashboard" />
+      </div>
       <p style={{ marginTop: '1rem', fontSize: '0.875rem', opacity: 0.6, textAlign: 'center' }}>A highly structured layout prevents cognitive overload when analyzing complex data.</p>
       
       <p style={{ marginTop: '2rem' }}>

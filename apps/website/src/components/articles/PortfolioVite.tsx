@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@zenixui/components';
+import { DocsBlueprintCard } from '../DocsBlueprintCard';
 
 export function PortfolioVite() {
   return (
@@ -24,7 +25,9 @@ npm run dev`}
       <p>
         Unlike a dashboard, a portfolio relies on visual storytelling. Your layout should guide the user through your narrative: Hero Section (Who are you?), Work Experience (What have you done?), Projects (Show me), and Contact (Let's talk).
       </p>
-      <img src="/previews/zenix-portfolio.png" alt="Zenix Portfolio Architecture" style={{ width: '100%', borderRadius: '12px', marginTop: '2rem', border: '1px solid var(--zx-elevated)' }} />
+      <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+        <DocsBlueprintCard id="zenix-portfolio" title="Zenix Portfolio Architecture" category="Portfolio" />
+      </div>
       <p style={{ marginTop: '1rem', fontSize: '0.875rem', opacity: 0.6, textAlign: 'center' }}>A strong typography hierarchy creates an immediate sense of professionalism.</p>
 
       <h2 style={{ marginTop: '3rem', fontSize: '2rem' }}>3. Advanced Micro-Interactions</h2>

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
 import { getBlueprintsByCategory } from '@zenixui/blueprints';
+import { DocsBlueprintCard } from '../../../components/DocsBlueprintCard';
 
 export const metadata: Metadata = {
   title: 'ZenixUI with Remix — Installation & Setup Guide',
@@ -134,19 +135,15 @@ export default function Index() {
         ))}
       </div>
 
-      {/* Featured Blueprints */}
       <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem', letterSpacing: '-0.02em' }}>Popular Remix Blueprints</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '3rem' }}>
         {[...landingBlueprints.slice(0, 2), ...dashboardBlueprints.slice(0, 2)].map(bp => (
-          <Link key={bp.id} href={`/blueprints/${bp.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-elevated)', transition: 'transform 0.2s' }}>
-              <div style={{ height: '120px', background: 'var(--zx-elevated)', backgroundImage: `url(${bp.previewImage})`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
-              <div style={{ padding: '1rem' }}>
-                <div style={{ fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.4, marginBottom: '0.25rem' }}>{bp.category}</div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>{bp.title}</div>
-              </div>
-            </Surface>
-          </Link>
+          <DocsBlueprintCard
+            key={bp.id}
+            id={bp.id}
+            title={bp.title}
+            category={bp.category}
+          />
         ))}
       </div>
 
