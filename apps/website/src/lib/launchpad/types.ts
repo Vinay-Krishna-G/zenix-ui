@@ -10,7 +10,7 @@ export interface Aesthetic {
   description: string;
 }
 
-export interface BrandPack {
+export interface Identity {
   id: string;
   name: string;
   mood: string;

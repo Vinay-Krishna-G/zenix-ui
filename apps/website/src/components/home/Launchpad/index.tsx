@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 import { 
   EXPERIENCES, 
-  BRAND_PACKS, 
+  IDENTITIES, 
   AESTHETICS, 
   Experience, 
-  BrandPack, 
+  Identity, 
   Aesthetic, 
   Variant
 } from '../../../lib/launchpad';
@@ -18,7 +18,7 @@ export function Launchpad() {
   const [view, setView] = useState<'browse' | 'details' | 'compose' | 'compare'>('browse');
   const [activeExperience, setActiveExperience] = useState<Experience>(EXPERIENCES[0]);
   const [activeVariant, setActiveVariant] = useState<Variant>(EXPERIENCES[0].variants[0]);
-  const [activeBrand, setActiveBrand] = useState<BrandPack>(BRAND_PACKS.find(b => b.id === 'tiffany') || BRAND_PACKS[0]);
+  const [activeBrand, setActiveBrand] = useState<Identity>(IDENTITIES.find(b => b.id === 'tiffany') || IDENTITIES[0]);
   const [activeAesthetic, setActiveAesthetic] = useState<Aesthetic>(AESTHETICS.find(a => a.id === 'glass') || AESTHETICS[0]);
   
   const [showCli, setShowCli] = useState(false);
@@ -287,7 +287,7 @@ export function Launchpad() {
               </div>
               
               <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-                {BRAND_PACKS.map(brand => (
+                {IDENTITIES.map(brand => (
                   <div
                     key={brand.id}
                     onClick={() => setActiveBrand(brand)}

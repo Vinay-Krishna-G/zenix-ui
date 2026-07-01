@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { BRAND_PACKS } from '../../../lib/launchpad';
+import { IDENTITIES } from '../../../lib/launchpad';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export function ThemeGrid() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '3rem', paddingTop: '2rem' }}>
-      {BRAND_PACKS.slice(0, 4).map(brand => (
+      {IDENTITIES.slice(0, 4).map(brand => (
         <Link key={brand.id} href="/studio" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
           <div style={{
             background: 'var(--zx-surface, #111)',

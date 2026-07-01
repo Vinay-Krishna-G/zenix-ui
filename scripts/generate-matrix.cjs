@@ -21,7 +21,7 @@ export interface Aesthetic {
   description: string;
 }
 
-export interface BrandPack {
+export interface Identity {
   id: string;
   name: string;
   mood: string;
@@ -114,7 +114,7 @@ const brands = [
 
 let brandExports = '';
 brands.forEach(br => {
-  const code = `import { BrandPack } from '../types';\n\nexport const ${br.id.replace('-', '_')}: BrandPack = { id: '${br.id}', name: '${br.name}', mood: '${br.mood}', image: '${br.image}', usedFor: ${JSON.stringify(br.usedFor)}, colors: { primary: '${br.primary}', surface: '${br.surface}', background: '${br.bg}' } };\n`;
+  const code = `import { Identity } from '../types';\n\nexport const ${br.id.replace('-', '_')}: Identity = { id: '${br.id}', name: '${br.name}', mood: '${br.mood}', image: '${br.image}', usedFor: ${JSON.stringify(br.usedFor)}, colors: { primary: '${br.primary}', surface: '${br.surface}', background: '${br.bg}' } };\n`;
   fs.writeFileSync(path.join(base, 'brands', `${br.id}.ts`), code);
   brandExports += `export * from './${br.id}';\n`;
 });
@@ -155,7 +155,7 @@ import * as experiences from './experiences';
 
 export const INDUSTRIES = Object.values(industries);
 export const AESTHETICS = Object.values(aesthetics);
-export const BRAND_PACKS = Object.values(brands);
+export const IDENTITIES = Object.values(brands);
 export const EXPERIENCES = Object.values(experiences);
 `);
 

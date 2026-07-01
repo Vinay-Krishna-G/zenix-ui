@@ -12,5 +12,5 @@ import * as experiences from './experiences';
 
 export const INDUSTRIES = Object.values(industries);
 export const AESTHETICS = Object.values(aesthetics);
-export const BRAND_PACKS = Object.values(brands);
+export const IDENTITIES = Object.values(brands);
 export const EXPERIENCES = Object.values(experiences);
