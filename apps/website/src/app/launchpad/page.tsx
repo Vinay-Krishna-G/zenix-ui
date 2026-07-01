@@ -1,4 +1,4 @@
-import { Launchpad } from '../../components/home/Launchpad';
+import { Launchpad } from '../../components/launchpad';
 
 export const metadata = {
   title: 'Launchpad | ZenixUI',

@@ -7,7 +7,7 @@ import { Experience } from '@zenixui/react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { track } from '@vercel/analytics/react';
-import { BlueprintThumbnail } from '../../../components/preview/BlueprintThumbnail';
+import { ThumbnailRenderer } from '../../../components/preview/ThumbnailRenderer';
 
 export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode: string }) {
   const blueprint = getBlueprint(id);
@@ -200,7 +200,7 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
                     }}
                   >
                     {/* Live preview thumbnail — never stale, zero 404s */}
-                    <BlueprintThumbnail
+                    <ThumbnailRenderer
                       Component={bp.component}
                       theme={bp.theme}
                       previewHeight={200}

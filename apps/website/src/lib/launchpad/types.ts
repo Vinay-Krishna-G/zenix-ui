@@ -14,7 +14,6 @@ export interface Identity {
   id: string;
   name: string;
   mood: string;
-  image: string;
   usedFor: string[];
   colors: {
     primary: string;
@@ -48,7 +47,6 @@ export interface Experience {
       sections: number;
     }
   };
-  coverImage: string;
   rating: number;
   launches: string;
   tags: string[]; // e.g. "Trending", "Editor's Pick"

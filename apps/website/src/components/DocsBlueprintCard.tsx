@@ -12,7 +12,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Surface } from '@zenixui/components';
 import { blueprints } from '@zenixui/blueprints';
-import { BlueprintThumbnail } from './preview/BlueprintThumbnail';
+import { ThumbnailRenderer } from './preview/ThumbnailRenderer';
 
 interface DocsBlueprintCardProps {
   /** The blueprint ID. The component is resolved client-side from the registry. */
@@ -51,7 +51,7 @@ export function DocsBlueprintCard({ id, title, category, previewHeight = 120 }: 
           (e.currentTarget as HTMLElement).style.transform   = 'translateY(0)';
         }}
       >
-        <BlueprintThumbnail
+        <ThumbnailRenderer
           Component={bp.component}
           theme={bp.theme}
           previewHeight={previewHeight}

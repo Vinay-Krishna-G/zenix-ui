@@ -11,7 +11,6 @@ export async function GET() {
       category: bp.category,
       theme: bp.theme,
       tags: bp.tags,
-      previewImage: bp.previewImage,
       downloadUrl: `/api/v1/blueprints/${bp.id}/source`
     }));
     return NextResponse.json(metadata);

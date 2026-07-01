@@ -9,9 +9,9 @@ import {
   Identity,
   Aesthetic,
   Variant
-} from '../../../lib/launchpad';
-import { StaticPreview } from '../../preview/StaticPreview';
-import { LivePreview } from '../../preview/LivePreview';
+} from '../../lib/launchpad';
+import { ExperienceThumbnail } from '../preview/ExperienceThumbnail';
+import { LivePreview } from '../preview/LivePreview';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 
@@ -68,7 +68,7 @@ export function Launchpad() {
               }}
             >
               <div style={{ width: '100%', aspectRatio: '16/10', position: 'relative' }}>
-                <StaticPreview 
+                <ExperienceThumbnail 
                   experienceId={exp.id} 
                   brandId={activeBrand.id} 
                   variantId={exp.variants[0]?.id}

@@ -60,7 +60,6 @@ async function buildRegistry() {
       category: bp.category,
       theme: bp.theme,
       tags: bp.tags,
-      previewImage: bp.previewImage,
       dependencies: (() => {
         const match = sourceCode.match(/export\s+const\s+metadata\s*=\s*({[\s\S]*?});/);
         if (match) {

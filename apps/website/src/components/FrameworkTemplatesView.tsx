@@ -1,7 +1,7 @@
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
-import { PreviewThumbnailResolver } from './preview/PreviewThumbnailResolver';
+import { BlueprintThumbnail } from './preview/BlueprintThumbnail';
 
 export function FrameworkTemplatesView({ frameworkId, frameworkName }: { frameworkId: string, frameworkName: string }) {
   // Get all unique categories
@@ -37,7 +37,7 @@ export function FrameworkTemplatesView({ frameworkId, frameworkName }: { framewo
                  * Previously: backgroundImage: url(coverBlueprint.previewImage) — always 404.
                  * Now: live React preview via DocsBlueprintCard thumbnail.
                  */}
-                <PreviewThumbnailResolver id={coverBlueprint.id} previewHeight={120} />
+                <BlueprintThumbnail id={coverBlueprint.id} previewHeight={120} />
                 <div style={{ padding: '1.5rem', flex: 1 }}>
                   <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>
                     Browse all {displayCategory.toLowerCase()} blueprints optimized for {frameworkName}.

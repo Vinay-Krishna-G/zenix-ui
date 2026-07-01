@@ -15,7 +15,7 @@ import React from 'react';
 import { EXPERIENCES, Experience } from '../../lib/launchpad';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
-import { BlueprintThumbnail } from '../preview/BlueprintThumbnail';
+import { ThumbnailRenderer } from '../preview/ThumbnailRenderer';
 
 // ── Theme colors for the thumbnail skeleton ────────────────────────────────
 const THEME_FOR_EXPERIENCE: Record<string, string> = {
@@ -122,7 +122,7 @@ export function ExperienceShowcase() {
                         {/* Live blueprint preview — resolved from the experience's first variant */}
                         <div style={{ position: 'relative' }}>
                           {resolved ? (
-                            <BlueprintThumbnail
+                            <ThumbnailRenderer
                               Component={resolved.component}
                               theme={resolved.theme}
                               previewHeight={280}

@@ -1,17 +1,17 @@
 'use client';
 
 /**
- * StaticPreview — Previously loaded PNG screenshots which caused 404s.
+ * ExperienceThumbnail — Previously loaded PNG screenshots which caused 404s.
  *
  * Now uses resolvePreview() to get the actual React component and renders it
- * using BlueprintThumbnail for a live, scaled, zero-404 thumbnail.
+ * using ThumbnailRenderer for a live, scaled, zero-404 thumbnail.
  */
 
 import React from 'react';
 import { resolvePreview } from './PreviewResolver';
-import { BlueprintThumbnail } from './BlueprintThumbnail';
+import { ThumbnailRenderer } from './ThumbnailRenderer';
 
-interface StaticPreviewProps {
+interface ExperienceThumbnailProps {
   experienceId: string;
   brandId: string;
   variantId?: string;
@@ -20,14 +20,14 @@ interface StaticPreviewProps {
   style?: React.CSSProperties;
 }
 
-export function StaticPreview({
+export function ExperienceThumbnail({
   experienceId,
   brandId,
   variantId = 'default',
   aestheticId = 'glass',
   className,
   style,
-}: StaticPreviewProps) {
+}: ExperienceThumbnailProps) {
   const { isValid, BlueprintComponent, experience, brand, resolvedBlueprintId } = resolvePreview(
     experienceId,
     brandId,
@@ -65,7 +65,7 @@ export function StaticPreview({
 
   return (
     <div className={className} style={{ width: '100%', height: '100%', position: 'relative', ...style }}>
-      <BlueprintThumbnail
+      <ThumbnailRenderer
         Component={BlueprintComponent}
         theme={bpTheme}
         previewHeight={400}

@@ -1,3 +1,3 @@
 import { Identity } from '../types';
 
-export const neon: Identity = { id: 'neon', name: 'Neon', mood: 'AI & Cyberpunk', image: '/previews/brand-packs/media__1782817898832.png', usedFor: ["Gaming","AI"], colors: { primary: '#B6FF00', surface: '#1A0B1E', background: '#09090B' } };
+export const neon: Identity = { id: 'neon', name: 'Neon', mood: 'AI & Cyberpunk', usedFor: ["Gaming","AI"], colors: { primary: '#B6FF00', surface: '#1A0B1E', background: '#09090B' } };

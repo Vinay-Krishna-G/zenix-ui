@@ -44,7 +44,6 @@ export interface BlueprintMetadata {
   tags: string[];
   component: React.ComponentType;
   sourcePath: string;
-  previewImage: string;
   createdAt: string;
   featured: boolean;
   dependencies?: string[];
@@ -63,7 +62,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["saas", "startup", "professional"],
     component: ZenixLanding,
     sourcePath: "packages/blueprints/src/landings/ZenixLanding.tsx",
-    previewImage: "/previews/zenix-landing.png",
     createdAt: "2026-06-10",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -77,7 +75,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["fluid", "creative", "deep"],
     component: OceanLanding,
     sourcePath: "packages/blueprints/src/landings/OceanLanding.tsx",
-    previewImage: "/previews/ocean-landing.png",
     createdAt: "2026-06-11",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -91,7 +88,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["cyberpunk", "neon", "developer"],
     component: NightCityLanding,
     sourcePath: "packages/blueprints/src/landings/NightCityLanding.tsx",
-    previewImage: "/previews/midnight-landing.png",
     createdAt: "2026-06-12",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -105,7 +101,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["warm", "organic", "narrative"],
     component: AutumnLanding,
     sourcePath: "packages/blueprints/src/landings/AutumnLanding.tsx",
-    previewImage: "/previews/autumn-landing.png",
     createdAt: "2026-06-13",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -119,7 +114,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["professional", "minimal", "developer"],
     component: ZenixPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/ZenixPortfolio.tsx",
-    previewImage: "/previews/zenix-portfolio.png",
     createdAt: "2026-06-10",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -133,7 +127,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["designer", "fluid", "creative"],
     component: OceanPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/OceanPortfolio.tsx",
-    previewImage: "/previews/ocean-portfolio.png",
     createdAt: "2026-06-11",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -147,7 +140,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["terminal", "hacker", "developer"],
     component: NightCityPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/NightCityPortfolio.tsx",
-    previewImage: "/previews/midnight-portfolio.png",
     createdAt: "2026-06-12",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -161,7 +153,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["story", "writer", "narrative"],
     component: AutumnPortfolio,
     sourcePath: "packages/blueprints/src/portfolios/AutumnPortfolio.tsx",
-    previewImage: "/previews/autumn-portfolio.png",
     createdAt: "2026-06-13",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -175,7 +166,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "minimal", "saas"],
     component: ZenixContact,
     sourcePath: "packages/blueprints/src/contact/ZenixContact.tsx",
-    previewImage: "/previews/zenix-contact.png",
     createdAt: "2026-06-14",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -189,7 +179,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "glass", "fluid"],
     component: OceanContact,
     sourcePath: "packages/blueprints/src/contact/OceanContact.tsx",
-    previewImage: "/previews/ocean-contact.png",
     createdAt: "2026-06-14",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -203,7 +192,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "terminal", "cyberpunk"],
     component: NightCityContact,
     sourcePath: "packages/blueprints/src/contact/NightCityContact.tsx",
-    previewImage: "/previews/midnight-contact.png",
     createdAt: "2026-06-14",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -217,7 +205,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "organic", "journal"],
     component: AutumnContact,
     sourcePath: "packages/blueprints/src/contact/AutumnContact.tsx",
-    previewImage: "/previews/autumn-contact.png",
     createdAt: "2026-06-14",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -231,7 +218,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "inline", "saas"],
     component: ZenixNewsletter,
     sourcePath: "packages/blueprints/src/newsletter/ZenixNewsletter.tsx",
-    previewImage: "/previews/zenix-newsletter.png",
     createdAt: "2026-06-15",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -245,7 +231,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "glass", "inline"],
     component: OceanNewsletter,
     sourcePath: "packages/blueprints/src/newsletter/OceanNewsletter.tsx",
-    previewImage: "/previews/ocean-newsletter.png",
     createdAt: "2026-06-15",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -259,7 +244,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "terminal", "cyberpunk"],
     component: NightCityNewsletter,
     sourcePath: "packages/blueprints/src/newsletter/NightCityNewsletter.tsx",
-    previewImage: "/previews/midnight-newsletter.png",
     createdAt: "2026-06-15",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -273,7 +257,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["form", "organic", "journal"],
     component: AutumnNewsletter,
     sourcePath: "packages/blueprints/src/newsletter/AutumnNewsletter.tsx",
-    previewImage: "/previews/autumn-newsletter.png",
     createdAt: "2026-06-15",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -287,7 +270,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["login", "register", "minimal"],
     component: ZenixAuth,
     sourcePath: "packages/blueprints/src/auth/ZenixAuth.tsx",
-    previewImage: "/previews/zenix-auth.png",
     createdAt: "2026-06-16",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -301,7 +283,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["login", "glass", "fluid"],
     component: OceanAuth,
     sourcePath: "packages/blueprints/src/auth/OceanAuth.tsx",
-    previewImage: "/previews/ocean-auth.png",
     createdAt: "2026-06-16",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -315,7 +296,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["login", "terminal", "cyberpunk"],
     component: NightCityAuth,
     sourcePath: "packages/blueprints/src/auth/NightCityAuth.tsx",
-    previewImage: "/previews/midnight-auth.png",
     createdAt: "2026-06-16",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -329,7 +309,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["login", "organic", "story"],
     component: AutumnAuth,
     sourcePath: "packages/blueprints/src/auth/AutumnAuth.tsx",
-    previewImage: "/previews/autumn-auth.png",
     createdAt: "2026-06-16",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -343,7 +322,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["content", "article", "minimal"],
     component: ZenixBlog,
     sourcePath: "packages/blueprints/src/blog/ZenixBlog.tsx",
-    previewImage: "/previews/zenix-blog.png",
     createdAt: "2026-06-17",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -357,7 +335,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["content", "article", "glass"],
     component: OceanBlog,
     sourcePath: "packages/blueprints/src/blog/OceanBlog.tsx",
-    previewImage: "/previews/ocean-blog.png",
     createdAt: "2026-06-17",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -371,7 +348,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["content", "terminal", "cyberpunk"],
     component: NightCityBlog,
     sourcePath: "packages/blueprints/src/blog/NightCityBlog.tsx",
-    previewImage: "/previews/midnight-blog.png",
     createdAt: "2026-06-17",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -385,7 +361,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["content", "journal", "story"],
     component: AutumnBlog,
     sourcePath: "packages/blueprints/src/blog/AutumnBlog.tsx",
-    previewImage: "/previews/autumn-blog.png",
     createdAt: "2026-06-17",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -399,7 +374,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["data", "admin", "saas"],
     component: ZenixDashboard,
     sourcePath: "packages/blueprints/src/dashboard/ZenixDashboard.tsx",
-    previewImage: "/previews/zenix-dashboard.png",
     createdAt: "2026-06-18",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -413,7 +387,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["data", "admin", "glass"],
     component: OceanDashboard,
     sourcePath: "packages/blueprints/src/dashboard/OceanDashboard.tsx",
-    previewImage: "/previews/ocean-dashboard.png",
     createdAt: "2026-06-18",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -427,7 +400,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["data", "terminal", "cyberpunk"],
     component: NightCityDashboard,
     sourcePath: "packages/blueprints/src/dashboard/NightCityDashboard.tsx",
-    previewImage: "/previews/midnight-dashboard.png",
     createdAt: "2026-06-18",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -441,7 +413,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["data", "admin", "journal"],
     component: AutumnDashboard,
     sourcePath: "packages/blueprints/src/dashboard/AutumnDashboard.tsx",
-    previewImage: "/previews/autumn-dashboard.png",
     createdAt: "2026-06-18",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -455,7 +426,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["Glass", "Sticky", "Blur", "Responsive", "Dark"],
     component: () => null,
     sourcePath: "apps/website/src/components/sections/headers/GlassHeader.tsx",
-    previewImage: "/previews/glass-header.png",
     createdAt: "2026-06-25",
     featured: true,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -469,7 +439,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["Minimal", "Clean", "Light"],
     component: () => null,
     sourcePath: "apps/website/src/components/sections/headers/MinimalHeader.tsx",
-    previewImage: "/previews/minimal-header.png",
     createdAt: "2026-06-25",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']
@@ -483,7 +452,6 @@ export const blueprints: BlueprintMetadata[] = [
     tags: ["SaaS", "Mega-menu", "App"],
     component: () => null,
     sourcePath: "apps/website/src/components/sections/headers/SaaSHeader.tsx",
-    previewImage: "/previews/saas-header.png",
     createdAt: "2026-06-25",
     featured: false,
     supportedFrameworks: ['react', 'nextjs', 'vite']

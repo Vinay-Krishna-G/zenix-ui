@@ -3,13 +3,13 @@
 /**
  * BlueprintCard — Used on the homepage Blueprint Gallery section.
  *
- * Uses BlueprintThumbnail (live React preview) instead of the broken
+ * Uses ThumbnailRenderer (live React preview) instead of the broken
  * previewImage PNG path, which never existed.
  */
 
 import React from 'react';
 import Link from 'next/link';
-import { BlueprintThumbnail } from '../../preview/BlueprintThumbnail';
+import { ThumbnailRenderer } from '../preview/ThumbnailRenderer';
 
 interface BlueprintCardProps {
   id: string;
@@ -48,7 +48,7 @@ export function BlueprintCard({ id, title, description, category, component, the
         }}
       >
         {/* Live preview — always accurate, zero 404s */}
-        <BlueprintThumbnail
+        <ThumbnailRenderer
           Component={component}
           theme={theme}
           previewHeight={240}
