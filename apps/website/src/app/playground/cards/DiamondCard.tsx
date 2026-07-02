@@ -5,11 +5,11 @@ import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
 
-interface AppleCardProps {
+interface DiamondCardProps {
   listing: ExperienceListing;
 }
 
-export function AppleCard({ listing }: AppleCardProps) {
+export function DiamondCard({ listing }: DiamondCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   

@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { mockListings } from './mockListings';
-import { AppleCard } from './cards/AppleCard';
-import { LinearCard } from './cards/LinearCard';
-import { FramerCard } from './cards/FramerCard';
-import { SteamCard } from './cards/SteamCard';
+import { DiamondCard } from './cards/DiamondCard';
+import { ObsidianCard } from './cards/ObsidianCard';
+import { AuroraCard } from './cards/AuroraCard';
+import { CinemaCard } from './cards/CinemaCard';
+import { NovaCard } from './cards/NovaCard';
 
 export default function PlaygroundPage() {
   // Use a stable, single mock listing to compare the 4 concepts fairly.
@@ -28,11 +29,22 @@ export default function PlaygroundPage() {
             letterSpacing: '-0.04em',
             margin: '0 0 1rem'
           }}>
-            Experience Card Concepts
+            Version 2: The Nova Card
           </h1>
           <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.5)', maxWidth: '600px', margin: '0 auto' }}>
-            Hover over the 4 concepts below to evaluate aesthetics, motion, and typography.
+            70% Diamond, 20% Cinema, 10% Obsidian. 
+            Hover to see the 20% vertical scroll and the signature Identity Strip.
           </p>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8rem' }}>
+          <div style={{ width: '100%', maxWidth: '480px' }}>
+            <NovaCard listing={listing} />
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '4rem', textAlign: 'center', opacity: 0.5 }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Previous Concepts (v1)</h2>
         </div>
 
         <div style={{
@@ -41,40 +53,40 @@ export default function PlaygroundPage() {
           gap: '3rem',
           alignItems: 'start',
         }}>
-          {/* A: Apple */}
+          {/* A: Diamond */}
           <div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>A. Apple Concept</h2>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>◇ Diamond</h2>
             <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
-              Calm, minimal, almost invisible. Gentle lift.
+              Premium, calm, polished. Gentle lift.
             </p>
-            <AppleCard listing={listing} />
+            <DiamondCard listing={listing} />
           </div>
 
-          {/* B: Linear */}
+          {/* B: Obsidian */}
           <div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>B. Linear Concept</h2>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>◇ Obsidian</h2>
             <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
-              Dark, sharp, technical. Crisp 1px highlights.
+              Precise, sharp, engineered. Crisp 1px highlights.
             </p>
-            <LinearCard listing={listing} />
+            <ObsidianCard listing={listing} />
           </div>
 
-          {/* C: Framer */}
+          {/* C: Aurora */}
           <div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>C. Framer Concept</h2>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>◇ Aurora</h2>
             <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
-              Creative, motion-first. 3D perspective shift.
+              Motion, creativity, fluid. 3D perspective shift.
             </p>
-            <FramerCard listing={listing} />
+            <AuroraCard listing={listing} />
           </div>
 
-          {/* D: Steam */}
+          {/* D: Cinema */}
           <div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>D. Steam/Netflix Concept</h2>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#fff' }}>◇ Cinema</h2>
             <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '2rem' }}>
-              Huge preview, content-first. Cinematic reveal.
+              Immersive, visual-first. Cinematic reveal.
             </p>
-            <SteamCard listing={listing} />
+            <CinemaCard listing={listing} />
           </div>
         </div>
         

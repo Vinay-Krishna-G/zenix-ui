@@ -5,11 +5,11 @@ import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
 
-interface FramerCardProps {
+interface AuroraCardProps {
   listing: ExperienceListing;
 }
 
-export function FramerCard({ listing }: FramerCardProps) {
+export function AuroraCard({ listing }: AuroraCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const cardRef = useRef<HTMLDivElement>(null);

@@ -5,11 +5,11 @@ import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
 
-interface LinearCardProps {
+interface ObsidianCardProps {
   listing: ExperienceListing;
 }
 
-export function LinearCard({ listing }: LinearCardProps) {
+export function ObsidianCard({ listing }: ObsidianCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   

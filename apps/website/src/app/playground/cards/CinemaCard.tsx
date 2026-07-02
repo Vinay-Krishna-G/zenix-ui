@@ -5,11 +5,11 @@ import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
 
-interface SteamCardProps {
+interface CinemaCardProps {
   listing: ExperienceListing;
 }
 
-export function SteamCard({ listing }: SteamCardProps) {
+export function CinemaCard({ listing }: CinemaCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   
