@@ -1,9 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/MarketplacePreviewAdapter';
+import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { PreviewSurface } from '../../../components/preview/PreviewSurface';
+import { oceanTheme } from '@zenixui/themes';
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
+import { BlueprintProps, RenderMode, Viewport } from '@zenixui/core';
 
 interface ObsidianCardProps {
   listing: ExperienceListing;
@@ -14,6 +17,13 @@ export function ObsidianCard({ listing }: ObsidianCardProps) {
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   
   if (!blueprint) return null;
+
+  const dynamicProps: BlueprintProps = {
+    theme: oceanTheme,
+    content: null,
+    mode: RenderMode.Thumbnail,
+    viewport: Viewport.Desktop
+  };
 
   return (
     <div
@@ -46,15 +56,17 @@ export function ObsidianCard({ listing }: ObsidianCardProps) {
       }}>
         {/* The Preview */}
         <div style={{
-          width: '100%', height: '100%',
-          opacity: isHovered ? 1 : 0.85, // Subtle brightness shift
-          transition: 'opacity 0.3s ease',
+          width: '100%',
+          height: '110%',
+          transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+          transition: 'transform 0.3s ease-out',
         }}>
-          <MarketplacePreviewAdapter 
-            Component={blueprint.component as any}
-            previewHeight={300} 
-            cardWidth={420} 
-          />
+          <PreviewSurface isHovered={isHovered}>
+            <PreviewRenderer 
+              Component={blueprint.component as any}
+              props={dynamicProps}
+            />
+          </PreviewSurface>
         </div>
 
         {/* Hover Actions - Very technical, icon-driven */}

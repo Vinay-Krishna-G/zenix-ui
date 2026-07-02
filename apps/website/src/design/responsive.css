@@ -1,0 +1,97 @@
+/* Responsive Foundation Tokens */
+
+/* 1. Desktop Default (Base :root) */
+:root, .zx-breakpoint-desktop {
+  /* Typography */
+  --zx-text-display-xl: 4.5rem;   /* 72px */
+  --zx-text-heading-xl: 3rem;     /* 48px */
+  --zx-text-heading-lg: 2.25rem;  /* 36px */
+  --zx-text-body-lg: 1.25rem;     /* 20px */
+  --zx-text-body-md: 1rem;        /* 16px */
+  --zx-text-body-sm: 0.875rem;    /* 14px */
+  --zx-text-caption: 0.75rem;     /* 12px */
+
+  /* Spacing */
+  --zx-space-section-y: 8rem;     /* 128px */
+  --zx-space-section-x: 4rem;     /* 64px */
+  --zx-space-container: 2rem;     /* 32px */
+  --zx-space-content: 1.5rem;     /* 24px */
+  --zx-space-element: 1rem;       /* 16px */
+  --zx-space-gap-xl: 4rem;        /* 64px */
+  --zx-space-gap-lg: 2rem;        /* 32px */
+  --zx-space-gap-md: 1rem;        /* 16px */
+
+  /* Preview Sizing */
+  --zx-preview-height: 800px;
+  --zx-preview-radius: 24px;
+  --zx-preview-padding: 3rem;     /* padding inside preview section */
+  
+}
+
+/* 2. Tablet (Max 1023px) */
+@media (max-width: 1023px) {
+  :root {
+    --zx-text-display-xl: 3.5rem;   /* 56px */
+    --zx-text-heading-xl: 2.5rem;   /* 40px */
+    --zx-text-heading-lg: 2rem;     /* 32px */
+    --zx-text-body-lg: 1.125rem;    /* 18px */
+
+    --zx-space-section-y: 5rem;     /* 80px */
+    --zx-space-section-x: 2.5rem;   /* 40px */
+    --zx-space-gap-xl: 3rem;        /* 48px */
+    
+    --zx-preview-height: 500px;
+    --zx-preview-radius: 20px;
+    
+  }
+}
+
+/* Hardcoded class for Playground */
+.zx-breakpoint-tablet {
+  --zx-text-display-xl: 3.5rem;
+  --zx-text-heading-xl: 2.5rem;
+  --zx-text-heading-lg: 2rem;
+  --zx-text-body-lg: 1.125rem;
+
+  --zx-space-section-y: 5rem;
+  --zx-space-section-x: 2.5rem;
+  --zx-space-gap-xl: 3rem;
+  
+  --zx-preview-height: 500px;
+  --zx-preview-radius: 20px;
+  
+}
+
+/* 3. Mobile (Max 767px) */
+@media (max-width: 767px) {
+  :root {
+    --zx-text-display-xl: 2.5rem;   /* 40px */
+    --zx-text-heading-xl: 2rem;     /* 32px */
+    --zx-text-heading-lg: 1.75rem;  /* 28px */
+    --zx-text-body-lg: 1rem;        /* 16px */
+
+    --zx-space-section-y: 3rem;     /* 48px */
+    --zx-space-section-x: 1.25rem;  /* 20px */
+    --zx-space-gap-xl: 2rem;        /* 32px */
+    
+    --zx-preview-height: 350px;
+    --zx-preview-radius: 16px;
+    
+  }
+}
+
+/* Hardcoded class for Playground */
+.zx-breakpoint-mobile {
+  --zx-text-display-xl: 2.5rem;
+  --zx-text-heading-xl: 2rem;
+  --zx-text-heading-lg: 1.75rem;
+  --zx-text-body-lg: 1rem;
+
+  --zx-space-section-y: 3rem;
+  --zx-space-section-x: 1.25rem;
+  --zx-space-gap-xl: 2rem;
+  
+  --zx-preview-height: 350px;
+  --zx-preview-radius: 16px;
+  
+}

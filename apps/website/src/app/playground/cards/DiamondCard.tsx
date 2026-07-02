@@ -1,9 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/MarketplacePreviewAdapter';
+import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { PreviewSurface } from '../../../components/preview/PreviewSurface';
+import { oceanTheme } from '@zenixui/themes';
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
+import { BlueprintProps, RenderMode, Viewport } from '@zenixui/core';
 
 interface DiamondCardProps {
   listing: ExperienceListing;
@@ -14,6 +17,13 @@ export function DiamondCard({ listing }: DiamondCardProps) {
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   
   if (!blueprint) return null;
+
+  const dynamicProps: BlueprintProps = {
+    theme: oceanTheme,
+    content: null,
+    mode: RenderMode.Thumbnail,
+    viewport: Viewport.Desktop
+  };
 
   return (
     <div
@@ -49,11 +59,12 @@ export function DiamondCard({ listing }: DiamondCardProps) {
           transform: isHovered ? 'scale(1.02)' : 'scale(1)',
           transition: 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)',
         }}>
-          <MarketplacePreviewAdapter 
-            Component={blueprint.component as any}
-            previewHeight={300} 
-            cardWidth={420} 
-          />
+          <PreviewSurface isHovered={isHovered}>
+            <PreviewRenderer 
+              Component={blueprint.component as any}
+              props={dynamicProps}
+            />
+          </PreviewSurface>
         </div>
 
         {/* Hover Actions Overlay - Very clean blur, fades in */}

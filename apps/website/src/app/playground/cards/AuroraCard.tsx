@@ -1,9 +1,12 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/MarketplacePreviewAdapter';
+import React, { useState, useRef, useEffect } from 'react';
+import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { PreviewSurface } from '../../../components/preview/PreviewSurface';
+import { oceanTheme } from '@zenixui/themes';
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
+import { BlueprintProps, RenderMode, Viewport } from '@zenixui/core';
 
 interface AuroraCardProps {
   listing: ExperienceListing;
@@ -16,6 +19,13 @@ export function AuroraCard({ listing }: AuroraCardProps) {
 
   const blueprint = blueprints.find(bp => bp.id === listing.blueprintId);
   if (!blueprint) return null;
+
+  const dynamicProps: BlueprintProps = {
+    theme: oceanTheme,
+    content: null,
+    mode: RenderMode.Thumbnail,
+    viewport: Viewport.Desktop
+  };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -31,6 +41,8 @@ export function AuroraCard({ listing }: AuroraCardProps) {
   // Calculate dynamic lighting based on mouse
   const lightX = mousePos.x * 100;
   const lightY = mousePos.y * 100;
+  const offsetX = (mousePos.x - 0.5) * -20;
+  const offsetY = (mousePos.y - 0.5) * -20;
 
   return (
     <div
@@ -79,17 +91,17 @@ export function AuroraCard({ listing }: AuroraCardProps) {
 
         {/* The Preview - moves slightly opposite to create depth */}
         <div style={{
-          width: '100%', height: '100%',
-          transform: isHovered 
-            ? `translateZ(20px) scale(1.05)` 
-            : 'translateZ(0) scale(1)',
-          transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease',
+          width: '100%',
+          height: '110%',
+          transform: `translate(${offsetX}px, ${offsetY}px) scale(${isHovered ? 1.02 : 1})`,
+          transition: 'transform 0.4s ease-out',
         }}>
-          <MarketplacePreviewAdapter 
-            Component={blueprint.component as any}
-            previewHeight={300} 
-            cardWidth={420} 
-          />
+          <PreviewSurface isHovered={isHovered}>
+            <PreviewRenderer 
+              Component={blueprint.component as any}
+              props={dynamicProps}
+            />
+          </PreviewSurface>
         </div>
 
         {/* Floating Badges */}

@@ -127,8 +127,8 @@ export function ExperienceShowcase() {
                             <PreviewRenderer
                               Component={resolved.component as any}
                               props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
-                              previewHeight={280}
-                              cardWidth={460}
+                              
+                              
                             />
                           ) : (
                             /* Fallback: dark placeholder with personality label */

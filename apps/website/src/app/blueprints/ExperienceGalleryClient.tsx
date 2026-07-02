@@ -236,8 +236,8 @@ function BlueprintCard({ blueprint }: CardProps) {
         <PreviewRenderer
           Component={blueprint.component as any}
           props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
-          previewHeight={220}
-          cardWidth={340}
+          
+          
         />
 
         {/* Theme badge */}

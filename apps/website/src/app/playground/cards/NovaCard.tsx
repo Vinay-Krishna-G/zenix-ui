@@ -1,18 +1,21 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { MarketplacePreviewAdapter } from '../../../components/preview/adapters/MarketplacePreviewAdapter';
+import React, { useState } from 'react';
+import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { PreviewSurface } from '../../../components/preview/PreviewSurface';
+
 import { ExperienceListing } from '../mockListings';
 import { blueprints } from '@zenixui/blueprints';
-import { ThemeTokens, RenderMode, Viewport, BlueprintProps } from '@zenixui/core';
-import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { BlueprintProps, RenderMode, Viewport } from '@zenixui/core';
+
+import { oceanTheme, editorialTheme, luxuryTheme } from '@zenixui/themes';
 
 // We inline a custom adapter for ZenixCard because we need to dynamically inject theme tokens
 // based on the signature identity strip interaction.
 const THEMES = [
-  { id: 'ocean', name: 'Ocean', tokens: { primary: '#3b82f6', secondary: '#8b5cf6', accent: '#f43f5e', background: '#09090b', surface: '#18181b', text: '#fafafa', muted: '#a1a1aa', border: '#27272a' } },
-  { id: 'editorial', name: 'Editorial', tokens: { primary: '#111', secondary: '#444', accent: '#000', background: '#fff', surface: '#f5f5f7', text: '#111', muted: '#86868b', border: '#e5e5ea' } },
-  { id: 'luxury', name: 'Luxury', tokens: { primary: '#d4af37', secondary: '#c5a059', accent: '#111', background: '#0a0a0a', surface: '#111', text: '#fff', muted: '#666', border: '#333' } },
+  { id: 'ocean', name: 'Ocean', tokens: oceanTheme },
+  { id: 'editorial', name: 'Editorial', tokens: editorialTheme },
+  { id: 'luxury', name: 'Luxury', tokens: luxuryTheme },
 ];
 
 interface NovaCardProps {
@@ -67,20 +70,18 @@ export function NovaCard({ listing }: NovaCardProps) {
       }}>
         
         {/* The Scrolling Preview */}
-        {/* We make the inner container much taller, and translate it up on hover */}
         <div style={{
-          width: '100%', 
-          height: '130%', // Taller than container
-          transform: isHovered ? 'translateY(-15%)' : 'translateY(0)',
-          transition: 'transform 3.5s cubic-bezier(0.25, 1, 0.2, 1)', // Very slow, luxurious scroll
+          width: '100%',
+          height: '110%',
+          transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+          transition: 'transform 0.4s ease-out',
         }}>
-          {/* We ask PreviewRenderer to render a tall 1000px height so we have content to scroll */}
-          <PreviewRenderer 
-            Component={blueprint.component as any}
-            props={dynamicProps}
-            previewHeight={800} 
-            cardWidth={480} 
-          />
+          <PreviewSurface isHovered={isHovered}>
+            <PreviewRenderer 
+              Component={blueprint.component as any}
+              props={dynamicProps}
+            />
+          </PreviewSurface>
         </div>
 
         {/* Zenix Signature: Floating Identity Strip */}

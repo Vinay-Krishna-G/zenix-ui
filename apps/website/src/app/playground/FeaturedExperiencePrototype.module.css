@@ -1,0 +1,222 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--zx-space-section-y) 0;
+}
+
+.leadin {
+  text-align: center;
+  margin-bottom: var(--zx-space-gap-xl);
+}
+
+.tagline {
+  font-size: var(--zx-text-body-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #86868b;
+  margin: 0 0 var(--zx-space-element) 0;
+}
+
+.title {
+  font-size: var(--zx-text-display-xl);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: #fff;
+}
+
+.grid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  gap: var(--zx-space-gap-xl);
+  
+  /* Desktop Layout Rules */
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 
+    "preview preview"
+    "story trust"
+    "actions trust";
+}
+
+.previewArea {
+  grid-area: preview;
+  position: relative;
+  width: 100%;
+  height: var(--zx-preview-height);
+  border-radius: var(--zx-preview-radius);
+  background: #111112;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  transform: scale(1);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.previewArea:hover {
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.08) inset;
+  transform: scale(1.002);
+}
+
+.identityStrip {
+  position: absolute;
+  top: var(--zx-space-content);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  padding: 6px;
+  display: flex;
+  gap: 6px;
+  z-index: 20;
+}
+
+.identityButton {
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: var(--zx-text-caption);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.identityButtonActive {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+
+.identityButtonInactive {
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+}
+
+.story {
+  grid-area: story;
+}
+
+.storyVerification {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--zx-space-content);
+}
+
+.storyDescription {
+  font-size: var(--zx-text-body-lg);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  max-width: 600px;
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  flex-direction: row;
+  gap: var(--zx-space-element);
+}
+
+.btnPrimary, .btnSecondary {
+  padding: 14px 28px;
+  border-radius: 99px;
+  font-size: var(--zx-text-body-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  width: auto;
+}
+
+.btnPrimary {
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.trust {
+  grid-area: trust;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--zx-space-gap-lg);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--zx-space-gap-lg);
+}
+
+.trustHeading {
+  font-size: var(--zx-text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #86868b;
+  margin: 0 0 var(--zx-space-inline) 0;
+}
+
+/* Tablet Overrides */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "preview"
+      "story"
+      "trust"
+      "actions";
+  }
+}
+
+:global(.zx-breakpoint-tablet) .grid {
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "preview"
+    "story"
+    "trust"
+    "actions";
+}
+
+/* Mobile Overrides */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-areas: 
+      "preview"
+      "story"
+      "trust"
+      "actions";
+  }
+  .trust {
+    grid-template-columns: 1fr;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .btnPrimary, .btnSecondary {
+    width: 100%;
+  }
+}
+
+:global(.zx-breakpoint-mobile) .grid {
+  grid-template-areas: 
+    "preview"
+    "story"
+    "trust"
+    "actions";
+}
+:global(.zx-breakpoint-mobile) .trust {
+  grid-template-columns: 1fr;
+}
+:global(.zx-breakpoint-mobile) .actions {
+  flex-direction: column;
+}
+:global(.zx-breakpoint-mobile) .btnPrimary, 
+:global(.zx-breakpoint-mobile) .btnSecondary {
+  width: 100%;
+}

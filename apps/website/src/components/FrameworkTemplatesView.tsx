@@ -37,7 +37,7 @@ export function FrameworkTemplatesView({ frameworkId, frameworkName }: { framewo
                  * Previously: backgroundImage: url(coverBlueprint.previewImage) — always 404.
                  * Now: live React preview via DocsBlueprintCard thumbnail.
                  */}
-                <BlueprintThumbnail id={coverBlueprint.id} previewHeight={120} />
+                <BlueprintThumbnail id={coverBlueprint.id}  />
                 <div style={{ padding: '1.5rem', flex: 1 }}>
                   <p style={{ fontSize: '0.875rem', opacity: 0.7, margin: '0 0 1rem' }}>
                     Browse all {displayCategory.toLowerCase()} blueprints optimized for {frameworkName}.

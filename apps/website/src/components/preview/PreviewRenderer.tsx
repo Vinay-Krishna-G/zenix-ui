@@ -7,35 +7,27 @@
  * Blueprints never import themes; they only receive semantic CSS variables from ThemeProvider.
  *
  * Responsibilities:
- * - Viewport mode enforcement
- * - Scaling logic
- * - Rendering
+ * - Lazy loading via IntersectionObserver
+ * - Theme injection
+ * - Rendering the pure blueprint
  * 
- * NEVER generates content or mutates the registry.
+ * NEVER manages aspect ratio, clipping, or scaling (handled by PreviewSurface).
  */
 
 import React, { useRef, useState, useEffect, Suspense } from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import { BlueprintProps, RenderMode, Viewport } from '@zenixui/core';
 
-const DESKTOP_WIDTH = 1200;
-
 interface PreviewRendererProps<TContent = unknown> {
   /** The pure layout blueprint to render. */
   Component: React.ComponentType<BlueprintProps<TContent>>;
   /** The fully constructed BlueprintProps payload (read-only). */
   props: Readonly<BlueprintProps<TContent>>;
-  /** Height of the preview area. Required for thumbnails. */
-  previewHeight?: number;
-  /** Width of the card container. Required for calculating scale in thumbnails. */
-  cardWidth?: number;
 }
 
 export function PreviewRenderer<TContent = unknown>({
   Component,
   props,
-  previewHeight = 220,
-  cardWidth = 340,
 }: PreviewRendererProps<TContent>) {
   const { mode, theme } = props;
   const containerRef = useRef<HTMLDivElement>(null);
@@ -72,88 +64,62 @@ export function PreviewRenderer<TContent = unknown>({
     }
   }, [isVisible, mode]);
 
-  // --- Thumbnail Mode (Scaled Fixed Desktop) ---
-  if (mode === RenderMode.Thumbnail) {
-    const scale = cardWidth / DESKTOP_WIDTH;
-    const renderHeight = Math.round(previewHeight / scale);
-
-    return (
-      <div
-        ref={containerRef}
-        style={{
-          width: '100%',
-          height: previewHeight,
-          overflow: 'hidden',
-          position: 'relative',
-          background: theme.background,
-          pointerEvents: 'none', // Thumbnails are non-interactive by contract
-          userSelect: 'none',
-        }}
-      >
-        {!isMounted && (
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: `linear-gradient(135deg, ${theme.surface} 0%, ${theme.background} 100%)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 4,
-                borderRadius: 2,
-                background: theme.accent,
-                opacity: 0.7,
-                animation: 'pulse 1.5s ease-in-out infinite',
-              }}
-            />
-          </div>
-        )}
-        {isVisible && (
-          <div
-            style={{
-              transformOrigin: 'top left',
-              transform: `scale(${scale})`,
-              width: DESKTOP_WIDTH,
-              height: renderHeight,
-              overflow: 'hidden',
-              opacity: isMounted ? 1 : 0,
-              transition: 'opacity 0.3s ease',
-            }}
-          >
-            <Suspense fallback={null}>
-              <ThemeProvider theme={theme} style={{ minHeight: '100vh', width: '100%' }}>
-                <Component {...props} />
-              </ThemeProvider>
-            </Suspense>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // --- Interactive Mode (Responsive Viewport) ---
   return (
     <div
+      ref={containerRef}
       style={{
         width: '100%',
         height: '100%',
-        overflow: 'hidden',
+        position: 'relative',
         background: theme.background,
+        // Thumbnails are non-interactive by contract
+        pointerEvents: mode === RenderMode.Thumbnail ? 'none' : 'auto',
+        userSelect: mode === RenderMode.Thumbnail ? 'none' : 'auto',
       }}
     >
-      <div style={{ width: '100%', height: '100%', overflowY: 'auto', overflowX: 'hidden' }}>
-        <Suspense fallback={null}>
-          <ThemeProvider theme={theme} style={{ minHeight: '100vh', width: '100%' }}>
-            <Component {...props} />
-          </ThemeProvider>
-        </Suspense>
-      </div>
+      {!isMounted && mode === RenderMode.Thumbnail && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: `linear-gradient(135deg, ${theme.surface} 0%, ${theme.background} 100%)`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: 48,
+              height: 4,
+              borderRadius: 2,
+              background: theme.accent,
+              opacity: 0.7,
+              animation: 'pulse 1.5s ease-in-out infinite',
+            }}
+          />
+        </div>
+      )}
+      
+      {isVisible && (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            opacity: isMounted ? 1 : 0,
+            transition: 'opacity 0.3s ease',
+            overflowY: mode === RenderMode.Interactive ? 'auto' : 'hidden',
+            overflowX: 'hidden',
+          }}
+        >
+          <Suspense fallback={null}>
+            <ThemeProvider theme={theme} style={{ minHeight: '100vh', width: '100%' }}>
+              <Component {...props} />
+            </ThemeProvider>
+          </Suspense>
+        </div>
+      )}
     </div>
   );
 }

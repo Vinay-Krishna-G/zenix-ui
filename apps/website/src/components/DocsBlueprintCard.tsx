@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { Surface } from '@zenixui/components';
 import { blueprints } from '@zenixui/blueprints';
 import { PreviewRenderer } from './preview/PreviewRenderer';
+import { PreviewSurface } from './preview/PreviewSurface';
 
 interface DocsBlueprintCardProps {
   /** The blueprint ID. The component is resolved client-side from the registry. */
@@ -53,12 +54,14 @@ export function DocsBlueprintCard({ id, title, category, previewHeight = 120 }: 
           (e.currentTarget as HTMLElement).style.transform   = 'translateY(0)';
         }}
       >
-        <PreviewRenderer
-          Component={bp.component as any}
-          props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
-          previewHeight={previewHeight}
-          cardWidth={340}
-        />
+        <div style={{ height: previewHeight, overflow: 'hidden' }}>
+          <PreviewSurface>
+            <PreviewRenderer
+              Component={bp.component as any}
+              props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
+            />
+          </PreviewSurface>
+        </div>
         <div style={{ padding: '1rem' }}>
           <div style={{ fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', opacity: 0.4, marginBottom: '0.25rem' }}>
             {category}

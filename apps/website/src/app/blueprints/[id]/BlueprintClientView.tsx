@@ -205,8 +205,8 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
                     <PreviewRenderer
                       Component={bp.component as any}
                       props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
-                      previewHeight={200}
-                      cardWidth={320}
+                      
+                      
                     />
                     <div style={{ padding: '1.25rem 1.5rem' }}>
                       <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: '0 0 0.375rem' }}>{bp.title}</h3>

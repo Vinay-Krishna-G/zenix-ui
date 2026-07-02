@@ -53,8 +53,8 @@ export function BlueprintCard({ id, title, description, category, component, the
         <PreviewRenderer
           Component={component as any}
           props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
-          previewHeight={240}
-          cardWidth={380}
+          
+          
         />
 
         <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
