@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
-import { articles } from '../../../data/articles';
+import { articles } from '../../../../data/articles';
 import Link from 'next/link';
-import { SaasDashboardNextjs } from '../../../components/articles/SaasDashboardNextjs';
-import { ReactAdminPanel } from '../../../components/articles/ReactAdminPanel';
-import { PortfolioVite } from '../../../components/articles/PortfolioVite';
-import { BestReactTemplates } from '../../../components/articles/BestReactTemplates';
+import { SaasDashboardNextjs } from '../../../../components/articles/SaasDashboardNextjs';
+import { ReactAdminPanel } from '../../../../components/articles/ReactAdminPanel';
+import { PortfolioVite } from '../../../../components/articles/PortfolioVite';
+import { BestReactTemplates } from '../../../../components/articles/BestReactTemplates';
 
 export async function generateStaticParams() {
   return articles.map(article => ({

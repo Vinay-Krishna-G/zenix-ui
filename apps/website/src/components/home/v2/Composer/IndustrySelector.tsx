@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Composer.module.css';
-import { Industry, Experience } from '../../../../lib/launchpad';
+import { Industry, Experience } from '../../../../lib/experiences';
 
 export function IndustrySelector({ industries, experiences, activeId, onChange, onHover }: any) {
   return (

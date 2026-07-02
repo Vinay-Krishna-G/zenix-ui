@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { EXPERIENCES } from '../../../lib/launchpad';
+import { EXPERIENCES } from '../../../lib/experiences';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 
@@ -38,7 +38,7 @@ export function WorldScrollV2() {
                     {exp.marketingCopy}
                   </p>
                   
-                  <Link href="/launchpad" style={{ textDecoration: 'none' }}>
+                  <Link href="/experiences" style={{ textDecoration: 'none' }}>
                     <button style={{ 
                       padding: '16px 32px', background: '#111113', color: '#FAFAFA', 
                       border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', fontSize: '16px', fontWeight: 600, 

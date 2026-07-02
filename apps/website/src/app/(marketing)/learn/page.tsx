@@ -1,4 +1,4 @@
-import { articles } from '../../data/articles';
+import { articles } from '../../../data/articles';
 import Link from 'next/link';
 import { Surface, Badge } from '@zenixui/components';
 

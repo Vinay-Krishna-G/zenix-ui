@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Surface, Button } from '@zenixui/components';
 import { getBlueprintsByCategory } from '@zenixui/blueprints';
-import { DocsBlueprintCard } from '../../../components/DocsBlueprintCard';
+import { DocsBlueprintCard } from '../../../../components/DocsBlueprintCard';
 
 export const metadata: Metadata = {
   title: 'ZenixUI with Vite React — Installation & Setup Guide',

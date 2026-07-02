@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { INDUSTRIES, EXPERIENCES, AESTHETICS, IDENTITIES } from '../../../../lib/launchpad';
+import { INDUSTRIES, EXPERIENCES, AESTHETICS, IDENTITIES } from '../../../../lib/experiences';
 import { blueprints } from '@zenixui/blueprints';
 import styles from './Composer.module.css';
 

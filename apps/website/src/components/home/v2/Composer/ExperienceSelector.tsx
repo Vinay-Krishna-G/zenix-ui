@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Composer.module.css';
-import { Experience } from '../../../../lib/launchpad';
+import { Experience } from '../../../../lib/experiences';
 
 export function ExperienceSelector({ experiences, activeId, onChange, onHover }: any) {
   return (

@@ -6,7 +6,7 @@ import { HeroTitle } from './HeroTitle';
 import { HeroDescription } from './HeroDescription';
 import Link from 'next/link';
 import { blueprints } from '@zenixui/blueprints';
-import { EXPERIENCES } from '../../../lib/launchpad';
+import { EXPERIENCES } from '../../../lib/experiences';
 
 export function Hero() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -93,7 +93,7 @@ export function Hero() {
               </ul>
             </div>
 
-            <Link href="/launchpad" style={{ textDecoration: 'none', marginTop: 'auto' }}>
+            <Link href="/experiences" style={{ textDecoration: 'none', marginTop: 'auto' }}>
               <button style={{ 
                 width: '100%', padding: '1.25rem', background: 'var(--zx-text)', 
                 color: 'var(--zx-background)', fontWeight: 800, fontSize: '1.1rem', border: 'none', 

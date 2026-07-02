@@ -47,7 +47,7 @@ export function HowItWorksV2() {
             <p style={{ fontSize: '16px', color: '#A1A1AA', lineHeight: 1.6, maxWidth: '320px', marginBottom: '32px' }}>
               Get the complete Next.js source code, fully typed and animated. Ready for Vercel.
             </p>
-            <Link href="/launchpad" style={{ textDecoration: 'none' }}>
+            <Link href="/experiences" style={{ textDecoration: 'none' }}>
               <button style={{ 
                 padding: '16px 32px', background: '#FAFAFA', color: '#09090B', 
                 border: 'none', borderRadius: '16px', fontSize: '16px', fontWeight: 700, 

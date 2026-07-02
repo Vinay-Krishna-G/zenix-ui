@@ -8,7 +8,7 @@
  *  3. brand is informational — its absence should not block rendering.
  */
 
-import { EXPERIENCES, IDENTITIES, AESTHETICS, Experience, Identity, Aesthetic } from '../../lib/launchpad';
+import { EXPERIENCES, IDENTITIES, AESTHETICS, Experience, Identity, Aesthetic } from '../../lib/experiences';
 import { blueprints } from '@zenixui/blueprints';
 import React from 'react';
 

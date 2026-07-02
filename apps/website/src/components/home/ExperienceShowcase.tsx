@@ -14,7 +14,7 @@ import { RenderMode, Viewport } from '@zenixui/core';
  */
 
 import React from 'react';
-import { EXPERIENCES, Experience } from '../../lib/launchpad';
+import { EXPERIENCES, Experience } from '../../lib/experiences';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { PreviewRenderer } from '../preview/PreviewRenderer';
@@ -94,7 +94,7 @@ export function ExperienceShowcase() {
                   return (
                     <Link
                       key={exp.id}
-                      href="/launchpad"
+                      href="/experiences"
                       style={{ textDecoration: 'none', color: 'inherit', flexShrink: 0, width: '460px', scrollSnapAlign: 'start' }}
                     >
                       <div

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Composer.module.css';
-import { Identity } from '../../../../lib/launchpad';
+import { Identity } from '../../../../lib/experiences';
 
 export function IdentitySelector({ identities, activeId, onChange, onHover }: any) {
   return (

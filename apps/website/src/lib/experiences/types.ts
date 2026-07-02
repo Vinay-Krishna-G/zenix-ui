@@ -52,3 +52,14 @@ export interface Experience {
   tags: string[]; // e.g. "Trending", "Editor's Pick"
   similarExperiences: string[];
 }
+
+export interface Project {
+  id: string;
+  name: string;
+  experienceId: string;
+  variantId: string;
+  themeId: string; // Refers to the Identity/Brand selected
+  aestheticId: string; // Refers to the UI Layout structure
+  createdAt: Date;
+  updatedAt: Date;
+}

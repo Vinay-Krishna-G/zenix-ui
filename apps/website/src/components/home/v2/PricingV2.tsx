@@ -41,7 +41,7 @@ export function PricingV2() {
               </li>
             </ul>
 
-            <Link href="/launchpad" style={{ textDecoration: 'none' }}>
+            <Link href="/experiences" style={{ textDecoration: 'none' }}>
               <button style={{ 
                 width: '100%', padding: '1.5rem', background: 'var(--zx-primary)', 
                 color: '#000', border: 'none', borderRadius: '3rem', fontSize: '1.25rem', fontWeight: 800, 

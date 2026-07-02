@@ -12,7 +12,7 @@
  */
 
 import React from 'react';
-import { IDENTITIES } from '../../../lib/launchpad';
+import { IDENTITIES } from '../../../lib/experiences';
 import Link from 'next/link';
 
 export function ThemeGrid() {

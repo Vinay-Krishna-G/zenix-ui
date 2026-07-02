@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Composer.module.css';
-import { Aesthetic } from '../../../../lib/launchpad';
+import { Aesthetic } from '../../../../lib/experiences';
 
 export function VisualStyleSelector({ styles: aesthetics, activeId, onChange, onHover }: any) {
   return (

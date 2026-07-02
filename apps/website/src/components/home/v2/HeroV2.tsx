@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { EXPERIENCES } from '../../../lib/launchpad';
+import { EXPERIENCES } from '../../../lib/experiences';
 import { LivePreview } from '../../preview/LivePreview';
 
 export function HeroV2() {
@@ -57,7 +57,7 @@ export function HeroV2() {
           </p>
           
           <div style={{ display: 'flex', gap: '16px', marginBottom: '48px' }}>
-            <Link href="/launchpad" style={{ textDecoration: 'none' }}>
+            <Link href="/experiences" style={{ textDecoration: 'none' }}>
               <button style={{ 
                 padding: '16px 32px', background: '#FAFAFA', color: '#09090B', 
                 border: 'none', borderRadius: '16px', fontSize: '16px', fontWeight: 700, 
@@ -66,7 +66,7 @@ export function HeroV2() {
               onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
-                Open Launchpad
+                Browse Experiences
               </button>
             </Link>
             <Link href="/docs" style={{ textDecoration: 'none' }}>

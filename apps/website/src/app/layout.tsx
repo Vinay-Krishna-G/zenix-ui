@@ -34,18 +34,6 @@ export default function RootLayout({
       <body style={{ margin: 0, padding: 0 }}>
         <Providers>
           <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            {/* Minimal Global Nav */}
-            <nav style={{ padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--zx-elevated)', position: 'relative', zIndex: 100, background: 'var(--zx-background)' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em' }}>
-                <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>ZenixUI</a>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', fontWeight: 600 }}>
-                <a href="/launchpad" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Product</a>
-                <a href="/launchpad" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Gallery</a>
-                <a href="/studio" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Studio</a>
-                <a href="/docs" style={{ color: 'inherit', textDecoration: 'none', opacity: 0.8 }}>Docs</a>
-              </div>
-            </nav>
             <main style={{ flex: 1, position: 'relative' }}>
               {children}
             </main>
