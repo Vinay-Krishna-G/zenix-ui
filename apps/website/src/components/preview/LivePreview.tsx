@@ -1,16 +1,15 @@
 'use client';
 
 /**
- * LivePreview — Renders a blueprint component inside a themed container.
- *
- * Uses resolvePreview() which now falls back gracefully when the exact
- * (experience, aesthetic) combination isn't explicitly mapped — so users
- * never see "Generating preview..." stuck indefinitely.
+ * LivePreview — Renders a blueprint component inside an interactive browser viewport.
+ * Now acts as a thin wrapper around PreviewRenderer.
  */
 
 import React from 'react';
 import { resolvePreview } from './PreviewResolver';
-import { createPreviewTheme } from './PreviewTheme';
+import { PreviewRenderer } from './PreviewRenderer';
+import { buildBlueprintProps } from './PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 interface LivePreviewProps {
   experienceId: string;
@@ -36,12 +35,10 @@ export function LivePreview({
     aestheticId
   );
 
-  // ── Not found state ─────────────────────────────────────────────────────────
-  // Only shown when the experience itself doesn't exist or has no variants.
-  // A partial aesthetic map is now handled by the resolver's fallback.
   if (!isValid || !BlueprintComponent) {
     return (
       <div
+        className={className}
         style={{
           width: '100%',
           height: '100%',
@@ -52,6 +49,7 @@ export function LivePreview({
           gap: '0.75rem',
           background: '#09090B',
           color: 'rgba(255,255,255,0.4)',
+          ...style,
         }}
       >
         <div style={{ fontSize: '2rem', opacity: 0.3 }}>⬡</div>
@@ -65,23 +63,12 @@ export function LivePreview({
     );
   }
 
-  // ── Live preview ────────────────────────────────────────────────────────────
-  const themeStyles = createPreviewTheme(brand);
-
   return (
-    <div
-      className={className}
-      style={{
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        ...themeStyles,
-        ...style,
-      }}
-    >
-      <div style={{ width: '100%', height: '100%', overflowY: 'auto' }}>
-        <BlueprintComponent />
-      </div>
+    <div className={className} style={{ width: '100%', height: '100%', position: 'relative', ...style }}>
+      <PreviewRenderer
+        Component={BlueprintComponent as any}
+        props={buildBlueprintProps(brand, RenderMode.Interactive, Viewport.Desktop)}
+      />
     </div>
   );
 }

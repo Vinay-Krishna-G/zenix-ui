@@ -1,15 +1,17 @@
 'use client';
+import { buildBlueprintProps } from '../preview/PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 /**
  * BlueprintCard — Used on the homepage Blueprint Gallery section.
  *
- * Uses ThumbnailRenderer (live React preview) instead of the broken
+ * Uses PreviewRenderer (live React preview) instead of the broken
  * previewImage PNG path, which never existed.
  */
 
 import React from 'react';
 import Link from 'next/link';
-import { ThumbnailRenderer } from '../preview/ThumbnailRenderer';
+import { PreviewRenderer } from '../preview/PreviewRenderer';
 
 interface BlueprintCardProps {
   id: string;
@@ -48,9 +50,9 @@ export function BlueprintCard({ id, title, description, category, component, the
         }}
       >
         {/* Live preview — always accurate, zero 404s */}
-        <ThumbnailRenderer
-          Component={component}
-          theme={theme}
+        <PreviewRenderer
+          Component={component as any}
+          props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
           previewHeight={240}
           cardWidth={380}
         />

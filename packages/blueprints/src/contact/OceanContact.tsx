@@ -37,7 +37,7 @@ export function OceanContact() {
               <Input variant="glass" type="email" placeholder="Work Email" />
               <Input variant="glass" placeholder="Company Name" />
               <Textarea variant="glass" placeholder="How can we help you?" rows={4} />
-              <Button variant="glass" fullWidth size="lg" style={{ marginTop: '1rem', fontWeight: 500, letterSpacing: '0.05em', color: '#fff' }}>
+              <Button variant="glass" fullWidth size="lg" style={{ marginTop: '1rem', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--zx-background)' }}>
                 {status === 'loading' ? 'Sending...' : 'Send Message'}
               </Button>
             </form>

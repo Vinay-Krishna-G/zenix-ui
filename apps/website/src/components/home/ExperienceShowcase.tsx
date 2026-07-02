@@ -1,4 +1,6 @@
 'use client';
+import { buildBlueprintProps } from '../preview/PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 /**
  * ExperienceShowcase — Homepage section showing collections of experiences.
@@ -15,7 +17,7 @@ import React from 'react';
 import { EXPERIENCES, Experience } from '../../lib/launchpad';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
-import { ThumbnailRenderer } from '../preview/ThumbnailRenderer';
+import { PreviewRenderer } from '../preview/PreviewRenderer';
 
 // ── Theme colors for the thumbnail skeleton ────────────────────────────────
 const THEME_FOR_EXPERIENCE: Record<string, string> = {
@@ -122,9 +124,9 @@ export function ExperienceShowcase() {
                         {/* Live blueprint preview — resolved from the experience's first variant */}
                         <div style={{ position: 'relative' }}>
                           {resolved ? (
-                            <ThumbnailRenderer
-                              Component={resolved.component}
-                              theme={resolved.theme}
+                            <PreviewRenderer
+                              Component={resolved.component as any}
+                              props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
                               previewHeight={280}
                               cardWidth={460}
                             />

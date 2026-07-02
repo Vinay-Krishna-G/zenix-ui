@@ -33,8 +33,8 @@ export function NightCityContact() {
           <div style={{ position: 'absolute', bottom: -1, right: -1, width: '10px', height: '10px', borderBottom: '2px solid var(--zx-primary)', borderRight: '2px solid var(--zx-primary)' }} />
 
           {status === 'success' ? (
-            <div style={{ padding: '2rem', borderLeft: '2px solid #00ff00' }}>
-              <div style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#00ff00' }}>[PACKET_DELIVERED]</div>
+            <div style={{ padding: '2rem', borderLeft: '2px solid var(--zx-accent)' }}>
+              <div style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--zx-accent)' }}>[PACKET_DELIVERED]</div>
               <p style={{ opacity: 0.7, margin: 0 }}>Transmission successful. Awaiting operator response.</p>
             </div>
           ) : (
@@ -56,7 +56,7 @@ export function NightCityContact() {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="USER@NODE.NET" 
                 />
-                {error && <div style={{ color: '#ff003c', fontSize: '0.875rem', marginTop: '0.25rem' }}>{error}</div>}
+                {error && <div style={{ color: 'var(--zx-primary)', fontSize: '0.875rem', marginTop: '0.25rem' }}>{error}</div>}
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

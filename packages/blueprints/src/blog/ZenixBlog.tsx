@@ -53,9 +53,9 @@ export function ZenixBlog() {
             </p>
             
             {/* Code Block Discovery */}
-            <div style={{ background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', padding: '1.5rem', fontFamily: 'monospace', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
-              <span style={{ color: '#0A84FF' }}>const</span> engine = <span style={{ color: '#FF9F0A' }}>new</span> <span style={{ color: '#32D74B' }}>ExperienceEngine</span>();<br />
-              engine.<span style={{ color: '#FF453A' }}>mount</span>();
+            <div style={{ background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-surface)', padding: '1.5rem', fontFamily: 'var(--zx-font-mono, monospace)', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
+              <span style={{ color: 'var(--zx-accent)' }}>const</span> engine = <span style={{ color: 'var(--zx-accent)' }}>new</span> <span style={{ color: 'var(--zx-accent)' }}>ExperienceEngine</span>();<br />
+              engine.<span style={{ color: 'var(--zx-primary)' }}>mount</span>();
             </div>
           </div>
 

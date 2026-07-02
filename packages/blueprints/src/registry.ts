@@ -42,7 +42,7 @@ export interface BlueprintMetadata {
   category: 'landing' | 'portfolio' | 'blog' | 'saas' | 'contact' | 'newsletter' | 'auth' | 'dashboard';
   theme: string;
   tags: string[];
-  component: React.ComponentType;
+  component: React.ComponentType<any>;
   sourcePath: string;
   createdAt: string;
   featured: boolean;

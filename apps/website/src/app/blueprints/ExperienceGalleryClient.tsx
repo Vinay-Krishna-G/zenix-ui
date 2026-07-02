@@ -5,7 +5,9 @@ import { Surface, Button, Input } from '@zenixui/components';
 import { blueprints } from '@zenixui/blueprints';
 import Link from 'next/link';
 import { track } from '@vercel/analytics/react';
-import { ThumbnailRenderer } from '../../components/preview/ThumbnailRenderer';
+import { PreviewRenderer } from '../../components/preview/PreviewRenderer';
+import { buildBlueprintProps } from '../../components/preview/PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 // ─── Category definitions ────────────────────────────────────────────────────
 const CATEGORIES = [
@@ -231,9 +233,9 @@ function BlueprintCard({ blueprint }: CardProps) {
        * No screenshots needed — always accurate, always up to date.
        */}
       <div style={{ position: 'relative' }}>
-        <ThumbnailRenderer
-          Component={blueprint.component}
-          theme={blueprint.theme}
+        <PreviewRenderer
+          Component={blueprint.component as any}
+          props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
           previewHeight={220}
           cardWidth={340}
         />

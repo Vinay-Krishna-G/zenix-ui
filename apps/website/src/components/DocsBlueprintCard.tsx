@@ -1,4 +1,6 @@
 'use client';
+import { buildBlueprintProps } from './preview/PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 /**
  * DocsBlueprintCard — Small blueprint preview card used in documentation pages.
@@ -12,7 +14,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Surface } from '@zenixui/components';
 import { blueprints } from '@zenixui/blueprints';
-import { ThumbnailRenderer } from './preview/ThumbnailRenderer';
+import { PreviewRenderer } from './preview/PreviewRenderer';
 
 interface DocsBlueprintCardProps {
   /** The blueprint ID. The component is resolved client-side from the registry. */
@@ -51,9 +53,9 @@ export function DocsBlueprintCard({ id, title, category, previewHeight = 120 }: 
           (e.currentTarget as HTMLElement).style.transform   = 'translateY(0)';
         }}
       >
-        <ThumbnailRenderer
-          Component={bp.component}
-          theme={bp.theme}
+        <PreviewRenderer
+          Component={bp.component as any}
+          props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
           previewHeight={previewHeight}
           cardWidth={340}
         />

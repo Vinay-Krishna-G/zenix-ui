@@ -41,7 +41,7 @@ export function ZenixContact() {
               letterSpacing: '0.1em',
               opacity: 0.4,
               marginBottom: '1rem',
-              fontFamily: 'Inter, system-ui, sans-serif',
+              fontFamily: 'var(--zx-font-sans, sans-serif)',
             }}>
               Get in touch
             </div>
@@ -53,7 +53,7 @@ export function ZenixContact() {
               margin: '0 0 1.25rem',
               letterSpacing: '-0.04em',
               lineHeight: 1.1,
-              fontFamily: 'Inter, system-ui, sans-serif',
+              fontFamily: 'var(--zx-font-sans, sans-serif)',
             }}>
               Let's talk.
             </h2>
@@ -63,7 +63,7 @@ export function ZenixContact() {
               fontSize: '1.0625rem',
               lineHeight: 1.65,
               margin: '0 0 3rem',
-              fontFamily: 'Inter, system-ui, sans-serif',
+              fontFamily: 'var(--zx-font-sans, sans-serif)',
             }}>
               We're here for partnerships, enterprise inquiries, or just a conversation
               about design systems. We respond within 24 hours.
@@ -91,10 +91,10 @@ export function ZenixContact() {
                     {item.icon}
                   </span>
                   <div>
-                    <div style={{ fontSize: '0.72rem', opacity: 0.4, fontWeight: 600, marginBottom: '0.1rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
+                    <div style={{ fontSize: '0.72rem', opacity: 0.4, fontWeight: 600, marginBottom: '0.1rem', fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                       {item.label}
                     </div>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 600, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 600, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                       {item.value}
                     </div>
                   </div>
@@ -109,10 +109,10 @@ export function ZenixContact() {
               background: 'var(--zx-elevated)',
               border: '1px solid rgba(255,255,255,0.04)',
             }}>
-              <div style={{ fontSize: '0.8rem', opacity: 0.5, fontFamily: 'Inter, system-ui, sans-serif', lineHeight: 1.5 }}>
+              <div style={{ fontSize: '0.8rem', opacity: 0.5, fontFamily: 'var(--zx-font-sans, sans-serif)', lineHeight: 1.5 }}>
                 "ZenixUI cut our design system setup from 3 weeks to a single afternoon."
               </div>
-              <div style={{ fontSize: '0.72rem', opacity: 0.4, marginTop: '0.75rem', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 600 }}>
+              <div style={{ fontSize: '0.72rem', opacity: 0.4, marginTop: '0.75rem', fontFamily: 'var(--zx-font-sans, sans-serif)', fontWeight: 600 }}>
                 — Developer at a Y Combinator startup
               </div>
             </div>
@@ -141,10 +141,10 @@ export function ZenixContact() {
                 }}>
                   ✓
                 </div>
-                <h3 style={{ fontSize: '1.375rem', fontWeight: 700, margin: '0 0 0.625rem', letterSpacing: '-0.02em', fontFamily: 'Inter, system-ui, sans-serif' }}>
+                <h3 style={{ fontSize: '1.375rem', fontWeight: 700, margin: '0 0 0.625rem', letterSpacing: '-0.02em', fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                   Message received.
                 </h3>
-                <p style={{ opacity: 0.55, lineHeight: 1.6, margin: 0, fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9375rem' }}>
+                <p style={{ opacity: 0.55, lineHeight: 1.6, margin: 0, fontFamily: 'var(--zx-font-sans, sans-serif)', fontSize: '0.9375rem' }}>
                   We'll get back to you at your email address within 24 hours.
                 </p>
               </div>
@@ -152,10 +152,10 @@ export function ZenixContact() {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {/* Form heading */}
                 <div style={{ marginBottom: '0.5rem' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: '0 0 0.25rem', letterSpacing: '-0.02em', fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: '0 0 0.25rem', letterSpacing: '-0.02em', fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                     Send us a message
                   </h3>
-                  <p style={{ fontSize: '0.82rem', opacity: 0.45, margin: 0, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <p style={{ fontSize: '0.82rem', opacity: 0.45, margin: 0, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                     All fields are required.
                   </p>
                 </div>
@@ -163,13 +163,13 @@ export function ZenixContact() {
                 {/* Name row */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                    <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                    <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                       First name
                     </label>
                     <Input required variant="default" placeholder="Jane" />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                    <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                    <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                       Last name
                     </label>
                     <Input required variant="default" placeholder="Doe" />
@@ -178,7 +178,7 @@ export function ZenixContact() {
 
                 {/* Email */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                     Work email
                   </label>
                   <Input required variant="default" type="email" placeholder="jane@company.com" />
@@ -186,7 +186,7 @@ export function ZenixContact() {
 
                 {/* Subject */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                     Subject
                   </label>
                   <Input required variant="default" placeholder="Partnership inquiry" />
@@ -194,7 +194,7 @@ export function ZenixContact() {
 
                 {/* Message */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'Inter, system-ui, sans-serif' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, opacity: 0.7, fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                     Message
                   </label>
                   <Textarea
@@ -215,7 +215,7 @@ export function ZenixContact() {
                   Send message →
                 </Button>
 
-                <p style={{ fontSize: '0.72rem', opacity: 0.35, margin: '0.25rem 0 0', textAlign: 'center', fontFamily: 'Inter, system-ui, sans-serif' }}>
+                <p style={{ fontSize: '0.72rem', opacity: 0.35, margin: '0.25rem 0 0', textAlign: 'center', fontFamily: 'var(--zx-font-sans, sans-serif)' }}>
                   We never share your information with third parties.
                 </p>
               </form>

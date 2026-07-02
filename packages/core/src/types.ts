@@ -82,3 +82,5 @@ export interface ThemeConfig {
     focus?: string;
   };
 }
+
+export * from './types/blueprint';

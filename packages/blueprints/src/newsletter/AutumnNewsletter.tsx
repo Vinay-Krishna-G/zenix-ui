@@ -16,7 +16,7 @@ export function AutumnNewsletter() {
     <Features.Root padded>
       <Features.Content align="center" style={{ maxWidth: '500px', margin: '0 auto' }}>
         <Surface variant="card" style={{ padding: 0, background: 'transparent', border: 'none', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', margin: '0 0 1rem', color: 'var(--zx-primary)' }}>
+          <h2 style={{ fontSize: '2rem', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', margin: '0 0 1rem', color: 'var(--zx-primary)' }}>
             Letters from the journey
           </h2>
           <p style={{ opacity: 0.7, margin: '0 0 3rem', fontSize: '1rem', lineHeight: 1.6 }}>
@@ -25,7 +25,7 @@ export function AutumnNewsletter() {
 
           {status === 'success' ? (
             <div style={{ padding: '2rem', borderTop: '1px solid var(--zx-elevated)', borderBottom: '1px solid var(--zx-elevated)' }}>
-              <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.25rem' }}>
+              <p style={{ margin: 0, fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', fontSize: '1.25rem' }}>
                 Thank you. The next letter is yours.
               </p>
             </div>

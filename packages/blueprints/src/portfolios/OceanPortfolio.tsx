@@ -59,7 +59,7 @@ export function OceanPortfolio() {
       <Pattern.Root padded>
         <Container size="md">
           <Surface variant="glass" style={{ padding: '4rem', borderRadius: '3rem', textAlign: 'center', position: 'relative' }}>
-            <div style={{ fontSize: '6rem', position: 'absolute', top: '1rem', left: '2rem', opacity: 0.1, fontFamily: 'serif', lineHeight: 1 }}>"</div>
+            <div style={{ fontSize: '6rem', position: 'absolute', top: '1rem', left: '2rem', opacity: 0.1, fontFamily: 'var(--zx-font-serif, serif)', lineHeight: 1 }}>"</div>
             <p style={{ fontSize: '1.5rem', fontStyle: 'italic', margin: '0 0 2rem', lineHeight: 1.6, position: 'relative', zIndex: 1 }}>
               "The most immersive and performant interface we've ever launched. It feels less like a website and more like an environment."
             </p>
@@ -77,7 +77,7 @@ export function OceanPortfolio() {
           <Stack align="center" gap="lg" style={{ textAlign: 'center' }}>
             <h2 style={{ fontSize: '3rem', margin: 0 }}>Let's build something deep.</h2>
             <p style={{ opacity: 0.8, fontSize: '1.25rem', marginBottom: '1rem' }}>Available for freelance opportunities in Q4.</p>
-            <Surface variant="card" style={{ padding: '1.5rem 4rem', borderRadius: '2rem', fontWeight: 'bold', cursor: 'pointer', background: '#fff', color: 'var(--zx-background)' }}>
+            <Surface variant="card" style={{ padding: '1.5rem 4rem', borderRadius: '2rem', fontWeight: 'bold', cursor: 'pointer', background: 'var(--zx-primary)', color: 'var(--zx-background)' }}>
               hello@oceanportfolio.com
             </Surface>
           </Stack>

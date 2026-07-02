@@ -45,12 +45,12 @@ export function NightCityLanding() {
             <h2 style={{ fontSize: '4rem', margin: 0, lineHeight: 1, color: 'var(--zx-accent)' }}>100+</h2>
             <p style={{ margin: '1rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.7 }}>Experiences</p>
           </Surface>
-          <Surface variant="card" style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: '2px solid #3b82f6', background: 'linear-gradient(to bottom, rgba(59,130,246,0.1), transparent)' }}>
-            <h2 style={{ fontSize: '4rem', margin: 0, lineHeight: 1, color: '#3b82f6' }}>50+</h2>
+          <Surface variant="card" style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: '2px solid var(--zx-accent)', background: 'linear-gradient(to bottom, var(--zx-elevated), transparent)' }}>
+            <h2 style={{ fontSize: '4rem', margin: 0, lineHeight: 1, color: 'var(--zx-accent)' }}>50+</h2>
             <p style={{ margin: '1rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.7 }}>Effects</p>
           </Surface>
-          <Surface variant="card" style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: '2px solid #eab308', background: 'linear-gradient(to bottom, rgba(234,179,8,0.1), transparent)' }}>
-            <h2 style={{ fontSize: '4rem', margin: 0, lineHeight: 1, color: '#eab308' }}>∞</h2 >
+          <Surface variant="card" style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: '2px solid var(--zx-accent)', background: 'linear-gradient(to bottom, var(--zx-elevated), transparent)' }}>
+            <h2 style={{ fontSize: '4rem', margin: 0, lineHeight: 1, color: 'var(--zx-accent)' }}>∞</h2 >
             <p style={{ margin: '1rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.7 }}>Themes</p>
           </Surface>
         </Features.Grid>
@@ -63,7 +63,7 @@ export function NightCityLanding() {
             <h3 style={{ margin: 0, fontSize: '2rem', textTransform: 'uppercase' }}>Cybernetic Precision</h3>
             <p style={{ opacity: 0.7, margin: 0, fontSize: '1.1rem' }}>Built on a robust, highly optimized engine delivering 60fps animations and flawless visual fidelity across all viewports.</p>
           </Surface>
-          <Surface variant="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '3rem', borderRight: '4px solid #3b82f6', textAlign: 'right' }}>
+          <Surface variant="card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '3rem', borderRight: '4px solid var(--zx-accent)', textAlign: 'right' }}>
             <h3 style={{ margin: 0, fontSize: '2rem', textTransform: 'uppercase' }}>Neon Overdrive</h3>
             <p style={{ opacity: 0.7, margin: 0, fontSize: '1.1rem' }}>Automatic glow handling, fast streaks, and integrated bloom layers give your UI that authentic late-night metropolis vibe.</p>
           </Surface>
@@ -77,7 +77,7 @@ export function NightCityLanding() {
           <CTA.Actions justify="center">
             <button style={{ 
               background: 'var(--zx-accent)', 
-              color: '#000', 
+              color: 'var(--zx-primary)', 
               border: 'none', 
               padding: '1.5rem 4rem', 
               fontSize: '1.5rem', 

@@ -19,7 +19,7 @@ export function NightCityBlog() {
           </Button>
           
           <div style={{ marginBottom: '3rem', borderBottom: '1px solid var(--zx-primary)', paddingBottom: '2rem' }}>
-            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#00ff00', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--zx-accent)', textTransform: 'uppercase' }}>
               [DATALOG] // OP_REPORT
             </span>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 600, margin: '1rem 0', textTransform: 'uppercase', lineHeight: 1.2 }}>
@@ -39,13 +39,13 @@ export function NightCityBlog() {
               The architecture of the Night City theme requires zero radius borders and stark, aggressive typography. The mono font isn't just a stylistic choice, it's a structural requirement for alignment.
             </p>
             
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '3rem 0 1.5rem', textTransform: 'uppercase', color: '#ff003c' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '3rem 0 1.5rem', textTransform: 'uppercase', color: 'var(--zx-primary)' }}>
               {'>'}{'>'} SYSTEM_ARCHITECTURE
             </h2>
             
-            <div style={{ background: 'transparent', border: '1px solid var(--zx-elevated)', borderLeft: '2px solid #00ff00', padding: '1.5rem', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
-              <span style={{ opacity: 0.5 }}>01</span> <span style={{ color: '#00ff00' }}>const</span> breach = <span style={{ color: '#ff003c' }}>async</span> () {'=>'} {'{'}<br/>
-              <span style={{ opacity: 0.5 }}>02</span>   <span style={{ color: '#00ff00' }}>await</span> System.override(0x00FF);<br/>
+            <div style={{ background: 'transparent', border: '1px solid var(--zx-elevated)', borderLeft: '2px solid var(--zx-accent)', padding: '1.5rem', fontSize: '0.875rem', margin: '2rem 0', overflowX: 'auto' }}>
+              <span style={{ opacity: 0.5 }}>01</span> <span style={{ color: 'var(--zx-accent)' }}>const</span> breach = <span style={{ color: 'var(--zx-primary)' }}>async</span> () {'=>'} {'{'}<br/>
+              <span style={{ opacity: 0.5 }}>02</span>   <span style={{ color: 'var(--zx-accent)' }}>await</span> System.override(0x00FF);<br/>
               <span style={{ opacity: 0.5 }}>03</span> {'}'};
             </div>
           </div>
@@ -82,7 +82,7 @@ export function NightCityBlog() {
                   </Badge>
                 </h2>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.75rem', color: '#00ff00' }}>[REPORT]</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--zx-accent)' }}>[REPORT]</span>
                   <span style={{ fontSize: '0.75rem', opacity: 0.5 }}>STATUS: DECRYPTED</span>
                 </div>
               </div>

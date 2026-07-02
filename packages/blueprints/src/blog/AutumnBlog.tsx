@@ -27,7 +27,7 @@ export function AutumnBlog() {
             <Badge variant="organic" tone="neutral">
               Thoughts
             </Badge>
-            <h1 style={{ fontSize: '3.5rem', fontFamily: 'Georgia, serif', margin: '1rem 0', lineHeight: 1.1, color: 'var(--zx-primary)' }}>
+            <h1 style={{ fontSize: '3.5rem', fontFamily: 'var(--zx-font-serif, serif)', margin: '1rem 0', lineHeight: 1.1, color: 'var(--zx-primary)' }}>
               The Art of Slow Living
             </h1>
             <div style={{ opacity: 0.5, fontSize: '1rem', marginTop: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -35,14 +35,14 @@ export function AutumnBlog() {
             </div>
           </div>
 
-          <div style={{ fontSize: '1.25rem', lineHeight: 2, color: 'var(--zx-primary)', fontFamily: 'system-ui, sans-serif', fontWeight: 300 }}>
+          <div style={{ fontSize: '1.25rem', lineHeight: 2, color: 'var(--zx-primary)', fontFamily: 'var(--zx-font-sans, sans-serif)', fontWeight: 300 }}>
             <p style={{ marginBottom: '2rem' }}>
               We rush through our days, ticking off boxes and answering notifications. But what happens when we pause? The Autumn theme was designed specifically to slow down the user experience.
             </p>
             
             {/* Pull Quote Discovery */}
             <div style={{ margin: '4rem -2rem', padding: '2rem', borderLeft: '4px solid var(--zx-primary)' }}>
-              <p style={{ margin: 0, fontSize: '2rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', lineHeight: 1.4 }}>
+              <p style={{ margin: 0, fontSize: '2rem', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', lineHeight: 1.4 }}>
                 "To design for slowness is to design for humanity."
               </p>
             </div>
@@ -59,7 +59,7 @@ export function AutumnBlog() {
   return (
     <Features.Root padded>
       <Features.Content style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '3.5rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', margin: '0 0 4rem', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '3.5rem', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', margin: '0 0 4rem', textAlign: 'center' }}>
           The Journal
         </h1>
 
@@ -74,7 +74,7 @@ export function AutumnBlog() {
                 {post.date}
               </div>
               <div>
-                <h2 style={{ fontSize: '2.5rem', fontFamily: 'Georgia, serif', margin: '0 0 1rem', lineHeight: 1.2 }}>
+                <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--zx-font-serif, serif)', margin: '0 0 1rem', lineHeight: 1.2 }}>
                   {post.title}
                 </h2>
                 <p style={{ opacity: 0.7, fontSize: '1.25rem', margin: 0, fontWeight: 300, lineHeight: 1.6 }}>

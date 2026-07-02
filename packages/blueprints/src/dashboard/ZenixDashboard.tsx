@@ -60,7 +60,7 @@ export function ZenixDashboard() {
                   {/* ActivityFeed Discovery */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
                     <div style={{ display: 'flex', gap: '1rem' }}>
-                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0A84FF', marginTop: '6px' }} />
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--zx-accent)', marginTop: '6px' }} />
                       <div>
                         <div style={{ fontSize: '0.875rem', fontWeight: 500 }}>System Updated</div>
                         <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>2 hours ago</div>
@@ -144,7 +144,7 @@ function MetricTile({ title, value, trend }: any) {
     <Surface variant="card" style={{ padding: '1.5rem', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
       <div style={{ fontSize: '0.875rem', fontWeight: 500, opacity: 0.7, marginBottom: '0.5rem' }}>{title}</div>
       <div style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>{value}</div>
-      <div style={{ fontSize: '0.75rem', color: '#32D74B', fontWeight: 500 }}>{trend} from last month</div>
+      <div style={{ fontSize: '0.75rem', color: 'var(--zx-accent)', fontWeight: 500 }}>{trend} from last month</div>
     </Surface>
   );
 }

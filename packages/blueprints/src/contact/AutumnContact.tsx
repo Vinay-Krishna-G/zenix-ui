@@ -41,14 +41,14 @@ export function AutumnContact() {
               letterSpacing: '0.1em',
               opacity: 0.35,
               marginBottom: '1.25rem',
-              fontFamily: 'Georgia, serif',
+              fontFamily: 'var(--zx-font-serif, serif)',
             }}>
               Write to us
             </div>
 
             <h2 style={{
               fontSize: '2.75rem',
-              fontFamily: 'Georgia, serif',
+              fontFamily: 'var(--zx-font-serif, serif)',
               fontStyle: 'italic',
               fontWeight: 400,
               margin: '0 0 1.25rem',
@@ -63,7 +63,7 @@ export function AutumnContact() {
               fontSize: '1.0625rem',
               lineHeight: 1.7,
               margin: '0 0 2.5rem',
-              fontFamily: 'Georgia, serif',
+              fontFamily: 'var(--zx-font-serif, serif)',
               fontStyle: 'italic',
             }}>
               Every great collaboration starts with a conversation.
@@ -88,7 +88,7 @@ export function AutumnContact() {
                     {item.icon}
                   </span>
                   <div>
-                    <div style={{ fontSize: '0.7rem', opacity: 0.35, fontWeight: 600, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>{item.label}</div>
+                    <div style={{ fontSize: '0.7rem', opacity: 0.35, fontWeight: 600, fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic' }}>{item.label}</div>
                     <div style={{ fontSize: '0.875rem', fontWeight: 600 }}>{item.value}</div>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export function AutumnContact() {
               <p style={{
                 margin: 0,
                 fontSize: '0.875rem',
-                fontFamily: 'Georgia, serif',
+                fontFamily: 'var(--zx-font-serif, serif)',
                 fontStyle: 'italic',
                 opacity: 0.65,
                 lineHeight: 1.6,
@@ -132,24 +132,24 @@ export function AutumnContact() {
                 <div style={{ fontSize: '2.5rem', marginBottom: '1.25rem' }}>🍂</div>
                 <h3 style={{
                   fontSize: '1.375rem',
-                  fontFamily: 'Georgia, serif',
+                  fontFamily: 'var(--zx-font-serif, serif)',
                   fontStyle: 'italic',
                   fontWeight: 400,
                   margin: '0 0 0.75rem',
                 }}>
                   Your words are received.
                 </h3>
-                <p style={{ opacity: 0.55, lineHeight: 1.65, margin: 0, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                <p style={{ opacity: 0.55, lineHeight: 1.65, margin: 0, fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic' }}>
                   I will read them carefully and respond soon.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div style={{ marginBottom: '0.25rem' }}>
-                  <h3 style={{ fontSize: '1.125rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', margin: '0 0 0.25rem' }}>
+                  <h3 style={{ fontSize: '1.125rem', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', margin: '0 0 0.25rem' }}>
                     Send a letter
                   </h3>
-                  <p style={{ fontSize: '0.8rem', opacity: 0.4, margin: 0, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                  <p style={{ fontSize: '0.8rem', opacity: 0.4, margin: 0, fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic' }}>
                     Thoughtful replies within 48 hours.
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export function AutumnContact() {
                   Send letter →
                 </Button>
 
-                <p style={{ fontSize: '0.7rem', opacity: 0.3, margin: 0, textAlign: 'center', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                <p style={{ fontSize: '0.7rem', opacity: 0.3, margin: 0, textAlign: 'center', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic' }}>
                   Your email stays private. Always.
                 </p>
               </form>

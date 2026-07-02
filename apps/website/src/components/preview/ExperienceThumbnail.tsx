@@ -1,15 +1,15 @@
 'use client';
 
 /**
- * ExperienceThumbnail — Previously loaded PNG screenshots which caused 404s.
- *
- * Now uses resolvePreview() to get the actual React component and renders it
- * using ThumbnailRenderer for a live, scaled, zero-404 thumbnail.
+ * ExperienceThumbnail — Renders a scaled 1200px desktop layout thumbnail for a mapped Experience.
+ * Now acts as a thin wrapper around PreviewRenderer.
  */
 
 import React from 'react';
 import { resolvePreview } from './PreviewResolver';
-import { ThumbnailRenderer } from './ThumbnailRenderer';
+import { PreviewRenderer } from './PreviewRenderer';
+import { buildBlueprintProps } from './PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 interface ExperienceThumbnailProps {
   experienceId: string;
@@ -28,7 +28,7 @@ export function ExperienceThumbnail({
   className,
   style,
 }: ExperienceThumbnailProps) {
-  const { isValid, BlueprintComponent, experience, brand, resolvedBlueprintId } = resolvePreview(
+  const { isValid, BlueprintComponent, experience, brand } = resolvePreview(
     experienceId,
     brandId,
     variantId,
@@ -61,13 +61,11 @@ export function ExperienceThumbnail({
     );
   }
 
-  const bpTheme = require('@zenixui/blueprints').blueprints.find((b: any) => b.id === resolvedBlueprintId)?.theme || 'default';
-
   return (
     <div className={className} style={{ width: '100%', height: '100%', position: 'relative', ...style }}>
-      <ThumbnailRenderer
-        Component={BlueprintComponent}
-        theme={bpTheme}
+      <PreviewRenderer
+        Component={BlueprintComponent as any}
+        props={buildBlueprintProps(brand, RenderMode.Thumbnail, Viewport.Desktop)}
         previewHeight={400}
         cardWidth={600}
       />

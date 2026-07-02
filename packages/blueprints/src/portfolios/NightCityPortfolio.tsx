@@ -8,18 +8,18 @@ export function NightCityPortfolio() {
         <Container size="md">
           <Surface variant="card" style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--zx-accent)', boxShadow: '0 0 30px rgba(236,72,153,0.2)' }}>
             <div style={{ background: 'rgba(0,0,0,0.5)', padding: '0.75rem 1rem', borderBottom: '1px solid var(--zx-accent)', display: 'flex', gap: '0.5rem' }}>
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-primary)' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-accent)' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-accent)' }} />
             </div>
-            <div style={{ padding: '3rem 2rem', fontFamily: 'monospace', fontSize: '1.2rem', lineHeight: 1.8 }}>
+            <div style={{ padding: '3rem 2rem', fontFamily: 'var(--zx-font-mono, monospace)', fontSize: '1.2rem', lineHeight: 1.8 }}>
               <span style={{ color: 'var(--zx-accent)' }}>~ $</span> whoami<br />
               <br />
               <strong>&gt; SYSTEM ENGINEER // FULL STACK HACKER</strong><br />
               &gt; Specializing in high-performance computing, WebGL engines, and cyberpunk interfaces.<br />
               <br />
               <span style={{ color: 'var(--zx-accent)' }}>~ $</span> status<br />
-              <span style={{ color: '#22c55e' }}>[ONLINE] READY FOR DEPLOYMENT</span><span style={{ animation: 'blink 1s step-end infinite' }}>_</span>
+              <span style={{ color: 'var(--zx-accent)' }}>[ONLINE] READY FOR DEPLOYMENT</span><span style={{ animation: 'blink 1s step-end infinite' }}>_</span>
             </div>
           </Surface>
         </Container>
@@ -32,7 +32,7 @@ export function NightCityPortfolio() {
           <Grid columns={4} gap="md">
             {['React/Next.js', 'WebGL/Three', 'Rust/WASM', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'GraphQL'].map(tech => (
               <Surface key={tech} variant="card" style={{ padding: '1.5rem', textAlign: 'center', border: '1px solid var(--zx-elevated)' }}>
-                <span style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>{tech}</span>
+                <span style={{ fontFamily: 'var(--zx-font-mono, monospace)', fontWeight: 'bold' }}>{tech}</span>
               </Surface>
             ))}
           </Grid>
@@ -42,7 +42,7 @@ export function NightCityPortfolio() {
       {/* TIMELINE */}
       <Pattern.Root padded>
         <Pattern.Content gap="xl">
-          <h2 style={{ fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', borderBottom: '2px solid #3b82f6', paddingBottom: '0.5rem', display: 'inline-block' }}>System Logs // Timeline</h2>
+          <h2 style={{ fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', borderBottom: '2px solid var(--zx-accent)', paddingBottom: '0.5rem', display: 'inline-block' }}>System Logs // Timeline</h2>
           <Stack gap="xl" style={{ borderLeft: '2px solid var(--zx-elevated)', marginLeft: '1rem', paddingLeft: '2rem' }}>
             {[
               { year: '2026', title: 'Lead Architect @ NeonCorp', desc: 'Designed the global neural-net UI infrastructure.' },
@@ -51,7 +51,7 @@ export function NightCityPortfolio() {
             ].map(item => (
               <div key={item.year} style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', left: '-2.4rem', top: '0.25rem', width: '12px', height: '12px', borderRadius: '50%', background: 'var(--zx-accent)', boxShadow: '0 0 10px var(--zx-accent)' }} />
-                <span style={{ fontFamily: 'monospace', color: 'var(--zx-accent)', fontWeight: 'bold' }}>[{item.year}]</span>
+                <span style={{ fontFamily: 'var(--zx-font-mono, monospace)', color: 'var(--zx-accent)', fontWeight: 'bold' }}>[{item.year}]</span>
                 <h3 style={{ margin: '0.5rem 0', fontSize: '1.5rem', textTransform: 'uppercase' }}>{item.title}</h3>
                 <p style={{ margin: 0, opacity: 0.7 }}>{item.desc}</p>
               </div>

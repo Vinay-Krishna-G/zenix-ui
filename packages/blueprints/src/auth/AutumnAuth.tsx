@@ -17,7 +17,7 @@ export function AutumnAuth() {
       <Features.Content align="center" style={{ maxWidth: '450px', margin: '0 auto' }}>
         <Surface variant="card" style={{ padding: '4rem 3rem', background: 'var(--zx-surface)', border: '1px solid var(--zx-elevated)', borderRadius: 'var(--zx-radius-card)' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontFamily: 'Georgia, serif', fontStyle: 'italic', margin: '0 0 1rem', color: 'var(--zx-primary)' }}>
+            <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', margin: '0 0 1rem', color: 'var(--zx-primary)' }}>
               Sign In
             </h2>
             <p style={{ opacity: 0.7, margin: 0, fontSize: '1rem', lineHeight: 1.6 }}>
@@ -27,7 +27,7 @@ export function AutumnAuth() {
 
           {status === 'success' ? (
             <div style={{ padding: '2rem', textAlign: 'center' }}>
-              <p style={{ margin: 0, fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.25rem' }}>
+              <p style={{ margin: 0, fontFamily: 'var(--zx-font-serif, serif)', fontStyle: 'italic', fontSize: '1.25rem' }}>
                 Welcome back.
               </p>
             </div>
@@ -97,7 +97,7 @@ export function AutumnAuth() {
           )}
 
           <p style={{ textAlign: 'center', marginTop: '3rem', fontSize: '0.9rem', opacity: 0.7 }}>
-            Don't have an account? <a href="#" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Sign up</a>
+            Don't have an account? <a href="#" style={{ color: 'var(--zx-primary)', textDecoration: 'none', fontStyle: 'italic', fontFamily: 'var(--zx-font-serif, serif)' }}>Sign up</a>
           </p>
         </Surface>
 

@@ -7,7 +7,9 @@ import { Experience } from '@zenixui/react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { track } from '@vercel/analytics/react';
-import { ThumbnailRenderer } from '../../../components/preview/ThumbnailRenderer';
+import { PreviewRenderer } from '../../../components/preview/PreviewRenderer';
+import { buildBlueprintProps } from '../../../components/preview/PropsBuilder';
+import { RenderMode, Viewport } from '@zenixui/core';
 
 export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode: string }) {
   const blueprint = getBlueprint(id);
@@ -200,9 +202,9 @@ export function BlueprintClientView({ id, sourceCode }: { id: string, sourceCode
                     }}
                   >
                     {/* Live preview thumbnail — never stale, zero 404s */}
-                    <ThumbnailRenderer
-                      Component={bp.component}
-                      theme={bp.theme}
+                    <PreviewRenderer
+                      Component={bp.component as any}
+                      props={buildBlueprintProps(null, RenderMode.Thumbnail, Viewport.Desktop)}
                       previewHeight={200}
                       cardWidth={320}
                     />

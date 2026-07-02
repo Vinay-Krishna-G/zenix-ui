@@ -30,8 +30,8 @@ export function NightCityNewsletter() {
           </div>
 
           {status === 'success' ? (
-            <div style={{ padding: '1rem', borderLeft: '2px solid #00ff00', textAlign: 'left' }}>
-              <div style={{ fontSize: '1rem', color: '#00ff00', fontWeight: 600 }}>[CONNECTION_ESTABLISHED]</div>
+            <div style={{ padding: '1rem', borderLeft: '2px solid var(--zx-accent)', textAlign: 'left' }}>
+              <div style={{ fontSize: '1rem', color: 'var(--zx-accent)', fontWeight: 600 }}>[CONNECTION_ESTABLISHED]</div>
               <p style={{ opacity: 0.7, margin: '0.5rem 0 0', fontSize: '0.875rem' }}>Awaiting first payload transmission.</p>
             </div>
           ) : (
