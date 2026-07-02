@@ -238,12 +238,11 @@ export function Launchpad() {
         {/* Center: Live Engine Canvas */}
         <main style={{ 
           background: activeBrand.colors.background,
-          color: activeBrand.colors.surface,
           overflowY: 'auto',
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          transition: 'background 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+          transition: 'background 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
         }}>
           {/* Header Controls */}
           <div style={{ position: 'sticky', top: 0, zIndex: 100, padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: `linear-gradient(to bottom, ${activeBrand.colors.background} 90%, transparent)` }}>
@@ -256,16 +255,13 @@ export function Launchpad() {
           {/* Actual Engine Blueprint Rendering (Live Brand Injection) */}
           <div style={{ flex: 1, position: 'relative' }}>
              {ActiveBlueprintComponent ? (
-               <div style={{
-                 '--zx-primary': activeBrand.colors.primary,
-                 '--zx-background': activeBrand.colors.background,
-                 '--zx-surface': activeBrand.colors.surface,
-                 transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                 height: '100%',
-                 animation: 'fadeIn 0.5s ease-out'
-               } as React.CSSProperties}>
-                 <ActiveBlueprintComponent />
-               </div>
+                <LivePreview 
+                  experienceId={activeExperience.id}
+                  brandId={activeBrand.id}
+                  variantId={activeVariant.id}
+                  aestheticId={activeAesthetic.id}
+                  style={{ animation: 'fadeIn 0.5s ease-out' }}
+                />
              ) : (
                <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
                  Blueprint '{activeBlueprintId}' mapping not found.

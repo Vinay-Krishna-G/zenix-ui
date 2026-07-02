@@ -23,10 +23,12 @@ export function ThemeProvider({ theme, children, className, style }: ThemeProvid
     '--zx-background': theme.background,
     '--zx-surface': theme.surface,
     '--zx-text': theme.text,
+    '--zx-foreground': theme.text, // Alias for legacy/specific usages
     '--zx-muted': theme.muted,
     '--zx-border': theme.border,
     color: theme.text,
     backgroundColor: theme.background,
+    transition: 'color 0.3s ease, background-color 0.3s ease',
   } as React.CSSProperties;
 
   return (
