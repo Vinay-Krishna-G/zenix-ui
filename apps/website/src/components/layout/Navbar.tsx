@@ -1,11 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { EXPERIENCES, AESTHETICS } from '../../lib/experiences';
 
 export function Navbar() {
   const [showExplore, setShowExplore] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 16);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav style={{ 
@@ -14,9 +21,13 @@ export function Navbar() {
       justifyContent: 'space-between',
       alignItems: 'center',
       borderBottom: '1px solid var(--zx-elevated)', 
-      position: 'relative', 
+      position: 'sticky', 
+      top: 0,
       zIndex: 100, 
-      background: 'var(--zx-background)' 
+      transition: 'background 250ms ease, backdrop-filter 250ms ease',
+      background: scrolled ? 'rgba(9, 9, 11, 0.85)' : 'var(--zx-background)',
+      backdropFilter: scrolled ? 'blur(24px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'blur(24px)' : 'none',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
         <div style={{ fontWeight: 800, fontSize: '1.25rem', letterSpacing: '-0.03em' }}>

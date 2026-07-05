@@ -73,7 +73,7 @@ export function Experience({
           position: 'relative', 
           width: '100%', 
           minHeight: '100vh', 
-          overflow: 'hidden',
+          overflow: (SceneComponent || EffectComponent) ? 'hidden' : 'visible',
           ...styleOverrides
         }}
       >
