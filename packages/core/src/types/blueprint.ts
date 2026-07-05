@@ -9,17 +9,19 @@ export interface ThemeTokens {
   border: string;
 }
 
-export enum RenderMode {
-  Thumbnail = 'thumbnail',
-  Interactive = 'interactive',
-  Production = 'production',
-}
+export const RenderMode = {
+  Thumbnail: 'thumbnail',
+  Interactive: 'interactive',
+  Production: 'production',
+} as const;
+export type RenderMode = typeof RenderMode[keyof typeof RenderMode];
 
-export enum Viewport {
-  Desktop = 'desktop',
-  Tablet = 'tablet',
-  Mobile = 'mobile',
-}
+export const Viewport = {
+  Desktop: 'desktop',
+  Tablet: 'tablet',
+  Mobile: 'mobile',
+} as const;
+export type Viewport = typeof Viewport[keyof typeof Viewport];
 
 export type BlueprintProps<TContent = unknown> = Readonly<{
   theme: ThemeTokens;
