@@ -19,8 +19,12 @@ import { gridFeaturesDefinition } from './blocks/features';
 import { cardsPricingDefinition } from './blocks/pricing';
 import { centeredCTADefinition } from './blocks/cta';
 import { businessFooterDefinition } from './blocks/footer';
+import { gridLogosDefinition } from './blocks/logos';
+import { gridStatsDefinition } from './blocks/stats';
+import { accordionFAQDefinition } from './blocks/faq';
 
 import { businessLandingExperience } from './experiences/business-landing';
+import { saasStartupExperience } from './experiences/saas-startup';
 
 // Register blocks
 blockRegistry.register(businessNavbarDefinition);
@@ -30,6 +34,9 @@ blockRegistry.register(gridFeaturesDefinition);
 blockRegistry.register(cardsPricingDefinition);
 blockRegistry.register(centeredCTADefinition);
 blockRegistry.register(businessFooterDefinition);
+blockRegistry.register(gridLogosDefinition);
+blockRegistry.register(gridStatsDefinition);
+blockRegistry.register(accordionFAQDefinition);
 
 // Register editors
 editorRegistry.register('text', TextInputEditor);
@@ -196,12 +203,33 @@ function LivePreview() {
 }
 
 export default function StudioPlaygroundPage() {
+  const [activeExperience, setActiveExperience] = React.useState<'business' | 'saas'>('saas');
+  
+  // We force remount of ExperienceProvider by using key, so it resets state when switching experiences
+  const config = activeExperience === 'business' ? businessLandingExperience : saasStartupExperience;
+
   return (
-    <ExperienceProvider initialConfig={businessLandingExperience}>
-      <div className="flex w-full h-screen overflow-hidden bg-white">
-        <StudioControls />
-        <LivePreview />
+    <div className="flex flex-col w-full h-screen bg-slate-100 overflow-hidden">
+      {/* Top Bar for Experience Switching */}
+      <div className="h-12 bg-white border-b border-slate-200 flex items-center px-6 gap-4 shrink-0 shadow-sm z-10">
+        <span className="text-sm font-semibold text-slate-800">Experience Pack:</span>
+        <select 
+          value={activeExperience} 
+          onChange={(e) => setActiveExperience(e.target.value as 'business' | 'saas')}
+          className="text-sm bg-slate-50 border border-slate-200 rounded px-2 py-1 outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option value="business">Business Landing</option>
+          <option value="saas">SaaS Startup (WIP)</option>
+        </select>
       </div>
-    </ExperienceProvider>
+
+      {/* Main Studio Area */}
+      <div className="flex-1 flex overflow-hidden">
+        <ExperienceProvider key={activeExperience} initialConfig={config}>
+          <StudioControls />
+          <LivePreview />
+        </ExperienceProvider>
+      </div>
+    </div>
   );
 }
