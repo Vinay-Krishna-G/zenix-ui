@@ -20,8 +20,21 @@ export function ExperienceEngine({ experience }: ExperienceEngineProps) {
     );
   }
 
+  const primaryColor = experience.theme?.colors?.primary || '#4f46e5';
+  const surfaceColor = experience.theme?.colors?.surface || '#ffffff';
+  const textColor = experience.theme?.colors?.text || '#0f172a';
+
+  const themeVariables = {
+    '--color-primary': primaryColor,
+    '--color-surface': surfaceColor,
+    '--color-text': textColor,
+  } as React.CSSProperties;
+
   return (
-    <div className="w-full flex flex-col min-h-screen bg-white font-sans">
+    <div 
+      className="w-full flex flex-col min-h-screen bg-[var(--color-surface)] text-[var(--color-text)] transition-colors duration-300 font-sans" 
+      style={themeVariables}
+    >
       {activePage.blocks.map((blockInstance) => {
         const definition = blockRegistry.get(blockInstance.type, blockInstance.variant);
 

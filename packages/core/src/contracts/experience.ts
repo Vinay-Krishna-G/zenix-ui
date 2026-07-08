@@ -13,12 +13,13 @@ export interface PageConfig {
 }
 
 export interface EditableField {
-  type: 'text' | 'textarea' | 'color' | 'image' | 'boolean' | 'number' | 'select';
+  type: 'text' | 'textarea' | 'color' | 'image' | 'boolean' | 'number' | 'select' | 'array';
   label: string;
   description?: string;
   required?: boolean;
   defaultValue?: any;
   options?: any[]; // For select or segmented controls
+  schema?: Record<string, EditableField>; // For array items
 }
 
 export interface FieldGroup {
@@ -49,8 +50,14 @@ export interface ExperienceConfig {
     logo?: string;
     tagline?: string;
   };
-  theme: {
+  theme?: {
     preset: string;
+    colors?: {
+      primary?: string;
+      surface?: string;
+      text?: string;
+      [key: string]: string | undefined;
+    };
   };
   navigation: Record<string, any>;
   pages: Record<string, PageConfig>;
